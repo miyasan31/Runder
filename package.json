@@ -55,7 +55,7 @@
 		"react-native-screens": "~3.8.0",
 		"react-native-svg": "12.1.1",
 		"react-native-vector-icons": "^9.0.0",
-		"react-native-web": "0.17.1",
+		"react-native-web": "0.17.5",
 		"react-native-webview": "11.13.0",
 		"recoil": "^0.5.2",
 		"swr": "^1.1.0",
