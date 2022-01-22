@@ -16,11 +16,11 @@ export const TabOneNavigator: VFC = () => {
       initialRouteName="TabOneScreen"
       screenOptions={{
         headerStyle: { backgroundColor: backgroundColor },
-        headerLargeTitle: true,
-        headerLargeTitleStyle: {
-          fontWeight: "400",
-          fontSize: 30,
-        },
+        // headerLargeTitle: true,
+        // headerLargeTitleStyle: {
+        //   fontWeight: "400",
+        //   fontSize: 30,
+        // },
       }}
     >
       <TabOne.Screen name="TabOneScreen" component={TabOneScreen} options={() => ({})} />
