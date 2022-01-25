@@ -10,7 +10,7 @@
 		"test": "jest --watchAll",
 		"eslint": "eslint .",
 		"tsc": "tsc --noEmit",
-		"dev:api": "json-server --watch utils/json-server.json --port 5000"
+		"dev:api": "json-server --watch mock/json-server.json --port 5000"
 	},
 	"jest": {
 		"preset": "jest-expo"
