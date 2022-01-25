@@ -1,3 +1,1 @@
-import { onKeyBoardClose } from "./onKeyBoardClose";
-
-export { onKeyBoardClose };
+export { onKeyBoardClose } from "./onKeyBoardClose";

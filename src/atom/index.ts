@@ -1,4 +1,2 @@
-import { date } from "./date";
-import { user } from "./user";
-
-export { date, user };
+export { date } from "./date";
+export { user } from "./user";

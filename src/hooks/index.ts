@@ -1,7 +1,5 @@
-import { useCachedResources } from "./useCachedResources";
-import { useColorScheme } from "./useColorScheme";
-import { useGetSWR } from "./useGetSWR";
-import { useGetSWRdev } from "./useGetSWRdev";
-import { useThemeColor } from "./useThemeColor";
-
-export { useCachedResources, useColorScheme, useGetSWR, useGetSWRdev, useThemeColor };
+export { useCachedResources } from "./useCachedResources";
+export { useColorScheme } from "./useColorScheme";
+export { useGetSWR } from "./useGetSWR";
+export { useGetSWRdev } from "./useGetSWRdev";
+export { useThemeColor } from "./useThemeColor";

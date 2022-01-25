@@ -1,7 +1,5 @@
-import { buttonStyles } from "./button.styles";
-import { textStyles } from "./text.styles";
-import { textInputStyles } from "./textInput.styles";
-import { theme } from "./theme";
-import { viewStyles } from "./view.styles";
-
-export { buttonStyles, textInputStyles, textStyles, theme, viewStyles };
+export { buttonStyles } from "./button.styles";
+export { textStyles } from "./text.styles";
+export { textInputStyles } from "./textInput.styles";
+export { theme } from "./theme";
+export { viewStyles } from "./view.styles";

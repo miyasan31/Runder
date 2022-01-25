@@ -1,4 +1,2 @@
-import { Layout } from "./Layout";
-import { SafeAreaLayout } from "./SafeAreaLayout";
-
-export { Layout, SafeAreaLayout };
+export { Layout } from "./Layout";
+export { SafeAreaLayout } from "./SafeAreaLayout";
