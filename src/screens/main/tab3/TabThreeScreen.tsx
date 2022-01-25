@@ -6,7 +6,7 @@ import { ListItem } from "src/components";
 import { Text, View } from "src/components/custom";
 import { Layout } from "src/components/layout";
 import { useThemeColor } from "src/hooks";
-import type { TabThreeScreenProps } from "types";
+import type { TabThreeScreenProps } from "src/types";
 
 type List = {
   id: string;

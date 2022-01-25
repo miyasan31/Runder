@@ -3,7 +3,7 @@ import type { VFC } from "react";
 import React from "react";
 import { Platform, StyleSheet } from "react-native";
 import { Text, View } from "src/components/custom";
-import type { StackScreenProps } from "types";
+import type { StackScreenProps } from "src/types";
 
 export const ModalScreen: VFC<StackScreenProps<"Modal">> = () => {
   return (

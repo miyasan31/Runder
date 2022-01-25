@@ -8,7 +8,7 @@ import { Dimensions, StyleSheet } from "react-native";
 import MapView, { Polyline } from "react-native-maps";
 import { ColorButton } from "src/components/custom";
 import { Layout } from "src/components/layout";
-import type { TabOneScreenProps } from "types";
+import type { TabOneScreenProps } from "src/types";
 
 const INITIAL_REGION = [
   { latitude: 35.1111, longitude: 136.00001, color: "#ff0000" },

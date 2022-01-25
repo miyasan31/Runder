@@ -5,7 +5,7 @@ import type { TextProps } from "src/components/custom/CustomText";
 import { CustomText as Text } from "src/components/custom/CustomText";
 // import { CustomView as View } from "src/components/custom/CustomView";
 import { useThemeColor } from "src/hooks";
-import type { StyleProps } from "types/style";
+import type { StyleProps } from "src/types/style";
 
 export type ColorButtonProps = StyleProps &
   TextProps &

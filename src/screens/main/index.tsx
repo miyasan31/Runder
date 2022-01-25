@@ -7,7 +7,7 @@ import { TabBarIcon } from "src/components/icon";
 import { useColorScheme } from "src/hooks";
 import { useThemeColor } from "src/hooks/useThemeColor";
 import { theme } from "src/styles";
-import type { BottomTabParamList } from "types";
+import type { BottomTabParamList } from "src/types";
 
 import { TabOneNavigator } from "./tab1";
 import { TabTwoNavigator } from "./tab2";
