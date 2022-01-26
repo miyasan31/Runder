@@ -1,14 +1,7 @@
 import { atom } from "recoil";
+import type { User } from "src/types/fetcher";
 
-export const user = atom({
+export const user = atom<User[] | null>({
   key: "user",
-  default: {
-    id: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    token: "",
-    isSignin: false,
-  },
+  default: null,
 });
