@@ -21,16 +21,9 @@ export type SupabaseQuery<T = any> = {
   pause?: boolean;
 };
 
-export type SelectState<T = any> = {
-  loading?: boolean;
-  error?: PostgrestError | undefined;
-  data?: (T[] | null) | undefined;
-  count?: number | null;
-};
-
 export type SupabaseFetchStatus<T = any> = {
   loading: boolean;
-  error: PostgrestError | undefined;
-  data: (T[] | null) | undefined;
+  error?: PostgrestError;
+  data?: T[] | null;
   count: number | null;
 };
