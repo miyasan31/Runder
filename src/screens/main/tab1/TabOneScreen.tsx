@@ -1,7 +1,4 @@
-import {
-  // getCurrentPositionAsync
-  requestForegroundPermissionsAsync,
-} from "expo-location";
+import { getCurrentPositionAsync, requestForegroundPermissionsAsync } from "expo-location";
 import type { VFC } from "react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Dimensions, StyleSheet } from "react-native";
@@ -9,17 +6,8 @@ import MapView, { Polyline } from "react-native-maps";
 import { ColorButton } from "src/components/custom";
 import { Layout } from "src/components/layout";
 import type { TabOneScreenProps } from "src/types";
-
-const INITIAL_REGION = [
-  { latitude: 35.1111, longitude: 136.00001, color: "#ff0000" },
-  { latitude: 35.1121, longitude: 136.0001, color: "#ff7700" },
-  { latitude: 35.1133, longitude: 136.00201, color: "#ffe100" },
-  { latitude: 35.1143, longitude: 136.00204, color: "#55ff00" },
-  { latitude: 35.1153, longitude: 136.0001, color: "#00ff91" },
-  { latitude: 35.1163, longitude: 136.0003, color: "#00c3ff" },
-  { latitude: 35.1163, longitude: 136.0033, color: "#0048ff" },
-  { latitude: 35.1111, longitude: 136.00001, color: "#6a00ff" },
-];
+import type { LocationResult } from "src/types/fetcher";
+import { supabaseClient } from "src/utils/supabaseClient";
 
 // 位置情報取得許可を要求
 const requestForegroundPermission = async () => {
@@ -29,38 +17,57 @@ const requestForegroundPermission = async () => {
 
 export const TabOneScreen: VFC<TabOneScreenProps<"TabOneScreen">> = () => {
   const [isRunning, setIsRunning] = useState(false);
-  const [coordinates, setCoordinates] = useState([
-    {
-      latitude: 35.1111,
-      longitude: 136.00001,
-      color: "#ff0000",
-    },
-  ]);
+  const [coordinates, setCoordinates] = useState<LocationResult[]>([]);
 
   const onToggleRunningStatus = useCallback(() => {
-    setIsRunning((prevState) => !prevState);
+    setIsRunning((prev) => !prev);
   }, []);
 
   const onRegionChange = async () => {
-    // const _location = await getCurrentPositionAsync({});
-    // console.info(_location);
-
-    setCoordinates((prevState) => {
+    const _location = await getCurrentPositionAsync({});
+    setCoordinates((prev) => {
       return [
-        ...prevState,
+        ...prev,
         {
-          latitude: prevState[prevState.length - 1].latitude + 0.0000004,
-          longitude: prevState[prevState.length - 1].longitude + 0.000004,
+          accuracy: _location.coords.accuracy,
+          altitude: _location.coords.altitude,
+          altitudeAccuracy: _location.coords.altitudeAccuracy,
+          heading: _location.coords.heading,
+          latitude: _location.coords.latitude,
+          longitude: _location.coords.longitude,
+          speed: _location.coords.speed,
+          timestamp: _location.timestamp,
           color: "#ff0000",
         },
       ];
     });
   };
 
+  const onSetInitialPosition = async () => {
+    const _location = await getCurrentPositionAsync({});
+    setCoordinates([
+      {
+        accuracy: _location.coords.accuracy,
+        altitude: _location.coords.altitude,
+        altitudeAccuracy: _location.coords.altitudeAccuracy,
+        heading: _location.coords.heading,
+        latitude: _location.coords.latitude,
+        longitude: _location.coords.longitude,
+        speed: _location.coords.speed,
+        timestamp: _location.timestamp,
+        color: "#ff0000",
+      },
+    ]);
+  };
+
+  const onSave = useCallback(async () => {
+    await supabaseClient.from("location").insert([{ location: coordinates }]);
+  }, [coordinates]);
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (isRunning) onRegionChange();
-    }, 100);
+    }, 1000);
     return () => clearInterval(interval);
   }, [isRunning]);
 
@@ -68,7 +75,7 @@ export const TabOneScreen: VFC<TabOneScreenProps<"TabOneScreen">> = () => {
     // 位置情報取得許可を要求
     requestForegroundPermission();
     // 初期値を設定
-    setCoordinates(INITIAL_REGION);
+    onSetInitialPosition();
   }, []);
 
   // coordinates から座標のみ取得
@@ -85,6 +92,8 @@ export const TabOneScreen: VFC<TabOneScreenProps<"TabOneScreen">> = () => {
   const strokeResult = useMemo(() => {
     return coordinates.map((coordinate) => coordinate.color);
   }, [coordinates]);
+
+  if (coordinates.length === 0) return null;
 
   return (
     <Layout style={styles.root}>
@@ -105,6 +114,7 @@ export const TabOneScreen: VFC<TabOneScreenProps<"TabOneScreen">> = () => {
           bgStyle={styles.button}
           onPress={onToggleRunningStatus}
         />
+        <ColorButton title="SAVE" lightBgColor="#f00" bgStyle={styles.button1} onPress={onSave} />
       </MapView>
     </Layout>
   );
@@ -126,21 +136,16 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 0,
     left: 0,
+    bottom: 100,
+    width: "80%",
+    marginHorizontal: "10%",
+  },
+  button1: {
+    position: "absolute",
+    right: 0,
+    left: 0,
     bottom: 20,
     width: "80%",
     marginHorizontal: "10%",
   },
 });
-
-// type LocationResult = {
-//   coords: {
-//     accuracy: number;
-//     altitude: number;
-//     altitudeAccuracy: number;
-//     heading: number;
-//     latitude: number;
-//     longitude: number;
-//     speed: number;
-//   };
-//   timestamp: number;
-// };
