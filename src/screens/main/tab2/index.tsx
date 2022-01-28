@@ -16,11 +16,6 @@ export const TabTwoNavigator: VFC = () => {
       initialRouteName="TabTwoScreen"
       screenOptions={{
         headerStyle: { backgroundColor: backgroundColor },
-        headerLargeTitle: true,
-        headerLargeTitleStyle: {
-          fontWeight: "400",
-          fontSize: 30,
-        },
       }}
     >
       <TabTwo.Screen name="TabTwoScreen" component={TabTwoScreen} options={() => ({})} />
