@@ -9,8 +9,7 @@
 		"eject": "expo eject",
 		"test": "jest --watchAll",
 		"eslint": "eslint .",
-		"tsc": "tsc --noEmit",
-		"dev:api": "json-server --watch mock/json-server.json --port 5000"
+		"tsc": "tsc --noEmit"
 	},
 	"jest": {
 		"preset": "jest-expo"
@@ -26,7 +25,6 @@
 		"@types/react-native-dotenv": "^0.2.0",
 		"axios": "^0.24.0",
 		"date-fns": "^2.28.0",
-		"eslint-plugin-react-native": "^4.0.0",
 		"expo": "^43.0.0",
 		"expo-asset": "~8.4.3",
 		"expo-av": "~10.1.2",
@@ -80,6 +78,7 @@
 		"eslint-plugin-node": "11.1.0",
 		"eslint-plugin-promise": "5.1.1",
 		"eslint-plugin-react": "7.26.1",
+		"eslint-plugin-react-native": "^4.0.0",
 		"eslint-plugin-react-hooks": "4.2.1-alpha-fd5e01c2e-20210913",
 		"eslint-plugin-simple-import-sort": "7.0.0",
 		"jest-expo": "43.0.1",
