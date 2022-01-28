@@ -41,7 +41,6 @@
 		"expo-updates": "~0.10.15",
 		"expo-web-browser": "~10.0.3",
 		"js-sha512": "^0.8.0",
-		"json-server": "^0.17.0",
 		"react": "17.0.1",
 		"react-dom": "17.0.1",
 		"react-hook-form": "^7.20.5",
