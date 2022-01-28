@@ -22,7 +22,7 @@ export type StackScreenProps<T extends keyof RootStackParamList> = NativeStackSc
 export type BottomTabParamList = {
   TabOne: NavigatorScreenParams<TabOneStackParamList> | undefined;
   TabTwo: NavigatorScreenParams<TabTwoStackParamList> | undefined;
-  TabThree: NavigatorScreenParams<TabThreeStackParamList> | undefined;
+  Running: NavigatorScreenParams<RunningStackParamList> | undefined;
 };
 export type BottomTabScreenProps<T extends keyof BottomTabParamList> = CompositeScreenProps<
   BottomTabScreenProps<BottomTabParamList, T>,
@@ -50,12 +50,15 @@ export type TabTwoScreenProps<T extends keyof TabTwoStackParamList> = CompositeS
 >;
 /* ---- */
 
-/* tab3 */
-export type TabThreeStackParamList = {
-  TabThreeScreen: undefined;
+/* running */
+export type RunningStackParamList = {
+  RunningHistory: undefined;
+  RunningDetail: {
+    id: number;
+  };
 };
-export type TabThreeScreenProps<T extends keyof TabThreeStackParamList> = CompositeScreenProps<
-  BottomTabScreenProps<TabThreeStackParamList, T>,
+export type RunningScreenProps<T extends keyof RunningStackParamList> = CompositeScreenProps<
+  BottomTabScreenProps<RunningStackParamList, T>,
   NativeStackScreenProps<RootStackParamList>
 >;
 /* ---- */

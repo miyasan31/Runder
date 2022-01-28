@@ -9,9 +9,9 @@ import { useThemeColor } from "src/hooks/useThemeColor";
 import { theme } from "src/styles";
 import type { BottomTabParamList } from "src/types";
 
+import { RunningNavigator } from "./running";
 import { TabOneNavigator } from "./tab1";
 import { TabTwoNavigator } from "./tab2";
-import { TabThreeNavigator } from "./tab3";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -46,10 +46,10 @@ export const BottomTabNavigator: VFC = () => {
         })}
       />
       <BottomTab.Screen
-        name="TabThree"
-        component={TabThreeNavigator}
+        name="Running"
+        component={RunningNavigator}
         options={() => ({
-          title: "TabThree",
+          title: "Running",
           tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
         })}
       />
