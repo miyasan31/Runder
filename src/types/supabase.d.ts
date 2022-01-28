@@ -1,9 +1,9 @@
 import type { PostgrestFilterBuilder } from "@supabase/postgrest-js";
 import type { PostgrestError } from "@supabase/supabase-js";
 
-export type SupabaseFrom = "user";
+export type SupabaseFrom = "user" | "location";
 
-export type Count = "exact" | "planned" | "estimated";
+export type CountOption = "exact" | "planned" | "estimated";
 
 export type Filter<T> = (query: PostgrestFilterBuilder<T>) => PostgrestFilterBuilder<T>;
 
@@ -11,7 +11,7 @@ export type SupabaseFilter<T = any> = (filter: Filter<T>, deps: any[]) => Filter
 
 export type Options = {
   head?: boolean;
-  count?: Count | null;
+  count?: CountOption | null;
 };
 
 export type SupabaseQuery<T = any> = {
