@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import type { VFC } from "react";
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
-import { ListItem } from "src/components";
+import { ListItem, Progress } from "src/components";
 import { Text, View } from "src/components/custom";
 import { SafeAreaLayout } from "src/components/layout";
 import { useSupabaseFilter, useSupabaseSelect, useThemeColor } from "src/hooks";
@@ -14,7 +14,7 @@ import type { User } from "src/types/fetcher";
 export const TabTwoScreen: VFC<TabTwoScreenProps<"TabTwoScreen">> = () => {
   const color = useThemeColor({}, "text2");
 
-  const filter = useSupabaseFilter((query) => query.eq("name", "みやさん"), []);
+  const filter = useSupabaseFilter((query) => query.limit(10), []);
   const { loading, error, data } = useSupabaseSelect<User>("user", {
     options: {
       count: "exact",
@@ -22,17 +22,13 @@ export const TabTwoScreen: VFC<TabTwoScreenProps<"TabTwoScreen">> = () => {
     filter,
   });
 
+  if (loading) return <Progress />;
+  if (error) return <Text>エラー</Text>;
+  if (!data) return <Text>データなし</Text>;
+
   return (
     <SafeAreaLayout>
-      {loading ? (
-        <Text>読み込み中...</Text>
-      ) : error ? (
-        <Text>エラーが発生しました</Text>
-      ) : !data ? (
-        <Text>データが存在しません</Text>
-      ) : (
-        <FlatList data={data} renderItem={renderItem} keyExtractor={(item, _) => String(item.id)} />
-      )}
+      <FlatList data={data} renderItem={renderItem} keyExtractor={(item, _) => String(item.id)} />
     </SafeAreaLayout>
   );
 
