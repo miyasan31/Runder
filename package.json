@@ -23,7 +23,7 @@
 		"@react-navigation/native-stack": "^6.1.0",
 		"@supabase/supabase-js": "^1.29.4",
 		"@types/react-native-dotenv": "^0.2.0",
-		"axios": "^0.24.0",
+		"axios": "^0.25.0",
 		"date-fns": "^2.28.0",
 		"expo": "^43.0.0",
 		"expo-app-auth": "^11.1.0",
