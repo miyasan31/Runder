@@ -1,13 +1,14 @@
 import "react-native-url-polyfill/auto";
 
 import { useCallback, useEffect, useState } from "react";
+
 import type {
   SupabaseFetchStatus,
   SupabaseFilter,
   SupabaseFrom,
   SupabaseQuery,
-} from "src/types/supabase";
-import { supabaseClient } from "src/utils/supabaseClient";
+} from "~/types/supabase";
+import { supabaseClient } from "~/utils/supabaseClient";
 
 export const useSupabaseFilter: SupabaseFilter = (filter, deps = []) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps

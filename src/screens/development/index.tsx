@@ -1,8 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import type { VFC } from "react";
 import React from "react";
-import { TabBarIcon } from "src/components/icon";
-import type { DevelopmentTabParamList } from "src/types";
+
+import { TabBarIcon } from "~/components/icon";
+import type { DevelopmentTabParamList } from "~/types";
 
 import { DevListNavigator } from "./devlist";
 import { DevRunningNavigator } from "./devrunning";

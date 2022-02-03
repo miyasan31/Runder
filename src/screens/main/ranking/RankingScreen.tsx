@@ -4,12 +4,13 @@ import { format } from "date-fns";
 import type { VFC } from "react";
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
-import { ListItem, Progress } from "src/components";
-import { Text, View } from "src/components/custom";
-import { SafeAreaLayout } from "src/components/layout";
-import { useSupabaseFilter, useSupabaseSelect, useThemeColor } from "src/hooks";
-import type { RankingScreenProps } from "src/types";
-import type { User } from "src/types/fetcher";
+
+import { ListItem, Progress } from "~/components";
+import { Text, View } from "~/components/custom";
+import { SafeAreaLayout } from "~/components/layout";
+import { useSupabaseFilter, useSupabaseSelect, useThemeColor } from "~/hooks";
+import type { RankingScreenProps } from "~/types";
+import type { User } from "~/types/fetcher";
 
 export const RankingScreen: VFC<RankingScreenProps<"RankingScreen">> = () => {
   const color = useThemeColor({}, "text2");

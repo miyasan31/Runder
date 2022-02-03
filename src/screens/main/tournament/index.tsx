@@ -1,8 +1,9 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import type { VFC } from "react";
 import React from "react";
-import { useThemeColor } from "src/hooks";
-import type { TounamentStackParamList } from "src/types";
+
+import { useThemeColor } from "~/hooks";
+import type { TounamentStackParamList } from "~/types";
 
 import { TounamentScreen } from "./TounamentScreen";
 

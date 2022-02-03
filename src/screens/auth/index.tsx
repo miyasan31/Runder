@@ -1,7 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import type { VFC } from "react";
 import React from "react";
-import type { AuthStackParamList } from "src/types";
+
+import type { AuthStackParamList } from "~/types";
 
 import { SigninScreen } from "./SigninScreen";
 

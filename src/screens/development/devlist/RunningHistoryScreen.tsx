@@ -2,12 +2,13 @@ import { format } from "date-fns";
 import type { VFC } from "react";
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
-import { ListItem, Progress } from "src/components";
-import { Text, View } from "src/components/custom";
-import { SafeAreaLayout } from "src/components/layout";
-import { useSupabaseFilter, useSupabaseSelect, useThemeColor } from "src/hooks";
-import type { DevListScreenProps } from "src/types";
-import type { Location } from "src/types/fetcher";
+
+import { ListItem, Progress } from "~/components";
+import { Text, View } from "~/components/custom";
+import { SafeAreaLayout } from "~/components/layout";
+import { useSupabaseFilter, useSupabaseSelect, useThemeColor } from "~/hooks";
+import type { DevListScreenProps } from "~/types";
+import type { Location } from "~/types/fetcher";
 
 const SELECT_COLUMN = "id, created_at";
 type LocationList = Pick<Location, "id" | "created_at">;

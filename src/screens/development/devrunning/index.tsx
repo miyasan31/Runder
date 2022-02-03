@@ -1,8 +1,9 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import type { VFC } from "react";
 import React from "react";
-import { useThemeColor } from "src/hooks";
-import type { DevRunningStackParamList } from "src/types";
+
+import { useThemeColor } from "~/hooks";
+import type { DevRunningStackParamList } from "~/types";
 
 import { RunningScreen } from "./RunningScreen";
 

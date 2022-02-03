@@ -1,5 +1,6 @@
-import { API_URL } from "src/constants";
 import fetch from "unfetch";
+
+import { API_URL } from "~/constants";
 
 const green = "\u001b[32m";
 const yellow = "\u001b[33m";

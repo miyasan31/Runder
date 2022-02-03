@@ -1,8 +1,9 @@
 import type { ReactNode, VFC } from "react";
 import React from "react";
 import { KeyboardAvoidingView, Platform, TouchableWithoutFeedback } from "react-native";
-import { onKeyBoardClose } from "src/functions";
-import { viewStyles } from "src/styles";
+
+import { onKeyBoardClose } from "~/functions";
+import { viewStyles } from "~/styles";
 
 type Props = {
   children: ReactNode;

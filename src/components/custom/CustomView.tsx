@@ -1,8 +1,9 @@
 import type { VFC } from "react";
 import React, { memo } from "react";
 import { View as NativeView } from "react-native";
-import { useThemeColor } from "src/hooks";
-import type { StyleProps } from "src/types/style";
+
+import { useThemeColor } from "~/hooks";
+import type { StyleProps } from "~/types/style";
 
 export type ViewProps = StyleProps & NativeView["props"];
 

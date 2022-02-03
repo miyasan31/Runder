@@ -3,10 +3,11 @@ import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import type { ReactNode, VFC } from "react";
 import React from "react";
 import { StyleSheet } from "react-native";
-import type { ViewProps } from "src/components/custom";
-import { View } from "src/components/custom";
-import { KeyboardAvoiding } from "src/components/layout/KeyboardAvoiding";
-import { useThemeColor } from "src/hooks";
+
+import type { ViewProps } from "~/components/custom";
+import { View } from "~/components/custom";
+import { KeyboardAvoiding } from "~/components/layout/KeyboardAvoiding";
+import { useThemeColor } from "~/hooks";
 
 type Props = ViewProps & {
   children: ReactNode;

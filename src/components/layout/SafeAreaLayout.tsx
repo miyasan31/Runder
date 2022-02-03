@@ -1,10 +1,11 @@
 /* eslint-disable react/destructuring-assignment */
 import type { ReactNode, VFC } from "react";
 import React from "react";
-import type { SafeAreaViewProps } from "src/components/custom";
-import { SafeAreaView } from "src/components/custom";
-import { KeyboardAvoiding } from "src/components/layout/KeyboardAvoiding";
-import { useThemeColor } from "src/hooks";
+
+import type { SafeAreaViewProps } from "~/components/custom";
+import { SafeAreaView } from "~/components/custom";
+import { KeyboardAvoiding } from "~/components/layout/KeyboardAvoiding";
+import { useThemeColor } from "~/hooks";
 
 type Props = SafeAreaViewProps & {
   children: ReactNode;

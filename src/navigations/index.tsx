@@ -2,9 +2,10 @@ import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/
 import type { VFC } from "react";
 import React, { useMemo } from "react";
 import type { ColorSchemeName } from "react-native";
-import { AuthProvider } from "src/navigations/AuthProvider";
-import { LinkingConfiguration } from "src/navigations/LinkingConfiguration";
-import { RootNavigator } from "src/navigations/RootNavigator";
+
+import { AuthProvider } from "~/navigations/AuthProvider";
+import { LinkingConfiguration } from "~/navigations/LinkingConfiguration";
+import { RootNavigator } from "~/navigations/RootNavigator";
 
 export const Navigations: VFC<{ colorScheme: ColorSchemeName }> = (props) => {
   const themeResult = useMemo(() => {

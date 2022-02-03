@@ -2,8 +2,9 @@ import "react-native-url-polyfill/auto";
 
 import type { PostgrestError } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
-import type { User } from "src/types/fetcher";
-import { supabaseClient } from "src/utils/supabaseClient";
+
+import type { User } from "~/types/fetcher";
+import { supabaseClient } from "~/utils/supabaseClient";
 
 type Status<T> = {
   isLoading: boolean;

@@ -5,7 +5,8 @@ import type { VFC } from "react";
 import React, { useEffect, useRef } from "react";
 import { useToaster } from "react-hot-toast/src/core/use-toaster";
 import { Animated } from "react-native";
-import { Text, View } from "src/components/custom";
+
+import { Text, View } from "~/components/custom";
 
 const ToastBar = ({ toast, updateHeight, offset, options, position, ...props }: any) => {
   const fadeAnim = useRef(new Animated.Value(0.5)).current;

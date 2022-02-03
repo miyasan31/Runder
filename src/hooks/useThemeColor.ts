@@ -1,4 +1,4 @@
-import { theme } from "src/styles";
+import { theme } from "~/styles";
 
 import { useColorScheme } from "./useColorScheme";
 

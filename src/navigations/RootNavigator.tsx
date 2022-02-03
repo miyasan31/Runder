@@ -1,11 +1,12 @@
 // import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import React from "react";
-import { useThemeColor } from "src/hooks";
-import { AuthNavigator } from "src/screens/auth";
-import { DevelopmentTabNavigator } from "src/screens/development";
-import { BottomTabNavigator } from "src/screens/main";
-import type { RootStackParamList } from "src/types";
+
+import { useThemeColor } from "~/hooks";
+import { AuthNavigator } from "~/screens/auth";
+import { DevelopmentTabNavigator } from "~/screens/development";
+import { BottomTabNavigator } from "~/screens/main";
+import type { RootStackParamList } from "~/types";
 
 // const RootStack = createNativeStackNavigator<RootStackParamList>();
 const RootStack = createDrawerNavigator<RootStackParamList>();

@@ -2,11 +2,12 @@ import type { VFC } from "react";
 import React from "react";
 import { Dimensions, StyleSheet } from "react-native";
 import MapView, { Polyline } from "react-native-maps";
-import { Text } from "src/components/custom";
-import { Layout } from "src/components/layout";
-import { useSupabaseFilter, useSupabaseSelect } from "src/hooks";
-import type { DevListScreenProps } from "src/types";
-import type { Location } from "src/types/fetcher";
+
+import { Text } from "~/components/custom";
+import { Layout } from "~/components/layout";
+import { useSupabaseFilter, useSupabaseSelect } from "~/hooks";
+import type { DevListScreenProps } from "~/types";
+import type { Location } from "~/types/fetcher";
 
 const SELECT_COLUMN = "location";
 type LocationDetail = Pick<Location, "location">;

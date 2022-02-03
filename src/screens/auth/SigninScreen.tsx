@@ -2,10 +2,11 @@ import { makeRedirectUri, startAsync } from "expo-auth-session";
 import type { VFC } from "react";
 import React from "react";
 import { Text, View } from "react-native";
-import { ColorButton } from "src/components/custom";
-import { SUPABASE_URL } from "src/constants";
-import type { AuthScreenProps } from "src/types";
-import { supabaseClient } from "src/utils/supabaseClient";
+
+import { ColorButton } from "~/components/custom";
+import { SUPABASE_URL } from "~/constants";
+import type { AuthScreenProps } from "~/types";
+import { supabaseClient } from "~/utils/supabaseClient";
 
 export const SigninScreen: VFC<AuthScreenProps<"SigninScreen">> = () => {
   const onGoogleSignin = async () => {

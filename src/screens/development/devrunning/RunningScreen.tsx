@@ -3,10 +3,11 @@ import type { VFC } from "react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Dimensions, StyleSheet } from "react-native";
 import MapView, { Polyline } from "react-native-maps";
-import { ColorButton, View } from "src/components/custom";
-import type { DevRunningScreenProps } from "src/types";
-import type { LocationResult } from "src/types/fetcher";
-import { supabaseClient } from "src/utils/supabaseClient";
+
+import { ColorButton, View } from "~/components/custom";
+import type { DevRunningScreenProps } from "~/types";
+import type { LocationResult } from "~/types/fetcher";
+import { supabaseClient } from "~/utils/supabaseClient";
 
 // 位置情報取得許可を要求
 const requestForegroundPermission = async () => {

@@ -3,11 +3,12 @@ import { BlurView } from "expo-blur";
 import type { VFC } from "react";
 import React from "react";
 import { StyleSheet } from "react-native";
-import { TabBarIcon } from "src/components/icon";
-import { useColorScheme } from "src/hooks";
-import { useThemeColor } from "src/hooks/useThemeColor";
-import { theme } from "src/styles";
-import type { BottomTabParamList } from "src/types";
+
+import { TabBarIcon } from "~/components/icon";
+import { useColorScheme } from "~/hooks";
+import { useThemeColor } from "~/hooks/useThemeColor";
+import { theme } from "~/styles";
+import type { BottomTabParamList } from "~/types";
 
 import { ContactNavigator } from "./contact";
 import { ProfileNavigator } from "./profile";
