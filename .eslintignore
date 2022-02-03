@@ -5,3 +5,4 @@ package.json
 package-lock.json
 yarn.lock
 app.json
+.eslintrc.js
