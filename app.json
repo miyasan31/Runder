@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "runder",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -32,6 +32,6 @@
       "favicon": "./assets/images/favicon.png"
     },
     "description": "ランニングアプリ",
-    "githubUrl": "https://github.com/miyasan31/run-app"
+    "githubUrl": "https://github.com/miyasan31/Runder"
   }
 }
