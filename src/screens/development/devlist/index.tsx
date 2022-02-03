@@ -2,24 +2,24 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import type { VFC } from "react";
 import React from "react";
 import { useThemeColor } from "src/hooks";
-import type { RunningStackParamList } from "src/types";
+import type { DevListStackParamList } from "src/types";
 
 import { RunningDetailScreen } from "./RunningDetailScreen";
 import { RunningHistoryScreen } from "./RunningHistoryScreen";
 
-const Running = createNativeStackNavigator<RunningStackParamList>();
+const DevList = createNativeStackNavigator<DevListStackParamList>();
 
-export const RunningNavigator: VFC = () => {
+export const DevListNavigator: VFC = () => {
   const backgroundColor = useThemeColor({}, "bg1");
 
   return (
-    <Running.Navigator
+    <DevList.Navigator
       initialRouteName="RunningHistory"
       screenOptions={{
         headerStyle: { backgroundColor: backgroundColor },
       }}
     >
-      <Running.Screen
+      <DevList.Screen
         name="RunningHistory"
         component={RunningHistoryScreen}
         options={() => ({
@@ -27,13 +27,13 @@ export const RunningNavigator: VFC = () => {
         })}
       />
 
-      <Running.Screen
+      <DevList.Screen
         name="RunningDetail"
         component={RunningDetailScreen}
         options={() => ({
           title: "ランニング詳細",
         })}
       />
-    </Running.Navigator>
+    </DevList.Navigator>
   );
 };

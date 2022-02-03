@@ -3,9 +3,8 @@ import type { VFC } from "react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Dimensions, StyleSheet } from "react-native";
 import MapView, { Polyline } from "react-native-maps";
-import { ColorButton } from "src/components/custom";
-import { Layout } from "src/components/layout";
-import type { TabOneScreenProps } from "src/types";
+import { ColorButton, View } from "src/components/custom";
+import type { DevRunningScreenProps } from "src/types";
 import type { LocationResult } from "src/types/fetcher";
 import { supabaseClient } from "src/utils/supabaseClient";
 
@@ -15,7 +14,7 @@ const requestForegroundPermission = async () => {
   console.info(status);
 };
 
-export const TabOneScreen: VFC<TabOneScreenProps<"TabOneScreen">> = () => {
+export const RunningScreen: VFC<DevRunningScreenProps<"RunningScreen">> = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [coordinates, setCoordinates] = useState<LocationResult[]>([]);
 
@@ -96,7 +95,7 @@ export const TabOneScreen: VFC<TabOneScreenProps<"TabOneScreen">> = () => {
   if (coordinates.length === 0) return null;
 
   return (
-    <Layout style={styles.root}>
+    <View style={styles.root}>
       <MapView
         style={styles.map}
         initialRegion={{
@@ -116,7 +115,7 @@ export const TabOneScreen: VFC<TabOneScreenProps<"TabOneScreen">> = () => {
         />
         <ColorButton title="SAVE" lightBgColor="#f00" bgStyle={styles.button1} onPress={onSave} />
       </MapView>
-    </Layout>
+    </View>
   );
 };
 

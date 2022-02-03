@@ -9,9 +9,11 @@ import { useThemeColor } from "src/hooks/useThemeColor";
 import { theme } from "src/styles";
 import type { BottomTabParamList } from "src/types";
 
-import { RunningNavigator } from "./running";
-import { TabOneNavigator } from "./tab1";
-import { TabTwoNavigator } from "./tab2";
+import { ContactNavigator } from "./contact";
+import { ProfileNavigator } from "./profile";
+import { RankingNavigator } from "./ranking";
+import { ResultNavigator } from "./result";
+import { TounamentNavigator } from "./tournament";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -21,7 +23,7 @@ export const BottomTabNavigator: VFC = () => {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Tounament"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: theme[colorScheme].primary,
@@ -30,26 +32,42 @@ export const BottomTabNavigator: VFC = () => {
       }}
     >
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        name="Contact"
+        component={ContactNavigator}
         options={{
-          tabBarLabel: "TabOne",
-          tabBarIcon: ({ color }) => <TabBarIcon name="home-outline" color={color} />,
+          tabBarLabel: "Contact",
+          tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="Ranking"
+        component={RankingNavigator}
         options={() => ({
-          title: "TabTwo",
-          tabBarIcon: ({ color }) => <TabBarIcon name="list-outline" color={color} />,
+          title: "Ranking",
+          tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
         })}
       />
       <BottomTab.Screen
-        name="Running"
-        component={RunningNavigator}
+        name="Tounament"
+        component={TounamentNavigator}
         options={() => ({
-          title: "Running",
+          title: "Tounament",
+          tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
+        })}
+      />
+      <BottomTab.Screen
+        name="Result"
+        component={ResultNavigator}
+        options={() => ({
+          title: "Result",
+          tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
+        })}
+      />
+      <BottomTab.Screen
+        name="Profile"
+        component={ProfileNavigator}
+        options={() => ({
+          title: "Profile",
           tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
         })}
       />

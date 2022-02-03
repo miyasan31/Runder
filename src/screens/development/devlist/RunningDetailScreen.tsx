@@ -5,13 +5,13 @@ import MapView, { Polyline } from "react-native-maps";
 import { Text } from "src/components/custom";
 import { Layout } from "src/components/layout";
 import { useSupabaseFilter, useSupabaseSelect } from "src/hooks";
-import type { RunningScreenProps } from "src/types";
+import type { DevListScreenProps } from "src/types";
 import type { Location } from "src/types/fetcher";
 
 const SELECT_COLUMN = "location";
 type LocationDetail = Pick<Location, "location">;
 
-export const RunningDetailScreen: VFC<RunningScreenProps<"RunningDetail">> = (props) => {
+export const RunningDetailScreen: VFC<DevListScreenProps<"RunningDetail">> = (props) => {
   const { id } = props.route.params;
   const filter = useSupabaseFilter((query) => query.select(SELECT_COLUMN).eq("id", id), []);
   const { loading, error, data } = useSupabaseSelect<LocationDetail>("location", { filter });
