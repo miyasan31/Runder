@@ -1,16 +1,11 @@
-// import { makeRedirectUri, startAsync } from "expo-auth-session";
-// import { supabaseClient } from "~/utils/supabaseClient";
 import * as AuthSession from "expo-auth-session";
 import jwtDecode from "jwt-decode";
 import type { VFC } from "react";
 import React, { useEffect, useState } from "react";
 import { Alert, Button, Platform, StyleSheet, Text, View } from "react-native";
 
-// import { SUPABASE_URL } from "~/constants";
+import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from "~/constants";
 import type { AuthScreenProps } from "~/types";
-
-const auth0ClientId = "LmgF23QSRC7wzWqo0BDnVNRXo5M66B2q";
-const authorizationEndpoint = "https://dev-1h7gzk3l.us.auth0.com/authorize";
 
 const useProxy = Platform.select({ web: false, default: true });
 const redirectUri = AuthSession.makeRedirectUri({ useProxy });
@@ -21,7 +16,7 @@ export const SigninScreen: VFC<AuthScreenProps<"SigninScreen">> = () => {
   const [request, result, promptAsync] = AuthSession.useAuthRequest(
     {
       redirectUri,
-      clientId: auth0ClientId,
+      clientId: AUTH0_CLIENT_ID,
       // id_token will return a JWT token
       responseType: "id_token",
       // retrieve the user's profile
@@ -31,7 +26,7 @@ export const SigninScreen: VFC<AuthScreenProps<"SigninScreen">> = () => {
         nonce: "nonce",
       },
     },
-    { authorizationEndpoint },
+    { authorizationEndpoint: AUTH0_DOMAIN },
   );
 
   // auth.expo.io/@your-username/your-expo-app-slug
