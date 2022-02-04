@@ -1,15 +1,11 @@
+# npm
 node_modules/
-.expo/
-.expo-shared/
 npm-debug.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-*.orig.*
-web-build/
 
-# macOS
-.DS_Store
+# expo
+.expo/
+
+# .env
 .env
+
+.DS_Store

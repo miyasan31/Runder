@@ -1,23 +1,39 @@
-node_modules
-yarn.lock
-app.json
-public
-renovate.json
+# npm
+**/node_modules/*
 package.json
-tsconfig.json
+package-lock.json
+yarn.lock
+
+# expo
+**/.expo/*
+**/.expo-shared/*
 assets
-LICENSE.md
-README.md
-.expo
-.expo-shared
-.babelrc.js
+app.json
+
+# git, github
 .github
 .gitignore
-.prettierrc.js
-.prettierignore
+
+# typescript
+tsconfig.json
+
+# babel
+.babelrc.js
+
+# eslint
 .eslintrc.js
 .eslintignore
+
+# prettiier
+.prettierrc.js
+.prettierignore
+
+# .env
 .env.*
 
+# docs
+LICENSE.md
+README.md
 
-
+# renovate
+renovate.json

@@ -1,8 +1,27 @@
+# npm
 **/node_modules/*
-**/out/*
-**/.next/*
 package.json
 package-lock.json
 yarn.lock
+
+# expo
 app.json
+**/.expo/*
+**/.expo-shared/*
+
+# typescript
+tsconfig.json
+
+# babel
+.babelrc.js
+
+# eslint
 .eslintrc.js
+.eslintignore
+
+# prettiier
+.prettierrc.js
+.prettieriignore
+
+# renovate
+renovate.json
