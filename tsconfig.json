@@ -1,7 +1,7 @@
 {
-	"compilerOptions": {
+  "compilerOptions": {
     "target": "esnext",
-    "module": "commonjs",
+    "module": "esnext",
     "lib": ["es2017"],
     "allowJs": true,
     "jsx": "react-native",
@@ -11,21 +11,16 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
+    "incremental": true,
     "resolveJsonModule": true,
-		"baseUrl": "./",
-		"paths": {
-			"assets": ["./assets/*"],
-			"~/*": ["./src/*"]
-		}
-	},
-	"include": ["**/*.ts", "**/*.tsx", "**/*.js"],
-  "exclude": [
-		"node_modules",
-    "babel.config.js",
-    "metro.config.js",
-    "jest.config.js",
-    "webpack.config.js"
-  ],
-	"extends": "expo/tsconfig.base",
+    "baseUrl": "./",
+    "paths": {
+      "assets": ["./assets/*"],
+      "~/*": ["./src/*"]
+    }
+  },
+  "extends": "expo/tsconfig.base",
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js"],
+  "exclude": ["node_modules"]
 }
