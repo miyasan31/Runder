@@ -11,7 +11,7 @@ declare global {
 export type RootStackParamList = {
   Development: NavigatorScreenParams<DevelopmentTabParamList> | undefined;
   Auth: NavigatorScreenParams<AuthStackParamList> | undefined;
-  Main: NavigatorScreenParams<BottomTabParamList> | undefined;
+  Main: NavigatorScreenParams<MainBottomTabParamList> | undefined;
   Modal: undefined;
   NotFound: undefined;
 };
@@ -64,15 +64,15 @@ export type AuthScreenProps<T extends keyof AuthStackParamList> = CompositeScree
 
 // =====================================================================
 /* five tabs */
-export type BottomTabParamList = {
+export type MainBottomTabParamList = {
   Contact: NavigatorScreenParams<ContactStackParamList> | undefined;
   Ranking: NavigatorScreenParams<RankingStackParamList> | undefined;
   Tounament: NavigatorScreenParams<TounamentStackParamList> | undefined;
   Result: NavigatorScreenParams<ResultStackParamList> | undefined;
   Profile: NavigatorScreenParams<ProfileStackParamList> | undefined;
 };
-export type BottomTabScreenProps<T extends keyof BottomTabParamList> = CompositeScreenProps<
-  BottomTabScreenProps<BottomTabParamList, T>,
+export type MainBottomTabScreenProps<T extends keyof MainBottomTabParamList> = CompositeScreenProps<
+  BottomTabScreenProps<MainBottomTabParamList, T>,
   NativeStackScreenProps<RootStackParamList>
 >;
 

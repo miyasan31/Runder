@@ -1,4 +1,5 @@
 import "react-native-url-polyfill/auto";
+
 import type { VFC } from "react";
 import React from "react";
 import { Dimensions, StyleSheet } from "react-native";

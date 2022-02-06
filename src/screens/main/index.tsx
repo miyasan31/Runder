@@ -8,7 +8,7 @@ import { TabBarIcon } from "~/components/icon";
 import { useColorScheme } from "~/hooks";
 import { useThemeColor } from "~/hooks/useThemeColor";
 import { theme } from "~/styles";
-import type { BottomTabParamList } from "~/types";
+import type { MainBottomTabParamList } from "~/types";
 
 import { ContactNavigator } from "./contact";
 import { ProfileNavigator } from "./profile";
@@ -16,7 +16,7 @@ import { RankingNavigator } from "./ranking";
 import { ResultNavigator } from "./result";
 import { TounamentNavigator } from "./tournament";
 
-const BottomTab = createBottomTabNavigator<BottomTabParamList>();
+const BottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 
 export const BottomTabNavigator: VFC = () => {
   const colorScheme = useColorScheme();

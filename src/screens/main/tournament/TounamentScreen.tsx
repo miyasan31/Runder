@@ -1,11 +1,13 @@
 import "react-native-url-polyfill/auto";
+
 import { format } from "date-fns";
 import type { VFC } from "react";
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
+import { Bounceable } from "rn-bounceable";
 
 import { ListItem, Progress } from "~/components";
-import { Text, View } from "~/components/custom";
+import { ColorButton, Text, View } from "~/components/custom";
 import { SafeAreaLayout } from "~/components/layout";
 import { useSupabaseFilter, useSupabaseSelect, useThemeColor } from "~/hooks";
 import type { TounamentScreenProps } from "~/types";
@@ -28,6 +30,9 @@ export const TounamentScreen: VFC<TounamentScreenProps<"TounamentScreen">> = () 
 
   return (
     <SafeAreaLayout>
+      <Bounceable>
+        <ColorButton title="ボタンです" />
+      </Bounceable>
       <FlatList data={data} renderItem={renderItem} keyExtractor={(item, _) => String(item.id)} />
     </SafeAreaLayout>
   );

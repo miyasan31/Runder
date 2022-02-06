@@ -1,4 +1,5 @@
 import "react-native-url-polyfill/auto";
+
 import { format } from "date-fns";
 import type { VFC } from "react";
 import React from "react";

@@ -1,4 +1,5 @@
 import "react-native-url-polyfill/auto";
+
 import { getCurrentPositionAsync, requestForegroundPermissionsAsync } from "expo-location";
 import type { VFC } from "react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
