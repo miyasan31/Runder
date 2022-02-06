@@ -96,18 +96,18 @@ module.exports = {
         argsIgnorePattern: "^_",
       },
     ],
-    "@typescript-eslint/naming-convention": [
-      "error",
-      { selector: ["typeAlias", "typeParameter"], format: ["PascalCase"] },
-      { selector: ["property", "method"], format: ["camelCase"] },
-      {
-        selector: "variable",
-        types: ["boolean"],
-        format: ["PascalCase"],
-        prefix: ["no", "is", "has", "should"],
-        filter: { regex: "^_", match: false },
-      },
-    ],
+    // "@typescript-eslint/naming-convention": [
+    //   "error",
+    //   { selector: ["typeAlias", "typeParameter"], format: ["PascalCase"] },
+    //   { selector: ["property", "method"], format: ["camelCase"] },
+    //   {
+    //     selector: "variable",
+    //     types: ["boolean"],
+    //     format: ["PascalCase"],
+    //     prefix: ["no", "is", "has", "should"],
+    //     filter: { regex: "^_", match: false },
+    //   },
+    // ],
 
     // https://www.npmjs.com/package/eslint-plugin-jsx-a11y
     "jsx-a11y/no-autofocus": "off",
