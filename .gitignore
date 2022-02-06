@@ -9,3 +9,4 @@ npm-debug.*
 .env
 
 .DS_Store
+tsconfig.tsbuildinfo
