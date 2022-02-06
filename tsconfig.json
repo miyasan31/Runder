@@ -21,6 +21,6 @@
     }
   },
   "extends": "expo/tsconfig.base",
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js"],
+  "include": ["App.tsx", "src/**/*.ts", "src/**/*.tsx", "src/**/*.js"],
   "exclude": ["node_modules"]
 }
