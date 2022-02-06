@@ -1,0 +1,1 @@
+export { TabBarIcon } from "./TabBarIcon";

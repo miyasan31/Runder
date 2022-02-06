@@ -1,11 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { RecoilRoot } from "recoil";
 
-import useCachedResources from './hooks/useCachedResources';
-import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
+import { Toaster } from "~/components/Toaster";
+import { useCachedResources } from "~/hooks/useCachedResources";
+import { useColorScheme } from "~/hooks/useColorScheme";
+import { Navigations } from "~/navigations";
 
-export default function App() {
+const App = () => {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
@@ -13,10 +16,16 @@ export default function App() {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-      </SafeAreaProvider>
+      <RecoilRoot>
+        <SafeAreaProvider>
+          <Navigations colorScheme={colorScheme} />
+          <StatusBar />
+          <Toaster position="bottom-center" />
+        </SafeAreaProvider>
+      </RecoilRoot>
     );
   }
-}
+};
+
+// eslint-disable-next-line import/no-default-export
+export default App;
