@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { RecoilRoot } from "recoil";
 
@@ -12,17 +13,31 @@ const App = () => {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
+  const [ready, setReady] = useState(false);
+
+  const startApp = useCallback(async () => {
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    startApp();
+  }, [startApp]);
+
   if (!isLoadingComplete) {
     return null;
   } else {
     return (
-      <RecoilRoot>
-        <SafeAreaProvider>
-          <Navigations colorScheme={colorScheme} />
-          <StatusBar />
-          <Toaster position="bottom-center" />
-        </SafeAreaProvider>
-      </RecoilRoot>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <RecoilRoot>
+          {ready ? (
+            <SafeAreaProvider>
+              <Navigations colorScheme={colorScheme} />
+              <StatusBar />
+              <Toaster position="bottom-center" />
+            </SafeAreaProvider>
+          ) : null}
+        </RecoilRoot>
+      </GestureHandlerRootView>
     );
   }
 };
