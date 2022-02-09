@@ -4,8 +4,8 @@ import type { VFC } from "react";
 import React from "react";
 import { StyleSheet } from "react-native";
 
-import { TabBarIcon } from "~/components/icon";
-import { useColorScheme } from "~/hooks";
+import { TabBarIcon } from "~/components/ui/TabBarIcon";
+import { useColorScheme } from "~/hooks/useColorScheme";
 import { useThemeColor } from "~/hooks/useThemeColor";
 import { theme } from "~/styles";
 import type { MainBottomTabParamList } from "~/types";
