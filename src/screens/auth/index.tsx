@@ -4,7 +4,7 @@ import React from "react";
 
 import type { AuthStackParamList } from "~/types";
 
-import { SigninScreen } from "./SigninScreen";
+import { SigninScreen } from "./signin.screen";
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
 
