@@ -54,7 +54,11 @@ export const Navigations: VFC<{ colorScheme: ColorSchemeName }> = (props) => {
           }}
         />
 
-        <RootStack.Screen name="NotFound" component={NotFoundScreen} options={{ title: "Oops!" }} />
+        <RootStack.Screen
+          name="NotFoundScreen"
+          component={NotFoundScreen}
+          options={{ title: "Oops!" }}
+        />
 
         <RootStack.Group screenOptions={{ presentation: "modal" }}>
           <RootStack.Screen name="Modal" component={ModalScreen} options={{ title: "Oops!" }} />
