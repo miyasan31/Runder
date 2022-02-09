@@ -4,9 +4,9 @@ import { KeyboardAvoidingView, Platform, TouchableWithoutFeedback } from "react-
 
 import type { SafeAreaViewProps } from "~/components/ui/SafeAreaView";
 import { SafeAreaView } from "~/components/ui/SafeAreaView";
-import { onKeyBoardClose } from "~/functions/onKeyBoardClose";
 import { useThemeColor } from "~/hooks/useThemeColor";
 import { viewStyles } from "~/styles";
+import { onKeyBoardClose } from "~/utils/onKeyBoardClose";
 
 type Props = SafeAreaViewProps & {
   children: ReactNode;

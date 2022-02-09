@@ -2,15 +2,20 @@ import "react-native-url-polyfill/auto";
 
 import { getCurrentPositionAsync, requestForegroundPermissionsAsync } from "expo-location";
 import type { VFC } from "react";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  // useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { Dimensions, StyleSheet } from "react-native";
 import MapView, { Polyline } from "react-native-maps";
 
-import { Button } from "~/components/ui/Button";
+// import { Button } from "~/components/ui/Button";
 import { View } from "~/components/ui/View";
 import type { DevRunningScreenProps } from "~/types";
 import type { LocationResult } from "~/types/fetcher";
-import { supabaseClient } from "~/utils/supabaseClient";
+// import { supabaseClient } from "~/utils/supabaseClient";
 
 // 位置情報取得許可を要求
 const requestForegroundPermission = async () => {
@@ -21,32 +26,32 @@ const requestForegroundPermission = async () => {
 export type Props = DevRunningScreenProps<"RunningScreen">;
 
 export const Running: VFC<Props> = () => {
-  const [isRunning, setIsRunning] = useState(false);
+  // const [isRunning, setIsRunning] = useState(false);
   const [coordinates, setCoordinates] = useState<LocationResult[]>([]);
 
-  const onToggleRunningStatus = useCallback(() => {
-    setIsRunning((prev) => !prev);
-  }, []);
+  // const onToggleRunningStatus = useCallback(() => {
+  //   setIsRunning((prev) => !prev);
+  // }, []);
 
-  const onRegionChange = async () => {
-    const _location = await getCurrentPositionAsync({});
-    setCoordinates((prev) => {
-      return [
-        ...prev,
-        {
-          accuracy: _location.coords.accuracy,
-          altitude: _location.coords.altitude,
-          altitudeAccuracy: _location.coords.altitudeAccuracy,
-          heading: _location.coords.heading,
-          latitude: _location.coords.latitude,
-          longitude: _location.coords.longitude,
-          speed: _location.coords.speed,
-          timestamp: _location.timestamp,
-          color: "#ff0000",
-        },
-      ];
-    });
-  };
+  // const onRegionChange = async () => {
+  //   const _location = await getCurrentPositionAsync({});
+  //   setCoordinates((prev) => {
+  //     return [
+  //       ...prev,
+  //       {
+  //         accuracy: _location.coords.accuracy,
+  //         altitude: _location.coords.altitude,
+  //         altitudeAccuracy: _location.coords.altitudeAccuracy,
+  //         heading: _location.coords.heading,
+  //         latitude: _location.coords.latitude,
+  //         longitude: _location.coords.longitude,
+  //         speed: _location.coords.speed,
+  //         timestamp: _location.timestamp,
+  //         color: "#ff0000",
+  //       },
+  //     ];
+  //   });
+  // };
 
   const onSetInitialPosition = async () => {
     const _location = await getCurrentPositionAsync({});
@@ -65,16 +70,16 @@ export const Running: VFC<Props> = () => {
     ]);
   };
 
-  const onSave = useCallback(async () => {
-    await supabaseClient.from("location").insert([{ location: coordinates }]);
-  }, [coordinates]);
+  // const onSave = useCallback(async () => {
+  //   await supabaseClient.from("location").insert([{ location: coordinates }]);
+  // }, [coordinates]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (isRunning) onRegionChange();
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [isRunning]);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (isRunning) onRegionChange();
+  //   }, 1000);
+  //   return () => clearInterval(interval);
+  // }, [isRunning]);
 
   useEffect(() => {
     // 位置情報取得許可を要求
@@ -112,14 +117,14 @@ export const Running: VFC<Props> = () => {
         }}
       >
         <Polyline coordinates={coordinateResult} strokeColors={strokeResult} strokeWidth={6} />
-        <Button
-          title={isRunning ? "STOP" : "START"}
+        {/* <Button
+          label={isRunning ? "STOP" : "START"}
           lightBgColor={isRunning ? "#ffff00" : ""}
           lightTextColor={isRunning ? "#000000" : ""}
           bgStyle={styles.button}
           onPress={onToggleRunningStatus}
         />
-        <Button title="SAVE" lightBgColor="#f00" bgStyle={styles.button1} onPress={onSave} />
+        <Button label="SAVE" lightBgColor="#f00" bgStyle={styles.button1} onPress={onSave} /> */}
       </MapView>
     </View>
   );
