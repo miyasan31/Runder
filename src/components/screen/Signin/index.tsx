@@ -29,7 +29,7 @@ export const Signin: VFC<Props> = () => {
   return (
     <View>
       <Text></Text>
-      <Button title="Googleでログイン" onPress={onGoogleSignin} />
+      <Button label="Googleでログイン" onPress={onGoogleSignin} />
     </View>
   );
 };
