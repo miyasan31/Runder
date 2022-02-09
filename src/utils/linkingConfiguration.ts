@@ -102,7 +102,7 @@ export const linkingConfiguration: LinkingOptions<RootStackParamList> = {
       Modal: {
         path: "modal",
       },
-      NotFound: "*",
+      NotFoundScreen: "*",
     },
   },
 };
