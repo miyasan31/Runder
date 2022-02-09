@@ -15,13 +15,13 @@ export const DevListNavigator: VFC = () => {
 
   return (
     <DevList.Navigator
-      initialRouteName="RunningHistory"
+      initialRouteName="RunningHistoryScreen"
       screenOptions={{
         headerStyle: { backgroundColor: backgroundColor },
       }}
     >
       <DevList.Screen
-        name="RunningHistory"
+        name="RunningHistoryScreen"
         component={RunningHistoryScreen}
         options={() => ({
           title: "ランニング履歴",
@@ -29,7 +29,7 @@ export const DevListNavigator: VFC = () => {
       />
 
       <DevList.Screen
-        name="RunningDetail"
+        name="RunningDetailScreen"
         component={RunningDetailScreen}
         options={() => ({
           title: "ランニング詳細",
