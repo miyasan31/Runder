@@ -2,13 +2,21 @@ import "react-native-url-polyfill/auto";
 
 import { format } from "date-fns";
 import type { VFC } from "react";
-import React from "react";
-import { FlatList, StyleSheet } from "react-native";
+import React, { useCallback, useState } from "react";
+import { ActivityIndicator, FlatList, StyleSheet } from "react-native";
+import {
+  Button as RNUIButton,
+  RadioButton,
+  RadioGroup,
+  Switch,
+  TextField,
+} from "react-native-ui-lib";
 import { Bounceable } from "rn-bounceable";
 
 import { ListItem, Progress } from "~/components";
-import { ColorButton, Text, View } from "~/components/custom";
+import { Text, View } from "~/components/custom";
 import { SafeAreaLayout } from "~/components/layout";
+import { Button } from "~/components/ui/Button";
 import { useSupabaseFilter, useSupabaseSelect, useThemeColor } from "~/hooks";
 import type { TounamentScreenProps } from "~/types";
 import type { User } from "~/types/fetcher";
@@ -24,15 +32,45 @@ export const TounamentScreen: VFC<TounamentScreenProps<"TounamentScreen">> = () 
     filter,
   });
 
+  const [text, setText] = useState("");
+  const onChangeText = useCallback((text) => setText(text), []);
+
+  // Switch
+  const [isOn, setIsOn] = useState(false);
+  const onToggleSwitch = useCallback(() => {
+    setIsOn((prev) => !prev);
+  }, []);
+
+  // Radio
+  const [selectedValue, setSelectedValue] = useState("1");
+  const onRadioSelect = useCallback((value) => {
+    setSelectedValue(value);
+  }, []);
+
   if (loading) return <Progress />;
   if (error) return <Text>エラー</Text>;
   if (!data) return <Text>データなし</Text>;
 
   return (
     <SafeAreaLayout>
+      <ActivityIndicator size="large" color="#00ff00" />
+
       <Bounceable>
-        <ColorButton title="ボタンです" />
+        <RNUIButton label="ああああ" activeOpacity={1} borderRadius={9999} />
       </Bounceable>
+
+      <Button label="ああああ" />
+
+      <TextField value={text} onValueChange={onChangeText} />
+
+      <Switch value={isOn} onValueChange={onToggleSwitch} />
+
+      <RadioGroup initialValue={selectedValue} onValueChange={onRadioSelect}>
+        <RadioButton value="1" label="1" />
+        <RadioButton value="2" label="2" />
+        <RadioButton value="3" label="3" />
+      </RadioGroup>
+
       <FlatList data={data} renderItem={renderItem} keyExtractor={(item, _) => String(item.id)} />
     </SafeAreaLayout>
   );
