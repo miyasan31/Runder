@@ -71,7 +71,8 @@ module.exports = {
       },
     ],
 
-    "react/destructuring-assignment": ["error", "never"],
+    // propsを展開したい時があるのでコメントアウト
+    // "react/destructuring-assignment": ["error", "never"],
 
     // https://www.npmjs.com/package/eslint-plugin-react-hooks
     "react-hooks/rules-of-hooks": "error",
