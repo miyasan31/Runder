@@ -2,11 +2,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import type { VFC } from "react";
 import React from "react";
 
-import { TabBarIcon } from "~/components/icon";
+import { TabBarIcon } from "~/components/ui/TabBarIcon";
 import type { DevelopmentTabParamList } from "~/types";
 
-import { DevListNavigator } from "./devlist";
-import { DevRunningNavigator } from "./devrunning";
+import { DevListNavigator } from "./list";
+import { DevRunningNavigator } from "./running";
 
 const DevelopmentTab = createBottomTabNavigator<DevelopmentTabParamList>();
 

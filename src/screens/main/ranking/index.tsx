@@ -2,10 +2,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import type { VFC } from "react";
 import React from "react";
 
-import { useThemeColor } from "~/hooks";
+import { useThemeColor } from "~/hooks/useThemeColor";
 import type { RankingStackParamList } from "~/types";
 
-import { RankingScreen } from "./RankingScreen";
+import { RankingScreen } from "./ranking.screen";
 
 const Ranking = createNativeStackNavigator<RankingStackParamList>();
 
