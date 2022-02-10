@@ -1,18 +1,12 @@
 import "react-native-url-polyfill/auto";
 
-import { format } from "date-fns";
+// import { format } from "date-fns";
 import type { VFC } from "react";
 import React, { useCallback, useState } from "react";
 import { ActivityIndicator, FlatList, StyleSheet } from "react-native";
-import {
-  Button as RNUIButton,
-  RadioButton,
-  RadioGroup,
-  Switch,
-  TextField,
-} from "react-native-ui-lib";
-import { Bounceable } from "rn-bounceable";
+import { RadioButton, RadioGroup, Switch, TextField } from "react-native-ui-lib";
 
+// import { Bounceable } from "rn-bounceable";
 import { KeyboardAvoiding } from "~/components/functional/KeyboardAvoiding";
 import { Button } from "~/components/ui/Button";
 import { ListItem } from "~/components/ui/ListItem";
@@ -20,14 +14,14 @@ import { Progress } from "~/components/ui/Progress";
 import { Text } from "~/components/ui/Text";
 import { View } from "~/components/ui/View";
 import { useSupabaseFilter, useSupabaseSelect } from "~/hooks/useSupabase";
-import { useThemeColor } from "~/hooks/useThemeColor";
+// import { useThemeColor } from "~/hooks/useThemeColor";
 import type { TounamentScreenProps } from "~/types";
 import type { User } from "~/types/fetcher";
 
 export type Props = TounamentScreenProps<"TounamentScreen">;
 
 export const Tounament: VFC<Props> = () => {
-  const color = useThemeColor({}, "text2");
+  // const color = useThemeColor({}, "text2");
 
   const filter = useSupabaseFilter((query) => query.limit(10), []);
   const { loading, error, data } = useSupabaseSelect<User>("user", {
@@ -58,39 +52,49 @@ export const Tounament: VFC<Props> = () => {
 
   return (
     <KeyboardAvoiding>
-      <ActivityIndicator size="large" color="#00ff00" />
+      <ActivityIndicator size="large" color="#DDDDDD" />
+      {/* <Bounceable>
+        <RNUIButton label="サインインする" activeOpacity={1} borderRadius={9999} />
+      </Bounceable> */}
+      {/* <Text text-main>text-main</Text>
+      <Text text-sub>text-sub</Text>
+      <Text text-thin>text-thin</Text>
+      <Text primary>primary</Text>
+      <Text accent>accent</Text> */}
 
-      <Bounceable>
-        <RNUIButton label="ああああ" activeOpacity={1} borderRadius={9999} />
-      </Bounceable>
+      <Text primary margin-10>
+        text-bg
+      </Text>
+      <Text accent>text-bg</Text>
+      <Text green10>text-bg</Text>
+      <Text text2>text-bg</Text>
+      <Text text3>text-bg</Text>
+      <Text text4>text-bg</Text>
 
-      <Button label="ああああ" />
+      <Button label="サインインする" bgTheme="3" textTheme="accent" isBorder />
 
-      <TextField value={text} onValueChange={onChangeText} />
-
+      <TextField value={text} onValueChange={onChangeText} migrate />
       <Switch value={isOn} onValueChange={onToggleSwitch} />
-
       <RadioGroup initialValue={selectedValue} onValueChange={onRadioSelect}>
         <RadioButton value="1" label="1" />
         <RadioButton value="2" label="2" />
         <RadioButton value="3" label="3" />
       </RadioGroup>
-
-      <FlatList data={data} renderItem={renderItem} keyExtractor={(item, _) => String(item.id)} />
+      <FlatList data={data} renderItem={RenderItem} keyExtractor={(item, _) => String(item.id)} />
     </KeyboardAvoiding>
   );
 
   // eslint-disable-next-line func-style
-  function renderItem({ item }: { item: User }) {
-    const date = format(new Date(item.created_at), "yyyy年M月d日");
+  function RenderItem({ item }: { item: User }) {
+    // const date = format(new Date(item.created_at), "yyyy年M月d日");
     const onNavigation = () => console.info("item.id", item.id);
     return (
       <ListItem style={styles.list} onPress={onNavigation}>
         <View>
-          <Text style={styles.shopName}>{item.name}</Text>
-          <Text style={styles.date} lightTextColor={color} darkTextColor={color}>
-            {date}
-          </Text>
+          {/* <Text style={styles.shopName}>{item.name}</Text> */}
+          {/* <Text style={styles.date} lightTextColor={color} darkTextColor={color}> */}
+          {/* {date}
+          </Text> */}
         </View>
       </ListItem>
     );

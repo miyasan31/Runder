@@ -1,25 +1,28 @@
-import type { VFC } from "react";
-import React, { memo } from "react";
-import { StyleSheet, Text as NativeText } from "react-native";
+import type { FC } from "react";
+import React from "react";
+import type {
+  BackgroundColorModifier,
+  ColorsModifiers,
+  ContainerModifiers,
+  MarginModifiers,
+  Modifiers,
+  PaddingModifiers,
+  TypographyModifiers,
+} from "react-native-ui-lib";
+import { Text as RNUILibText } from "react-native-ui-lib";
 
-import { useThemeColor } from "~/hooks/useThemeColor";
-import type { StyleProps } from "~/types/style";
+import type { ColorTheme, TextTheme } from "~/utils/rnuilibConfig";
 
-export type TextProps = StyleProps & NativeText["props"];
+type TextThemeProps = { [key in TextTheme | ColorTheme]?: true };
 
-export const Text: VFC<TextProps> = memo((props) => {
-  const { style, lightTextColor, darkTextColor, ...otherProps } = props;
+type TextProps = ColorsModifiers &
+  MarginModifiers &
+  TextThemeProps & {
+    children?: React.ReactNode;
+  };
 
-  const color = useThemeColor({ light: lightTextColor, dark: darkTextColor }, "text1");
+export const Text: FC<TextProps> = (props) => {
+  const { children, ...textTheme } = props;
 
-  return <NativeText style={[defaultStyles.text, style, { color }]} {...otherProps} />;
-});
-
-const defaultStyles = StyleSheet.create({
-  text: {
-    width: "100%",
-    fontSize: 20,
-    fontWeight: "600",
-    textAlign: "center",
-  },
-});
+  return <RNUILibText {...textTheme}>{children}</RNUILibText>;
+};
