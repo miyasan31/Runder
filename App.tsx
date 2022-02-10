@@ -7,10 +7,13 @@ import { Toaster } from "~/components/ui/Toaster";
 import { useCachedResources } from "~/hooks/useCachedResources";
 import { useColorScheme } from "~/hooks/useColorScheme";
 import { Navigations } from "~/screens";
+import { styleThemeConfig, themeUtils } from "~/utils/rnuilibConfig";
 
 const App = () => {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
+  styleThemeConfig();
+  themeUtils();
 
   if (!isLoadingComplete) {
     return null;
