@@ -1,25 +1,79 @@
-import React from "react";
-import type { MarginModifiers } from "react-native-ui-lib";
-import { Text, View } from "react-native-ui-lib";
-import { Bounceable } from "rn-bounceable";
+import type { VFC } from "react";
+import React, { memo } from "react";
+import { StyleSheet, TouchableOpacity as NativeTouchableOpacity } from "react-native";
 
-type ButtonProps = MarginModifiers & {
-  label?: string;
-  onPress?: () => void;
-};
+import type { TextProps } from "~/components/ui/Text";
+import { Text } from "~/components/ui/Text";
+import { View } from "~/components/ui/View";
+import { useThemeColor } from "~/hooks/useThemeColor";
+import type { StyleProps } from "~/types/style";
 
-export const Button: React.FC<ButtonProps> = (props) => {
-  const { label, onPress, ...modifiers } = props;
+export type ColorButtonProps = StyleProps &
+  TextProps &
+  NativeTouchableOpacity["props"] & {
+    title?: string;
+  };
+
+export const CustomColorButton: VFC<ColorButtonProps> = memo((props) => {
+  const {
+    // TextProps
+    title,
+    children,
+    textStyle,
+    lightTextColor,
+    darkTextColor,
+    // TouchableOpacityProps
+    bgStyle,
+    lightBgColor,
+    darkBgColor,
+    // ViewProps
+    outlineStyle,
+    onPress,
+  } = props;
+
+  const backgroundColor = useThemeColor({ light: lightBgColor, dark: darkBgColor }, "primary");
+  const color = useThemeColor({ light: lightTextColor, dark: darkTextColor }, "text3");
 
   return (
-    <View {...modifiers}>
-      <Bounceable onPress={onPress}>
-        <View center bg-primary padding-s4 br100>
-          <Text text65M whitish>
-            {label}
+    <View style={[defaultStyles.outline, outlineStyle]}>
+      <NativeTouchableOpacity
+        style={[defaultStyles.bg, bgStyle, { backgroundColor }]}
+        activeOpacity={0.4}
+        onPress={onPress}
+      >
+        {children}
+
+        {title ? (
+          <Text
+            lightTextColor={color}
+            darkTextColor={color}
+            style={[defaultStyles.text, textStyle]}
+          >
+            {title}
           </Text>
-        </View>
-      </Bounceable>
+        ) : null}
+      </NativeTouchableOpacity>
     </View>
   );
-};
+});
+
+const defaultStyles = StyleSheet.create({
+  outline: {
+    width: "100%",
+    borderRadius: 9999,
+  },
+  bg: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    paddingVertical: 18,
+    paddingHorizontal: 15,
+    borderRadius: 9999,
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+});
