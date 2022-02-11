@@ -1,47 +1,16 @@
-import type { VFC } from "react";
-import React, { memo } from "react";
-import { StyleSheet, TextInput as NativeTextInput } from "react-native";
+import type { FC } from "react";
+import React from "react";
+import type { MarginModifiers } from "react-native-ui-lib";
+import { TextField as RNUILibTextInput } from "react-native-ui-lib";
 
-import type { ViewProps } from "~/components/ui/View";
-import { View } from "~/components/ui/View";
-import { useThemeColor } from "~/hooks/useThemeColor";
-import type { StyleProps } from "~/types/style";
+import type { ColorTheme, TextTheme } from "~/utils/rnuilibConfig";
 
-export type TextInputProps = StyleProps & ViewProps & NativeTextInput["props"];
+type TextThemeProps = { [key in TextTheme | ColorTheme]?: true };
 
-export const TextInput: VFC<TextInputProps> = memo((props) => {
-  const {
-    textStyle,
-    lightTextColor,
-    darkTextColor,
-    lightBgColor,
-    darkBgColor,
-    bgStyle,
-    secureTextEntry = false,
-    ...otherProps
-  } = props;
+type TextProps = MarginModifiers & TextThemeProps;
 
-  const color = useThemeColor({ light: lightTextColor, dark: darkTextColor }, "text1");
-  const backgroundColor = useThemeColor({ light: lightBgColor, dark: darkBgColor }, "bg2");
+export const TextInput: FC<TextProps> = (props) => {
+  const { ...textTheme } = props;
 
-  return (
-    <View
-      style={[defaultStyles.bg, bgStyle]}
-      lightBgColor={backgroundColor}
-      darkBgColor={backgroundColor}
-    >
-      <NativeTextInput
-        style={[textStyle, { color }]}
-        {...otherProps}
-        secureTextEntry={secureTextEntry}
-      />
-    </View>
-  );
-});
-
-const defaultStyles = StyleSheet.create({
-  bg: {
-    width: "100%",
-    padding: 10,
-  },
-});
+  return <RNUILibTextInput {...textTheme} />;
+};

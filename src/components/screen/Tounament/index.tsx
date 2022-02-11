@@ -4,7 +4,7 @@ import "react-native-url-polyfill/auto";
 import type { VFC } from "react";
 import React, { useCallback, useState } from "react";
 import { ActivityIndicator, FlatList, StyleSheet } from "react-native";
-import { RadioButton, RadioGroup, Switch, TextField } from "react-native-ui-lib";
+import { RadioButton, RadioGroup, Switch, TextField, View } from "react-native-ui-lib";
 
 // import { Bounceable } from "rn-bounceable";
 import { KeyboardAvoiding } from "~/components/functional/KeyboardAvoiding";
@@ -12,7 +12,8 @@ import { Button } from "~/components/ui/Button";
 import { ListItem } from "~/components/ui/ListItem";
 import { Progress } from "~/components/ui/Progress";
 import { Text } from "~/components/ui/Text";
-import { View } from "~/components/ui/View";
+import { TextInput } from "~/components/ui/TextInput";
+// import { View } from "~/components/ui/View";
 import { useSupabaseFilter, useSupabaseSelect } from "~/hooks/useSupabase";
 // import { useThemeColor } from "~/hooks/useThemeColor";
 import type { TounamentScreenProps } from "~/types";
@@ -62,18 +63,29 @@ export const Tounament: VFC<Props> = () => {
       <Text primary>primary</Text>
       <Text accent>accent</Text> */}
 
-      <Text primary margin-10>
+      <Text primary marginL>
         text-bg
       </Text>
-      <Text accent>text-bg</Text>
-      <Text green10>text-bg</Text>
+      <Text accent marginL>
+        text-bg
+      </Text>
+      <Text text2 text3>
+        text-bg
+      </Text>
       <Text text2>text-bg</Text>
       <Text text3>text-bg</Text>
       <Text text4>text-bg</Text>
 
-      <Button label="サインインする" bgTheme="3" textTheme="accent" isBorder />
+      <View flex-1 flex row width="33%">
+        <Button label="ルール" bgTheme="primary" textTheme="text1" isBorder />
+        <Button label="サインイン" bgTheme="primary" textTheme="text1" isBorder />
+        <Button label="サインイン" bgTheme="primary" textTheme="text1" isBorder />
+      </View>
+
+      <TextInput />
 
       <TextField value={text} onValueChange={onChangeText} migrate />
+
       <Switch value={isOn} onValueChange={onToggleSwitch} />
       <RadioGroup initialValue={selectedValue} onValueChange={onRadioSelect}>
         <RadioButton value="1" label="1" />
