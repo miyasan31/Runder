@@ -51,10 +51,10 @@ export const RunningHistory: VFC<Props> = (props) => {
       });
     };
     return (
-      <ListItem style={styles.list} onPress={onNavigation}>
+      <ListItem bgStyle={styles.list} onPress={onNavigation}>
         <View>
           <Text style={styles.shopName}>レコード {item.id}</Text>
-          <Text style={styles.date} lightTextColor={color} darkTextColor={color}>
+          <Text style={styles.date} lightText={color} darkText={color}>
             {date}
           </Text>
         </View>

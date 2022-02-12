@@ -43,10 +43,10 @@ export const Contact: VFC<Props> = () => {
     const date = format(new Date(item.created_at), "yyyy年M月d日");
     const onNavigation = () => console.info("item.id", item.id);
     return (
-      <ListItem style={styles.list} onPress={onNavigation}>
+      <ListItem bgStyle={styles.list} onPress={onNavigation}>
         <View>
           <Text style={styles.shopName}>{item.name}</Text>
-          <Text style={styles.date} lightTextColor={color} darkTextColor={color}>
+          <Text style={styles.date} lightText={color} darkText={color}>
             {date}
           </Text>
         </View>

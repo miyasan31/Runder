@@ -119,12 +119,12 @@ export const Running: VFC<Props> = () => {
         <Polyline coordinates={coordinateResult} strokeColors={strokeResult} strokeWidth={6} />
         {/* <Button
           label={isRunning ? "STOP" : "START"}
-          lightBgColor={isRunning ? "#ffff00" : ""}
-          lightTextColor={isRunning ? "#000000" : ""}
+          lightBg={isRunning ? "#ffff00" : ""}
+          lightText={isRunning ? "#000000" : ""}
           bgStyle={styles.button}
           onPress={onToggleRunningStatus}
         />
-        <Button label="SAVE" lightBgColor="#f00" bgStyle={styles.button1} onPress={onSave} /> */}
+        <Button label="SAVE" lightBg="#f00" bgStyle={styles.button1} onPress={onSave} /> */}
       </MapView>
     </View>
   );
