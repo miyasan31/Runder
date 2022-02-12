@@ -1,0 +1,28 @@
+export const theme = {
+  light: {
+    bg1: "#FFFFFF",
+    bg2: "#DDDDDD",
+    bg3: "#FAFAFA",
+    text0: "#FFFFFF",
+    text1: "#333333",
+    text2: "#808080",
+    text3: "#DDDDDD",
+    border: "#BBBBBB",
+    icon: "#DDDDDD",
+    primary: "#19EC9C",
+    accent: "#4BB4FF",
+  },
+  dark: {
+    bg1: "#404852",
+    bg2: "#5A6471",
+    bg3: "#373E46",
+    text0: "#404852",
+    text1: "#FFFFFF",
+    text2: "#BBBBBB",
+    text3: "#5A6471",
+    border: "#7D8B9C",
+    icon1: "#5A6471",
+    primary: "#24D995",
+    accent: "#47ADF5",
+  },
+};
