@@ -33,7 +33,7 @@ export const RunningDetail: VFC<Props> = (props) => {
   const strokeResult = data[0].location.map((coordinate) => coordinate.color);
 
   return (
-    <Layout style={styles.root}>
+    <Layout bgStyle={styles.root}>
       <MapView
         style={styles.map}
         initialRegion={{

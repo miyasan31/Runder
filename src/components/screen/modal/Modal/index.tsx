@@ -13,9 +13,7 @@ export const Modal: VFC<Props> = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Modal 1</Text>
-
       <View style={styles.separator} lightBg="#eee" darkBg="rgba(255,255,255,0.1)" />
-
       <StatusBar style={Platform.OS === "ios" ? "dark" : "auto"} />
     </View>
   );
