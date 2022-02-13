@@ -3,6 +3,7 @@ import type { ReactNode, VFC } from "react";
 import React from "react";
 import { StatusBar, StyleSheet } from "react-native";
 
+import { KeyboardAvoiding } from "~/components/functional/KeyboardAvoiding";
 import { View } from "~/components/ui/View";
 import type { ViewStyleProps } from "~/types/style";
 
@@ -23,12 +24,14 @@ export const Layout: VFC<LayoutProps> = ({
   const tabBarHeight = useBottomTabBarHeight();
 
   return (
-    <View
-      style={[defaultStyle.full, bgStyle, { marginBottom: tabBarHeight || 0 }]}
-      {...{ lightBg, darkBg, bgTheme }}
-    >
-      {children}
-    </View>
+    <KeyboardAvoiding>
+      <View
+        style={[defaultStyle.full, bgStyle, { marginBottom: tabBarHeight || 0 }]}
+        {...{ lightBg, darkBg, bgTheme }}
+      >
+        {children}
+      </View>
+    </KeyboardAvoiding>
   );
 };
 
