@@ -13,7 +13,8 @@
     "fix:eslint": "eslint . --fix",
     "fix:prettier": "prettier --write .",
     "test": "jest --watchAll",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
   },
   "jest": {
     "preset": "jest-expo"
