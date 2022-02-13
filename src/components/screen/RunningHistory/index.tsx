@@ -6,7 +6,7 @@ import React from "react";
 import { FlatList, StyleSheet } from "react-native";
 
 import { KeyboardAvoiding } from "~/components/functional/KeyboardAvoiding";
-import { ListItem } from "~/components/ui/ListItem";
+import { Card } from "~/components/ui/Card";
 import { Progress } from "~/components/ui/Progress";
 import { Text } from "~/components/ui/Text";
 import { View } from "~/components/ui/View";
@@ -51,14 +51,14 @@ export const RunningHistory: VFC<Props> = (props) => {
       });
     };
     return (
-      <ListItem bgStyle={styles.list} onPress={onNavigation}>
+      <Card bgStyle={styles.list} onPress={onNavigation}>
         <View>
           <Text style={styles.shopName}>レコード {item.id}</Text>
           <Text style={styles.date} lightText={color} darkText={color}>
             {date}
           </Text>
         </View>
-      </ListItem>
+      </Card>
     );
   }
 };

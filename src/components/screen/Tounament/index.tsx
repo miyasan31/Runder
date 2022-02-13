@@ -7,7 +7,7 @@ import { FlatList, StyleSheet } from "react-native";
 
 import { KeyboardAvoiding } from "~/components/functional/KeyboardAvoiding";
 import { Button } from "~/components/ui/Button";
-import { ListItem } from "~/components/ui/ListItem";
+import { Card } from "~/components/ui/Card";
 import { ActivityIndicator, Progress } from "~/components/ui/Progress";
 import { Text } from "~/components/ui/Text";
 import { TextInput } from "~/components/ui/TextInput";
@@ -19,10 +19,6 @@ import type { User } from "~/types/fetcher";
 export type Props = TounamentScreenProps<"TounamentScreen">;
 
 export const Tounament: VFC<Props> = () => {
-  const onPress = () => {
-    console.info("click");
-  };
-
   const filter = useSupabaseFilter((query) => query.limit(10), []);
   const { loading, error, data } = useSupabaseSelect<User>("user", {
     options: {
@@ -31,6 +27,8 @@ export const Tounament: VFC<Props> = () => {
     filter,
   });
 
+  const onPress = () => console.info("click");
+
   if (loading) return <Progress />;
   if (error) return <Text>エラー</Text>;
   if (!data) return <Text>データなし</Text>;
@@ -38,6 +36,7 @@ export const Tounament: VFC<Props> = () => {
   return (
     <KeyboardAvoiding>
       <Progress />
+
       <ActivityIndicator />
 
       <Button label="サインイン" onPress={onPress} />
@@ -63,29 +62,25 @@ export const Tounament: VFC<Props> = () => {
     const onNavigation = () => console.info("item.id", item.id);
 
     return (
-      <ListItem bgStyle={styles.list} onPress={onNavigation}>
-        <View bgTheme="bg2">
-          <Text style={styles.shopName}>{item.name}</Text>
-          <Text textTheme="text2" style={styles.date}>
+      <Card bgStyle={style.list} isBorder onPress={onNavigation}>
+        <View>
+          <Text style={style.shopName}>{item.name}</Text>
+          <Text textTheme="text2" style={style.date}>
             {date}
           </Text>
         </View>
-      </ListItem>
+      </Card>
     );
   }
 };
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
   list: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
-
-    padding: 15,
-    marginHorizontal: "1%",
-
-    borderBottomWidth: 1,
-    borderBottomColor: "#88888833",
+    padding: 18,
+    marginVertical: "1%",
   },
   shopName: {
     paddingBottom: 10,
