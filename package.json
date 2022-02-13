@@ -11,7 +11,7 @@
     "eslint": "eslint .",
     "prettier": "prettier --check .",
     "fix:eslint": "eslint . --fix",
-    "fix:prettier": "prettier --write ./src",
+    "fix:prettier": "prettier --write .",
     "test": "jest --watchAll",
     "prepare": "husky install"
   },
@@ -25,6 +25,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
       "eslint --fix"
     ]
   },
@@ -70,6 +71,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@react-native-community/eslint-config": "^3.0.1",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
     "@typescript-eslint/eslint-plugin": "^5.10.2",
