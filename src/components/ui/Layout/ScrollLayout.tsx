@@ -37,6 +37,8 @@ const defaultStyle = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+
+    paddingHorizontal: "3%",
     marginTop: StatusBar.currentHeight || 0,
   },
 });
