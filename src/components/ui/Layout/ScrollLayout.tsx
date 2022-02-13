@@ -3,7 +3,6 @@ import type { ReactNode, VFC } from "react";
 import React from "react";
 import { StatusBar, StyleSheet } from "react-native";
 
-import { KeyboardAvoiding } from "~/components/functional/KeyboardAvoiding";
 import { SafeAreaView } from "~/components/ui/View";
 import type { ViewStyleProps } from "~/types/style";
 
@@ -24,14 +23,12 @@ export const ScrollLayout: VFC<LayoutProps> = ({
   const tabBarHeight = useBottomTabBarHeight();
 
   return (
-    <KeyboardAvoiding>
-      <SafeAreaView
-        style={[defaultStyle.full, bgStyle, { marginBottom: tabBarHeight || 0 }]}
-        {...{ lightBg, darkBg, bgTheme }}
-      >
-        {children}
-      </SafeAreaView>
-    </KeyboardAvoiding>
+    <SafeAreaView
+      style={[defaultStyle.full, bgStyle, { marginBottom: tabBarHeight || 0 }]}
+      {...{ lightBg, darkBg, bgTheme }}
+    >
+      {children}
+    </SafeAreaView>
   );
 };
 

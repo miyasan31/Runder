@@ -5,9 +5,9 @@ import type { VFC } from "react";
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
 
-import { KeyboardAvoiding } from "~/components/functional/KeyboardAvoiding";
 import { Button } from "~/components/ui/Button";
 import { Card } from "~/components/ui/Card";
+import { Layout } from "~/components/ui/Layout";
 import { ActivityIndicator, Progress } from "~/components/ui/Progress";
 import { Text } from "~/components/ui/Text";
 import { TextInput } from "~/components/ui/TextInput";
@@ -34,7 +34,7 @@ export const Tounament: VFC<Props> = () => {
   if (!data) return <Text>データなし</Text>;
 
   return (
-    <KeyboardAvoiding>
+    <Layout>
       <Progress />
 
       <ActivityIndicator />
@@ -53,7 +53,7 @@ export const Tounament: VFC<Props> = () => {
       <Text textTheme="text3">text3 text3 text3</Text>
 
       <FlatList data={data} renderItem={renderItem} keyExtractor={(item, _) => String(item.id)} />
-    </KeyboardAvoiding>
+    </Layout>
   );
 
   // eslint-disable-next-line func-style
