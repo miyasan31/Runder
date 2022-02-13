@@ -10,6 +10,7 @@ export type TextProps = NativeText["props"] & TextStyleProps;
 export const Text: VFC<TextProps> = memo(
   ({
     // 基本的に使用しない
+    // custome themeで色を指定する
     lightText: light,
     darkText: dark,
     // custome theme
@@ -28,8 +29,5 @@ export const Text: VFC<TextProps> = memo(
 const defaultStyle = StyleSheet.create({
   text: {
     width: "100%",
-    fontWeight: "600",
-    // fontSize: 20,
-    // textAlign: "center",
   },
 });

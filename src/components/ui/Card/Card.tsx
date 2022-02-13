@@ -11,21 +11,22 @@ export type CardProps = StyleProps & {
   children: ReactNode;
   isBorder?: true;
   activeOpacity?: number;
-  onPress: () => void;
+  onPress?: () => void;
 };
 
 export const Card: VFC<CardProps> = memo(
   ({
     // 基本的に使用しない
+    // custome themeで色を指定する
     lightBg,
     darkBg,
     // custome theme
-    bgTheme = "bg2",
+    bgTheme = "bg1",
     // ViewProps
     isBorder,
     outlineStyle,
     // TouchableOpacityProps
-    activeOpacity = 0.6,
+    activeOpacity = 0.8,
     bgStyle,
     children,
     onPress,
@@ -56,6 +57,7 @@ const defaultStyle = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    padding: 10,
     borderRadius: 10,
   },
 });

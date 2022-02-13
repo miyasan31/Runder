@@ -20,6 +20,7 @@ export type ButtonProps = StyleProps & {
 export const Button: VFC<ButtonProps> = memo(
   ({
     // 基本的に使用しない
+    // custome themeで色を指定する
     lightBg,
     darkBg,
     lightText,
@@ -31,7 +32,7 @@ export const Button: VFC<ButtonProps> = memo(
     isBorder,
     outlineStyle,
     // TouchableOpacityProps
-    activeOpacity = 0.6,
+    activeOpacity = 0.8,
     bgStyle,
     // TextProps
     label,
@@ -45,7 +46,7 @@ export const Button: VFC<ButtonProps> = memo(
     const borderColor = useThemeColor({}, isBorder ? "border" : bgTheme);
 
     return (
-      <View style={[defaultStyle.outline, outlineStyle]}>
+      <View bgTheme="bg0" style={[defaultStyle.outline, outlineStyle]}>
         <Bounceable onPress={onPress}>
           <TouchableOpacity
             // eslint-disable-next-line react-native/no-inline-styles
@@ -75,12 +76,11 @@ const defaultStyle = StyleSheet.create({
     justifyContent: "center",
 
     paddingVertical: 18,
-    paddingHorizontal: 15,
     borderRadius: 999,
   },
   text: {
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: 18,
+    fontWeight: "600",
     textAlign: "center",
   },
 });
