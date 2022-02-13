@@ -1,7 +1,8 @@
 export const theme = {
   light: {
+    bg0: "#ffffff00",
     bg1: "#FFFFFF",
-    bg2: "#DDDDDD",
+    bg2: "#EEEEEE",
     bg3: "#FAFAFA",
     text0: "#FFFFFF",
     text1: "#333333",
@@ -13,6 +14,7 @@ export const theme = {
     accent: "#4BB4FF",
   },
   dark: {
+    bg0: "#00000000",
     bg1: "#404852",
     bg2: "#5A6471",
     bg3: "#373E46",
