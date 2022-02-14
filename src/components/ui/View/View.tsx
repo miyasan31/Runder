@@ -1,11 +1,11 @@
-import type { VFC } from "react";
-import React, { memo } from "react";
-import { StyleSheet, View as NativeView } from "react-native";
+import type { VFC } from 'react';
+import React, { memo } from 'react';
+import { StyleSheet, View as NativeView } from 'react-native';
 
-import { useThemeColor } from "~/hooks/useThemeColor";
-import type { ViewStyleProps } from "~/types/style";
+import { useThemeColor } from '~/hooks/useThemeColor';
+import type { ViewStyleProps } from '~/types/style';
 
-export type ViewProps = NativeView["props"] & ViewStyleProps;
+export type ViewProps = NativeView['props'] & ViewStyleProps;
 
 export const View: VFC<ViewProps> = memo(
   ({
@@ -14,7 +14,7 @@ export const View: VFC<ViewProps> = memo(
     lightBg: light,
     darkBg: dark,
     // custome theme
-    bgTheme = "bg1",
+    bgTheme = 'bg1',
     // ViewProps
     style,
     bgStyle,
@@ -30,6 +30,6 @@ export const View: VFC<ViewProps> = memo(
 
 const defaultStyle = StyleSheet.create({
   bg: {
-    width: "100%",
+    width: '100%',
   },
 });
