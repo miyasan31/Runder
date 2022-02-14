@@ -5,8 +5,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import { TabBarIcon } from '~/components/ui/TabBarIcon';
-import { useColorScheme } from '~/hooks/useColorScheme';
-import { theme } from '~/styles';
+import { useThemeColor } from '~/hooks/useThemeColor';
 import type { MainBottomTabParamList } from '~/types';
 
 import { ContactNavigator } from './contact';
@@ -18,15 +17,16 @@ import { TounamentNavigator } from './tournament';
 const BottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 
 export const BottomTabNavigator: VFC = () => {
-  const colorScheme = useColorScheme();
+  const primary = useThemeColor({}, 'primary');
+  const backgroundColor = useThemeColor({}, 'bg3');
 
   return (
     <BottomTab.Navigator
       initialRouteName="Tounament"
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: theme[colorScheme].primary,
-        tabBarStyle: { position: 'absolute', backgroundColor: theme[colorScheme].bg3 },
+        tabBarActiveTintColor: primary,
+        tabBarStyle: { position: 'absolute', backgroundColor },
         tabBarBackground: () => <BlurView intensity={10} style={StyleSheet.absoluteFill} />,
       }}
     >
