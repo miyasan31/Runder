@@ -12,7 +12,7 @@ import { ContactNavigator } from './contact';
 import { ProfileNavigator } from './profile';
 import { RankingNavigator } from './ranking';
 import { ResultNavigator } from './result';
-import { TounamentNavigator } from './tournament';
+import { TournamentNavigator } from './tournament';
 
 const BottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 
@@ -23,7 +23,7 @@ export const BottomTabNavigator: VFC = () => {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="Tounament"
+      initialRouteName="Tournament"
       screenOptions={{
         headerShown: false,
         tabBarInactiveTintColor: icon,
@@ -53,8 +53,8 @@ export const BottomTabNavigator: VFC = () => {
         })}
       />
       <BottomTab.Screen
-        name="Tounament"
-        component={TounamentNavigator}
+        name="Tournament"
+        component={TournamentNavigator}
         options={() => ({
           title: '大会',
           tabBarIcon: ({ color }) => <TabBarIcon name="star" color={color} />,

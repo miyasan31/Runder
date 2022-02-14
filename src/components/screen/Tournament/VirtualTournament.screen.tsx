@@ -3,14 +3,14 @@ import React from 'react';
 import { LayoutErrorBoundary } from '~/components/functional/Error';
 import { Layout } from '~/components/ui/Layout';
 
-import { ChallengeTounament } from './ChallengeTounament';
-import type { TounamentScreenProps } from './ScreenProps';
+import type { TournamentScreenProps } from './ScreenProps';
+import { VirtualTournament } from './VirtualTournament';
 
-export const ChallengeTounamentScreen: TounamentScreenProps = (props) => {
+export const VirtualTournamentScreen: TournamentScreenProps = (props) => {
   return (
     <LayoutErrorBoundary>
       <Layout>
-        <ChallengeTounament {...props} />
+        <VirtualTournament {...props} />
       </Layout>
     </LayoutErrorBoundary>
   );

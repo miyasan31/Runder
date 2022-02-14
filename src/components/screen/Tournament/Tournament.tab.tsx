@@ -5,16 +5,16 @@ import { TabViewProvider } from '~/components/functional/TabViewProvider';
 import { TabBar } from '~/components/ui/TabBar';
 import { useTabView } from '~/hooks/useTabView';
 
-import { ChallengeTounamentScreen } from './ChallengeTounament.screen';
-import type { TounamentScreenProps } from './ScreenProps';
-import { VirtualTounamentScreen } from './VirtualTounament.screen';
+import { ChallengeTournamentScreen } from './ChallengeTournament.screen';
+import type { TournamentScreenProps } from './ScreenProps';
+import { VirtualTournamentScreen } from './VirtualTournament.screen';
 
 const routes = [
   { key: 'virtual', title: 'バーチャル大会一覧' },
   { key: 'challenge', title: 'チャレンジ中の大会' },
 ];
 
-export const Tounament: TounamentScreenProps = (props) => {
+export const Tournament: TournamentScreenProps = (props) => {
   const { layout, index, onIndexChange } = useTabView();
 
   return (
@@ -25,8 +25,8 @@ export const Tounament: TounamentScreenProps = (props) => {
         onIndexChange={onIndexChange}
         initialLayout={{ width: layout.width }}
         renderScene={SceneMap({
-          virtual: () => <VirtualTounamentScreen {...props} />,
-          challenge: () => <ChallengeTounamentScreen {...props} />,
+          virtual: () => <VirtualTournamentScreen {...props} />,
+          challenge: () => <ChallengeTournamentScreen {...props} />,
         })}
       />
     </TabViewProvider>

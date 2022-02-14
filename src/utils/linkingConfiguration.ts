@@ -1,108 +1,108 @@
-import type { LinkingOptions } from "@react-navigation/native";
-import * as Linking from "expo-linking";
+import type { LinkingOptions } from '@react-navigation/native';
+import * as Linking from 'expo-linking';
 
-import type { RootStackParamList } from "~/types";
+import type { RootStackParamList } from '~/types';
 
 export const linkingConfiguration: LinkingOptions<RootStackParamList> = {
-  prefixes: [Linking.makeUrl("/")],
+  prefixes: [Linking.makeUrl('/')],
   config: {
     screens: {
       Auth: {
-        path: "auth",
+        path: 'auth',
         screens: {
           SigninScreen: {
-            path: "signin",
+            path: 'signin',
           },
         },
       },
       Main: {
-        path: "main",
+        path: 'main',
         screens: {
           Contact: {
-            path: "contact",
+            path: 'contact',
             screens: {
               ContactScreen: {
-                path: "contact",
+                path: 'contact',
               },
               Modal: {
-                path: "modal",
+                path: 'modal',
               },
             },
           },
           Ranking: {
-            path: "ranking",
+            path: 'ranking',
             screens: {
               RankingScreen: {
-                path: "ranking",
+                path: 'ranking',
               },
               Modal: {
-                path: "modal",
+                path: 'modal',
               },
             },
           },
-          Tounament: {
-            path: "tounament",
+          Tournament: {
+            path: 'tournament',
             screens: {
-              TounamentScreen: {
-                path: "tounament",
+              TournamentScreen: {
+                path: 'tournament',
               },
               Modal: {
-                path: "modal",
+                path: 'modal',
               },
             },
           },
           Result: {
-            path: "result",
+            path: 'result',
             screens: {
               ResultScreen: {
-                path: "result",
+                path: 'result',
               },
               Modal: {
-                path: "modal",
+                path: 'modal',
               },
             },
           },
           Profile: {
-            path: "profile",
+            path: 'profile',
             screens: {
               ProfileScreen: {
-                path: "profile",
+                path: 'profile',
               },
               Modal: {
-                path: "modal",
+                path: 'modal',
               },
             },
           },
         },
       },
       Development: {
-        path: "development",
+        path: 'development',
         screens: {
           DevList: {
-            path: "devlist",
+            path: 'devlist',
             screens: {
               RunningHistoryScreen: {
-                path: "runninghistory",
+                path: 'runninghistory',
               },
               RunningDetailScreen: {
-                path: "runningdetail/:id",
+                path: 'runningdetail/:id',
               },
             },
           },
           DevRunning: {
-            path: "devrunning",
+            path: 'devrunning',
             screens: {
               RunningScreen: {
-                path: "runningscreen",
+                path: 'runningscreen',
               },
             },
           },
         },
       },
       Modal: {
-        path: "modal",
+        path: 'modal',
       },
-      NotFoundScreen: "*",
+      NotFoundScreen: '*',
     },
   },
 };

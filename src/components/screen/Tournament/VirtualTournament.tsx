@@ -11,9 +11,9 @@ import { View } from '~/components/ui/View';
 import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/useSupabase';
 import type { User } from '~/types/fetcher';
 
-import type { TounamentScreenProps } from './ScreenProps';
+import type { TournamentScreenProps } from './ScreenProps';
 
-export const VirtualTounament: TounamentScreenProps = () => {
+export const VirtualTournament: TournamentScreenProps = () => {
   const filter = useSupabaseFilter((query) => query.limit(10), []);
   const { loading, error, data } = useSupabaseSelect<User>('user', {
     options: {

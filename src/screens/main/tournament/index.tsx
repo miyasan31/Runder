@@ -2,26 +2,30 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { VFC } from 'react';
 import React from 'react';
 
-import type { TounamentStackParamList } from '~/types';
+import type { TournamentStackParamList } from '~/types';
 
 import { ModalScreen } from './hoge.modal';
-import { TounamentScreen } from './tounament.screen';
+import { TournamentScreen } from './tournament.screen';
 
-const Tounament = createNativeStackNavigator<TounamentStackParamList>();
+const Tournament = createNativeStackNavigator<TournamentStackParamList>();
 
-export const TounamentNavigator: VFC = () => {
+export const TournamentNavigator: VFC = () => {
   return (
-    <Tounament.Navigator
-      initialRouteName="TounamentScreen"
+    <Tournament.Navigator
+      initialRouteName="TournamentScreen"
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Tounament.Screen name="TounamentScreen" component={TounamentScreen} options={() => ({})} />
+      <Tournament.Screen
+        name="TournamentScreen"
+        component={TournamentScreen}
+        options={() => ({})}
+      />
 
-      <Tounament.Group screenOptions={{ presentation: 'modal' }}>
-        <Tounament.Screen name="Modal" component={ModalScreen} options={{ title: 'Oops!' }} />
-      </Tounament.Group>
-    </Tounament.Navigator>
+      <Tournament.Group screenOptions={{ presentation: 'modal' }}>
+        <Tournament.Screen name="Modal" component={ModalScreen} options={{ title: 'Oops!' }} />
+      </Tournament.Group>
+    </Tournament.Navigator>
   );
 };

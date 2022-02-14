@@ -1,6 +1,6 @@
-import type { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
-import type { CompositeScreenProps, NavigatorScreenParams } from "@react-navigation/native";
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import type { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 declare global {
   namespace ReactNavigation {
@@ -71,7 +71,7 @@ export type AuthScreenProps<T extends keyof AuthStackParamList> = CompositeScree
 export type MainBottomTabParamList = {
   Contact: NavigatorScreenParams<ContactStackParamList> | undefined;
   Ranking: NavigatorScreenParams<RankingStackParamList> | undefined;
-  Tounament: NavigatorScreenParams<TounamentStackParamList> | undefined;
+  Tournament: NavigatorScreenParams<TournamentStackParamList> | undefined;
   Result: NavigatorScreenParams<ResultStackParamList> | undefined;
   Profile: NavigatorScreenParams<ProfileStackParamList> | undefined;
 };
@@ -100,13 +100,13 @@ export type RankingScreenProps<T extends keyof RankingStackParamList> = Composit
   NativeStackScreenProps<RootStackParamList>
 >;
 
-/* tounament */
-export type TounamentStackParamList = {
-  TounamentScreen: undefined;
+/* tournament */
+export type TournamentStackParamList = {
+  TournamentScreen: undefined;
   Modal: undefined;
 };
-export type TounamentScreenProps<T extends keyof TounamentStackParamList> = CompositeScreenProps<
-  BottomTabScreenProps<TounamentStackParamList, T>,
+export type TournamentScreenProps<T extends keyof TournamentStackParamList> = CompositeScreenProps<
+  BottomTabScreenProps<TournamentStackParamList, T>,
   NativeStackScreenProps<RootStackParamList>
 >;
 
