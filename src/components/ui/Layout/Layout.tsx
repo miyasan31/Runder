@@ -41,8 +41,6 @@ const defaultStyle = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
 
-    paddingTop: '3%',
-    paddingHorizontal: '3%',
     marginTop: StatusBar.currentHeight || 0,
   },
 });
