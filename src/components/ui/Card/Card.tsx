@@ -1,11 +1,11 @@
-import type { ReactNode, VFC } from "react";
-import React, { memo } from "react";
-import { StyleSheet } from "react-native";
-import { Bounceable } from "rn-bounceable";
+import type { ReactNode, VFC } from 'react';
+import React, { memo } from 'react';
+import { StyleSheet } from 'react-native';
+import { Bounceable } from 'rn-bounceable';
 
-import { TouchableOpacity, View } from "~/components/ui/View";
-import { useThemeColor } from "~/hooks/useThemeColor";
-import type { StyleProps } from "~/types/style";
+import { TouchableOpacity, View } from '~/components/ui/View';
+import { useThemeColor } from '~/hooks/useThemeColor';
+import type { StyleProps } from '~/types/style';
 
 export type CardProps = StyleProps & {
   children: ReactNode;
@@ -21,7 +21,7 @@ export const Card: VFC<CardProps> = memo(
     lightBg,
     darkBg,
     // custome theme
-    bgTheme = "bg1",
+    bgTheme = 'bg1',
     // ViewProps
     isBorder,
     outlineStyle,
@@ -31,7 +31,7 @@ export const Card: VFC<CardProps> = memo(
     children,
     onPress,
   }) => {
-    const borderColor = useThemeColor({}, isBorder ? "border" : bgTheme);
+    const borderColor = useThemeColor({}, isBorder ? 'border' : bgTheme);
 
     return (
       <View bgStyle={[defaultStyle.outline, outlineStyle]}>
@@ -51,12 +51,12 @@ export const Card: VFC<CardProps> = memo(
 
 const defaultStyle = StyleSheet.create({
   outline: {
-    width: "100%",
+    width: '100%',
   },
   bg: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: 10,
     borderRadius: 10,
   },
