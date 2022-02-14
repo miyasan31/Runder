@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from 'react';
-import { useWindowDimensions } from 'react-native';
+import React from 'react';
 import { SceneMap, TabView } from 'react-native-tab-view';
 
 import { TabViewProvider } from '~/components/functional/TabViewProvider';
 import { TabBar } from '~/components/ui/TabBar';
+import { useTabView } from '~/hooks/useTabView';
 
 import { ChallengeTounamentScreen } from './ChallengeTounament.screen';
 import type { TounamentScreenProps } from './ScreenProps';
@@ -15,9 +15,7 @@ const routes = [
 ];
 
 export const Tounament: TounamentScreenProps = (props) => {
-  const layout = useWindowDimensions();
-  const [index, setIndex] = useState(0);
-  const onIndexChange = useCallback((i: number) => setIndex(i), []);
+  const { layout, index, onIndexChange } = useTabView();
 
   return (
     <TabViewProvider>

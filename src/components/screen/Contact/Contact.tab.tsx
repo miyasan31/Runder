@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from 'react';
-import { useWindowDimensions } from 'react-native';
+import React from 'react';
 import { SceneMap, TabView } from 'react-native-tab-view';
 
 import { TabViewProvider } from '~/components/functional/TabViewProvider';
 import { TabBar } from '~/components/ui/TabBar';
+import { useTabView } from '~/hooks/useTabView';
 
 import { DevOpsScreen } from './DevOps.screen';
 import { NewsScreen } from './News.screen';
@@ -15,9 +15,7 @@ const routes = [
 ];
 
 export const Contact: ContactScreenProps = (props) => {
-  const layout = useWindowDimensions();
-  const [index, setIndex] = useState(0);
-  const onIndexChange = useCallback((i: number) => setIndex(i), []);
+  const { layout, index, onIndexChange } = useTabView();
 
   return (
     <TabViewProvider>
