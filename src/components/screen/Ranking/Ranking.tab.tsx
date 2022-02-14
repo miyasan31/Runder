@@ -10,8 +10,8 @@ import type { RankingScreenProps } from './ScreenProps';
 import { TotalRankingScreen } from './TotalRanking.screen';
 
 const routes = [
-  { key: 'virtual', title: 'バーチャル大会一覧' },
-  { key: 'challenge', title: 'チャレンジ中の大会' },
+  { key: 'total', title: '総合ポイントランキング' },
+  { key: 'monthly', title: '月間ポイントランキング' },
 ];
 
 export const Ranking: RankingScreenProps = (props) => {
@@ -27,8 +27,8 @@ export const Ranking: RankingScreenProps = (props) => {
         onIndexChange={onIndexChange}
         initialLayout={{ width: layout.width }}
         renderScene={SceneMap({
-          virtual: () => <MonthlyRankingScreen {...props} />,
-          challenge: () => <TotalRankingScreen {...props} />,
+          total: () => <TotalRankingScreen {...props} />,
+          monthly: () => <MonthlyRankingScreen {...props} />,
         })}
       />
     </TabViewProvider>
