@@ -34,7 +34,7 @@ export const BottomTabNavigator: VFC = () => {
         name="Contact"
         component={ContactNavigator}
         options={{
-          tabBarLabel: 'Contact',
+          tabBarLabel: 'メール',
           tabBarIcon: ({ color }) => <TabBarIcon name="mail" color={color} />,
         }}
       />
@@ -42,7 +42,7 @@ export const BottomTabNavigator: VFC = () => {
         name="Ranking"
         component={RankingNavigator}
         options={() => ({
-          title: 'Ranking',
+          title: 'ランキング',
           tabBarIcon: ({ color }) => <TabBarIcon name="award" color={color} />,
         })}
       />
@@ -50,7 +50,7 @@ export const BottomTabNavigator: VFC = () => {
         name="Tounament"
         component={TounamentNavigator}
         options={() => ({
-          title: 'Tounament',
+          title: '大会',
           tabBarIcon: ({ color }) => <TabBarIcon name="star" color={color} />,
         })}
       />
@@ -58,7 +58,7 @@ export const BottomTabNavigator: VFC = () => {
         name="Result"
         component={ResultNavigator}
         options={() => ({
-          title: 'Result',
+          title: '履歴',
           tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
         })}
       />
@@ -66,7 +66,7 @@ export const BottomTabNavigator: VFC = () => {
         name="Profile"
         component={ProfileNavigator}
         options={() => ({
-          title: 'Profile',
+          title: 'プロフィール',
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         })}
       />
