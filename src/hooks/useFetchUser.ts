@@ -1,8 +1,8 @@
-import type { PostgrestError } from "@supabase/supabase-js";
-import { useEffect, useState } from "react";
+import type { PostgrestError } from '@supabase/supabase-js';
+import { useEffect, useState } from 'react';
 
-import type { User } from "~/types/fetcher";
-import { supabaseClient } from "~/utils/supabaseClient";
+import type { User } from '~/types/fetcher';
+import { supabaseClient } from '~/utils/supabaseClient';
 
 type Status<T> = {
   isLoading: boolean;
@@ -19,7 +19,7 @@ export const useFetchUser = () => {
 
   const fetch = async () => {
     try {
-      const { data, error } = await supabaseClient.from<User>("user").select("*");
+      const { data, error } = await supabaseClient.from<User>('user').select('*');
 
       if (error) {
         setStatus((prev) => {
