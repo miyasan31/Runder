@@ -1,9 +1,8 @@
-import type { VFC } from "react";
-import React from "react";
+import React from 'react';
 
-import type { Props } from "~/components/screen/Profile";
-import { Profile } from "~/components/screen/Profile";
+import type { ProfileScreenProps } from '~/components/screen/Profile';
+import { Profile } from '~/components/screen/Profile';
 
-export const ProfileScreen: VFC<Props> = (props) => {
+export const ProfileScreen: ProfileScreenProps = (props) => {
   return <Profile {...props} />;
 };
