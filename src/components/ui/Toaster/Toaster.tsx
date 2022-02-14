@@ -1,14 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/jsx-handler-names */
-/* eslint-disable react/destructuring-assignment */
-import type { VFC } from "react";
-import React, { useEffect, useRef } from "react";
-import { useToaster } from "react-hot-toast/src/core/use-toaster";
-import { Animated } from "react-native";
 
-import { Text } from "~/components/ui/Text";
-import { View } from "~/components/ui/View";
+import type { VFC } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useToaster } from 'react-hot-toast/src/core/use-toaster';
+import { Animated } from 'react-native';
+
+import { Text } from '~/components/ui/Text';
+import { View } from '~/components/ui/View';
 
 const ToastBar = ({ toast, updateHeight, offset, options, position, ...props }: any) => {
   const fadeAnim = useRef(new Animated.Value(0.5)).current;
@@ -33,11 +33,11 @@ const ToastBar = ({ toast, updateHeight, offset, options, position, ...props }: 
     <Animated.View
       pointerEvents="none"
       style={{
-        position: "absolute",
+        position: 'absolute',
         left: 0,
         right: 0,
         zIndex: toast.visible ? 9999 : undefined,
-        alignItems: "center",
+        alignItems: 'center',
         opacity: fadeAnim,
         transform: [{ translateY: posAnim }],
       }}
@@ -47,14 +47,14 @@ const ToastBar = ({ toast, updateHeight, offset, options, position, ...props }: 
         onLayout={(event) => updateHeight(toast.id, event.nativeEvent.layout.height)}
         style={{
           margin: 50,
-          backgroundColor: "#ffffff",
+          backgroundColor: '#ffffff',
           borderRadius: 9999,
-          flexDirection: "row",
-          alignItems: "center",
+          flexDirection: 'row',
+          alignItems: 'center',
           paddingVertical: 10,
           paddingHorizontal: 16,
-          width: "auto",
-          shadowColor: "#000",
+          width: 'auto',
+          shadowColor: '#000',
           shadowOffset: {
             width: 0,
             height: 2,
@@ -67,7 +67,7 @@ const ToastBar = ({ toast, updateHeight, offset, options, position, ...props }: 
         <Text
           style={{
             fontSize: 16,
-            width: "auto",
+            width: 'auto',
           }}
         >
           {toast.icon}
@@ -76,9 +76,9 @@ const ToastBar = ({ toast, updateHeight, offset, options, position, ...props }: 
           style={{
             fontSize: 16,
             paddingLeft: 5,
-            color: "#323232",
-            textAlign: "center",
-            width: "auto",
+            color: '#323232',
+            textAlign: 'center',
+            width: 'auto',
             // fontWeight: "bold",
           }}
         >
@@ -89,17 +89,17 @@ const ToastBar = ({ toast, updateHeight, offset, options, position, ...props }: 
   );
 };
 
-export const Toaster: VFC<any> = ({ position = "top-center", containerStyle, toastOptions }) => {
+export const Toaster: VFC<any> = ({ position = 'top-center', containerStyle, toastOptions }) => {
   const { toasts, handlers } = useToaster();
   return (
     <View
       style={{
-        position: "absolute",
+        position: 'absolute',
         top: 0,
         left: 0,
         right: 0,
         zIndex: 9999,
-        width: "100%",
+        width: '100%',
         ...containerStyle,
       }}
     >
