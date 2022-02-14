@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import { StyleSheet } from 'react-native';
 import type { NavigationState, SceneRendererProps } from 'react-native-tab-view';
 import { TabBar as DefaultTabBar } from 'react-native-tab-view';
@@ -13,16 +14,21 @@ export const TabBar = (
     }>;
   },
 ) => {
+  const border = useThemeColor({}, 'border');
   const primary = useThemeColor({}, 'primary');
   const backgroundColor = useThemeColor({}, 'bg1');
 
   return (
     <DefaultTabBar
       {...props}
-      style={{ backgroundColor }}
-      indicatorStyle={{ backgroundColor: primary }}
+      style={{
+        backgroundColor,
+        borderBottomWidth: 1,
+        borderBottomColor: border,
+      }}
+      indicatorStyle={{ backgroundColor: primary, marginBottom: -1 }}
       renderLabel={({ route, focused }) => (
-        <Text style={style.text} textTheme={focused ? 'primary' : 'text3'}>
+        <Text style={style.text} textTheme={focused ? 'primary' : 'text2'}>
           {route.title}
         </Text>
       )}
