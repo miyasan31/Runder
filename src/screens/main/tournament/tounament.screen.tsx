@@ -1,9 +1,8 @@
-import type { VFC } from "react";
-import React from "react";
+import React from 'react';
 
-import type { Props } from "~/components/screen/Tounament";
-import { Tounament } from "~/components/screen/Tounament";
+import type { TounamentScreenProps } from '~/components/screen/Tounament';
+import { Tounament } from '~/components/screen/Tounament';
 
-export const TounamentScreen: VFC<Props> = (props) => {
+export const TounamentScreen: TounamentScreenProps = (props) => {
   return <Tounament {...props} />;
 };
