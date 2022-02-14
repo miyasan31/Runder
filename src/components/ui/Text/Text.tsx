@@ -1,11 +1,11 @@
-import type { VFC } from "react";
-import React, { memo } from "react";
-import { StyleSheet, Text as NativeText } from "react-native";
+import type { VFC } from 'react';
+import React, { memo } from 'react';
+import { StyleSheet, Text as NativeText } from 'react-native';
 
-import { useThemeColor } from "~/hooks/useThemeColor";
-import type { TextStyleProps } from "~/types/style";
+import { useThemeColor } from '~/hooks/useThemeColor';
+import type { TextStyleProps } from '~/types/style';
 
-export type TextProps = NativeText["props"] & TextStyleProps;
+export type TextProps = NativeText['props'] & TextStyleProps;
 
 export const Text: VFC<TextProps> = memo(
   ({
@@ -14,7 +14,7 @@ export const Text: VFC<TextProps> = memo(
     lightText: light,
     darkText: dark,
     // custome theme
-    textTheme = "text1",
+    textTheme = 'text1',
     // TextProps
     style,
     textStyle,
@@ -28,6 +28,6 @@ export const Text: VFC<TextProps> = memo(
 
 const defaultStyle = StyleSheet.create({
   text: {
-    width: "100%",
+    width: '100%',
   },
 });
