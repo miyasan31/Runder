@@ -17,6 +17,7 @@ import { TounamentNavigator } from './tournament';
 const BottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 
 export const BottomTabNavigator: VFC = () => {
+  const icon = useThemeColor({}, 'icon');
   const primary = useThemeColor({}, 'primary');
   const backgroundColor = useThemeColor({}, 'bg3');
 
@@ -25,6 +26,7 @@ export const BottomTabNavigator: VFC = () => {
       initialRouteName="Tounament"
       screenOptions={{
         headerShown: false,
+        tabBarInactiveTintColor: icon,
         tabBarActiveTintColor: primary,
         tabBarStyle: { position: 'absolute', backgroundColor },
         tabBarBackground: () => <BlurView intensity={10} style={StyleSheet.absoluteFill} />,
