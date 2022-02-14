@@ -37,8 +37,7 @@ export const Card: VFC<CardProps> = memo(
       <View bgStyle={[defaultStyle.outline, outlineStyle]}>
         <Bounceable onPress={onPress}>
           <TouchableOpacity
-            // eslint-disable-next-line react-native/no-inline-styles
-            style={[defaultStyle.bg, bgStyle, { borderWidth: 1, borderColor }]}
+            style={[defaultStyle.bg, bgStyle, { borderWidth: isBorder && 1, borderColor }]}
             {...{ lightBg, darkBg, bgTheme, activeOpacity }}
           >
             {children}
@@ -51,13 +50,15 @@ export const Card: VFC<CardProps> = memo(
 
 const defaultStyle = StyleSheet.create({
   outline: {
-    width: '100%',
+    paddingHorizontal: '5%',
+    marginBottom: '5%',
   },
   bg: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 10,
-    borderRadius: 10,
+    borderRadius: 20,
+
+    shadowOffset: { width: 0, height: 0 },
+    shadowColor: '#BBBBBB',
+    shadowOpacity: 1,
+    elevation: 1,
   },
 });
