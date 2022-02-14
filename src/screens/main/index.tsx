@@ -28,6 +28,10 @@ export const BottomTabNavigator: VFC = () => {
         headerShown: false,
         tabBarInactiveTintColor: icon,
         tabBarActiveTintColor: primary,
+        tabBarLabelStyle: {
+          fontSize: 12,
+          marginTop: 4,
+        },
         tabBarStyle: { position: 'absolute', backgroundColor },
         tabBarBackground: () => <BlurView intensity={10} style={StyleSheet.absoluteFill} />,
       }}
