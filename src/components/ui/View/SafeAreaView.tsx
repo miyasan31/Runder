@@ -1,11 +1,13 @@
-import type { VFC } from "react";
-import React, { memo } from "react";
-import { SafeAreaView as NativeSafeAreaView, StyleSheet } from "react-native";
+import type { VFC } from 'react';
+import React, { memo } from 'react';
+import { StyleSheet } from 'react-native';
+import type { NativeSafeAreaViewProps } from 'react-native-safe-area-context';
+import { SafeAreaView as NativeSafeAreaView } from 'react-native-safe-area-context';
 
-import { useThemeColor } from "~/hooks/useThemeColor";
-import type { ViewStyleProps } from "~/types/style";
+import { useThemeColor } from '~/hooks/useThemeColor';
+import type { ViewStyleProps } from '~/types/style';
 
-export type SafeAreaViewProps = NativeSafeAreaView["props"] & ViewStyleProps;
+export type SafeAreaViewProps = NativeSafeAreaViewProps & ViewStyleProps;
 
 export const SafeAreaView: VFC<SafeAreaViewProps> = memo(
   ({
@@ -13,7 +15,7 @@ export const SafeAreaView: VFC<SafeAreaViewProps> = memo(
     lightBg: light,
     darkBg: dark,
     // custome theme
-    bgTheme = "bg1",
+    bgTheme = 'bg1',
     // ViewProps
     style,
     bgStyle,
@@ -33,7 +35,7 @@ export const SafeAreaView: VFC<SafeAreaViewProps> = memo(
 const defaultStyle = StyleSheet.create({
   bg: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
