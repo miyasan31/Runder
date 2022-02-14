@@ -1,22 +1,19 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import type { VFC } from "react";
-import React from "react";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import type { VFC } from 'react';
+import React from 'react';
 
-import { useThemeColor } from "~/hooks/useThemeColor";
-import type { ResultStackParamList } from "~/types";
+import type { ResultStackParamList } from '~/types';
 
-import { ResultScreen } from "./result.screen";
+import { ResultScreen } from './result.screen';
 
 const Result = createNativeStackNavigator<ResultStackParamList>();
 
 export const ResultNavigator: VFC = () => {
-  const backgroundColor = useThemeColor({}, "bg1");
-
   return (
     <Result.Navigator
       initialRouteName="ResultScreen"
       screenOptions={{
-        headerStyle: { backgroundColor: backgroundColor },
+        headerShown: false,
       }}
     >
       <Result.Screen name="ResultScreen" component={ResultScreen} options={() => ({})} />
