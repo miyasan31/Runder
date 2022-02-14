@@ -1,2 +1,2 @@
-export { ActivityIndicator } from "./ActivityIndicator";
-export { Progress } from "./Progress";
+export { ActivityIndicator } from './ActivityIndicator';
+export { Progress } from './Progress';

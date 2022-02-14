@@ -1,12 +1,12 @@
-import type { VFC } from "react";
-import React from "react";
-import { ActivityIndicator as NativeActivityIndicator, StyleSheet } from "react-native";
+import type { VFC } from 'react';
+import React from 'react';
+import { ActivityIndicator as NativeActivityIndicator, StyleSheet } from 'react-native';
 
-import { View } from "~/components/ui/View";
-import { useThemeColor } from "~/hooks/useThemeColor";
+import { View } from '~/components/ui/View';
+import { useThemeColor } from '~/hooks/useThemeColor';
 
 export const ActivityIndicator: VFC = () => {
-  const primary = useThemeColor({}, "primary");
+  const primary = useThemeColor({}, 'primary');
 
   return (
     <View style={defaultStyle.center}>
@@ -18,7 +18,7 @@ export const ActivityIndicator: VFC = () => {
 const defaultStyle = StyleSheet.create({
   center: {
     flex: 1,
-    width: "100%",
-    alignItems: "center",
+    width: '100%',
+    alignItems: 'center',
   },
 });
