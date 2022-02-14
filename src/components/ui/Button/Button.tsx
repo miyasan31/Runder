@@ -1,12 +1,12 @@
-import type { ReactElement, VFC } from "react";
-import React, { memo } from "react";
-import { StyleSheet } from "react-native";
-import { Bounceable } from "rn-bounceable";
+import type { ReactElement, VFC } from 'react';
+import React, { memo } from 'react';
+import { StyleSheet } from 'react-native';
+import { Bounceable } from 'rn-bounceable';
 
-import { Text } from "~/components/ui/Text";
-import { TouchableOpacity, View } from "~/components/ui/View";
-import { useThemeColor } from "~/hooks/useThemeColor";
-import type { StyleProps } from "~/types/style";
+import { Text } from '~/components/ui/Text';
+import { TouchableOpacity, View } from '~/components/ui/View';
+import { useThemeColor } from '~/hooks/useThemeColor';
+import type { StyleProps } from '~/types/style';
 
 export type ButtonProps = StyleProps & {
   label: string;
@@ -26,8 +26,8 @@ export const Button: VFC<ButtonProps> = memo(
     lightText,
     darkText,
     // custome theme
-    bgTheme = "primary",
-    textTheme = "text0",
+    bgTheme = 'primary',
+    textTheme = 'text0',
     // ViewProps
     isBorder,
     outlineStyle,
@@ -43,7 +43,7 @@ export const Button: VFC<ButtonProps> = memo(
     // onPress
     onPress,
   }) => {
-    const borderColor = useThemeColor({}, isBorder ? "border" : bgTheme);
+    const borderColor = useThemeColor({}, isBorder ? 'border' : bgTheme);
 
     return (
       <View bgTheme="bg0" style={[defaultStyle.outline, outlineStyle]}>
@@ -67,20 +67,20 @@ export const Button: VFC<ButtonProps> = memo(
 
 const defaultStyle = StyleSheet.create({
   outline: {
-    width: "100%",
+    width: '100%',
     borderRadius: 999,
   },
   bg: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
 
     paddingVertical: 18,
     borderRadius: 999,
   },
   text: {
     fontSize: 18,
-    fontWeight: "600",
-    textAlign: "center",
+    fontWeight: '600',
+    textAlign: 'center',
   },
 });
