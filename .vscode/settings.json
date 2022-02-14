@@ -12,7 +12,7 @@
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.tsdk": "node_modules/typescript/lib",
   "prettier.printWidth": 120,
-  "explorer.sortOrderLexicographicOptions": "unicode",
+  "explorer.sortOrderLexicographicOptions": "lower",
   "explorer.sortOrder": "type",
   "path-autocomplete.pathMappings": {
     "~": "${folder}/src"
