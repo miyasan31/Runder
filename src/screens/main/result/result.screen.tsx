@@ -1,9 +1,8 @@
-import type { VFC } from "react";
-import React from "react";
+import React from 'react';
 
-import type { Props } from "~/components/screen/Result";
-import { Result } from "~/components/screen/Result";
+import type { ResultScreenProps } from '~/components/screen/Result';
+import { Result } from '~/components/screen/Result';
 
-export const ResultScreen: VFC<Props> = (props) => {
+export const ResultScreen: ResultScreenProps = (props) => {
   return <Result {...props} />;
 };
