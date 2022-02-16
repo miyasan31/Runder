@@ -25,6 +25,7 @@ export const TabBar = (
         backgroundColor,
         borderBottomWidth: 1,
         borderBottomColor: border,
+        maxHeight: 45,
       }}
       indicatorStyle={{ backgroundColor: primary, marginBottom: -1 }}
       renderLabel={({ route, focused }) => (
