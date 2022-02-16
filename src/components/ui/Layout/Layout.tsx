@@ -1,7 +1,7 @@
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import type { ReactNode, VFC } from 'react';
 import React from 'react';
-import { StatusBar, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { KeyboardAvoiding } from '~/components/functional/KeyboardAvoiding';
 import { View } from '~/components/ui/View';
@@ -16,7 +16,7 @@ export const Layout: VFC<LayoutProps> = ({
   lightBg,
   darkBg,
   // custome theme
-  bgTheme = 'bg1',
+  bgTheme = 'bg2',
   // ViewProps
   bgStyle,
   children,
@@ -40,7 +40,5 @@ const defaultStyle = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-
-    marginTop: StatusBar.currentHeight || 0,
   },
 });

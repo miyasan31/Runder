@@ -26,7 +26,7 @@ export const Card: VFC<CardProps> = memo(
     isBorder,
     outlineStyle,
     // TouchableOpacityProps
-    activeOpacity = 0.8,
+    activeOpacity = 0.9,
     bgStyle,
     children,
     onPress,
@@ -34,8 +34,8 @@ export const Card: VFC<CardProps> = memo(
     const borderColor = useThemeColor({}, isBorder ? 'border' : bgTheme);
 
     return (
-      <View bgStyle={[defaultStyle.outline, outlineStyle]}>
-        <Bounceable onPress={onPress}>
+      <View bgStyle={[defaultStyle.outline, outlineStyle]} bgTheme="bg2">
+        <Bounceable onPress={onPress} activeScale={0.97}>
           <TouchableOpacity
             style={[defaultStyle.bg, bgStyle, { borderWidth: isBorder && 1, borderColor }]}
             {...{ lightBg, darkBg, bgTheme, activeOpacity }}
