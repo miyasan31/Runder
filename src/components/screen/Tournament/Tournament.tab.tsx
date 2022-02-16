@@ -1,3 +1,4 @@
+import type { VFC } from 'react';
 import React from 'react';
 import { SceneMap, TabView } from 'react-native-tab-view';
 
@@ -14,7 +15,7 @@ const routes = [
   { key: 'challenge', title: 'チャレンジ中の大会' },
 ];
 
-export const Tournament: TournamentScreenProps = (props) => {
+export const Tournament: VFC<TournamentScreenProps> = (props) => {
   const { layout, index, onIndexChange } = useTabView();
 
   return (

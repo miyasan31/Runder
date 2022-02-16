@@ -1,8 +1,9 @@
+import type { VFC } from 'react';
 import React from 'react';
 
 import type { TournamentScreenProps } from '~/components/screen/Tournament';
-import { Tournament } from '~/components/screen/Tournament';
+import { Tournament as Screen } from '~/components/screen/Tournament';
 
-export const TournamentScreen: TournamentScreenProps = (props) => {
-  return <Tournament {...props} />;
+export const TournamentScreen: VFC<TournamentScreenProps> = (props) => {
+  return <Screen {...props} />;
 };

@@ -1,5 +1,6 @@
 import 'react-native-url-polyfill/auto';
 
+import type { VFC } from 'react';
 import React from 'react';
 import { FlatList } from 'react-native';
 
@@ -41,7 +42,7 @@ const data = [
 
 type Tournament = typeof data[0];
 
-export const VirtualTournament: TournamentScreenProps = () => {
+export const VirtualTournament: VFC<TournamentScreenProps> = (props) => {
   return (
     <FlatList
       data={data}
@@ -49,7 +50,7 @@ export const VirtualTournament: TournamentScreenProps = () => {
       contentContainerStyle={flatListStyle.container}
       keyExtractor={(item, _) => String(item.id)}
       renderItem={({ item }: { item: Tournament }) => {
-        return <TournamentCard {...item} />;
+        return <TournamentCard {...item} {...props} />;
       }}
     />
   );
