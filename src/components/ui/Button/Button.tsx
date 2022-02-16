@@ -32,7 +32,7 @@ export const Button: VFC<ButtonProps> = memo(
     isBorder,
     outlineStyle,
     // TouchableOpacityProps
-    activeOpacity = 0.8,
+    activeOpacity = 0.9,
     bgStyle,
     // TextProps
     label,
@@ -47,7 +47,7 @@ export const Button: VFC<ButtonProps> = memo(
 
     return (
       <View bgTheme="bg0" style={[defaultStyle.outline, outlineStyle]}>
-        <Bounceable onPress={onPress}>
+        <Bounceable onPress={onPress} activeScale={0.97}>
           <TouchableOpacity
             // eslint-disable-next-line react-native/no-inline-styles
             style={[defaultStyle.bg, bgStyle, { borderWidth: 1, borderColor }]}
