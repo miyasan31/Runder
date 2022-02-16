@@ -1,8 +1,9 @@
-import { format } from 'date-fns';
 import type { VFC } from 'react';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Image, StyleSheet } from 'react-native';
 
+import type { TournamentScreenProps } from '~/components/screen/Tournament';
+import { Button } from '~/components/ui/Button';
 import { Card } from '~/components/ui/Card';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
@@ -19,17 +20,24 @@ const data = [
 
 type Tournament = typeof data[0];
 
-export const TournamentCard: VFC<Tournament> = ({ id, name, distance, created_at }) => {
-  const date = format(new Date(created_at), 'yyyy年M月d日');
-  const onNavigation = () => console.info('item.id', id);
-
-  console.info(date);
+export const TournamentCard: VFC<Tournament & TournamentScreenProps> = ({
+  id: _id,
+  name,
+  distance,
+  created_at: _created_at,
+  image: _image,
+  navigation,
+}) => {
+  const onNavigation = useCallback(() => {
+    navigation.navigate('TournamentDetailScreen');
+  }, [navigation]);
 
   return (
-    <Card onPress={onNavigation}>
-      <View style={style.view}>
-        <View style={style.imageView}>
+    <Card onPress={onNavigation} bgTheme="bg2" outlineStyle={style.cardOutline}>
+      <View style={style.view} bgTheme="bg2">
+        <View style={style.imageView} bgTheme="bg2">
           <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
+
           <View style={style.floatTextArea} bgTheme="bg0">
             <Text style={style.season} textTheme="white">
               Monthly
@@ -44,26 +52,18 @@ export const TournamentCard: VFC<Tournament> = ({ id, name, distance, created_at
               {distance}m
             </Text>
           </View>
-        </View>
 
-        <View style={style.infoView}>
-          <View style={style.row}>
-            <Text style={style.infoLabelLeft} textTheme="text2">
-              あなたのベストタイム
-            </Text>
-            <Text style={style.infoLabelRight} textTheme="text2">
-              チャレンジできる残り回数
-            </Text>
-          </View>
-
-          <View style={style.row}>
-            <Text style={style.infoResultLeft} textTheme="text1">
-              10:00.00
-            </Text>
-            <Text style={style.infoResultRight} textTheme="text1">
-              10
-            </Text>
-          </View>
+          <Button
+            label="詳細"
+            bgTheme="bg1"
+            textTheme="text1"
+            isBorder
+            activeOpacity={1}
+            // style={style.floatButtonArea}
+            outlineStyle={style.buttonOutline}
+            bgStyle={style.buttonBg}
+            textStyle={style.buttonText}
+          />
         </View>
       </View>
     </Card>
@@ -71,6 +71,9 @@ export const TournamentCard: VFC<Tournament> = ({ id, name, distance, created_at
 };
 
 const style = StyleSheet.create({
+  cardOutline: {
+    marginBottom: '8%',
+  },
   view: {
     borderRadius: 20,
   },
@@ -80,14 +83,14 @@ const style = StyleSheet.create({
     borderRadius: 20,
   },
   image: {
-    height: 180,
+    height: 450,
     width: '100%',
-    borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
+    borderRadius: 20,
   },
+  //
   floatTextArea: {
     position: 'absolute',
-    bottom: 15,
+    top: 15,
     left: 15,
   },
   season: {
@@ -103,37 +106,19 @@ const style = StyleSheet.create({
     fontSize: 30,
     fontWeight: '800',
   },
-  // tournament info
-  infoView: {
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    borderBottomRightRadius: 20,
-    borderBottomLeftRadius: 20,
+  //
+  buttonOutline: {
+    position: 'absolute',
+    bottom: 15,
+    right: 15,
+    display: 'flex',
+    justifyContent: 'flex-start',
+    width: 90,
   },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  buttonBg: {
+    paddingVertical: 12,
   },
-  infoLabelLeft: {
-    width: '50%',
-    fontSize: 12,
-    lineHeight: 18,
-  },
-  infoLabelRight: {
-    width: '50%',
-    fontSize: 12,
-    textAlign: 'right',
-    lineHeight: 18,
-  },
-  infoResultLeft: {
-    width: '50%',
-    fontSize: 30,
-    fontWeight: '800',
-  },
-  infoResultRight: {
-    width: '50%',
-    fontSize: 30,
-    fontWeight: '800',
-    textAlign: 'right',
+  buttonText: {
+    fontSize: 15,
   },
 });
