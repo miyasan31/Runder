@@ -15,8 +15,12 @@ const routes = [
   { key: 'ranking', title: 'ランキング' },
 ];
 
-export const TournamentDetailModalTab: VFC = () => {
-  const { layout, index, onIndexChange } = useTabView();
+type Props = {
+  activeTabIndex?: number;
+};
+
+export const TournamentDetailModalTab: VFC<Props> = ({ activeTabIndex }) => {
+  const { layout, index, onIndexChange } = useTabView(activeTabIndex);
 
   return (
     <TabView

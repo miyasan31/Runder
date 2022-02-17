@@ -20,19 +20,22 @@ const data = [
 ];
 
 export const TournamentDetail: VFC<TournamentDetailScreenProps> = () => {
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
+
   // TODO:これをグローバルで管理するか検討
   const [isModalVisible, setModalVisible] = useState(false);
 
   const onCloseModal = useCallback(() => {
     setModalVisible(false);
   }, []);
-  const onOpenModal = useCallback(() => {
+
+  const onOpenModal = useCallback((i: number) => {
+    setActiveTabIndex(i);
     setModalVisible(true);
   }, []);
 
   return (
     <View>
-      <TournamentDetailModal isVisible={isModalVisible} onCloseModal={onCloseModal} />
       <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
 
       <View style={style.floatTextArea}>
@@ -61,7 +64,6 @@ export const TournamentDetail: VFC<TournamentDetailScreenProps> = () => {
           isBorder
           outlineStyle={style.startButtonOutline}
           textStyle={style.startButtonText}
-          onPress={onOpenModal}
         />
         <View style={style.buttonGroup}>
           <Button
@@ -71,6 +73,7 @@ export const TournamentDetail: VFC<TournamentDetailScreenProps> = () => {
             textStyle={style.buttonText}
             bgStyle={style.buttonBg}
             outlineStyle={style.buttonOutline}
+            onPress={() => onOpenModal(0)}
           />
           <Button
             label="ポイント"
@@ -79,6 +82,7 @@ export const TournamentDetail: VFC<TournamentDetailScreenProps> = () => {
             outlineStyle={style.buttonOutline}
             bgStyle={style.buttonBg}
             textStyle={style.buttonText}
+            onPress={() => onOpenModal(1)}
           />
           <Button
             label="ランキング"
@@ -87,8 +91,15 @@ export const TournamentDetail: VFC<TournamentDetailScreenProps> = () => {
             outlineStyle={style.buttonOutline}
             bgStyle={style.buttonBg}
             textStyle={style.buttonText}
+            onPress={() => onOpenModal(2)}
           />
         </View>
+
+        <TournamentDetailModal
+          activeTabIndex={activeTabIndex}
+          isVisible={isModalVisible}
+          onCloseModal={onCloseModal}
+        />
       </View>
 
       <View />

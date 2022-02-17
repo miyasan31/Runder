@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
 import { useWindowDimensions } from 'react-native';
 
-export const useTabView = () => {
+export const useTabView = (activeTabIndex = 0) => {
   const layout = useWindowDimensions();
 
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(activeTabIndex);
   const onIndexChange = useCallback((i: number) => setIndex(i), []);
 
   return { layout, index, onIndexChange };

@@ -6,13 +6,14 @@ import { TournamentDetailModalTab } from './TournamentDetailModal.tab';
 
 type Props = {
   isVisible: boolean;
+  activeTabIndex?: number;
   onCloseModal: () => void;
 };
 
 export const TournamentDetailModal: VFC<Props> = (props) => {
   return (
     <HalfModal {...props} size={0.7}>
-      <TournamentDetailModalTab />
+      <TournamentDetailModalTab activeTabIndex={props.activeTabIndex} />
     </HalfModal>
   );
 };
