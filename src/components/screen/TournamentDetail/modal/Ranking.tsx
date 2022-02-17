@@ -12,7 +12,7 @@ const data = [
   { rank: 2, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
   { rank: 3, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
   { rank: 4, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-  { rank: 5, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
+  { rank: 100, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
 ];
 
 export const Ranking: VFC = () => {
