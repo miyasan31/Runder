@@ -36,6 +36,7 @@ export const PointTableBody: VFC<PointData> = (props) => {
 
 const style = StyleSheet.create({
   tr: {
+    alignItems: 'center',
     flexDirection: 'row',
     paddingHorizontal: '3%',
     paddingVertical: '3%',
@@ -44,14 +45,14 @@ const style = StyleSheet.create({
   tdRank: {
     flex: 1,
 
-    fontWeight: 'bold',
+    fontWeight: '600',
     fontSize: 16,
   },
   tdPoint: {
     flex: 1,
 
     textAlign: 'right',
-    fontWeight: 'bold',
+    fontWeight: '600',
     fontSize: 16,
   },
 });

@@ -27,11 +27,11 @@ const style = StyleSheet.create({
   },
   thRank: {
     flex: 1,
-    fontWeight: 'bold',
+    fontWeight: '600',
   },
   thPoint: {
     flex: 1,
     textAlign: 'right',
-    fontWeight: 'bold',
+    fontWeight: '600',
   },
 });
