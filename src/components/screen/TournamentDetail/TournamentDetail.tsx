@@ -1,12 +1,12 @@
 import type { VFC } from 'react';
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 
-import { TournamentDetailModal } from '~/components/screen/modal/TounamentDetailModal';
 import { Button } from '~/components/ui/Button';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 
+import { DetailViewButtonGroup } from './DetailViewButtonGroup';
 import type { TournamentDetailScreenProps } from './ScreenProps';
 
 const data = [
@@ -20,20 +20,6 @@ const data = [
 ];
 
 export const TournamentDetail: VFC<TournamentDetailScreenProps> = () => {
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
-
-  // TODO:これをグローバルで管理するか検討
-  const [isModalVisible, setModalVisible] = useState(false);
-
-  const onCloseModal = useCallback(() => {
-    setModalVisible(false);
-  }, []);
-
-  const onOpenModal = useCallback((i: number) => {
-    setActiveTabIndex(i);
-    setModalVisible(true);
-  }, []);
-
   return (
     <View>
       <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
@@ -65,41 +51,7 @@ export const TournamentDetail: VFC<TournamentDetailScreenProps> = () => {
           outlineStyle={style.startButtonOutline}
           textStyle={style.startButtonText}
         />
-        <View style={style.buttonGroup}>
-          <Button
-            label="ルール"
-            bgTheme="bg2"
-            isBorder
-            textStyle={style.buttonText}
-            bgStyle={style.buttonBg}
-            outlineStyle={style.buttonOutline}
-            onPress={() => onOpenModal(0)}
-          />
-          <Button
-            label="ポイント"
-            bgTheme="bg2"
-            isBorder
-            outlineStyle={style.buttonOutline}
-            bgStyle={style.buttonBg}
-            textStyle={style.buttonText}
-            onPress={() => onOpenModal(1)}
-          />
-          <Button
-            label="ランキング"
-            bgTheme="bg2"
-            isBorder
-            outlineStyle={style.buttonOutline}
-            bgStyle={style.buttonBg}
-            textStyle={style.buttonText}
-            onPress={() => onOpenModal(2)}
-          />
-        </View>
-
-        <TournamentDetailModal
-          activeTabIndex={activeTabIndex}
-          isVisible={isModalVisible}
-          onCloseModal={onCloseModal}
-        />
+        <DetailViewButtonGroup />
       </View>
 
       <View />
@@ -153,21 +105,5 @@ const style = StyleSheet.create({
   startButtonText: {
     fontSize: 20,
     fontWeight: '600',
-  },
-  //
-  buttonGroup: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: '6%',
-  },
-  buttonOutline: {
-    width: '30%',
-  },
-  buttonBg: {
-    paddingVertical: 12,
-  },
-  buttonText: {
-    fontSize: 15,
   },
 });
