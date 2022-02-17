@@ -23,8 +23,8 @@ export const TournamentDetail: VFC<TournamentDetailScreenProps> = () => {
     <View>
       <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
 
-      <View style={style.floatTextArea} bgTheme="bg0">
-        <Text textTheme="white" style={style.season}>
+      <View style={style.floatTextArea}>
+        <Text style={style.season} textTheme="white">
           Monthly
         </Text>
         <Text style={style.season} textTheme="white">
@@ -36,39 +36,41 @@ export const TournamentDetail: VFC<TournamentDetailScreenProps> = () => {
         <Text style={style.distance} textTheme="white">
           {data[0].distance}m
         </Text>
-        <Text textTheme="white" style={style.description}>
+        <Text style={style.description} textTheme="white">
           ボタンを押してから5秒後にスタートします。 スタート後の一時停止はできません。
           STARTボタンを押すと、ルールに従うものと されます。
         </Text>
       </View>
 
-      <View bgTheme="bg0" style={style.floatButtonGroup}>
+      <View style={style.floatButtonGroup}>
         <Button
           label="START"
+          bgTheme="bg2"
+          isBorder
           outlineStyle={style.startButtonOutline}
           textStyle={style.startButtonText}
         />
-        <View bgTheme="bg0" style={style.buttonGroup}>
+        <View style={style.buttonGroup}>
           <Button
             label="ルール"
-            bgTheme="bg1"
-            textTheme="text1"
+            bgTheme="bg2"
+            isBorder
             textStyle={style.buttonText}
             bgStyle={style.buttonBg}
             outlineStyle={style.buttonOutline}
           />
           <Button
             label="ポイント"
-            bgTheme="bg1"
-            textTheme="text1"
+            bgTheme="bg2"
+            isBorder
             outlineStyle={style.buttonOutline}
             bgStyle={style.buttonBg}
             textStyle={style.buttonText}
           />
           <Button
             label="ランキング"
-            bgTheme="bg1"
-            textTheme="text1"
+            bgTheme="bg2"
+            isBorder
             outlineStyle={style.buttonOutline}
             bgStyle={style.buttonBg}
             textStyle={style.buttonText}

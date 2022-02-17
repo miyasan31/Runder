@@ -15,7 +15,7 @@ export const SafeAreaView: VFC<SafeAreaViewProps> = memo(
     lightBg: light,
     darkBg: dark,
     // custome theme
-    bgTheme = 'bg1',
+    bgTheme = 'bg0',
     // ViewProps
     style,
     bgStyle,

@@ -14,7 +14,7 @@ export const View: VFC<ViewProps> = memo(
     lightBg: light,
     darkBg: dark,
     // custome theme
-    bgTheme = 'bg1',
+    bgTheme = 'bg0',
     // ViewProps
     style,
     bgStyle,

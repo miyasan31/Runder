@@ -39,9 +39,7 @@ export const TotalRanking: RankingScreenProps = () => {
       <Card bgStyle={style.list} isBorder onPress={onNavigation}>
         <View>
           <Text style={style.shopName}>{item.name}</Text>
-          <Text textTheme="text2" style={style.date}>
-            {date}
-          </Text>
+          <Text style={style.date}>{date}</Text>
         </View>
       </Card>
     );

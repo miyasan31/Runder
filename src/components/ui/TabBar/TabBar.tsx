@@ -1,4 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
+import type { VFC } from 'react';
 import { StyleSheet } from 'react-native';
 import type { NavigationState, SceneRendererProps } from 'react-native-tab-view';
 import { TabBar as DefaultTabBar } from 'react-native-tab-view';
@@ -6,17 +7,17 @@ import { TabBar as DefaultTabBar } from 'react-native-tab-view';
 import { Text } from '~/components/ui/Text';
 import { useThemeColor } from '~/hooks/useThemeColor';
 
-export const TabBar = (
-  props: SceneRendererProps & {
-    navigationState: NavigationState<{
-      key: string;
-      title: string;
-    }>;
-  },
-) => {
+type Props = SceneRendererProps & {
+  navigationState: NavigationState<{
+    key: string;
+    title: string;
+  }>;
+};
+
+export const TabBar: VFC<Props> = (props) => {
   const border = useThemeColor({}, 'border');
   const primary = useThemeColor({}, 'primary');
-  const backgroundColor = useThemeColor({}, 'bg1');
+  const backgroundColor = useThemeColor({}, 'bg0');
 
   return (
     <DefaultTabBar

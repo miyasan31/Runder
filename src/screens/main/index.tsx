@@ -17,9 +17,9 @@ import { TournamentNavigator } from './tournament';
 const BottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 
 export const BottomTabNavigator: VFC = () => {
-  const icon = useThemeColor({}, 'icon');
+  const icon = useThemeColor({}, 'text2');
   const primary = useThemeColor({}, 'primary');
-  const backgroundColor = useThemeColor({}, 'bg3');
+  const backgroundColor = useThemeColor({}, 'bg1');
 
   return (
     <BottomTab.Navigator
@@ -40,7 +40,7 @@ export const BottomTabNavigator: VFC = () => {
         name="Contact"
         component={ContactNavigator}
         options={{
-          tabBarLabel: 'メール',
+          tabBarLabel: 'お知らせ',
           tabBarIcon: ({ color }) => <TabBarIcon name="mail" color={color} />,
         }}
       />

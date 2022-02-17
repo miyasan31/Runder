@@ -33,12 +33,12 @@ export const TournamentCard: VFC<Tournament & TournamentScreenProps> = ({
   }, [navigation]);
 
   return (
-    <Card onPress={onNavigation} bgTheme="bg2" outlineStyle={style.cardOutline}>
-      <View style={style.view} bgTheme="bg2">
-        <View style={style.imageView} bgTheme="bg2">
+    <Card onPress={onNavigation} outlineStyle={style.cardOutline}>
+      <View style={style.view}>
+        <View style={style.imageView}>
           <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
 
-          <View style={style.floatTextArea} bgTheme="bg0">
+          <View style={style.floatTextArea}>
             <Text style={style.season} textTheme="white">
               Monthly
             </Text>
@@ -55,8 +55,6 @@ export const TournamentCard: VFC<Tournament & TournamentScreenProps> = ({
 
           <Button
             label="詳細"
-            bgTheme="bg1"
-            textTheme="text1"
             isBorder
             activeOpacity={1}
             // style={style.floatButtonArea}

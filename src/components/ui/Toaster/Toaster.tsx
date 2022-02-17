@@ -58,6 +58,7 @@ const ToastBar = ({
       <View
         key={toast.id}
         onLayout={onLayout}
+        bgTheme="bg1"
         style={{
           flexDirection: 'row',
           alignItems: 'center',

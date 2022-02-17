@@ -36,7 +36,7 @@ export const ChallengeCard: VFC<Tournament & TournamentScreenProps> = ({
       <View style={style.view}>
         <View style={style.imageView}>
           <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
-          <View style={style.floatTextArea} bgTheme="bg0">
+          <View style={style.floatTextArea}>
             <Text style={style.season} textTheme="white">
               Monthly
             </Text>
@@ -54,21 +54,13 @@ export const ChallengeCard: VFC<Tournament & TournamentScreenProps> = ({
 
         <View style={style.infoView}>
           <View style={style.row}>
-            <Text style={style.infoLabelLeft} textTheme="text2">
-              あなたのベストタイム
-            </Text>
-            <Text style={style.infoLabelRight} textTheme="text2">
-              チャレンジできる残り回数
-            </Text>
+            <Text style={style.infoLabelLeft}>あなたのベストタイム</Text>
+            <Text style={style.infoLabelRight}>チャレンジできる残り回数</Text>
           </View>
 
           <View style={style.row}>
-            <Text style={style.infoResultLeft} textTheme="text1">
-              10:00.00
-            </Text>
-            <Text style={style.infoResultRight} textTheme="text1">
-              10
-            </Text>
+            <Text style={style.infoResultLeft}>10:00.00</Text>
+            <Text style={style.infoResultRight}>10</Text>
           </View>
         </View>
       </View>

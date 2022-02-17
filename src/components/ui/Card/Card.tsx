@@ -34,7 +34,7 @@ export const Card: VFC<CardProps> = memo(
     const borderColor = useThemeColor({}, isBorder ? 'border' : bgTheme);
 
     return (
-      <View bgStyle={[defaultStyle.outline, outlineStyle]} bgTheme="bg2">
+      <View bgStyle={[defaultStyle.outline, outlineStyle]}>
         <Bounceable onPress={onPress} activeScale={0.97}>
           <TouchableOpacity
             style={[defaultStyle.bg, bgStyle, { borderWidth: isBorder && 1, borderColor }]}
@@ -57,7 +57,7 @@ const defaultStyle = StyleSheet.create({
     borderRadius: 20,
 
     shadowOffset: { width: 0, height: 0 },
-    shadowColor: '#BBBBBB',
+    shadowColor: '#888888',
     shadowOpacity: 1,
     elevation: 1,
   },

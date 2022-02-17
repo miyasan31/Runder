@@ -26,8 +26,8 @@ export const Button: VFC<ButtonProps> = memo(
     lightText,
     darkText,
     // custome theme
-    bgTheme = 'primary',
-    textTheme = 'text0',
+    bgTheme = 'bg1',
+    textTheme = 'text1',
     // ViewProps
     isBorder,
     outlineStyle,
@@ -46,7 +46,7 @@ export const Button: VFC<ButtonProps> = memo(
     const borderColor = useThemeColor({}, isBorder ? 'border' : bgTheme);
 
     return (
-      <View bgTheme="bg0" style={[defaultStyle.outline, outlineStyle]}>
+      <View style={[defaultStyle.outline, outlineStyle]}>
         <Bounceable onPress={onPress} activeScale={0.97}>
           <TouchableOpacity
             // eslint-disable-next-line react-native/no-inline-styles
