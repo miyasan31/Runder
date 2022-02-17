@@ -3,7 +3,7 @@ import type { ComponentProps, VFC } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
-const BOTTOM_ICON = 28;
+const BOTTOM_ICON = 25;
 
 type Props = {
   name: ComponentProps<typeof Feather>['name'];
