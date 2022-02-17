@@ -10,8 +10,8 @@ import { NewsScreen } from './News.screen';
 import type { ContactScreenProps } from './ScreenProps';
 
 const routes = [
-  { key: 'devOps', title: '開発者への意見' },
   { key: 'news', title: 'お知らせ' },
+  { key: 'devOps', title: '開発者への意見' },
 ];
 
 export const Contact: ContactScreenProps = (props) => {
@@ -25,8 +25,8 @@ export const Contact: ContactScreenProps = (props) => {
         onIndexChange={onIndexChange}
         initialLayout={{ width: layout.width }}
         renderScene={SceneMap({
-          devOps: () => <DevOpsScreen {...props} />,
           news: () => <NewsScreen {...props} />,
+          devOps: () => <DevOpsScreen {...props} />,
         })}
       />
     </TabViewProvider>
