@@ -19,7 +19,7 @@ export const TextInput: VFC<TextInputProps> = memo(
     lightText: light,
     darkText: dark,
     // custome theme
-    bgTheme = 'bg3',
+    bgTheme = 'bg4',
     textTheme = 'text1',
     // ViewProps
     isBorder,

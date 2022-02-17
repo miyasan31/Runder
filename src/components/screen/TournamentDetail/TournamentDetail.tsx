@@ -1,7 +1,8 @@
 import type { VFC } from 'react';
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { Image, StyleSheet } from 'react-native';
 
+import { TournamentDetailModal } from '~/components/screen/modal/TounamentDetailModal';
 import { Button } from '~/components/ui/Button';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
@@ -19,8 +20,19 @@ const data = [
 ];
 
 export const TournamentDetail: VFC<TournamentDetailScreenProps> = () => {
+  // TODO:これをグローバルで管理するか検討
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const onCloseModal = useCallback(() => {
+    setModalVisible(false);
+  }, []);
+  const onOpenModal = useCallback(() => {
+    setModalVisible(true);
+  }, []);
+
   return (
     <View>
+      <TournamentDetailModal isVisible={isModalVisible} onCloseModal={onCloseModal} />
       <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
 
       <View style={style.floatTextArea}>
@@ -49,6 +61,7 @@ export const TournamentDetail: VFC<TournamentDetailScreenProps> = () => {
           isBorder
           outlineStyle={style.startButtonOutline}
           textStyle={style.startButtonText}
+          onPress={onOpenModal}
         />
         <View style={style.buttonGroup}>
           <Button
