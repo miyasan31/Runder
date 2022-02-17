@@ -2,9 +2,10 @@ import type { VFC } from 'react';
 import React, { useCallback, useState } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { TournamentDetailModal } from '~/components/screen/modal/TounamentDetailModal';
 import { Button } from '~/components/ui/Button';
 import { View } from '~/components/ui/View';
+
+import { TournamentDetailModal } from './modal';
 
 const button = [
   { index: 0, label: 'ルール' },
