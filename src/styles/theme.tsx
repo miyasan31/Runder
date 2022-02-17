@@ -16,9 +16,9 @@ export const theme = {
   },
   dark: {
     bg0: '#00000000',
-    bg1: '#404852',
-    bg2: '#5A6471',
-    bg3: '#373E46',
+    bg1: '#373c3f',
+    bg2: '#2f3437',
+    bg3: '#373c3f',
     text0: '#404852',
     text1: '#FFFFFF',
     text2: '#BBBBBB',
