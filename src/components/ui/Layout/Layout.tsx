@@ -1,3 +1,4 @@
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import type { ReactNode, VFC } from 'react';
 import React, { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
@@ -9,9 +10,7 @@ type LayoutProps = ViewStyleProps & {
   children: ReactNode;
   layout:
     | 'tabheader-bottomtab'
-    | 'tabheader-bottomtabless'
     | 'header-bottomtab'
-    | 'header-bottomtabless'
     | 'headerless-bottomtab'
     | 'headerless-bottomtabless';
 };
@@ -29,16 +28,14 @@ export const Layout: VFC<LayoutProps> = ({
   layout,
   children,
 }) => {
+  const tabBarHeight = useBottomTabBarHeight();
+
   const edges: Edges = useMemo(() => {
     switch (layout) {
       case 'tabheader-bottomtab':
         return ['top', 'left', 'right'];
-      case 'tabheader-bottomtabless':
-        return ['top', 'bottom', 'left', 'right'];
       case 'header-bottomtab':
         return ['left', 'right'];
-      case 'header-bottomtabless':
-        return ['bottom', 'left', 'right'];
       case 'headerless-bottomtab':
         return ['top', 'left', 'right'];
       default:
@@ -48,7 +45,7 @@ export const Layout: VFC<LayoutProps> = ({
 
   return (
     <SafeAreaView {...{ edges, lightBg, darkBg, bgTheme, bgStyle }}>
-      <View style={[defaultStyle.root]}>{children}</View>
+      <View style={[defaultStyle.root, { marginBottom: tabBarHeight || 0 }]}>{children}</View>
     </SafeAreaView>
   );
 };
