@@ -38,7 +38,5 @@ export const Layout: VFC<LayoutProps> = ({
 const defaultStyle = StyleSheet.create({
   full: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
