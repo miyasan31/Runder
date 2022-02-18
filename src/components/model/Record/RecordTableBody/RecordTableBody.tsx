@@ -58,7 +58,7 @@ const style = StyleSheet.create({
     borderRadius: 999,
   },
   tdRank: {
-    width: 'auto',
+    width: '30%',
 
     fontSize: 16,
     fontWeight: '600',
