@@ -56,9 +56,12 @@ const defaultStyle = StyleSheet.create({
   bg: {
     borderRadius: 20,
 
-    shadowOffset: { width: 0, height: 0 },
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
     shadowColor: '#888888',
-    shadowOpacity: 1,
+    shadowOpacity: 0.4,
     elevation: 1,
   },
 });

@@ -70,13 +70,12 @@ const ToastBar = ({
           paddingVertical: 15,
           borderRadius: 10,
 
-          shadowColor: '#000',
           shadowOffset: {
             width: 0,
-            height: 2,
+            height: 1,
           },
-          shadowOpacity: 0.25,
-          shadowRadius: 4,
+          shadowColor: '#888888',
+          shadowOpacity: 0.4,
           elevation: 1,
         }}
       >
