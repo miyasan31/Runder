@@ -8,11 +8,7 @@ import type { ViewStyleProps } from '~/types/style';
 
 type LayoutProps = ViewStyleProps & {
   children: ReactNode;
-  layout:
-    | 'tabheader-bottomtab'
-    | 'header-bottomtab'
-    | 'headerless-bottomtab'
-    | 'headerless-bottomtabless';
+  layout: 'tabheader-bottomtab' | 'header-bottomtab' | 'headerless-bottomtab';
 };
 
 type Edges = ('top' | 'bottom' | 'left' | 'right')[];
