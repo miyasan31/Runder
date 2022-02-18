@@ -7,6 +7,7 @@ import type { ViewStyleProps } from '~/types/style';
 
 type LayoutProps = ViewStyleProps & {
   children: ReactNode;
+  isCenter?: true;
 };
 
 export const SafeAreaLayout: VFC<LayoutProps> = ({
@@ -18,10 +19,11 @@ export const SafeAreaLayout: VFC<LayoutProps> = ({
   // ViewProps
   bgStyle,
   children,
+  isCenter,
 }) => {
   return (
     <SafeAreaView {...{ lightBg, darkBg, bgTheme, bgStyle }}>
-      <View style={[defaultStyle.root]}>{children}</View>
+      <View style={[defaultStyle.root, isCenter && defaultStyle.center]}>{children}</View>
     </SafeAreaView>
   );
 };
@@ -29,5 +31,9 @@ export const SafeAreaLayout: VFC<LayoutProps> = ({
 const defaultStyle = StyleSheet.create({
   root: {
     flex: 1,
+  },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
