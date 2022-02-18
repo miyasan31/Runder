@@ -1,12 +1,12 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import type { VFC } from "react";
-import React from "react";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import type { VFC } from 'react';
+import React from 'react';
 
-import { TabBarIcon } from "~/components/icon";
-import type { DevelopmentTabParamList } from "~/types";
+import { TabBarIcon } from '~/components/ui/TabBarIcon';
+import type { DevelopmentTabParamList } from '~/types';
 
-import { DevListNavigator } from "./devlist";
-import { DevRunningNavigator } from "./devrunning";
+import { DevListNavigator } from './list';
+import { DevRunningNavigator } from './running';
 
 const DevelopmentTab = createBottomTabNavigator<DevelopmentTabParamList>();
 
@@ -22,16 +22,16 @@ export const DevelopmentTabNavigator: VFC = () => {
         name="DevRunning"
         component={DevRunningNavigator}
         options={{
-          tabBarLabel: "DevRunning",
-          tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
+          tabBarLabel: 'DevRunning',
+          tabBarIcon: ({ color }) => <TabBarIcon name="settings" color={color} />,
         }}
       />
       <DevelopmentTab.Screen
         name="DevList"
         component={DevListNavigator}
         options={{
-          tabBarLabel: "DevList",
-          tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
+          tabBarLabel: 'DevList',
+          tabBarIcon: ({ color }) => <TabBarIcon name="settings" color={color} />,
         }}
       />
     </DevelopmentTab.Navigator>

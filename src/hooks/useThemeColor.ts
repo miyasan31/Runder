@@ -1,6 +1,6 @@
-import { theme } from "~/styles";
+import { theme } from '~/styles';
 
-import { useColorScheme } from "./useColorScheme";
+import { useColorScheme } from './useColorScheme';
 
 export const useThemeColor = (
   themeProps: { light?: string; dark?: string },

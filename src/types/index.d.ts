@@ -1,6 +1,6 @@
-import type { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
-import type { CompositeScreenProps, NavigatorScreenParams } from "@react-navigation/native";
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import type { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 declare global {
   namespace ReactNavigation {
@@ -9,11 +9,11 @@ declare global {
 }
 
 export type RootStackParamList = {
-  Development: NavigatorScreenParams<DevelopmentTabParamList> | undefined;
   Auth: NavigatorScreenParams<AuthStackParamList> | undefined;
-  Main: NavigatorScreenParams<BottomTabParamList> | undefined;
+  Main: NavigatorScreenParams<MainBottomTabParamList> | undefined;
+  Development: NavigatorScreenParams<DevelopmentTabParamList> | undefined;
   Modal: undefined;
-  NotFound: undefined;
+  NotFoundScreen: undefined;
 };
 export type StackScreenProps<T extends keyof RootStackParamList> = NativeStackScreenProps<
   RootStackParamList,
@@ -25,6 +25,7 @@ export type StackScreenProps<T extends keyof RootStackParamList> = NativeStackSc
 export type DevelopmentTabParamList = {
   DevList: NavigatorScreenParams<DevListStackParamList> | undefined;
   DevRunning: NavigatorScreenParams<DevRunningStackParamList> | undefined;
+  Modal: undefined;
 };
 export type DevelopmentScreenProps<T extends keyof DevelopmentTabParamList> = CompositeScreenProps<
   BottomTabScreenProps<DevelopmentTabParamList, T>,
@@ -33,10 +34,11 @@ export type DevelopmentScreenProps<T extends keyof DevelopmentTabParamList> = Co
 
 /* dev running list */
 export type DevListStackParamList = {
-  RunningHistory: undefined;
-  RunningDetail: {
+  RunningHistoryScreen: undefined;
+  RunningDetailScreen: {
     id: number;
   };
+  Modal: undefined;
 };
 export type DevListScreenProps<T extends keyof DevListStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<DevListStackParamList, T>,
@@ -46,6 +48,7 @@ export type DevListScreenProps<T extends keyof DevListStackParamList> = Composit
 /* dev running  */
 export type DevRunningStackParamList = {
   RunningScreen: undefined;
+  Modal: undefined;
 };
 export type DevRunningScreenProps<T extends keyof DevRunningStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<DevRunningStackParamList, T>,
@@ -56,6 +59,7 @@ export type DevRunningScreenProps<T extends keyof DevRunningStackParamList> = Co
 /* auth */
 export type AuthStackParamList = {
   SigninScreen: undefined;
+  Modal: undefined;
 };
 export type AuthScreenProps<T extends keyof AuthStackParamList> = CompositeScreenProps<
   NativeStackScreenProps<AuthStackParamList, T>,
@@ -64,21 +68,22 @@ export type AuthScreenProps<T extends keyof AuthStackParamList> = CompositeScree
 
 // =====================================================================
 /* five tabs */
-export type BottomTabParamList = {
+export type MainBottomTabParamList = {
   Contact: NavigatorScreenParams<ContactStackParamList> | undefined;
   Ranking: NavigatorScreenParams<RankingStackParamList> | undefined;
-  Tounament: NavigatorScreenParams<TounamentStackParamList> | undefined;
+  Tournament: NavigatorScreenParams<TournamentStackParamList> | undefined;
   Result: NavigatorScreenParams<ResultStackParamList> | undefined;
   Profile: NavigatorScreenParams<ProfileStackParamList> | undefined;
 };
-export type BottomTabScreenProps<T extends keyof BottomTabParamList> = CompositeScreenProps<
-  BottomTabScreenProps<BottomTabParamList, T>,
+export type MainBottomTabScreenProps<T extends keyof MainBottomTabParamList> = CompositeScreenProps<
+  BottomTabScreenProps<MainBottomTabParamList, T>,
   NativeStackScreenProps<RootStackParamList>
 >;
 
 /* contact */
 export type ContactStackParamList = {
   ContactScreen: undefined;
+  Modal: undefined;
 };
 export type ContactScreenProps<T extends keyof ContactStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<ContactStackParamList, T>,
@@ -88,24 +93,28 @@ export type ContactScreenProps<T extends keyof ContactStackParamList> = Composit
 /* ranking */
 export type RankingStackParamList = {
   RankingScreen: undefined;
+  Modal: undefined;
 };
 export type RankingScreenProps<T extends keyof RankingStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<RankingStackParamList, T>,
   NativeStackScreenProps<RootStackParamList>
 >;
 
-/* tounament */
-export type TounamentStackParamList = {
-  TounamentScreen: undefined;
+/* tournament */
+export type TournamentStackParamList = {
+  TournamentScreen: undefined;
+  TournamentDetailScreen: undefined;
+  Modal: undefined;
 };
-export type TounamentScreenProps<T extends keyof TounamentStackParamList> = CompositeScreenProps<
-  BottomTabScreenProps<TounamentStackParamList, T>,
+export type TournamentScreenProps<T extends keyof TournamentStackParamList> = CompositeScreenProps<
+  BottomTabScreenProps<TournamentStackParamList, T>,
   NativeStackScreenProps<RootStackParamList>
 >;
 
 /* result */
 export type ResultStackParamList = {
   ResultScreen: undefined;
+  Modal: undefined;
 };
 export type ResultScreenProps<T extends keyof ResultStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<ResultStackParamList, T>,
@@ -115,6 +124,7 @@ export type ResultScreenProps<T extends keyof ResultStackParamList> = CompositeS
 /* profile */
 export type ProfileStackParamList = {
   ProfileScreen: undefined;
+  Modal: undefined;
 };
 export type ProfileScreenProps<T extends keyof ProfileStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<ProfileStackParamList, T>,

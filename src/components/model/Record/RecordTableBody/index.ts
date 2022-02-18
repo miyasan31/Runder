@@ -1,0 +1,1 @@
+export { RecordTableBody } from './RecordTableBody';

@@ -1,34 +1,38 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { BlurView } from "expo-blur";
-import type { VFC } from "react";
-import React from "react";
-import { StyleSheet } from "react-native";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BlurView } from 'expo-blur';
+import type { VFC } from 'react';
+import React from 'react';
+import { StyleSheet } from 'react-native';
 
-import { TabBarIcon } from "~/components/icon";
-import { useColorScheme } from "~/hooks";
-import { useThemeColor } from "~/hooks/useThemeColor";
-import { theme } from "~/styles";
-import type { BottomTabParamList } from "~/types";
+import { TabBarIcon } from '~/components/ui/TabBarIcon';
+import { useThemeColor } from '~/hooks/useThemeColor';
+import type { MainBottomTabParamList } from '~/types';
 
-import { ContactNavigator } from "./contact";
-import { ProfileNavigator } from "./profile";
-import { RankingNavigator } from "./ranking";
-import { ResultNavigator } from "./result";
-import { TounamentNavigator } from "./tournament";
+import { ContactNavigator } from './contact';
+import { ProfileNavigator } from './profile';
+import { RankingNavigator } from './ranking';
+import { ResultNavigator } from './result';
+import { TournamentNavigator } from './tournament';
 
-const BottomTab = createBottomTabNavigator<BottomTabParamList>();
+const BottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 
 export const BottomTabNavigator: VFC = () => {
-  const colorScheme = useColorScheme();
-  const bg1 = useThemeColor({}, "bg1");
+  const icon = useThemeColor({}, 'text2');
+  const primary = useThemeColor({}, 'primary');
+  const backgroundColor = useThemeColor({}, 'bg1');
 
   return (
     <BottomTab.Navigator
-      initialRouteName="Tounament"
+      initialRouteName="Tournament"
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: theme[colorScheme].primary,
-        tabBarStyle: { position: "absolute", backgroundColor: bg1 },
+        tabBarInactiveTintColor: icon,
+        tabBarActiveTintColor: primary,
+        tabBarLabelStyle: {
+          fontSize: 12,
+          marginTop: 4,
+        },
+        tabBarStyle: { position: 'absolute', backgroundColor },
         tabBarBackground: () => <BlurView intensity={10} style={StyleSheet.absoluteFill} />,
       }}
     >
@@ -36,40 +40,40 @@ export const BottomTabNavigator: VFC = () => {
         name="Contact"
         component={ContactNavigator}
         options={{
-          tabBarLabel: "Contact",
-          tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
+          tabBarLabel: 'お知らせ',
+          tabBarIcon: ({ color }) => <TabBarIcon name="mail" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="Ranking"
         component={RankingNavigator}
         options={() => ({
-          title: "Ranking",
-          tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
+          title: 'ランキング',
+          tabBarIcon: ({ color }) => <TabBarIcon name="award" color={color} />,
         })}
       />
       <BottomTab.Screen
-        name="Tounament"
-        component={TounamentNavigator}
+        name="Tournament"
+        component={TournamentNavigator}
         options={() => ({
-          title: "Tounament",
-          tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
+          title: '大会',
+          tabBarIcon: ({ color }) => <TabBarIcon name="star" color={color} />,
         })}
       />
       <BottomTab.Screen
         name="Result"
         component={ResultNavigator}
         options={() => ({
-          title: "Result",
-          tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
+          title: '履歴',
+          tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
         })}
       />
       <BottomTab.Screen
         name="Profile"
         component={ProfileNavigator}
         options={() => ({
-          title: "Profile",
-          tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
+          title: 'プロフィール',
+          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         })}
       />
     </BottomTab.Navigator>

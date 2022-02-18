@@ -1,16 +1,14 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { RecoilRoot } from "recoil";
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { RecoilRoot } from 'recoil';
 
-import { Toaster } from "~/components/Toaster";
-import { useCachedResources } from "~/hooks/useCachedResources";
-import { useColorScheme } from "~/hooks/useColorScheme";
-import { Navigations } from "~/navigations";
+import { Toaster } from '~/components/ui/Toaster';
+import { useCachedResources } from '~/hooks/useCachedResources';
+import { Navigations } from '~/screens';
 
 const App = () => {
   const isLoadingComplete = useCachedResources();
-  const colorScheme = useColorScheme();
 
   if (!isLoadingComplete) {
     return null;
@@ -18,10 +16,10 @@ const App = () => {
     return (
       <RecoilRoot>
         <SafeAreaProvider>
-          <Navigations colorScheme={colorScheme} />
+          <Navigations />
           <StatusBar />
-          <Toaster position="bottom-center" />
         </SafeAreaProvider>
+        <Toaster position="bottom-center" />
       </RecoilRoot>
     );
   }

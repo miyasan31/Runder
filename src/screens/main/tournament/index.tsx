@@ -1,25 +1,54 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import type { VFC } from "react";
-import React from "react";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import type { VFC } from 'react';
+import React from 'react';
 
-import { useThemeColor } from "~/hooks";
-import type { TounamentStackParamList } from "~/types";
+import { PrevButton } from '~/components/ui/Button';
+import { useThemeColor } from '~/hooks/useThemeColor';
+import type { TournamentScreenProps, TournamentStackParamList } from '~/types';
 
-import { TounamentScreen } from "./TounamentScreen";
+import { ModalScreen } from './hoge.modal';
+import { TournamentDetailScreen } from './tounament_detail.screen';
+import { TournamentScreen } from './tournament.screen';
 
-const Tounament = createNativeStackNavigator<TounamentStackParamList>();
+type Option<T extends keyof TournamentStackParamList> = TournamentScreenProps<T>;
 
-export const TounamentNavigator: VFC = () => {
-  const backgroundColor = useThemeColor({}, "bg1");
+const Tournament = createNativeStackNavigator<TournamentStackParamList>();
+
+export const TournamentNavigator: VFC = () => {
+  const backgroundColor = useThemeColor({}, 'bg1');
 
   return (
-    <Tounament.Navigator
-      initialRouteName="TounamentScreen"
+    <Tournament.Navigator
+      initialRouteName="TournamentScreen"
       screenOptions={{
-        headerStyle: { backgroundColor: backgroundColor },
+        headerStyle: { backgroundColor },
       }}
     >
-      <Tounament.Screen name="TounamentScreen" component={TounamentScreen} options={() => ({})} />
-    </Tounament.Navigator>
+      <Tournament.Screen
+        name="TournamentScreen"
+        component={TournamentScreen}
+        options={() => ({
+          headerShown: false,
+        })}
+      />
+
+      <Tournament.Screen
+        name="TournamentDetailScreen"
+        component={TournamentDetailScreen}
+        options={(options: Option<'TournamentDetailScreen'>) => ({
+          title: '大会の詳細・スタート',
+          headerTitleAlign: 'left',
+          headerTitleStyle: {
+            fontWeight: '600',
+          },
+          headerBackTitleVisible: false,
+          headerLeft: () => <PrevButton {...options} screen="TournamentScreen" />,
+        })}
+      />
+
+      <Tournament.Group screenOptions={{ presentation: 'modal' }}>
+        <Tournament.Screen name="Modal" component={ModalScreen} options={{ title: 'Oops!' }} />
+      </Tournament.Group>
+    </Tournament.Navigator>
   );
 };

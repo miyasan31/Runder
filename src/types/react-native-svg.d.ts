@@ -1,6 +1,6 @@
-import "react-native-svg";
+import 'react-native-svg';
 
-declare module "react-native-svg" {
+declare module 'react-native-svg' {
   export interface SvgProps {
     xmlns?: string;
     xmlnsXlink?: string;

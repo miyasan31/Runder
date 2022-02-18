@@ -1,12 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 
 import type {
   SupabaseFetchStatus,
   SupabaseFilter,
   SupabaseFrom,
   SupabaseQuery,
-} from "~/types/supabase";
-import { supabaseClient } from "~/utils/supabaseClient";
+} from '~/types/supabase';
+import { supabaseClient } from '~/utils/supabaseClient';
 
 export const useSupabaseFilter: SupabaseFilter = (filter, deps = []) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -16,7 +16,7 @@ export const useSupabaseFilter: SupabaseFilter = (filter, deps = []) => {
 
 export const useSupabaseSelect = <T>(
   from: SupabaseFrom,
-  query: SupabaseQuery<T> = { columns: "*", options: {} },
+  query: SupabaseQuery<T> = { columns: '*', options: {} },
 ): SupabaseFetchStatus<T> => {
   const [status, setStatus] = useState<SupabaseFetchStatus<T>>({
     loading: true,
