@@ -1,9 +1,9 @@
 import type { VFC } from 'react';
 import React from 'react';
 
-import type { Props } from '~/components/screen/Signin';
-import { Signin } from '~/components/screen/Signin';
+import type { SigninScreenProps } from '~/components/screen/Signin';
+import { SigninScreen as Screen } from '~/components/screen/Signin';
 
-export const SigninScreen: VFC<Props> = (props) => {
-  return <Signin {...props} />;
+export const SigninScreen: VFC<SigninScreenProps> = (props) => {
+  return <Screen {...props} />;
 };
