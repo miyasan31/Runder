@@ -23,7 +23,7 @@ export const DevelopmentTabNavigator: VFC = () => {
         component={DevRunningNavigator}
         options={{
           tabBarLabel: 'DevRunning',
-          tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="settings" color={color} />,
         }}
       />
       <DevelopmentTab.Screen
@@ -31,7 +31,7 @@ export const DevelopmentTabNavigator: VFC = () => {
         component={DevListNavigator}
         options={{
           tabBarLabel: 'DevList',
-          tabBarIcon: ({ color }) => <TabBarIcon name="settings-outline" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="settings" color={color} />,
         }}
       />
     </DevelopmentTab.Navigator>
