@@ -5,13 +5,13 @@ import React, { useCallback, useState } from 'react';
 // import { toast } from 'react-hot-toast/src/core/toast';
 import { Image, StyleSheet } from 'react-native';
 
-import { ProfileEditModal } from '~/components/screen/Profile/modal';
 import { Button } from '~/components/ui/Button';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 
 // import { toastKit } from '~/utils/toastKit';
-import { ProfileTab } from './Profile.tab';
+import { HistoryTab } from './History.tab';
+import { ProfileEditModal } from './modal';
 import type { ProfileScreenProps } from './ScreenProps';
 
 export const Profile: VFC<ProfileScreenProps> = (props) => {
@@ -99,7 +99,7 @@ export const Profile: VFC<ProfileScreenProps> = (props) => {
         </View>
 
         <View style={style.container}>
-          <ProfileTab {...props} />
+          <HistoryTab {...props} />
         </View>
       </View>
     </>

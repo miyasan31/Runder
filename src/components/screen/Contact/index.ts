@@ -1,2 +1,2 @@
-export { Contact } from './Contact.tab';
+export { ContactScreen } from './Contact.screen';
 export type { ContactScreenProps } from './ScreenProps';

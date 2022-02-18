@@ -1,2 +1,2 @@
-export { Result } from './Result.tab';
+export { ResultScreen } from './Result.screen';
 export type { ResultScreenProps } from './ScreenProps';
