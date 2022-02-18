@@ -9,7 +9,7 @@ import type { RankingScreenProps } from './ScreenProps';
 export const MonthlyRankingScreen: RankingScreenProps = (props) => {
   return (
     <LayoutErrorBoundary>
-      <Layout>
+      <Layout layout="tabheader-bottomtab">
         <MonthlyRanking {...props} />
       </Layout>
     </LayoutErrorBoundary>

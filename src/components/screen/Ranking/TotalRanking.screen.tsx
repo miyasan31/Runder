@@ -9,7 +9,7 @@ import { TotalRanking } from './TotalRanking';
 export const TotalRankingScreen: RankingScreenProps = (props) => {
   return (
     <LayoutErrorBoundary>
-      <Layout>
+      <Layout layout="tabheader-bottomtab">
         <TotalRanking {...props} />
       </Layout>
     </LayoutErrorBoundary>

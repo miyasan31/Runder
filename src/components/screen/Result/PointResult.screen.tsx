@@ -9,7 +9,7 @@ import type { ResultScreenProps } from './ScreenProps';
 export const PointResultScreen: ResultScreenProps = (props) => {
   return (
     <LayoutErrorBoundary>
-      <Layout>
+      <Layout layout="tabheader-bottomtab">
         <PointResult {...props} />
       </Layout>
     </LayoutErrorBoundary>

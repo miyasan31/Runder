@@ -1,39 +1,60 @@
-import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import type { ReactNode, VFC } from 'react';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { View } from '~/components/ui/View';
+import { SafeAreaView, View } from '~/components/ui/View';
 import type { ViewStyleProps } from '~/types/style';
 
 type LayoutProps = ViewStyleProps & {
   children: ReactNode;
+  layout:
+    | 'tabheader-bottomtab'
+    | 'tabheader-bottomtabless'
+    | 'header-bottomtab'
+    | 'header-bottomtabless'
+    | 'headerless-bottomtab'
+    | 'headerless-bottomtabless';
 };
+
+type Edges = ('top' | 'bottom' | 'left' | 'right')[];
 
 export const Layout: VFC<LayoutProps> = ({
   // 基本的に使用しない
   lightBg,
   darkBg,
   // custome theme
-  bgTheme = 'bg2',
+  bgTheme = 'bg1',
   // ViewProps
   bgStyle,
+  layout,
   children,
 }) => {
-  const tabBarHeight = useBottomTabBarHeight();
+  const edges: Edges = useMemo(() => {
+    switch (layout) {
+      case 'tabheader-bottomtab':
+        return ['top', 'left', 'right'];
+      case 'tabheader-bottomtabless':
+        return ['top', 'bottom', 'left', 'right'];
+      case 'header-bottomtab':
+        return ['left', 'right'];
+      case 'header-bottomtabless':
+        return ['bottom', 'left', 'right'];
+      case 'headerless-bottomtab':
+        return ['top', 'left', 'right'];
+      default:
+        return ['top', 'bottom', 'left', 'right'];
+    }
+  }, [layout]);
 
   return (
-    <View
-      style={[defaultStyle.full, bgStyle, { marginBottom: tabBarHeight || 0 }]}
-      {...{ lightBg, darkBg, bgTheme }}
-    >
-      {children}
-    </View>
+    <SafeAreaView {...{ edges, lightBg, darkBg, bgTheme, bgStyle }}>
+      <View style={[defaultStyle.root]}>{children}</View>
+    </SafeAreaView>
   );
 };
 
 const defaultStyle = StyleSheet.create({
-  full: {
+  root: {
     flex: 1,
   },
 });

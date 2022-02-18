@@ -10,7 +10,7 @@ import type { ProfileScreenProps } from './ScreenProps';
 export const ProfileScreen: VFC<ProfileScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <Layout>
+      <Layout layout="headerless-bottomtab">
         <Profile {...props} />
       </Layout>
     </LayoutErrorBoundary>

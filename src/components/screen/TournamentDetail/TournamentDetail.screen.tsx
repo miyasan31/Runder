@@ -10,7 +10,7 @@ import { TournamentDetail } from './TournamentDetail';
 export const TournamentDetailScreen: VFC<TournamentDetailScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <Layout>
+      <Layout layout="header-bottomtab">
         <TournamentDetail {...props} />
       </Layout>
     </LayoutErrorBoundary>

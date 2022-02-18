@@ -9,7 +9,7 @@ import type { ContactScreenProps } from './ScreenProps';
 export const DevOpsScreen: ContactScreenProps = (props) => {
   return (
     <LayoutErrorBoundary>
-      <Layout>
+      <Layout layout="tabheader-bottomtab">
         <DevOps {...props} />
       </Layout>
     </LayoutErrorBoundary>

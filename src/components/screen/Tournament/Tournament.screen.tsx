@@ -2,7 +2,7 @@ import type { VFC } from 'react';
 import React from 'react';
 import { SceneMap, TabView } from 'react-native-tab-view';
 
-import { TabLayout } from '~/components/ui/Layout';
+import { Layout } from '~/components/ui/Layout';
 import { TabBar } from '~/components/ui/TabBar';
 import { useTabView } from '~/hooks/useTabView';
 
@@ -19,7 +19,7 @@ export const TournamentScreen: VFC<TournamentScreenProps> = (props) => {
   const { layout, index, onIndexChange } = useTabView();
 
   return (
-    <TabLayout>
+    <Layout layout="tabheader-bottomtab">
       <TabView
         renderTabBar={TabBar}
         navigationState={{ index, routes }}
@@ -30,6 +30,6 @@ export const TournamentScreen: VFC<TournamentScreenProps> = (props) => {
           challenge: () => <ChallengeTournamentScene {...props} />,
         })}
       />
-    </TabLayout>
+    </Layout>
   );
 };

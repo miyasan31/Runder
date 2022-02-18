@@ -9,7 +9,7 @@ import { TounamentResult } from './TounamentResult';
 export const TounamentResultScreen: ResultScreenProps = (props) => {
   return (
     <LayoutErrorBoundary>
-      <Layout>
+      <Layout layout="tabheader-bottomtab">
         <TounamentResult {...props} />
       </Layout>
     </LayoutErrorBoundary>
