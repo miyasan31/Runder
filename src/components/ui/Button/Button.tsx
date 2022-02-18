@@ -74,6 +74,7 @@ const defaultStyle = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row',
 
     paddingVertical: 18,
     borderRadius: 999,
