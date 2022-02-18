@@ -1,14 +1,14 @@
-import type { VFC } from "react";
-import React, { useCallback } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import type { VFC } from 'react';
+import React, { useCallback } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import type { StackScreenProps } from "~/types";
+import type { StackScreenProps } from '~/types';
 
-export type Props = StackScreenProps<"NotFoundScreen">;
+export type Props = StackScreenProps<'NotFoundScreen'>;
 
 export const NotFound: VFC<Props> = (props) => {
   const onRootScreenPush = useCallback(() => {
-    props.navigation.replace("Main");
+    props.navigation.replace('Main');
   }, [props.navigation]);
 
   return (
@@ -24,14 +24,14 @@ export const NotFound: VFC<Props> = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: 20,
   },
   title: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   link: {
     marginTop: 15,
@@ -39,6 +39,6 @@ const styles = StyleSheet.create({
   },
   linkText: {
     fontSize: 14,
-    color: "#2e78b7",
+    color: '#2e78b7',
   },
 });

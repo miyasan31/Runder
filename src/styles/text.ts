@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export const textStyles = StyleSheet.create({
   title: {
@@ -8,17 +8,17 @@ export const textStyles = StyleSheet.create({
   subtitle: {
     fontSize: 15,
     paddingBottom: 15,
-    fontWeight: "normal",
+    fontWeight: 'normal',
   },
   label: {
     paddingVertical: 10,
     fontSize: 15,
-    textAlign: "left",
+    textAlign: 'left',
   },
   error: {
     paddingTop: 5,
     lineHeight: 0,
     fontSize: 12,
-    textAlign: "right",
+    textAlign: 'right',
   },
 });

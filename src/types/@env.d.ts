@@ -1,1 +1,1 @@
-declare module "@env";
+declare module '@env';

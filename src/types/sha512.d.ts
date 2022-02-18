@@ -1,1 +1,1 @@
-declare module "js-sha512";
+declare module 'js-sha512';

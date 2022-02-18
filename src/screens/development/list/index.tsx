@@ -1,17 +1,17 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import type { VFC } from "react";
-import React from "react";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import type { VFC } from 'react';
+import React from 'react';
 
-import { useThemeColor } from "~/hooks/useThemeColor";
-import type { DevListStackParamList } from "~/types";
+import { useThemeColor } from '~/hooks/useThemeColor';
+import type { DevListStackParamList } from '~/types';
 
-import { RunningDetailScreen } from "./running_detail.screen";
-import { RunningHistoryScreen } from "./running_history.screen";
+import { RunningDetailScreen } from './running_detail.screen';
+import { RunningHistoryScreen } from './running_history.screen';
 
 const DevList = createNativeStackNavigator<DevListStackParamList>();
 
 export const DevListNavigator: VFC = () => {
-  const backgroundColor = useThemeColor({}, "bg1");
+  const backgroundColor = useThemeColor({}, 'bg1');
 
   return (
     <DevList.Navigator
@@ -24,7 +24,7 @@ export const DevListNavigator: VFC = () => {
         name="RunningHistoryScreen"
         component={RunningHistoryScreen}
         options={() => ({
-          title: "ランニング履歴",
+          title: 'ランニング履歴',
         })}
       />
 
@@ -32,7 +32,7 @@ export const DevListNavigator: VFC = () => {
         name="RunningDetailScreen"
         component={RunningDetailScreen}
         options={() => ({
-          title: "ランニング詳細",
+          title: 'ランニング詳細',
         })}
       />
     </DevList.Navigator>

@@ -1,1 +1,1 @@
-export { KeyboardAvoiding } from "./KeyboardAvoiding";
+export { KeyboardAvoiding } from './KeyboardAvoiding';

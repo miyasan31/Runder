@@ -1,14 +1,14 @@
 // import { makeRedirectUri, startAsync } from "expo-auth-session";
-import type { VFC } from "react";
-import React from "react";
-import { Text, View } from "react-native";
+import type { VFC } from 'react';
+import React from 'react';
+import { Text, View } from 'react-native';
 
 // import { Button } from "~/components/ui/Button";
 // import { SUPABASE_URL } from "~/constants";
-import type { AuthScreenProps } from "~/types";
+import type { AuthScreenProps } from '~/types';
 // import { supabaseClient } from "~/utils/supabaseClient";
 
-export type Props = AuthScreenProps<"SigninScreen">;
+export type Props = AuthScreenProps<'SigninScreen'>;
 
 export const Signin: VFC<Props> = () => {
   // const onGoogleSignin = async () => {
@@ -28,7 +28,7 @@ export const Signin: VFC<Props> = () => {
 
   return (
     <View>
-      <Text></Text>
+      <Text />
       {/* <Button label="Googleでログイン" onPress={onGoogleSignin} /> */}
     </View>
   );

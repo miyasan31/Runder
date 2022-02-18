@@ -1,8 +1,8 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export const buttonStyles = StyleSheet.create({
   semi: {
-    width: "80%",
+    width: '80%',
   },
   outline: {
     marginTop: 20,
@@ -11,6 +11,6 @@ export const buttonStyles = StyleSheet.create({
     paddingVertical: 15,
 
     fontSize: 15,
-    textAlign: "right",
+    textAlign: 'right',
   },
 });

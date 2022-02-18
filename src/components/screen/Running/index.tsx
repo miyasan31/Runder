@@ -1,20 +1,20 @@
-import "react-native-url-polyfill/auto";
+import 'react-native-url-polyfill/auto';
 
-import { getCurrentPositionAsync, requestForegroundPermissionsAsync } from "expo-location";
-import type { VFC } from "react";
+import { getCurrentPositionAsync, requestForegroundPermissionsAsync } from 'expo-location';
+import type { VFC } from 'react';
 import React, {
   // useCallback,
   useEffect,
   useMemo,
   useState,
-} from "react";
-import { Dimensions, StyleSheet } from "react-native";
-import MapView, { Polyline } from "react-native-maps";
+} from 'react';
+import { Dimensions, StyleSheet } from 'react-native';
+import MapView, { Polyline } from 'react-native-maps';
 
 // import { Button } from "~/components/ui/Button";
-import { View } from "~/components/ui/View";
-import type { DevRunningScreenProps } from "~/types";
-import type { LocationResult } from "~/types/fetcher";
+import { View } from '~/components/ui/View';
+import type { DevRunningScreenProps } from '~/types';
+import type { LocationResult } from '~/types/fetcher';
 // import { supabaseClient } from "~/utils/supabaseClient";
 
 // 位置情報取得許可を要求
@@ -23,7 +23,7 @@ const requestForegroundPermission = async () => {
   console.info(status);
 };
 
-export type Props = DevRunningScreenProps<"RunningScreen">;
+export type Props = DevRunningScreenProps<'RunningScreen'>;
 
 export const Running: VFC<Props> = () => {
   // const [isRunning, setIsRunning] = useState(false);
@@ -65,7 +65,7 @@ export const Running: VFC<Props> = () => {
         longitude: _location.coords.longitude,
         speed: _location.coords.speed,
         timestamp: _location.timestamp,
-        color: "#ff0000",
+        color: '#ff0000',
       },
     ]);
   };
@@ -132,30 +132,30 @@ export const Running: VFC<Props> = () => {
 
 const styles = StyleSheet.create({
   root: {
-    position: "relative",
+    position: 'relative',
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   map: {
     flex: 1,
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
   button: {
-    position: "absolute",
+    position: 'absolute',
     right: 0,
     left: 0,
     bottom: 100,
-    width: "80%",
-    marginHorizontal: "10%",
+    width: '80%',
+    marginHorizontal: '10%',
   },
   button1: {
-    position: "absolute",
+    position: 'absolute',
     right: 0,
     left: 0,
     bottom: 20,
-    width: "80%",
-    marginHorizontal: "10%",
+    width: '80%',
+    marginHorizontal: '10%',
   },
 });

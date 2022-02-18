@@ -1,3 +1,3 @@
-import Restart from "react-native-restart";
+import Restart from 'react-native-restart';
 
 export const restartApp = Restart.Restart;

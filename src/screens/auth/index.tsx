@@ -1,10 +1,10 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import type { VFC } from "react";
-import React from "react";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import type { VFC } from 'react';
+import React from 'react';
 
-import type { AuthStackParamList } from "~/types";
+import type { AuthStackParamList } from '~/types';
 
-import { SigninScreen } from "./signin.screen";
+import { SigninScreen } from './signin.screen';
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
 

@@ -1,16 +1,16 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import type { VFC } from "react";
-import React from "react";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import type { VFC } from 'react';
+import React from 'react';
 
-import { useThemeColor } from "~/hooks/useThemeColor";
-import type { DevRunningStackParamList } from "~/types";
+import { useThemeColor } from '~/hooks/useThemeColor';
+import type { DevRunningStackParamList } from '~/types';
 
-import { RunningScreen } from "./running.screen";
+import { RunningScreen } from './running.screen';
 
 const DevRunning = createNativeStackNavigator<DevRunningStackParamList>();
 
 export const DevRunningNavigator: VFC = () => {
-  const backgroundColor = useThemeColor({}, "bg1");
+  const backgroundColor = useThemeColor({}, 'bg1');
 
   return (
     <DevRunning.Navigator
@@ -23,7 +23,7 @@ export const DevRunningNavigator: VFC = () => {
         name="RunningScreen"
         component={RunningScreen}
         options={() => ({
-          title: "ランニング中",
+          title: 'ランニング中',
         })}
       />
     </DevRunning.Navigator>
