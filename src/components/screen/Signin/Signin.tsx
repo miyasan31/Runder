@@ -1,32 +1,87 @@
 import { makeRedirectUri, startAsync } from 'expo-auth-session';
 import type { VFC } from 'react';
-import React from 'react';
-import { Button as NativeButton, StyleSheet } from 'react-native';
+import React, { useCallback } from 'react';
+import { Button as NativeButton, Platform, StyleSheet } from 'react-native';
 
 import { Button } from '~/components/ui/Button';
 import { Apple, Google, Mail, Runder } from '~/components/ui/Icon';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { SUPABASE_URL } from '~/constants/SUPABASE';
+import { saveSequreStore } from '~/utils/sequreStore';
 import { supabaseClient } from '~/utils/supabaseClient';
 
 import type { SigninScreenProps } from './ScreenProps';
 
+const useProxy = Platform.select({ default: false });
+const redirectUri = makeRedirectUri({ useProxy });
+const provider = 'google';
+
 export const Signin: VFC<SigninScreenProps> = () => {
-  const onGoogleSignin = async () => {
-    const redirectUri = makeRedirectUri({ path: '/', useProxy: false });
-    const provider = 'google';
+  const onGoogleSignin = useCallback(async () => {
     startAsync({
       authUrl: `${SUPABASE_URL}/auth/v1/authorize?provider=${provider}&redirect_to=${redirectUri}`,
       returnUrl: redirectUri,
-    }).then(async (response: any) => {
-      if (!response) return;
-      const { user, session, error } = await supabaseClient.auth.signIn({
-        refreshToken: response.params?.refresh_token,
+    })
+      .then(async (response: any) => {
+        // console.info('response', response);
+
+        if (!response) {
+          return;
+        }
+
+        // サインイン処理
+        const {
+          user,
+          session,
+          error: signInError,
+        } = await supabaseClient.auth.signIn({
+          refreshToken: response.params?.refresh_token,
+        });
+
+        if (signInError) {
+          console.error(signInError);
+          return;
+        }
+
+        if (!user) {
+          console.error('user is null');
+          return;
+        }
+
+        // ユーザー情報を登録
+        // user.id
+        // user.user_metadata.name
+        // user.email
+        // user.user_metadata.avatar_url
+        const { error: userCreateError } = await supabaseClient.from('user').insert([
+          {
+            id: user.id,
+            name: user.user_metadata.name,
+            email: user.email,
+            avatar: user.user_metadata.avatar_url,
+          },
+        ]);
+
+        if (userCreateError) {
+          console.error(userCreateError);
+        }
+
+        if (!session) {
+          console.error('session is null');
+          return;
+        }
+
+        // デバイスのsecure storeに保存
+        // session.user.app_metadata.provider
+        // session.access_token
+        await saveSequreStore('runder-auth-provider', 'google');
+        await saveSequreStore('runder-access_token', session.access_token);
+      })
+      .catch((error: any) => {
+        console.error('error', error);
       });
-      console.info(user, session, error);
-    });
-  };
+  }, []);
 
   return (
     <View style={style.container}>
