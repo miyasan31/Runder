@@ -2,9 +2,16 @@
  * Model User
  */
 export type User = {
-  id: number;
+  id: string;
+  runder_id: string | null;
   name: string;
-  created_at: Date;
+  email: string;
+  avatar: string | null;
+  profile: string | null;
+  gender: number;
+  birthday: Date | null;
+  age_hierarchy: number;
+  created_at: Date | null;
 };
 
 /**
