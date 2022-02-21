@@ -59,6 +59,7 @@ export type DevRunningScreenProps<T extends keyof DevRunningStackParamList> = Co
 /* auth */
 export type AuthStackParamList = {
   SigninScreen: undefined;
+  SignupScreen: undefined;
   Modal: undefined;
 };
 export type AuthScreenProps<T extends keyof AuthStackParamList> = CompositeScreenProps<
