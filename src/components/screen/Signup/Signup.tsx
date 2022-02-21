@@ -13,13 +13,13 @@ import { signInSession } from '~/stores/session';
 import { saveSequreStore } from '~/utils/sequreStore';
 import { supabaseClient } from '~/utils/supabaseClient';
 
-import type { SigninScreenProps } from './ScreenProps';
+import type { SignupScreenProps } from './ScreenProps';
 
 const useProxy = Platform.select({ default: false });
 const redirectUri = makeRedirectUri({ useProxy });
 const provider = 'google';
 
-export const Signin: VFC<SigninScreenProps> = () => {
+export const Signup: VFC<SignupScreenProps> = () => {
   const onGoogleSignin = useCallback(async () => {
     startAsync({
       authUrl: `${SUPABASE_URL}/auth/v1/authorize?provider=${provider}&redirect_to=${redirectUri}`,
@@ -51,7 +51,6 @@ export const Signin: VFC<SigninScreenProps> = () => {
           return;
         }
 
-        // ここはサインイン処理が成功したら呼ばれる
         // ユーザー情報を登録
         // user.id
         // user.user_metadata.name
