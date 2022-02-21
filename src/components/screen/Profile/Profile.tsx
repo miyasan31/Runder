@@ -8,6 +8,7 @@ import { Image, StyleSheet } from 'react-native';
 import { Button } from '~/components/ui/Button';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import { onSignOut } from '~/utils/auth';
 
 // import { toastKit } from '~/utils/toastKit';
 import { HistoryTab } from './History.tab';
@@ -82,6 +83,14 @@ export const Profile: VFC<ProfileScreenProps> = (props) => {
                 textStyle={style.buttonText}
                 isBorder
                 onPress={onOpenModal}
+              />
+              <Button
+                label="サインアウト"
+                outlineStyle={style.buttonOutline}
+                bgStyle={style.buttonBg}
+                textStyle={style.buttonText}
+                isBorder
+                onPress={onSignOut}
               />
               <Text>ランキング</Text>
               <Text>1位</Text>
