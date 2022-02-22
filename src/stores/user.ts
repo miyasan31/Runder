@@ -15,7 +15,7 @@ export const user = proxy<User>({
   created_at: null,
 });
 
-export const signInUser = (value: User) => {
+export const getUser = (value: User) => {
   user.id = value.id;
   user.runder_id = value.runder_id;
   user.name = value.name;
@@ -27,7 +27,7 @@ export const signInUser = (value: User) => {
   user.created_at = value.created_at;
 };
 
-export const signOutUser = () => {
+export const resetUser = () => {
   user.id = '';
   user.runder_id = '';
   user.name = '';
