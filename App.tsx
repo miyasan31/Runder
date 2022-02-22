@@ -1,17 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { memo } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { RecoilRoot } from 'recoil';
 
 import { Toaster } from '~/components/ui/Toaster';
+import { View } from '~/components/ui/View';
+import { useCachedResources } from '~/hooks/useCachedResources';
+import { useColorScheme } from '~/hooks/useColorScheme';
 import { Navigations } from '~/screens';
+import { viewStyles } from '~/styles';
 
 const App = () => {
+  const isLoadingComplete = useCachedResources();
+  const colorScheme = useColorScheme();
+
+  if (!isLoadingComplete) return null;
   return (
     <RecoilRoot>
       <SafeAreaProvider>
-        <Navigations />
-        <StatusBar />
+        <View style={viewStyles.flex1} bgTheme="bg1">
+          <Navigations colorScheme={colorScheme} />
+          <StatusBar />
+        </View>
       </SafeAreaProvider>
       <Toaster position="bottom-center" />
     </RecoilRoot>
@@ -19,4 +29,4 @@ const App = () => {
 };
 
 // eslint-disable-next-line import/no-default-export
-export default App;
+export default memo(App);
