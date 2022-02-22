@@ -1,5 +1,5 @@
 import type { VFC } from 'react';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Button as NativeButton, StyleSheet } from 'react-native';
 
 import { Button } from '~/components/ui/Button';
@@ -10,7 +10,11 @@ import { onSignInGoogle, onSignOut } from '~/utils/supabase';
 
 import type { SignInScreenProps } from './ScreenProps';
 
-export const SignIn: VFC<SignInScreenProps> = () => {
+export const SignIn: VFC<SignInScreenProps> = ({ navigation }) => {
+  const onSignInEmailNavigate = useCallback(() => {
+    navigation.navigate('SignInEmailScreen');
+  }, [navigation]);
+
   return (
     <View style={style.container}>
       <View style={style.iconArea}>
@@ -53,7 +57,7 @@ export const SignIn: VFC<SignInScreenProps> = () => {
 
       <View style={style.registerArea}>
         <Text style={style.registerText}>新規登録の場合は</Text>
-        <NativeButton title="こちら" onPress={onSignInGoogle} />
+        <NativeButton title="こちら" onPress={onSignInEmailNavigate} />
       </View>
     </View>
   );
