@@ -5,6 +5,7 @@ import React from 'react';
 import type { AuthStackParamList } from '~/types';
 
 import { SignInScreen } from './signin.screen';
+import { SignInEmailScreen } from './signin_email.screen';
 import { SignUpScreen } from './signup.screen';
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -19,6 +20,7 @@ export const AuthNavigator: VFC = () => {
     >
       <AuthStack.Screen name="SignInScreen" component={SignInScreen} options={{}} />
       <AuthStack.Screen name="SignUpScreen" component={SignUpScreen} options={{}} />
+      <AuthStack.Screen name="SignInEmailScreen" component={SignInEmailScreen} options={{}} />
     </AuthStack.Navigator>
   );
 };
