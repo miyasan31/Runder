@@ -3,15 +3,15 @@
  */
 export type User = {
   id: string;
-  runder_id: string | null;
+  runder_id?: string | null;
   name: string;
-  email: string;
+  email?: string;
   avatar: string | null;
   profile: string | null;
   gender: number;
-  birthday: Date | null;
-  age_hierarchy: number;
-  created_at: Date | null;
+  birthday?: Date | null;
+  age_hierarchy?: number;
+  created_at?: Date | null;
 };
 
 /**
