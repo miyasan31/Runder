@@ -1,3 +1,3 @@
 import type { AuthScreenProps as Props } from '~/types';
 
-export type SignupScreenProps = Props<'SignupScreen'>;
+export type SignUpScreenProps = Props<'SignUpScreen'>;

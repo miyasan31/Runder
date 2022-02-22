@@ -4,14 +4,14 @@ import React from 'react';
 import { LayoutErrorBoundary } from '~/components/functional/Error';
 import { SafeAreaLayout } from '~/components/ui/Layout';
 
-import type { SignupScreenProps } from './ScreenProps';
-import { Signup } from './Signup';
+import type { SignUpScreenProps } from './ScreenProps';
+import { SignUp } from './SignUp';
 
-export const SignupScreen: VFC<SignupScreenProps> = (props) => {
+export const SignUpScreen: VFC<SignUpScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
       <SafeAreaLayout bgTheme="bg2" isCenter>
-        <Signup {...props} />
+        <SignUp {...props} />
       </SafeAreaLayout>
     </LayoutErrorBoundary>
   );

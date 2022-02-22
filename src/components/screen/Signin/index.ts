@@ -1,2 +1,2 @@
-export type { SigninScreenProps } from './ScreenProps';
-export { SigninScreen } from './Signin.screen';
+export type { SignInScreenProps } from './ScreenProps';
+export { SignInScreen } from './SignIn.screen';

@@ -1,4 +1,4 @@
-export { onSignInGoogle } from './signInGoogle';
-export { onSignOut } from './signOut';
+export { onSignInGoogle } from './onSignInGoogle';
+export { onSignOut } from './onSignOut';
 export { supabaseClient } from './supabaseClient';
 export { supabaseSelect } from './supabaseSelect';

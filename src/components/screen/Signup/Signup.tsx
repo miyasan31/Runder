@@ -13,13 +13,13 @@ import { updateSession } from '~/stores/session';
 import { saveSequreStore } from '~/utils/sequreStore';
 import { supabaseClient } from '~/utils/supabase';
 
-import type { SignupScreenProps } from './ScreenProps';
+import type { SignUpScreenProps } from './ScreenProps';
 
 const useProxy = Platform.select({ default: false });
 const redirectUri = makeRedirectUri({ useProxy });
 const provider = 'google';
 
-export const Signup: VFC<SignupScreenProps> = () => {
+export const SignUp: VFC<SignUpScreenProps> = () => {
   const onGoogleSignin = useCallback(async () => {
     startAsync({
       authUrl: `${SUPABASE_URL}/auth/v1/authorize?provider=${provider}&redirect_to=${redirectUri}`,

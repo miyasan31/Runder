@@ -8,9 +8,9 @@ import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { onSignInGoogle, onSignOut } from '~/utils/supabase';
 
-import type { SigninScreenProps } from './ScreenProps';
+import type { SignInScreenProps } from './ScreenProps';
 
-export const Signin: VFC<SigninScreenProps> = () => {
+export const SignIn: VFC<SignInScreenProps> = () => {
   return (
     <View style={style.container}>
       <View style={style.iconArea}>
