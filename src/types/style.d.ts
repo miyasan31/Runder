@@ -14,7 +14,7 @@ export type StyleProps = {
   textTheme?: Extract<ThemeProps, TextTheme>;
   lightText?: string;
   darkText?: string;
-  // Views
+  // View
   bgStyle?: StyleProp<ViewStyle>;
   bgTheme?: Extract<ThemeProps, BgTheme>;
   lightBg?: string;
@@ -26,3 +26,5 @@ export type StyleProps = {
 export type TextStyleProps = Pick<StyleProps, 'textStyle' | 'textTheme' | 'lightText' | 'darkText'>;
 
 export type ViewStyleProps = Pick<StyleProps, 'bgStyle' | 'bgTheme' | 'lightBg' | 'darkBg'>;
+
+export type TextInputStyleProps = Omit<StyleProps, 'outlineStyle'>;
