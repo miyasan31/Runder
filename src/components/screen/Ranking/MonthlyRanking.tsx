@@ -9,7 +9,7 @@ import { Card } from '~/components/ui/Card';
 import { Progress } from '~/components/ui/Progress';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
-import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/useSupabase';
+import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import type { User } from '~/types/fetcher';
 
 import type { RankingScreenProps } from './ScreenProps';
@@ -33,7 +33,7 @@ export const MonthlyRanking: VFC<RankingScreenProps> = () => {
 
   // eslint-disable-next-line func-style
   function renderItem({ item }: { item: User }) {
-    const date = format(new Date(item.created_at), 'yyyy年M月d日');
+    const date = format(new Date(item.created_at || ''), 'yyyy年M月d日');
     const onNavigation = () => console.info('item.id', item.id);
 
     return (

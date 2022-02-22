@@ -1,93 +1,16 @@
-import { makeRedirectUri, startAsync } from 'expo-auth-session';
 import type { VFC } from 'react';
-import React, { useCallback } from 'react';
-import { Button as NativeButton, Platform, StyleSheet } from 'react-native';
+import React from 'react';
+import { Button as NativeButton, StyleSheet } from 'react-native';
 
 import { Button } from '~/components/ui/Button';
 import { Apple, Google, Mail, Runder } from '~/components/ui/Icon';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
-import { ACCESS_TOKEN_KEY, PREVIOUS_AUTH_PROVIDER_KEY } from '~/constants/SEQUER_STORE';
-import { SUPABASE_URL } from '~/constants/SUPABASE';
-import { signInSession } from '~/stores/session';
-import { saveSequreStore } from '~/utils/sequreStore';
-import { supabaseClient } from '~/utils/supabaseClient';
+import { onSignInGoogle, onSignOut } from '~/utils/supabase';
 
 import type { SigninScreenProps } from './ScreenProps';
 
-const useProxy = Platform.select({ default: false });
-const redirectUri = makeRedirectUri({ useProxy });
-const provider = 'google';
-
 export const Signin: VFC<SigninScreenProps> = () => {
-  const onGoogleSignin = useCallback(async () => {
-    startAsync({
-      authUrl: `${SUPABASE_URL}/auth/v1/authorize?provider=${provider}&redirect_to=${redirectUri}`,
-      returnUrl: redirectUri,
-    })
-      .then(async (response: any) => {
-        // console.info('response', response);
-
-        if (!response) {
-          return;
-        }
-
-        // サインイン処理
-        const {
-          user,
-          session,
-          error: signInError,
-        } = await supabaseClient.auth.signIn({
-          refreshToken: response.params?.refresh_token,
-        });
-
-        if (signInError) {
-          console.error(signInError);
-          return;
-        }
-
-        if (!user) {
-          console.error('user is null');
-          return;
-        }
-
-        // ここはサインイン処理が成功したら呼ばれる
-        // ユーザー情報を登録
-        // user.id
-        // user.user_metadata.name
-        // user.email
-        // user.user_metadata.avatar_url
-        // const { error: userCreateError } = await supabaseClient.from('user').insert([
-        //   {
-        //     id: user.id,
-        //     name: user.user_metadata.name,
-        //     email: user.email,
-        //     avatar: user.user_metadata.avatar_url,
-        //   },
-        // ]);
-
-        // if (userCreateError) {
-        //   console.error(userCreateError);
-        // }
-
-        if (!session) {
-          console.error('session is null');
-          return;
-        }
-
-        // デバイスのsecure storeに保存
-        // session.user.app_metadata.provider
-        // session.access_token
-        await saveSequreStore(PREVIOUS_AUTH_PROVIDER_KEY, 'google');
-        await saveSequreStore(ACCESS_TOKEN_KEY, session.access_token);
-
-        signInSession();
-      })
-      .catch((error: any) => {
-        console.error('error', error);
-      });
-  }, []);
-
   return (
     <View style={style.container}>
       <View style={style.iconArea}>
@@ -106,7 +29,7 @@ export const Signin: VFC<SigninScreenProps> = () => {
         bgStyle={style.buttonBg}
         textStyle={style.buttonText}
         bgTheme="bg1"
-        onPress={onGoogleSignin}
+        onPress={onSignInGoogle}
       />
       <Button
         leftIcon={<Apple />}
@@ -116,7 +39,7 @@ export const Signin: VFC<SigninScreenProps> = () => {
         textStyle={style.buttonText}
         lightBg="#333333"
         lightText="#FFF"
-        onPress={onGoogleSignin}
+        onPress={onSignOut}
       />
       <Button
         leftIcon={<Mail />}
@@ -126,12 +49,11 @@ export const Signin: VFC<SigninScreenProps> = () => {
         textStyle={style.buttonText}
         lightBg="#808080"
         lightText="#FFF"
-        onPress={onGoogleSignin}
       />
 
       <View style={style.registerArea}>
         <Text style={style.registerText}>新規登録の場合は</Text>
-        <NativeButton title="こちら" onPress={onGoogleSignin} />
+        <NativeButton title="こちら" onPress={onSignInGoogle} />
       </View>
     </View>
   );

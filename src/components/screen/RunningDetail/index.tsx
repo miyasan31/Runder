@@ -7,7 +7,7 @@ import MapView, { Polyline } from 'react-native-maps';
 
 import { Layout } from '~/components/ui/Layout';
 import { Text } from '~/components/ui/Text';
-import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/useSupabase';
+import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import type { DevListScreenProps } from '~/types';
 import type { Location } from '~/types/fetcher';
 
@@ -33,7 +33,7 @@ export const RunningDetail: VFC<Props> = (props) => {
   const strokeResult = data[0].location.map((coordinate) => coordinate.color);
 
   return (
-    <Layout bgStyle={styles.root}>
+    <Layout bgStyle={styles.root} layout="tabheader-bottomtab">
       <MapView
         style={styles.map}
         initialRegion={{

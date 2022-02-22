@@ -9,9 +9,9 @@ import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { ACCESS_TOKEN_KEY, PREVIOUS_AUTH_PROVIDER_KEY } from '~/constants/SEQUER_STORE';
 import { SUPABASE_URL } from '~/constants/SUPABASE';
-import { signInSession } from '~/stores/session';
+import { updateSession } from '~/stores/session';
 import { saveSequreStore } from '~/utils/sequreStore';
-import { supabaseClient } from '~/utils/supabaseClient';
+import { supabaseClient } from '~/utils/supabase';
 
 import type { SignupScreenProps } from './ScreenProps';
 
@@ -80,7 +80,7 @@ export const Signup: VFC<SignupScreenProps> = () => {
         await saveSequreStore(PREVIOUS_AUTH_PROVIDER_KEY, 'google');
         await saveSequreStore(ACCESS_TOKEN_KEY, session.access_token);
 
-        signInSession();
+        updateSession(true);
       })
       .catch((error: any) => {
         console.error('error', error);

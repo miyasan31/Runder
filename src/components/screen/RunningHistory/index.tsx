@@ -10,7 +10,7 @@ import { Layout } from '~/components/ui/Layout';
 import { Progress } from '~/components/ui/Progress';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
-import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/useSupabase';
+import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import { useThemeColor } from '~/hooks/useThemeColor';
 import type { DevListScreenProps } from '~/types';
 import type { Location } from '~/types/fetcher';
@@ -37,7 +37,7 @@ export const RunningHistory: VFC<Props> = (props) => {
   if (error) return <Text>エラー</Text>;
   if (!data) return <Text>データなし</Text>;
   return (
-    <Layout>
+    <Layout layout="tabheader-bottomtab">
       <FlatList data={data} renderItem={renderItem} keyExtractor={(item, _) => String(item.id)} />
     </Layout>
   );

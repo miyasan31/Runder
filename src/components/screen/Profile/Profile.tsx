@@ -8,7 +8,7 @@ import { Image, StyleSheet } from 'react-native';
 import { Button } from '~/components/ui/Button';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
-import { onSignOut } from '~/utils/auth';
+import { onSignOut } from '~/utils/supabase';
 
 // import { toastKit } from '~/utils/toastKit';
 import { HistoryTab } from './History.tab';
