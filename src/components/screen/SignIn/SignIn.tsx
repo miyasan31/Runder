@@ -53,11 +53,12 @@ export const SignIn: VFC<SignInScreenProps> = ({ navigation }) => {
         textStyle={style.buttonText}
         lightBg="#808080"
         lightText="#FFF"
+        onPress={onSignInEmailNavigate}
       />
 
       <View style={style.registerArea}>
         <Text style={style.registerText}>新規登録の場合は</Text>
-        <NativeButton title="こちら" onPress={onSignInEmailNavigate} />
+        <NativeButton title="こちら" onPress={onSignOut} />
       </View>
     </View>
   );
