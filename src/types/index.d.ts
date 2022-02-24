@@ -61,6 +61,7 @@ export type AuthStackParamList = {
   SignInScreen: undefined;
   SignInEmailScreen: undefined;
   SignUpScreen: undefined;
+  UserRegisterScreen: undefined;
   Modal: undefined;
 };
 export type AuthScreenProps<T extends keyof AuthStackParamList> = CompositeScreenProps<
