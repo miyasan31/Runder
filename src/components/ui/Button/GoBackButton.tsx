@@ -27,7 +27,7 @@ const style = StyleSheet.create({
   floatButton: {
     position: 'absolute',
     top: 5,
-    left: '5%',
+    left: '3%',
     width: 'auto',
   },
 });
