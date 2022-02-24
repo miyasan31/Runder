@@ -10,8 +10,8 @@ import { View } from '~/components/ui/View';
 import type { SignInEmailScreenProps } from './ScreenProps';
 
 export const SignInEmail: VFC<SignInEmailScreenProps> = ({ navigation }) => {
-  const onSignInEmailNavigate = useCallback(() => {
-    navigation.navigate('SignInEmailScreen');
+  const onSignUpNavigate = useCallback(() => {
+    navigation.navigate('SignUpScreen');
   }, [navigation]);
 
   return (
@@ -21,7 +21,7 @@ export const SignInEmail: VFC<SignInEmailScreenProps> = ({ navigation }) => {
       <TextInput />
 
       <Text style={style.label}>パスワード</Text>
-      <TextInput />
+      <TextInput secureTextEntry />
 
       <Button
         label="サインイン"
@@ -32,7 +32,7 @@ export const SignInEmail: VFC<SignInEmailScreenProps> = ({ navigation }) => {
 
       <View style={style.registerArea}>
         <Text style={style.registerText}>新規登録の場合は</Text>
-        <NativeButton title="こちら" onPress={onSignInEmailNavigate} />
+        <NativeButton title="こちら" onPress={onSignUpNavigate} />
       </View>
     </View>
   );

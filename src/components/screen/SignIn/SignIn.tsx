@@ -15,6 +15,10 @@ export const SignIn: VFC<SignInScreenProps> = ({ navigation }) => {
     navigation.navigate('SignInEmailScreen');
   }, [navigation]);
 
+  const onSignUpNavigate = useCallback(() => {
+    navigation.navigate('SignUpScreen');
+  }, [navigation]);
+
   return (
     <View style={style.container}>
       <View style={style.iconArea}>
@@ -28,7 +32,7 @@ export const SignIn: VFC<SignInScreenProps> = ({ navigation }) => {
 
       <Button
         leftIcon={<Google />}
-        label="Googleアカウントでログイン"
+        label="Googleでサインイン"
         outlineStyle={style.buttonOutline}
         bgStyle={style.buttonBg}
         textStyle={style.buttonText}
@@ -37,7 +41,7 @@ export const SignIn: VFC<SignInScreenProps> = ({ navigation }) => {
       />
       <Button
         leftIcon={<Apple />}
-        label="Appleアカウントでログイン"
+        label="Appleでサインイン"
         outlineStyle={style.buttonOutline}
         bgStyle={style.buttonBg}
         textStyle={style.buttonText}
@@ -47,7 +51,7 @@ export const SignIn: VFC<SignInScreenProps> = ({ navigation }) => {
       />
       <Button
         leftIcon={<Mail />}
-        label="メールアドレスでログイン"
+        label="メールでサインイン"
         outlineStyle={style.buttonOutline}
         bgStyle={style.buttonBg}
         textStyle={style.buttonText}
@@ -58,7 +62,7 @@ export const SignIn: VFC<SignInScreenProps> = ({ navigation }) => {
 
       <View style={style.registerArea}>
         <Text style={style.registerText}>新規登録の場合は</Text>
-        <NativeButton title="こちら" onPress={onSignOut} />
+        <NativeButton title="こちら" onPress={onSignUpNavigate} />
       </View>
     </View>
   );
