@@ -9,7 +9,7 @@ import { supabaseClient, supabaseSelect } from '~/utils/supabase';
 
 type SessionState = {
   isSignin: boolean;
-  route: 'Auth' | 'Main';
+  route: 'Main' | 'SignInScreen' | 'UserRegisterScreen';
 };
 
 const unsubscribe = subscribe(session, () => session.isSignin);
@@ -25,7 +25,7 @@ export const useListenSession = () => {
 
     // is Session Empty
     if (!sessionUser) {
-      return { isSignin: false, route: 'Auth' };
+      return { isSignin: false, route: 'SignInScreen' };
     }
 
     const { data, error } = await supabaseSelect<User>('user', {
@@ -40,12 +40,12 @@ export const useListenSession = () => {
 
     // is Error
     if (error) {
-      return { isSignin: false, route: 'Auth' };
+      return { isSignin: false, route: 'SignInScreen' };
     }
-    // TODO
-    // is Not User -> RegisterScreen Navigation
+
+    // is Not User -> UserRegisterScreen Navigation
     if (!data) {
-      return { isSignin: false, route: 'Auth' };
+      return { isSignin: false, route: 'UserRegisterScreen' };
     }
 
     // is Success
