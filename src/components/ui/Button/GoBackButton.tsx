@@ -26,7 +26,8 @@ export const GoBackButton: VFC<Props> = memo(({ onPress }) => {
 const style = StyleSheet.create({
   floatButton: {
     position: 'absolute',
-    top: '1%',
-    left: '4%',
+    top: 5,
+    left: '5%',
+    width: 'auto',
   },
 });
