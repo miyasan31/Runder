@@ -19,8 +19,8 @@ export const AuthNavigator: VFC = () => {
       }}
     >
       <AuthStack.Screen name="SignInScreen" component={SignInScreen} options={{}} />
-      <AuthStack.Screen name="SignUpScreen" component={SignUpScreen} options={{}} />
       <AuthStack.Screen name="SignInEmailScreen" component={SignInEmailScreen} options={{}} />
+      <AuthStack.Screen name="SignUpScreen" component={SignUpScreen} options={{}} />
     </AuthStack.Navigator>
   );
 };
