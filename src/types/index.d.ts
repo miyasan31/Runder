@@ -8,8 +8,7 @@ declare global {
   }
 }
 
-export type RootStackParamList = {
-  Auth: NavigatorScreenParams<AuthStackParamList> | undefined;
+export type RootStackParamList = AuthGroupStackParamList & {
   Main: NavigatorScreenParams<MainBottomTabParamList> | undefined;
   Development: NavigatorScreenParams<DevelopmentTabParamList> | undefined;
   Modal: undefined;
@@ -57,15 +56,15 @@ export type DevRunningScreenProps<T extends keyof DevRunningStackParamList> = Co
 
 // =====================================================================
 /* auth */
-export type AuthStackParamList = {
+export type AuthGroupStackParamList = {
   SignInScreen: undefined;
   SignInEmailScreen: undefined;
   SignUpScreen: undefined;
   UserRegisterScreen: undefined;
   Modal: undefined;
 };
-export type AuthScreenProps<T extends keyof AuthStackParamList> = CompositeScreenProps<
-  NativeStackScreenProps<AuthStackParamList, T>,
+export type AuthGroupScreenProps<T extends keyof AuthGroupStackParamList> = CompositeScreenProps<
+  NativeStackScreenProps<AuthGroupStackParamList, T>,
   NativeStackScreenProps<RootStackParamList>
 >;
 

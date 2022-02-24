@@ -8,7 +8,10 @@ import { useThemeColor } from '~/hooks/useThemeColor';
 import type { RootStackParamList } from '~/types';
 
 import { NotFoundScreen } from './404.screen';
-import { AuthNavigator } from './auth';
+import { SignInScreen } from './auth/signin.screen';
+import { SignInEmailScreen } from './auth/signin_email.screen';
+import { SignUpScreen } from './auth/signup.screen';
+import { UserRegisterScreen } from './auth/user_register.screen';
 import { DevelopmentTabNavigator } from './development';
 import { ModalScreen } from './hoge.modal';
 import { BottomTabNavigator } from './main';
@@ -28,14 +31,23 @@ export const RootNavigator: VFC = () => {
         headerStyle: { backgroundColor },
       }}
     >
-      <RootStack.Screen name="Auth" component={AuthNavigator} />
+      <RootStack.Group>
+        <RootStack.Screen name="SignInScreen" component={SignInScreen} options={{}} />
+        <RootStack.Screen name="SignInEmailScreen" component={SignInEmailScreen} options={{}} />
+        <RootStack.Screen name="SignUpScreen" component={SignUpScreen} options={{}} />
+        <RootStack.Screen name="UserRegisterScreen" component={UserRegisterScreen} options={{}} />
+      </RootStack.Group>
+
       <RootStack.Screen name="Main" component={BottomTabNavigator} />
+
       <RootStack.Screen name="Development" component={DevelopmentTabNavigator} />
+
       <RootStack.Screen
         name="NotFoundScreen"
         component={NotFoundScreen}
         options={{ title: 'Oops!' }}
       />
+
       <RootStack.Group screenOptions={{ presentation: 'modal' }}>
         <RootStack.Screen name="Modal" component={ModalScreen} options={{ title: 'Oops!' }} />
       </RootStack.Group>
