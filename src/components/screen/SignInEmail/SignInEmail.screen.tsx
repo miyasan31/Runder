@@ -1,5 +1,5 @@
 import type { VFC } from 'react';
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import { LayoutErrorBoundary } from '~/components/functional/Error';
 import { KeyboardAvoiding } from '~/components/functional/KeyboardAvoiding';
@@ -10,15 +10,11 @@ import type { SignInEmailScreenProps } from './ScreenProps';
 import { SignInEmail } from './SignInEmail';
 
 export const SignInEmailScreen: VFC<SignInEmailScreenProps> = (props) => {
-  const onGoBackScreen = useCallback(() => {
-    props.navigation.goBack();
-  }, [props.navigation]);
-
   return (
     <LayoutErrorBoundary>
       <KeyboardAvoiding>
         <SafeAreaLayout bgTheme="bg2" isCenter>
-          <GoBackButton onPress={onGoBackScreen} />
+          <GoBackButton isFloating />
           <SignInEmail {...props} />
         </SafeAreaLayout>
       </KeyboardAvoiding>
