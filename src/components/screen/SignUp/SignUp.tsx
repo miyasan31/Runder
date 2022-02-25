@@ -16,6 +16,8 @@ import { toastKit } from '~/utils/toastKit';
 
 import type { SignUpScreenProps } from './ScreenProps';
 
+const AlreadyRegisterdMessage = 'User already registered';
+
 export const SignUp: VFC<SignUpScreenProps> = ({ navigation }) => {
   const onSignUpEmail = useCallback(
     async (email, password) => {
@@ -27,6 +29,11 @@ export const SignUp: VFC<SignUpScreenProps> = ({ navigation }) => {
       const [{ error }] = await Promise.all([signUpPromise, sequreStorePromise, sleepPromise]);
 
       if (error) {
+        if (error.message === AlreadyRegisterdMessage) {
+          errorToast('すでにアカウント登録されています');
+          navigation.navigate('SignInScreen');
+          return;
+        }
         errorToast('サインアップに失敗しました');
         return;
       }
