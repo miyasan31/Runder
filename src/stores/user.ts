@@ -9,7 +9,7 @@ export const user = proxy<User>({
   email: '',
   avatar: '',
   profile: '',
-  gender: 0,
+  sex: 0,
   birthday: null,
   age_hierarchy: 0,
   created_at: null,
@@ -22,6 +22,7 @@ export const getUser = (value: User) => {
   user.email = value.email;
   user.avatar = value.avatar;
   user.profile = value.profile;
+  user.sex = value.sex;
   user.birthday = value.birthday;
   user.age_hierarchy = value.age_hierarchy;
   user.created_at = value.created_at;
@@ -35,6 +36,7 @@ export const resetUser = () => {
   user.avatar = '';
   user.profile = '';
   user.birthday = null;
+  user.sex = 0;
   user.age_hierarchy = 0;
   user.created_at = null;
 };

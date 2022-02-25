@@ -8,7 +8,7 @@ export type User = {
   email?: string;
   avatar: string | null;
   profile: string | null;
-  gender: number;
+  sex: number;
   birthday?: Date | null;
   age_hierarchy?: number;
   created_at?: Date | null;
