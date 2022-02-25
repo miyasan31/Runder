@@ -14,8 +14,8 @@ export const SignEmailForm: VFC<Props> = ({ onSignEmail }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const onChangeEmail = useCallback((value: string) => setEmail(value), []);
-  const onChangePassword = useCallback((value: string) => setPassword(value), []);
+  const onChangeEmail = useCallback((value: string) => setEmail(value.trim()), []);
+  const onChangePassword = useCallback((value: string) => setPassword(value.trim()), []);
 
   return (
     <>
