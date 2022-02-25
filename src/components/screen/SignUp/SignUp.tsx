@@ -8,15 +8,15 @@ import { SignEmailForm } from '~/components/ui/Form';
 import { Apple, Google } from '~/components/ui/Icon';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
-import { AUTH_PROVIDER_KEY } from '~/constants/SEQUER_STORE';
+import { AUTH_PROVIDER_KEY } from '~/constants/SECURE_STORE';
 import { sleep } from '~/functions/sleep';
-import { saveSequreStore } from '~/utils/sequreStore';
+import { saveSecureStore } from '~/utils/secureStore';
 import { onSignInGoogle, supabaseClient } from '~/utils/supabase';
 import { toastKit } from '~/utils/toastKit';
 
 import type { SignUpScreenProps } from './ScreenProps';
 
-const AlreadyRegisterdMessage = 'User already registered';
+const AlreadyRegisteredMessage = 'User already registered';
 
 export const SignUp: VFC<SignUpScreenProps> = ({ navigation }) => {
   const onSignUpEmail = useCallback(
@@ -24,12 +24,12 @@ export const SignUp: VFC<SignUpScreenProps> = ({ navigation }) => {
       const { errorToast, successToast } = toastKit('サインアップしています...');
 
       const signUpPromise = supabaseClient.auth.signUp({ email, password });
-      const sequreStorePromise = saveSequreStore(AUTH_PROVIDER_KEY, 'email');
+      const secureStorePromise = saveSecureStore(AUTH_PROVIDER_KEY, 'email');
       const sleepPromise = sleep(1000);
-      const [{ error }] = await Promise.all([signUpPromise, sequreStorePromise, sleepPromise]);
+      const [{ error }] = await Promise.all([signUpPromise, secureStorePromise, sleepPromise]);
 
       if (error) {
-        if (error.message === AlreadyRegisterdMessage) {
+        if (error.message === AlreadyRegisteredMessage) {
           errorToast('すでにアカウント登録されています');
           navigation.navigate('SignInScreen');
           return;

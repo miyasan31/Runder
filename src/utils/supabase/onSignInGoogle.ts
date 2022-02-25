@@ -2,11 +2,11 @@ import { makeRedirectUri, startAsync } from 'expo-auth-session';
 import { toast } from 'react-hot-toast/src/core/toast';
 import { Platform } from 'react-native';
 
-import { AUTH_PROVIDER_KEY } from '~/constants/SEQUER_STORE';
+import { AUTH_PROVIDER_KEY } from '~/constants/SECURE_STORE';
 import { SUPABASE_URL } from '~/constants/SUPABASE';
 import { sleep } from '~/functions/sleep';
 import { updateSession } from '~/stores/session';
-import { deleteSequreStore, saveSequreStore } from '~/utils/sequreStore';
+import { deleteSecureStore, saveSecureStore } from '~/utils/secureStore';
 
 import { supabaseClient } from './supabaseClient';
 
@@ -51,13 +51,13 @@ export const onSignInGoogle = async () => {
       // }
 
       toast.success('サインインに成功しました', { icon: '🥳' });
-      const sequreStorePromise = saveSequreStore(AUTH_PROVIDER_KEY, 'google');
+      const secureStorePromise = saveSecureStore(AUTH_PROVIDER_KEY, 'google');
       const sleepPromise = sleep(1000);
-      await Promise.all([sequreStorePromise, sleepPromise]);
+      await Promise.all([secureStorePromise, sleepPromise]);
       updateSession(true);
     })
     .catch((error: any) => {
-      deleteSequreStore(AUTH_PROVIDER_KEY);
+      deleteSecureStore(AUTH_PROVIDER_KEY);
       console.error('error', error);
     });
 };

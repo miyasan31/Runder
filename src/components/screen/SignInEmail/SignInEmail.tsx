@@ -5,10 +5,10 @@ import { Button as NativeButton, StyleSheet } from 'react-native';
 import { SignEmailForm } from '~/components/ui/Form';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
-import { AUTH_PROVIDER_KEY } from '~/constants/SEQUER_STORE';
+import { AUTH_PROVIDER_KEY } from '~/constants/SECURE_STORE';
 import { sleep } from '~/functions/sleep';
 import { updateSession } from '~/stores/session';
-import { saveSequreStore } from '~/utils/sequreStore';
+import { saveSecureStore } from '~/utils/secureStore';
 import { supabaseClient } from '~/utils/supabase';
 import { toastKit } from '~/utils/toastKit';
 
@@ -19,9 +19,9 @@ export const SignInEmail: VFC<SignInEmailScreenProps> = ({ navigation }) => {
     const { errorToast, successToast } = toastKit('サインインしています...');
 
     const signInPromise = supabaseClient.auth.signIn({ email, password });
-    const sequreStorePromise = saveSequreStore(AUTH_PROVIDER_KEY, 'email');
+    const secureStorePromise = saveSecureStore(AUTH_PROVIDER_KEY, 'email');
     const sleepPromise = sleep(1000);
-    const [{ error }] = await Promise.all([signInPromise, sequreStorePromise, sleepPromise]);
+    const [{ error }] = await Promise.all([signInPromise, secureStorePromise, sleepPromise]);
 
     if (error) {
       errorToast('サインインに失敗しました');
