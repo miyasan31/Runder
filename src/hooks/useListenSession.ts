@@ -32,6 +32,7 @@ export const useListenSession = () => {
       columns: 'id, name, avatar, profile, gender',
       filter: (query) => query.eq('id', sessionUser && sessionUser.id),
     });
+
     // --- or ---
     // const { data, error } = await supabaseClient
     //   .from<User>('user')
@@ -39,12 +40,13 @@ export const useListenSession = () => {
     //   .eq('id', sessionInfo.user.id);
 
     // is Error
-    if (error) {
+    if (error || !data) {
       return { isSignin: false, route: 'SignInScreen' };
     }
 
     // is Not User -> UserRegisterScreen Navigation
-    if (!data) {
+    if (data.length === 0) {
+      updateSession(true);
       return { isSignin: false, route: 'UserRegisterScreen' };
     }
 
