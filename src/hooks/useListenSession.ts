@@ -29,7 +29,7 @@ export const useListenSession = () => {
     }
 
     const { data, error } = await supabaseSelect<User>('user', {
-      columns: 'id, name, avatar, profile, gender',
+      columns: 'id, name, avatar, profile, sex',
       filter: (query) => query.eq('id', sessionUser && sessionUser.id),
     });
 
