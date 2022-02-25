@@ -2,14 +2,36 @@ import type { VFC } from 'react';
 import React, { useCallback } from 'react';
 import { Button as NativeButton, StyleSheet } from 'react-native';
 
-import { Button } from '~/components/ui/Button';
+import { SignEmailForm } from '~/components/ui/Form';
 import { Text } from '~/components/ui/Text';
-import { TextInput } from '~/components/ui/TextInput';
 import { View } from '~/components/ui/View';
+import { AUTH_PROVIDER_KEY } from '~/constants/SEQUER_STORE';
+import { sleep } from '~/functions/sleep';
+import { updateSession } from '~/stores/session';
+import { saveSequreStore } from '~/utils/sequreStore';
+import { supabaseClient } from '~/utils/supabase';
+import { toastKit } from '~/utils/toastKit';
 
 import type { SignInEmailScreenProps } from './ScreenProps';
 
 export const SignInEmail: VFC<SignInEmailScreenProps> = ({ navigation }) => {
+  const onSignInEmail = useCallback(async (email, password) => {
+    const { errorToast, successToast } = toastKit('サインインしています...');
+
+    const signInPromise = supabaseClient.auth.signIn({ email, password });
+    const sequreStorePromise = saveSequreStore(AUTH_PROVIDER_KEY, 'email');
+    const sleepPromise = sleep(1000);
+    const [{ error }] = await Promise.all([signInPromise, sequreStorePromise, sleepPromise]);
+
+    if (error) {
+      errorToast('サインインに失敗しました');
+      return;
+    }
+
+    successToast('サインインに成功しました');
+    updateSession(true);
+  }, []);
+
   const onSignUpNavigate = useCallback(() => {
     navigation.navigate('SignUpScreen');
   }, [navigation]);
@@ -17,18 +39,8 @@ export const SignInEmail: VFC<SignInEmailScreenProps> = ({ navigation }) => {
   return (
     <View style={style.container}>
       <Text style={style.title}>メールアドレスでサインイン</Text>
-      <Text style={style.label}>メールアドレス</Text>
-      <TextInput />
 
-      <Text style={style.label}>パスワード</Text>
-      <TextInput secureTextEntry />
-
-      <Button
-        label="サインイン"
-        textTheme="text0"
-        bgTheme="primary"
-        outlineStyle={style.buttonOutline}
-      />
+      <SignEmailForm onSignEmail={onSignInEmail} />
 
       <View style={style.registerArea}>
         <Text style={style.registerText}>新規登録の場合は</Text>
@@ -48,14 +60,6 @@ const style = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     fontWeight: '600',
-  },
-  label: {
-    lineHeight: 30,
-    paddingLeft: '1%',
-  },
-  buttonOutline: {
-    marginTop: '5%',
-    marginBottom: '3%',
   },
   registerArea: {
     flexDirection: 'row',

@@ -8,15 +8,16 @@ import { supabaseClient } from './supabaseClient';
 export const onSignOut = async () => {
   const { errorToast, successToast } = toastKit('サインアウトしています...');
 
-  const { error } = await supabaseClient.auth.signOut();
-  await sleep(1000);
+  const signOutPromise = supabaseClient.auth.signOut();
+  const sleepPromise = sleep(1000);
+  const [{ error }] = await Promise.all([signOutPromise, sleepPromise]);
 
   if (error) {
     errorToast('サインアウトに失敗しました');
     return;
   }
 
-  resetUser();
+  successToast('サインアウトに成功しました');
   updateSession(false);
-  successToast('サインアウトしました');
+  resetUser();
 };
