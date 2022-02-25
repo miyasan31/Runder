@@ -1,5 +1,6 @@
+import type { Session } from '@supabase/supabase-js';
 import type { VFC } from 'react';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 
 import type { UserRegisterScreenProps } from '~/components/screen/UserRegister';
@@ -8,6 +9,7 @@ import { Radio } from '~/components/ui/Radio';
 import { Text } from '~/components/ui/Text';
 import { TextInput } from '~/components/ui/TextInput';
 import { TouchableOpacity, View } from '~/components/ui/View';
+import { onSignOut, supabaseClient } from '~/utils/supabase';
 
 const radio_group = [
   { id: 1, active: true, label: '男性' },
@@ -15,10 +17,18 @@ const radio_group = [
 ];
 
 export const UserRegister: VFC<UserRegisterScreenProps> = () => {
+  const [_sessionUser, setSessionUser] = useState<Session['user'] | null>(null);
   const [value, onSetValue] = useState<boolean | null>(null);
 
   const onRadioSelect = useCallback((_value: boolean) => {
     onSetValue(_value);
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const session = await supabaseClient.auth.session()?.user;
+      session && setSessionUser(session);
+    })();
   }, []);
 
   return (
@@ -52,6 +62,14 @@ export const UserRegister: VFC<UserRegisterScreenProps> = () => {
         textTheme="text0"
         bgTheme="primary"
         outlineStyle={style.buttonOutline}
+      />
+
+      <Button
+        label="サインアウト"
+        textTheme="text0"
+        bgTheme="primary"
+        outlineStyle={style.buttonOutline}
+        onPress={onSignOut}
       />
     </View>
   );
