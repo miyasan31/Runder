@@ -14,13 +14,13 @@ export const Text: FC<TextProps> = memo(
     lightText: light,
     darkText: dark,
     // custom theme
-    textTheme = 'text1',
+    color: fontColor = 'text1',
     // TextProps
     style,
     textStyle,
     ...otherProps
   }) => {
-    const color = useThemeColor({ light, dark }, textTheme);
+    const color = useThemeColor({ light, dark }, fontColor);
 
     return <NativeText style={[defaultStyle.text, style, textStyle, { color }]} {...otherProps} />;
   },

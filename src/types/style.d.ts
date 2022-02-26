@@ -11,7 +11,7 @@ type OutlineStyle = Pick<ViewStyle, keyof FlexStyle | keyof TransformsStyle>;
 export type StyleProps = {
   // Text
   textStyle?: StyleProp<TextStyle>;
-  textTheme?: Extract<ThemeProps, TextTheme>;
+  color?: Extract<ThemeProps, TextTheme>;
   lightText?: string;
   darkText?: string;
   // View
@@ -23,7 +23,7 @@ export type StyleProps = {
   outlineStyle?: StyleProp<OutlineStyle>;
 };
 
-export type TextStyleProps = Pick<StyleProps, 'textStyle' | 'textTheme' | 'lightText' | 'darkText'>;
+export type TextStyleProps = Pick<StyleProps, 'textStyle' | 'color' | 'lightText' | 'darkText'>;
 
 export type ViewStyleProps = Pick<StyleProps, 'bgStyle' | 'bg' | 'lightBg' | 'darkBg'>;
 

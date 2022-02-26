@@ -37,16 +37,16 @@ export const ChallengeCard: FC<Tournament & TournamentScreenProps> = ({
         <View style={style.imageView}>
           <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
           <View style={style.floatTextArea}>
-            <Text style={style.season} textTheme="white">
+            <Text style={style.season} color="white">
               Monthly
             </Text>
-            <Text style={style.season} textTheme="white">
+            <Text style={style.season} color="white">
               1/1 - 1/31
             </Text>
-            <Text style={style.name} textTheme="white">
+            <Text style={style.name} color="white">
               {name}
             </Text>
-            <Text style={style.distance} textTheme="white">
+            <Text style={style.distance} color="white">
               {distance}m
             </Text>
           </View>

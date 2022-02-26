@@ -119,7 +119,7 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
 
       <Button
         label="登録する"
-        textTheme="text0"
+        color="text0"
         bg="primary"
         outlineStyle={style.buttonOutline}
         onPress={onRegisterUserInfo}

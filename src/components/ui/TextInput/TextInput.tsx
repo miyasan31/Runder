@@ -20,7 +20,7 @@ export const TextInput: FC<TextInputProps> = memo(
     darkText: dark,
     // custom theme
     bg = 'bg4',
-    textTheme = 'text1',
+    color: fontColor = 'text1',
     // ViewProps
     isBorder,
     bgStyle,
@@ -30,7 +30,7 @@ export const TextInput: FC<TextInputProps> = memo(
     secureTextEntry = false,
     ...otherProps
   }) => {
-    const color = useThemeColor({ light, dark }, textTheme);
+    const color = useThemeColor({ light, dark }, fontColor);
     const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
 
     return (

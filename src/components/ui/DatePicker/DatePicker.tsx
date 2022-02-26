@@ -23,7 +23,7 @@ export const DatePicker: FC<TextInputProps> = ({
   darkText: dark,
   // custom theme
   bg = 'bg4',
-  textTheme = 'text1',
+  color: fontColor = 'text1',
   // ViewProps
   isBorder,
   bgStyle,
@@ -33,7 +33,7 @@ export const DatePicker: FC<TextInputProps> = ({
   value,
   onChangeValue,
 }) => {
-  const color = useThemeColor({ light, dark }, textTheme);
+  const color = useThemeColor({ light, dark }, fontColor);
   const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
   const [isVisible, setIsVisible] = useState(false);
 
