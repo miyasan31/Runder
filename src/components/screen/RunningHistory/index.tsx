@@ -21,7 +21,7 @@ type LocationList = Pick<Location, 'id' | 'created_at'>;
 export type Props = DevListScreenProps<'RunningHistoryScreen'>;
 
 export const RunningHistory: FC<Props> = (props) => {
-  const color = useThemeColor({}, 'text2');
+  const color = useThemeColor({}, 'color2');
   const filter = useSupabaseFilter(
     (query) =>
       query.select(SELECT_COLUMN).order('created_at', {

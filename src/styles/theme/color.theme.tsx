@@ -1,14 +1,14 @@
 export const colorTheme = {
   light: {
-    text0: '#FFFFFF',
-    text1: '#333333',
-    text2: '#808080',
-    text3: '#DDDDDD',
+    color0: '#FFFFFF',
+    color1: '#333333',
+    color2: '#808080',
+    color3: '#DDDDDD',
   },
   dark: {
-    text0: '#404852',
-    text1: '#FFFFFF',
-    text2: '#BBBBBB',
-    text3: '#5A6471',
+    color0: '#404852',
+    color1: '#FFFFFF',
+    color2: '#BBBBBB',
+    color3: '#5A6471',
   },
 };

@@ -14,7 +14,7 @@ export const Text: FC<TextProps> = memo(
     lightColor: light,
     darkColor: dark,
     // custom theme
-    color: fontColor = 'text1',
+    color: fontColor = 'color1',
     // TextProps
     style,
     textStyle,

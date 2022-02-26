@@ -20,7 +20,7 @@ export const TextInput: FC<TextInputProps> = memo(
     darkColor: dark,
     // custom theme
     bg = 'bg4',
-    color: fontColor = 'text1',
+    color: fontColor = 'color1',
     // ViewProps
     isBorder,
     viewStyle,

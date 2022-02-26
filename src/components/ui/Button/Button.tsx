@@ -26,7 +26,7 @@ export const Button: FC<ButtonProps> = memo(
     darkColor,
     // custom theme
     bg = 'bg1',
-    color = 'text1',
+    color = 'color1',
     // ViewProps
     isBorder,
     outlineStyle,

@@ -3,7 +3,7 @@ import type { FlexStyle, StyleProp, TextStyle, TransformsStyle, ViewStyle } from
 import type { theme } from '~/styles/theme';
 
 type ThemeProps = keyof typeof theme[keyof typeof theme];
-type TextTheme = 'text0' | 'text1' | 'text2' | 'text3' | 'white' | 'primary' | 'accent';
+type ColorTheme = 'color0' | 'color1' | 'color2' | 'color3' | 'white' | 'primary' | 'accent';
 type BgTheme = 'bg0' | 'bg1' | 'bg2' | 'bg3' | 'bg4' | 'white' | 'primary';
 
 type OutlineStyle = Pick<ViewStyle, keyof FlexStyle | keyof TransformsStyle>;
@@ -11,7 +11,7 @@ type OutlineStyle = Pick<ViewStyle, keyof FlexStyle | keyof TransformsStyle>;
 export type StyleProps = {
   // Text
   textStyle?: StyleProp<TextStyle>;
-  color?: Extract<ThemeProps, TextTheme>;
+  color?: Extract<ThemeProps, ColorTheme>;
   lightColor?: string;
   darkColor?: string;
   // View
