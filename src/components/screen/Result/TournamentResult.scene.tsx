@@ -4,12 +4,12 @@ import React from 'react';
 import { LayoutErrorBoundary } from '~/components/functional/Error';
 
 import type { ResultScreenProps } from './ScreenProps';
-import { TounamentResult } from './TounamentResult';
+import { TournamentResult } from './TournamentResult';
 
-export const TounamentResultScene: FC<ResultScreenProps> = (props) => {
+export const TournamentResultScene: FC<ResultScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <TounamentResult {...props} />
+      <TournamentResult {...props} />
     </LayoutErrorBoundary>
   );
 };

@@ -14,7 +14,7 @@ import type { User } from '~/types/fetcher';
 
 import type { ResultScreenProps } from './ScreenProps';
 
-export const TounamentResult: FC<ResultScreenProps> = () => {
+export const TournamentResult: FC<ResultScreenProps> = () => {
   const filter = useSupabaseFilter((query) => query.limit(10), []);
   const { loading, error, data } = useSupabaseSelect<User>('user', {
     options: {

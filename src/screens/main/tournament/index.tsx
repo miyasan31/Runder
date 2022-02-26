@@ -7,8 +7,8 @@ import { useThemeColor } from '~/hooks/useThemeColor';
 import type { TournamentStackParamList } from '~/types';
 
 import { ModalScreen } from './hoge.modal';
-import { TournamentDetailScreen } from './tounament_detail.screen';
 import { TournamentScreen } from './tournament.screen';
+import { TournamentDetailScreen } from './tournament_detail.screen';
 
 const Tournament = createNativeStackNavigator<TournamentStackParamList>();
 

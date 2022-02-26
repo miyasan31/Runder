@@ -8,10 +8,10 @@ import { useTabView } from '~/hooks/useTabView';
 
 import { PointResultScene } from './PointResult.scene';
 import type { ResultScreenProps } from './ScreenProps';
-import { TounamentResultScene } from './TounamentResult.scene';
+import { TournamentResultScene } from './TournamentResult.scene';
 
 const routes = [
-  { key: 'tounament', title: '大会の参加履歴' },
+  { key: 'tournament', title: '大会の参加履歴' },
   { key: 'point', title: 'ポイントの獲得履歴' },
 ];
 
@@ -26,7 +26,7 @@ export const ResultScreen: FC<ResultScreenProps> = (props) => {
         onIndexChange={onIndexChange}
         initialLayout={{ width: layout.width }}
         renderScene={SceneMap({
-          tounament: () => <TounamentResultScene {...props} />,
+          tournament: () => <TournamentResultScene {...props} />,
           point: () => <PointResultScene {...props} />,
         })}
       />
