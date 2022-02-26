@@ -17,7 +17,7 @@ export const TextInput: FC<TextInputProps> = memo(
     lightBg,
     darkBg,
     lightColor: light,
-    darkText: dark,
+    darkColor: dark,
     // custom theme
     bg = 'bg4',
     color: fontColor = 'text1',

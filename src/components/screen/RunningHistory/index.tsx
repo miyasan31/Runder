@@ -54,7 +54,7 @@ export const RunningHistory: FC<Props> = (props) => {
       <Card bgStyle={styles.list} onPress={onNavigation}>
         <View>
           <Text style={styles.shopName}>レコード {item.id}</Text>
-          <Text style={styles.date} lightColor={color} darkText={color}>
+          <Text style={styles.date} lightColor={color} darkColor={color}>
             {date}
           </Text>
         </View>
