@@ -6,7 +6,7 @@ import { View } from '~/components/ui/View';
 import { useThemeColor } from '~/hooks/useThemeColor';
 import type { TextInputStyleProps } from '~/types/style';
 
-export type TextInputProps = NativeTextInput['props'] &
+export type TextInputProps = Omit<NativeTextInput['props'], 'style'> &
   TextInputStyleProps & {
     isBorder?: true;
   };
@@ -25,7 +25,6 @@ export const TextInput: FC<TextInputProps> = memo(
     isBorder,
     viewStyle,
     // TextInputProps
-    style,
     textStyle,
     secureTextEntry = false,
     ...otherProps
@@ -41,7 +40,7 @@ export const TextInput: FC<TextInputProps> = memo(
       >
         <NativeTextInput
           secureTextEntry={secureTextEntry}
-          style={[defaultStyle.text, style, textStyle, { color }]}
+          style={[defaultStyle.text, textStyle, { color }]}
           {...otherProps}
         />
       </View>

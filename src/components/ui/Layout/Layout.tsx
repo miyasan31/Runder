@@ -4,9 +4,9 @@ import React, { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { SafeAreaView, View } from '~/components/ui/View';
-import type { ViewStyleProps } from '~/types/style';
+import type { CustomViewStyleProps } from '~/types/style';
 
-type LayoutProps = ViewStyleProps & {
+type LayoutProps = CustomViewStyleProps & {
   children: ReactNode;
   layout: 'tabheader-bottomtab' | 'header-bottomtab' | 'headerless-bottomtab';
 };

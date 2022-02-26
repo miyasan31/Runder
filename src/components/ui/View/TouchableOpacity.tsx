@@ -16,13 +16,10 @@ export const TouchableOpacity: FC<TouchableOpacityProps> = memo(
     bg = 'bg1',
     // TextProps
     style,
-    viewStyle,
     ...otherProps
   }) => {
     const backgroundColor = useThemeColor({ light, dark }, bg);
 
-    return (
-      <NativeTouchableOpacity style={[style, viewStyle, { backgroundColor }]} {...otherProps} />
-    );
+    return <NativeTouchableOpacity style={[style, { backgroundColor }]} {...otherProps} />;
   },
 );

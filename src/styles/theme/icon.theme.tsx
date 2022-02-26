@@ -5,4 +5,4 @@ export const iconTheme = {
   dark: {
     icon: '#7D8B9C',
   },
-};
+} as const;

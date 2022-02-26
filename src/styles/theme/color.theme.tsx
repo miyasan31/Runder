@@ -11,4 +11,4 @@ export const colorTheme = {
     color2: '#BBBBBB',
     color3: '#5A6471',
   },
-};
+} as const;

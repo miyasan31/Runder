@@ -13,4 +13,4 @@ export const bgTheme = {
     bg3: '#697379',
     bg4: '#373c3f',
   },
-};
+} as const;

@@ -9,4 +9,4 @@ export const commonTheme = {
     primary: '#24D995',
     accent: '#47ADF5',
   },
-};
+} as const;

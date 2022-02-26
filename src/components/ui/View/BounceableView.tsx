@@ -5,10 +5,10 @@ import type { BounceableProps } from 'rn-bounceable';
 import { Bounceable as NativeBounceable } from 'rn-bounceable';
 
 import { useThemeColor } from '~/hooks/useThemeColor';
-import type { ViewStyleProps } from '~/types/style';
+import type { CustomViewStyleProps } from '~/types/style';
 
 type Props = Omit<BounceableProps, 'contentContainerStyle'> &
-  ViewStyleProps & {
+  CustomViewStyleProps & {
     children: ReactNode;
   };
 

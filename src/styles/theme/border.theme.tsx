@@ -5,4 +5,4 @@ export const borderTheme = {
   dark: {
     border: '#7D8B9C',
   },
-};
+} as const;

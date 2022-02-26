@@ -4,6 +4,12 @@ import { colorTheme } from './color.theme';
 import { commonTheme } from './common.theme';
 import { iconTheme } from './icon.theme';
 
+export type CommonTheme = keyof typeof commonTheme[keyof typeof commonTheme];
+export type BgTheme = keyof typeof bgTheme[keyof typeof bgTheme];
+export type ColorTheme = keyof typeof colorTheme[keyof typeof colorTheme];
+export type IconTheme = keyof typeof iconTheme[keyof typeof iconTheme];
+export type BorderTheme = keyof typeof borderTheme[keyof typeof borderTheme];
+
 export const theme = {
   light: {
     ...commonTheme.light,
@@ -19,39 +25,4 @@ export const theme = {
     ...iconTheme.dark,
     ...borderTheme.dark,
   },
-};
-
-// export const theme = {
-//   light: {
-//     bg0: '#ffffff00',
-//     bg1: '#FFFFFF',
-//     bg2: '#EEEEEE',
-//     bg3: '#DDDDDD',
-//     bg4: '#FAFAFA',
-//     color0: '#FFFFFF',
-//     color1: '#333333',
-//     color2: '#808080',
-//     color3: '#DDDDDD',
-//     border: '#BBBBBB',
-//     icon: '#BBBBBB',
-//     white: '#FFFFFF',
-//     primary: '#19EC9C',
-//     accent: '#4BB4FF',
-//   },
-//   dark: {
-//     bg0: '#00000000',
-//     bg1: '#373c3f',
-//     bg2: '#2f3437',
-//     bg3: '#697379',
-//     bg4: '#373c3f',
-//     color0: '#404852',
-//     color1: '#FFFFFF',
-//     color2: '#BBBBBB',
-//     color3: '#5A6471',
-//     border: '#7D8B9C',
-//     icon: '#7D8B9C',
-//     white: '#FFFFFF',
-//     primary: '#24D995',
-//     accent: '#47ADF5',
-//   },
-// };
+} as const;

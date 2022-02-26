@@ -17,17 +17,11 @@ export const View: FC<ViewProps> = memo(
     bg = 'bg0',
     // ViewProps
     style,
-    viewStyle,
     ...otherProps
   }) => {
     const backgroundColor = useThemeColor({ light, dark }, bg);
 
-    return (
-      <NativeView
-        style={[defaultStyle.bg, style, viewStyle, { backgroundColor }]}
-        {...otherProps}
-      />
-    );
+    return <NativeView style={[defaultStyle.bg, style, { backgroundColor }]} {...otherProps} />;
   },
 );
 

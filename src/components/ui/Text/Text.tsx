@@ -17,12 +17,11 @@ export const Text: FC<TextProps> = memo(
     color: fontColor = 'color1',
     // TextProps
     style,
-    textStyle,
     ...otherProps
   }) => {
     const color = useThemeColor({ light, dark }, fontColor);
 
-    return <NativeText style={[defaultStyle.text, style, textStyle, { color }]} {...otherProps} />;
+    return <NativeText style={[defaultStyle.text, style, { color }]} {...otherProps} />;
   },
 );
 
