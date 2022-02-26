@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { useCallback } from 'react';
 import { Image, StyleSheet } from 'react-native';
 
@@ -19,7 +19,7 @@ const data = [
 
 type Tournament = typeof data[0];
 
-export const ChallengeCard: VFC<Tournament & TournamentScreenProps> = ({
+export const ChallengeCard: FC<Tournament & TournamentScreenProps> = ({
   id: _id,
   name,
   distance,

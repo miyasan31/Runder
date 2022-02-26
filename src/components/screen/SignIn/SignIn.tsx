@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { useCallback } from 'react';
 import { Button as NativeButton, StyleSheet } from 'react-native';
 
@@ -10,7 +10,7 @@ import { onSignInGoogle, onSignOut } from '~/utils/supabase';
 
 import type { SignInScreenProps } from './ScreenProps';
 
-export const SignIn: VFC<SignInScreenProps> = ({ navigation }) => {
+export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
   const onSignInEmailNavigate = useCallback(() => {
     navigation.navigate('SignInEmailScreen');
   }, [navigation]);

@@ -1,7 +1,7 @@
 // inlin style permission
 /* eslint-disable react-native/no-inline-styles */
 
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { useToaster } from 'react-hot-toast/src/core/use-toaster';
 import { Animated } from 'react-native';
@@ -101,7 +101,7 @@ const ToastBar = ({
   );
 };
 
-export const Toaster: VFC<any> = ({ position = 'top-center', containerStyle, toastOptions }) => {
+export const Toaster: FC<any> = ({ position = 'top-center', containerStyle, toastOptions }) => {
   const { toasts, handlers } = useToaster();
   return (
     <View

@@ -1,4 +1,4 @@
-import type { ReactNode, VFC } from 'react';
+import type { FC, ReactNode } from 'react';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { Progress } from '~/components/ui/Progress';
@@ -7,7 +7,7 @@ type Props = {
   children: ReactNode;
 };
 
-export const AuthProvider: VFC<Props> = (props) => {
+export const AuthProvider: FC<Props> = (props) => {
   const [isLoading, seIsLoading] = useState(true);
 
   const loadingFalse = useCallback(async () => {

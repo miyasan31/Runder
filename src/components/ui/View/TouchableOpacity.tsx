@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { memo } from 'react';
 import { TouchableOpacity as NativeTouchableOpacity } from 'react-native';
 
@@ -7,7 +7,7 @@ import type { ViewStyleProps } from '~/types/style';
 
 export type TouchableOpacityProps = NativeTouchableOpacity['props'] & ViewStyleProps;
 
-export const TouchableOpacity: VFC<TouchableOpacityProps> = memo(
+export const TouchableOpacity: FC<TouchableOpacityProps> = memo(
   ({
     // 基本的に使用しない
     lightBg: light,

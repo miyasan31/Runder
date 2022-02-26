@@ -1,4 +1,4 @@
-import type { ReactElement, VFC } from 'react';
+import type { FC, ReactElement } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -16,7 +16,7 @@ export type ButtonProps = StyleProps & {
   onPress?: () => void;
 };
 
-export const Button: VFC<ButtonProps> = memo(
+export const Button: FC<ButtonProps> = memo(
   ({
     // 基本的に使用しない
     // custom themeで色を指定する

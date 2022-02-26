@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -18,7 +18,7 @@ import type { SignUpScreenProps } from './ScreenProps';
 
 const AlreadyRegisteredMessage = 'User already registered';
 
-export const SignUp: VFC<SignUpScreenProps> = ({ navigation }) => {
+export const SignUp: FC<SignUpScreenProps> = ({ navigation }) => {
   const onSignUpEmail = useCallback(
     async (email, password) => {
       const { errorToast, successToast } = toastKit('サインアップしています...');

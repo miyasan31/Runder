@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -17,7 +17,7 @@ const data = [
 
 type PointData = typeof data[0];
 
-export const PointTableBody: VFC<PointData> = (props) => {
+export const PointTableBody: FC<PointData> = (props) => {
   const borderBottomColor = useThemeColor({}, 'border');
 
   return (

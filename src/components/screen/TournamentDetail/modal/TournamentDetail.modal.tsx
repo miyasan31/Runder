@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 
 import { HalfModal } from '~/components/ui/Modal';
 
@@ -10,7 +10,7 @@ type Props = {
   onCloseModal: () => void;
 };
 
-export const TournamentDetailModal: VFC<Props> = (props) => {
+export const TournamentDetailModal: FC<Props> = (props) => {
   return (
     <HalfModal {...props} size={0.7}>
       <TournamentDetailTab activeTabIndex={props.activeTabIndex} />

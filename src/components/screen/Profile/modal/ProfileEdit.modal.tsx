@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 
 import { HalfModal } from '~/components/ui/Modal';
 
@@ -9,7 +9,7 @@ type Props = {
   onCloseModal: () => void;
 };
 
-export const ProfileEditModal: VFC<Props> = (props) => {
+export const ProfileEditModal: FC<Props> = (props) => {
   return (
     <HalfModal {...props} size={0.9}>
       <ProfileEdit />

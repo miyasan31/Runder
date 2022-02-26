@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { SceneMap, TabView } from 'react-native-tab-view';
 
@@ -15,7 +15,7 @@ const routes = [
   { key: 'point', title: 'ポイントの獲得履歴' },
 ];
 
-export const ResultScreen: VFC<ResultScreenProps> = (props) => {
+export const ResultScreen: FC<ResultScreenProps> = (props) => {
   const { layout, index, onIndexChange } = useTabView();
 
   return (

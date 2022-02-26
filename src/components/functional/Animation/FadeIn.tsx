@@ -1,4 +1,4 @@
-import type { ReactNode, VFC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { useEffect, useRef } from 'react';
 import type { StyleProp, ViewProps } from 'react-native';
 import { Animated } from 'react-native';
@@ -9,7 +9,7 @@ type Props = {
   duration?: number;
 };
 
-export const FadeIn: VFC<Props> = ({ style, children, duration = 1000 }) => {
+export const FadeIn: FC<Props> = ({ style, children, duration = 1000 }) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet, Text as NativeText } from 'react-native';
 
@@ -7,7 +7,7 @@ import type { TextStyleProps } from '~/types/style';
 
 export type TextProps = NativeText['props'] & TextStyleProps;
 
-export const Text: VFC<TextProps> = memo(
+export const Text: FC<TextProps> = memo(
   ({
     // 基本的に使用しない
     // custom themeで色を指定する

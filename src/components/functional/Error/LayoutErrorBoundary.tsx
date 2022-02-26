@@ -1,11 +1,11 @@
-import type { ReactNode, VFC } from 'react';
+import type { FC, ReactNode } from 'react';
 import type { FallbackProps } from 'react-error-boundary';
 import { ErrorBoundary } from 'react-error-boundary';
 
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 
-const ErrorFallback: VFC<FallbackProps> = (props) => (
+const ErrorFallback: FC<FallbackProps> = (props) => (
   <View>
     <Text>Something went wrong:</Text>
     <Text>{props.error.message}</Text>
@@ -16,6 +16,6 @@ type Props = {
   children: ReactNode;
 };
 
-export const LayoutErrorBoundary: VFC<Props> = (props) => (
+export const LayoutErrorBoundary: FC<Props> = (props) => (
   <ErrorBoundary FallbackComponent={ErrorFallback}>{props.children}</ErrorBoundary>
 );

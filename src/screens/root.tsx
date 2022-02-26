@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 
 import { ActivityIndicator } from '~/components/ui/Progress';
@@ -18,7 +18,7 @@ import { BottomTabNavigator } from './main';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
-export const RootNavigator: VFC = () => {
+export const RootNavigator: FC = () => {
   const session = useListenSession();
   const backgroundColor = useThemeColor({}, 'bg1');
 

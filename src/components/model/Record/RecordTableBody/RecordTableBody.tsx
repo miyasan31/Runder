@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 
@@ -17,7 +17,7 @@ const data = [
 
 type RecordData = typeof data[0];
 
-export const RecordTableBody: VFC<RecordData> = ({ rank, record, user: { name, icon: _icon } }) => {
+export const RecordTableBody: FC<RecordData> = ({ rank, record, user: { name, icon: _icon } }) => {
   const borderBottomColor = useThemeColor({}, 'border');
 
   return (

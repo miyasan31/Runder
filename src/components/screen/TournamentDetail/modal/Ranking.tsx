@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
@@ -15,7 +15,7 @@ const data = [
   { rank: 100, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
 ];
 
-export const Ranking: VFC = () => {
+export const Ranking: FC = () => {
   return (
     <View style={style.content}>
       <TableHead leftTitle="順位" rightTitle="記録" />

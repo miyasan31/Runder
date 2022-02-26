@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { useCallback } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -6,7 +6,7 @@ import type { StackScreenProps } from '~/types';
 
 export type Props = StackScreenProps<'NotFoundScreen'>;
 
-export const NotFound: VFC<Props> = (props) => {
+export const NotFound: FC<Props> = (props) => {
   const onRootScreenPush = useCallback(() => {
     props.navigation.replace('Main');
   }, [props.navigation]);

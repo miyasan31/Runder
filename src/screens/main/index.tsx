@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BlurView } from 'expo-blur';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -16,7 +16,7 @@ import { TournamentNavigator } from './tournament';
 
 const BottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 
-export const BottomTabNavigator: VFC = () => {
+export const BottomTabNavigator: FC = () => {
   const icon = useThemeColor({}, 'text2');
   const primary = useThemeColor({}, 'primary');
   const backgroundColor = useThemeColor({}, 'bg1');

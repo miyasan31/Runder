@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { useCallback } from 'react';
 import { Button as NativeButton, StyleSheet } from 'react-native';
 
@@ -14,7 +14,7 @@ import { toastKit } from '~/utils/toastKit';
 
 import type { SignInEmailScreenProps } from './ScreenProps';
 
-export const SignInEmail: VFC<SignInEmailScreenProps> = ({ navigation }) => {
+export const SignInEmail: FC<SignInEmailScreenProps> = ({ navigation }) => {
   const onSignInEmail = useCallback(async (email, password) => {
     const { errorToast, successToast } = toastKit('サインインしています...');
 

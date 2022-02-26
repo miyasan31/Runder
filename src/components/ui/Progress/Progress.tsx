@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 import * as RNProgress from 'react-native-progress';
@@ -6,7 +6,7 @@ import * as RNProgress from 'react-native-progress';
 import { View } from '~/components/ui/View';
 import { useThemeColor } from '~/hooks/useThemeColor';
 
-export const Progress: VFC = memo(() => {
+export const Progress: FC = memo(() => {
   const primary = useThemeColor({}, 'primary');
 
   return (

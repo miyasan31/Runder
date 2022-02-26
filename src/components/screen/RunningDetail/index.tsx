@@ -1,6 +1,6 @@
 import 'react-native-url-polyfill/auto';
 
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { Dimensions, StyleSheet } from 'react-native';
 import MapView, { Polyline } from 'react-native-maps';
@@ -16,7 +16,7 @@ type LocationDetail = Pick<Location, 'location'>;
 
 export type Props = DevListScreenProps<'RunningDetailScreen'>;
 
-export const RunningDetail: VFC<Props> = (props) => {
+export const RunningDetail: FC<Props> = (props) => {
   const { id } = props.route.params;
   const filter = useSupabaseFilter((query) => query.select(SELECT_COLUMN).eq('id', id), []);
   const { loading, error, data } = useSupabaseSelect<LocationDetail>('location', { filter });

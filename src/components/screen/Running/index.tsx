@@ -1,7 +1,7 @@
 import 'react-native-url-polyfill/auto';
 
 import { getCurrentPositionAsync, requestForegroundPermissionsAsync } from 'expo-location';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, {
   // useCallback,
   useEffect,
@@ -25,7 +25,7 @@ const requestForegroundPermission = async () => {
 
 export type Props = DevRunningScreenProps<'RunningScreen'>;
 
-export const Running: VFC<Props> = () => {
+export const Running: FC<Props> = () => {
   // const [isRunning, setIsRunning] = useState(false);
   const [coordinates, setCoordinates] = useState<LocationResult[]>([]);
 

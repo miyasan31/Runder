@@ -1,4 +1,4 @@
-import type { ReactNode, VFC } from 'react';
+import type { FC, ReactNode } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -13,7 +13,7 @@ export type CardProps = StyleProps & {
   onPress?: () => void;
 };
 
-export const Card: VFC<CardProps> = memo(
+export const Card: FC<CardProps> = memo(
   ({
     // 基本的に使用しない
     // custom themeで色を指定する

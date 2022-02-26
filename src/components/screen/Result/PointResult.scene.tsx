@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 
 import { LayoutErrorBoundary } from '~/components/functional/Error';
@@ -6,7 +6,7 @@ import { LayoutErrorBoundary } from '~/components/functional/Error';
 import { PointResult } from './PointResult';
 import type { ResultScreenProps } from './ScreenProps';
 
-export const PointResultScene: VFC<ResultScreenProps> = (props) => {
+export const PointResultScene: FC<ResultScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
       <PointResult {...props} />

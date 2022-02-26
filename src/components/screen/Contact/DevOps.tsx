@@ -1,7 +1,7 @@
 import 'react-native-url-polyfill/auto';
 
 import { format } from 'date-fns';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
@@ -14,7 +14,7 @@ import type { User } from '~/types/fetcher';
 
 import type { ContactScreenProps } from './ScreenProps';
 
-export const DevOps: VFC<ContactScreenProps> = () => {
+export const DevOps: FC<ContactScreenProps> = () => {
   const filter = useSupabaseFilter((query) => query.limit(10), []);
   const { loading, error, data } = useSupabaseSelect<User>('user', {
     options: {

@@ -1,6 +1,6 @@
 import 'react-native-url-polyfill/auto';
 
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { useCallback, useState } from 'react';
 // import { toast } from 'react-hot-toast/src/core/toast';
 import { Image, StyleSheet } from 'react-native';
@@ -15,7 +15,7 @@ import { HistoryTab } from './History.tab';
 import { ProfileEditModal } from './modal';
 import type { ProfileScreenProps } from './ScreenProps';
 
-export const Profile: VFC<ProfileScreenProps> = (props) => {
+export const Profile: FC<ProfileScreenProps> = (props) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const onCloseModal = useCallback(() => {

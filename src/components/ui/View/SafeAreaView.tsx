@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 import type { NativeSafeAreaViewProps } from 'react-native-safe-area-context';
@@ -9,7 +9,7 @@ import type { ViewStyleProps } from '~/types/style';
 
 export type SafeAreaViewProps = NativeSafeAreaViewProps & ViewStyleProps;
 
-export const SafeAreaView: VFC<SafeAreaViewProps> = memo(
+export const SafeAreaView: FC<SafeAreaViewProps> = memo(
   ({
     // 基本的に使用しない
     lightBg: light,

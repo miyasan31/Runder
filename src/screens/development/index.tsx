@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 
 import { TabBarIcon } from '~/components/ui/TabBarIcon';
@@ -10,7 +10,7 @@ import { DevRunningNavigator } from './running';
 
 const DevelopmentTab = createBottomTabNavigator<DevelopmentTabParamList>();
 
-export const DevelopmentTabNavigator: VFC = () => {
+export const DevelopmentTabNavigator: FC = () => {
   return (
     <DevelopmentTab.Navigator
       initialRouteName="DevRunning"

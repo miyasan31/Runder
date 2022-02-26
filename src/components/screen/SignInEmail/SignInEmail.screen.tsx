@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 
 import { LayoutErrorBoundary } from '~/components/functional/Error';
@@ -9,7 +9,7 @@ import { SafeAreaLayout } from '~/components/ui/Layout';
 import type { SignInEmailScreenProps } from './ScreenProps';
 import { SignInEmail } from './SignInEmail';
 
-export const SignInEmailScreen: VFC<SignInEmailScreenProps> = (props) => {
+export const SignInEmailScreen: FC<SignInEmailScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
       <KeyboardAvoiding>

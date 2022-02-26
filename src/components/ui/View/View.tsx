@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet, View as NativeView } from 'react-native';
 
@@ -7,7 +7,7 @@ import type { ViewStyleProps } from '~/types/style';
 
 export type ViewProps = NativeView['props'] & ViewStyleProps;
 
-export const View: VFC<ViewProps> = memo(
+export const View: FC<ViewProps> = memo(
   ({
     // 基本的に使用しない
     // custom themeで色を指定する

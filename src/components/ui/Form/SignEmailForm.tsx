@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { useCallback, useState } from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -10,7 +10,7 @@ type Props = {
   onSignEmail: (...args: string[]) => void;
 };
 
-export const SignEmailForm: VFC<Props> = ({ onSignEmail }) => {
+export const SignEmailForm: FC<Props> = ({ onSignEmail }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

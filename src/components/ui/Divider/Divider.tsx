@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { memo } from 'react';
 import type { StyleProp } from 'react-native';
 import { StyleSheet } from 'react-native';
@@ -13,7 +13,7 @@ type Props = {
   style?: StyleProp<OutlineStyle>;
 };
 
-export const Divider: VFC<Props> = memo(({ label = 'または', style }) => {
+export const Divider: FC<Props> = memo(({ label = 'または', style }) => {
   const borderColor = useThemeColor({}, 'border');
 
   return (

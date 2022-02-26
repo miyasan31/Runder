@@ -1,5 +1,5 @@
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { useMemo } from 'react';
 import type { ColorSchemeName } from 'react-native';
 
@@ -11,7 +11,7 @@ type Props = {
   colorScheme: ColorSchemeName;
 };
 
-export const Navigations: VFC<Props> = ({ colorScheme }) => {
+export const Navigations: FC<Props> = ({ colorScheme }) => {
   const systemTheme = useMemo(() => {
     return colorScheme === 'dark' ? DarkTheme : DefaultTheme;
   }, [colorScheme]);

@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 
 import { LayoutErrorBoundary } from '~/components/functional/Error';
@@ -9,7 +9,7 @@ import { SafeAreaLayout } from '~/components/ui/Layout';
 import type { SignUpScreenProps } from './ScreenProps';
 import { SignUp } from './SignUp';
 
-export const SignUpScreen: VFC<SignUpScreenProps> = (props) => {
+export const SignUpScreen: FC<SignUpScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
       <KeyboardAvoiding>

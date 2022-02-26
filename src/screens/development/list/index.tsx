@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 
 import { useThemeColor } from '~/hooks/useThemeColor';
@@ -10,7 +10,7 @@ import { RunningHistoryScreen } from './running_history.screen';
 
 const DevList = createNativeStackNavigator<DevListStackParamList>();
 
-export const DevListNavigator: VFC = () => {
+export const DevListNavigator: FC = () => {
   const backgroundColor = useThemeColor({}, 'bg1');
 
   return (

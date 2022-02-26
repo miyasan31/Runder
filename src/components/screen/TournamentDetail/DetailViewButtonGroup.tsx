@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { useCallback, useState } from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -13,7 +13,7 @@ const button = [
   { index: 2, label: 'ランキング' },
 ];
 
-export const DetailViewButtonGroup: VFC = () => {
+export const DetailViewButtonGroup: FC = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 

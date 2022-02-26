@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { SceneMap, TabView } from 'react-native-tab-view';
 
 import { TabBar } from '~/components/ui/TabBar';
@@ -18,7 +18,7 @@ type Props = {
   activeTabIndex?: number;
 };
 
-export const TournamentDetailTab: VFC<Props> = (props) => {
+export const TournamentDetailTab: FC<Props> = (props) => {
   const { layout, index, onIndexChange } = useTabView(props.activeTabIndex);
 
   return (

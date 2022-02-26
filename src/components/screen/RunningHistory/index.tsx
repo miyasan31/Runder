@@ -1,7 +1,7 @@
 import 'react-native-url-polyfill/auto';
 
 import { format } from 'date-fns';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
@@ -20,7 +20,7 @@ type LocationList = Pick<Location, 'id' | 'created_at'>;
 
 export type Props = DevListScreenProps<'RunningHistoryScreen'>;
 
-export const RunningHistory: VFC<Props> = (props) => {
+export const RunningHistory: FC<Props> = (props) => {
   const color = useThemeColor({}, 'text2');
   const filter = useSupabaseFilter(
     (query) =>

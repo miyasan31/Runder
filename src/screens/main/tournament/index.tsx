@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 
 import { GoBackButton } from '~/components/ui/Button';
@@ -12,7 +12,7 @@ import { TournamentScreen } from './tournament.screen';
 
 const Tournament = createNativeStackNavigator<TournamentStackParamList>();
 
-export const TournamentNavigator: VFC = () => {
+export const TournamentNavigator: FC = () => {
   const backgroundColor = useThemeColor({}, 'bg1');
 
   return (

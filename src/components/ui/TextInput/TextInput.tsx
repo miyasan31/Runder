@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet, TextInput as NativeTextInput } from 'react-native';
 
@@ -11,7 +11,7 @@ export type TextInputProps = NativeTextInput['props'] &
     isBorder?: true;
   };
 
-export const TextInput: VFC<TextInputProps> = memo(
+export const TextInput: FC<TextInputProps> = memo(
   ({
     // 基本的に使用しない
     lightBg,

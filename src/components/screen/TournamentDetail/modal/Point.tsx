@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
@@ -16,7 +16,7 @@ const data = [
   { rank: 100, point: 10 },
 ];
 
-export const Point: VFC = () => {
+export const Point: FC = () => {
   return (
     <View style={style.content}>
       <TableHead leftTitle="順位" rightTitle="獲得ポイント" />

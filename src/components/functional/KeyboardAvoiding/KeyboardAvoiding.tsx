@@ -1,4 +1,4 @@
-import type { ReactNode, VFC } from 'react';
+import type { FC, ReactNode } from 'react';
 import React from 'react';
 import { KeyboardAvoidingView, Platform, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
@@ -8,7 +8,7 @@ type Props = {
   children: ReactNode;
 };
 
-export const KeyboardAvoiding: VFC<Props> = (props) => {
+export const KeyboardAvoiding: FC<Props> = (props) => {
   return (
     <TouchableWithoutFeedback onPress={onKeyBoardClose}>
       <KeyboardAvoidingView

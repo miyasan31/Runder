@@ -1,7 +1,7 @@
 import 'react-native-url-polyfill/auto';
 
 import { format } from 'date-fns';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
@@ -14,7 +14,7 @@ import type { User } from '~/types/fetcher';
 
 import type { RankingScreenProps } from './ScreenProps';
 
-export const TotalRanking: VFC<RankingScreenProps> = () => {
+export const TotalRanking: FC<RankingScreenProps> = () => {
   const filter = useSupabaseFilter((query) => query.limit(10), []);
   const { loading, error, data } = useSupabaseSelect<User>('user', {
     options: {

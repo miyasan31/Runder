@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 
@@ -19,7 +19,7 @@ const data = [
   },
 ];
 
-export const TournamentDetail: VFC<TournamentDetailScreenProps> = () => {
+export const TournamentDetail: FC<TournamentDetailScreenProps> = () => {
   return (
     <View>
       <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />

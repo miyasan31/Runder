@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { Platform, StyleSheet } from 'react-native';
 
@@ -9,7 +9,7 @@ import type { StackScreenProps } from '~/types';
 
 export type Props = StackScreenProps<'Modal'>;
 
-export const Modal: VFC<Props> = () => {
+export const Modal: FC<Props> = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Modal 1</Text>

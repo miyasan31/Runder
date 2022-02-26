@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import type { Dispatch, SetStateAction, VFC } from 'react';
+import type { Dispatch, FC, SetStateAction } from 'react';
 import React, { useCallback, useMemo, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
@@ -15,7 +15,7 @@ export type TextInputProps = TextInputStyleProps & {
   onChangeValue: Dispatch<SetStateAction<Date | null>>;
 };
 
-export const DatePicker: VFC<TextInputProps> = ({
+export const DatePicker: FC<TextInputProps> = ({
   // 基本的に使用しない
   lightBg,
   darkBg,

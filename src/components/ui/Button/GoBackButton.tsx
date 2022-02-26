@@ -1,6 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { memo, useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -11,7 +11,7 @@ type Props = {
   isFloating?: true;
 };
 
-export const GoBackButton: VFC<Props> = memo(({ isFloating }) => {
+export const GoBackButton: FC<Props> = memo(({ isFloating }) => {
   const icon = useThemeColor({}, 'icon');
   const navigation = useNavigation();
 

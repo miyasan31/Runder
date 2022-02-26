@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 
 import { LayoutErrorBoundary } from '~/components/functional/Error';
@@ -7,7 +7,7 @@ import { SafeAreaLayout } from '~/components/ui/Layout';
 
 import type { SignInScreenProps } from './ScreenProps';
 
-export const SignInScreen: VFC<SignInScreenProps> = (props) => {
+export const SignInScreen: FC<SignInScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
       <SafeAreaLayout bgTheme="bg2" isCenter>

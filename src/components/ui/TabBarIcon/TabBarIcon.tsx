@@ -1,5 +1,5 @@
 import { Feather } from '@expo/vector-icons';
-import type { ComponentProps, VFC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -10,7 +10,7 @@ type Props = {
   color: string;
 };
 
-export const TabBarIcon: VFC<Props> = memo((props) => {
+export const TabBarIcon: FC<Props> = memo((props) => {
   return <Feather style={defaultStyle.icon} size={BOTTOM_ICON} {...props} />;
 });
 

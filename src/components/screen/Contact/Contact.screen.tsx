@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { SceneMap, TabView } from 'react-native-tab-view';
 
@@ -15,7 +15,7 @@ const routes = [
   { key: 'devOps', title: '開発者への意見' },
 ];
 
-export const ContactScreen: VFC<ContactScreenProps> = (props) => {
+export const ContactScreen: FC<ContactScreenProps> = (props) => {
   const { layout, index, onIndexChange } = useTabView();
 
   return (

@@ -1,8 +1,8 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import Svg, { Path } from 'react-native-svg';
 
-export const Runder: VFC = () => {
+export const Runder: FC = () => {
   return (
     <Svg
       width="157"

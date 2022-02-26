@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { SceneMap, TabView } from 'react-native-tab-view';
 
@@ -14,7 +14,7 @@ const routes = [
   { key: 'combat', title: '戦歴' },
 ];
 
-export const HistoryTab: VFC<ProfileScreenProps> = (props) => {
+export const HistoryTab: FC<ProfileScreenProps> = (props) => {
   const { layout, index, onIndexChange } = useTabView();
 
   return (

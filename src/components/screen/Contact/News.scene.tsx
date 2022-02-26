@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 
 import { LayoutErrorBoundary } from '~/components/functional/Error';
@@ -6,7 +6,7 @@ import { LayoutErrorBoundary } from '~/components/functional/Error';
 import { News } from './News';
 import type { ContactScreenProps } from './ScreenProps';
 
-export const NewsScene: VFC<ContactScreenProps> = (props) => {
+export const NewsScene: FC<ContactScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
       <News {...props} />

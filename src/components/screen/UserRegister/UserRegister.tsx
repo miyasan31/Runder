@@ -1,5 +1,5 @@
 import type { Session } from '@supabase/supabase-js';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast/src/core/toast';
 import { StyleSheet } from 'react-native';
@@ -21,7 +21,7 @@ const radio_group = [
   { active: 2, label: '女性' },
 ];
 
-export const UserRegister: VFC<UserRegisterScreenProps> = () => {
+export const UserRegister: FC<UserRegisterScreenProps> = () => {
   const [name, setName] = useState('');
   const [birthday, onSetBirthday] = useState<Date | null>(null);
   const [sex, onSelectSex] = useState<number | null>(null);

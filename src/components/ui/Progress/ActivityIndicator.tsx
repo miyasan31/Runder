@@ -1,11 +1,11 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React, { memo } from 'react';
 import { ActivityIndicator as NativeActivityIndicator, StyleSheet } from 'react-native';
 
 import { View } from '~/components/ui/View';
 import { useThemeColor } from '~/hooks/useThemeColor';
 
-export const ActivityIndicator: VFC = memo(() => {
+export const ActivityIndicator: FC = memo(() => {
   const primary = useThemeColor({}, 'primary');
 
   return (

@@ -1,4 +1,4 @@
-import type { ReactNode, VFC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { StyleSheet } from 'react-native';
 import Modal from 'react-native-modal';
 
@@ -12,7 +12,7 @@ type Props = {
   onCloseModal: () => void;
 };
 
-export const HalfModal: VFC<Props> = ({ children, size = 0.7, isVisible, onCloseModal }) => {
+export const HalfModal: FC<Props> = ({ children, size = 0.7, isVisible, onCloseModal }) => {
   const backdropColor = useThemeColor({}, 'primary');
 
   return (

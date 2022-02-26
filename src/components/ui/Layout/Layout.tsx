@@ -1,5 +1,5 @@
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
-import type { ReactNode, VFC } from 'react';
+import type { FC, ReactNode } from 'react';
 import React, { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -13,7 +13,7 @@ type LayoutProps = ViewStyleProps & {
 
 type Edges = ('top' | 'bottom' | 'left' | 'right')[];
 
-export const Layout: VFC<LayoutProps> = ({
+export const Layout: FC<LayoutProps> = ({
   // 基本的に使用しない
   lightBg,
   darkBg,

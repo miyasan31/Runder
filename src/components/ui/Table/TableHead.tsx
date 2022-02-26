@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -10,7 +10,7 @@ type Props = {
   rightTitle: string;
 };
 
-export const TableHead: VFC<Props> = ({ leftTitle, rightTitle }) => {
+export const TableHead: FC<Props> = ({ leftTitle, rightTitle }) => {
   return (
     <View style={style.th} bgTheme="bg2">
       <Text style={style.thRank}>{leftTitle}</Text>

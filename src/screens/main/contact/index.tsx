@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 
 import type { ContactStackParamList } from '~/types';
@@ -8,7 +8,7 @@ import { ContactScreen } from './contact.screen';
 
 const Contact = createNativeStackNavigator<ContactStackParamList>();
 
-export const ContactNavigator: VFC = () => {
+export const ContactNavigator: FC = () => {
   return (
     <Contact.Navigator
       initialRouteName="ContactScreen"

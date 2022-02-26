@@ -1,4 +1,4 @@
-import type { ReactNode, VFC } from 'react';
+import type { FC, ReactNode } from 'react';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -10,7 +10,7 @@ type LayoutProps = ViewStyleProps & {
   isCenter?: true;
 };
 
-export const SafeAreaLayout: VFC<LayoutProps> = ({
+export const SafeAreaLayout: FC<LayoutProps> = ({
   // 基本的に使用しない
   lightBg,
   darkBg,

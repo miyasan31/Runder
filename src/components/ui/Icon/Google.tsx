@@ -1,8 +1,8 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import Svg, { Path } from 'react-native-svg';
 
-export const Google: VFC = () => {
+export const Google: FC = () => {
   return (
     <Svg width="38" height="38" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
       <Path

@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { SceneMap, TabView } from 'react-native-tab-view';
 
@@ -15,7 +15,7 @@ const routes = [
   { key: 'monthly', title: '月間ポイントランキング' },
 ];
 
-export const RankingScreen: VFC<RankingScreenProps> = (props) => {
+export const RankingScreen: FC<RankingScreenProps> = (props) => {
   const { layout, index, onIndexChange } = useTabView();
 
   return (

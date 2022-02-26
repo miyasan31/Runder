@@ -1,11 +1,11 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 
-export const Rule: VFC = () => {
+export const Rule: FC = () => {
   return (
     <View style={style.content}>
       <Text style={style.rule}>
