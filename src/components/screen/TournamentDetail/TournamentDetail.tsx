@@ -46,7 +46,7 @@ export const TournamentDetail: FC<TournamentDetailScreenProps> = () => {
       <View style={style.floatButtonGroup}>
         <Button
           label="START"
-          bgTheme="bg2"
+          bg="bg2"
           isBorder
           outlineStyle={style.startButtonOutline}
           textStyle={style.startButtonText}

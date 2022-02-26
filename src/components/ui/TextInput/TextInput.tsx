@@ -19,7 +19,7 @@ export const TextInput: FC<TextInputProps> = memo(
     lightText: light,
     darkText: dark,
     // custom theme
-    bgTheme = 'bg4',
+    bg = 'bg4',
     textTheme = 'text1',
     // ViewProps
     isBorder,
@@ -31,13 +31,13 @@ export const TextInput: FC<TextInputProps> = memo(
     ...otherProps
   }) => {
     const color = useThemeColor({ light, dark }, textTheme);
-    const borderColor = useThemeColor({}, isBorder ? 'border' : bgTheme);
+    const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
 
     return (
       <View
         // eslint-disable-next-line react-native/no-inline-styles
         style={[defaultStyle.bg, bgStyle, { borderWidth: 1, borderColor }]}
-        {...{ lightBg, darkBg, bgTheme }}
+        {...{ lightBg, darkBg, bg }}
       >
         <NativeTextInput
           secureTextEntry={secureTextEntry}

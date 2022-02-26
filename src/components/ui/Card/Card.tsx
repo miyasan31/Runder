@@ -20,7 +20,7 @@ export const Card: FC<CardProps> = memo(
     lightBg,
     darkBg,
     // custom theme
-    bgTheme = 'bg1',
+    bg = 'bg1',
     // ViewProps
     isBorder,
     outlineStyle,
@@ -30,13 +30,13 @@ export const Card: FC<CardProps> = memo(
     children,
     onPress,
   }) => {
-    const borderColor = useThemeColor({}, isBorder ? 'border' : bgTheme);
+    const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
 
     return (
       <BounceableView bgStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
         <TouchableOpacity
           style={[defaultStyle.bg, bgStyle, { borderWidth: isBorder && 1, borderColor }]}
-          {...{ lightBg, darkBg, bgTheme, activeOpacity }}
+          {...{ lightBg, darkBg, bg, activeOpacity }}
         >
           {children}
         </TouchableOpacity>

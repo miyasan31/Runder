@@ -12,7 +12,7 @@ type Props = {
 
 export const TableHead: FC<Props> = ({ leftTitle, rightTitle }) => {
   return (
-    <View style={style.th} bgTheme="bg2">
+    <View style={style.th} bg="bg2">
       <Text style={style.thRank}>{leftTitle}</Text>
       <Text style={style.thPoint}>{rightTitle}</Text>
     </View>

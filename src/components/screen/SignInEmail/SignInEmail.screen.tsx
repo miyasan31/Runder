@@ -13,7 +13,7 @@ export const SignInEmailScreen: FC<SignInEmailScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
       <KeyboardAvoiding>
-        <SafeAreaLayout bgTheme="bg2" isCenter>
+        <SafeAreaLayout bg="bg2" isCenter>
           <GoBackButton isFloating />
           <SignInEmail {...props} />
         </SafeAreaLayout>

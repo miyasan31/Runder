@@ -58,7 +58,7 @@ export const SignUp: FC<SignUpScreenProps> = ({ navigation }) => {
         outlineStyle={style.buttonOutline}
         bgStyle={style.buttonBg}
         textStyle={style.buttonText}
-        bgTheme="bg1"
+        bg="bg1"
         onPress={onSignInGoogle}
       />
 

@@ -69,7 +69,7 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
     <>
       <ProfileEditModal isVisible={isModalVisible} onCloseModal={onCloseModal} />
 
-      <View style={style.container} bgTheme="bg1">
+      <View style={style.container} bg="bg1">
         <View style={style.userInfoContainer}>
           <View style={style.row}>
             <View style={style.leftContainer}>

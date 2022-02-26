@@ -15,13 +15,13 @@ export const SafeAreaView: FC<SafeAreaViewProps> = memo(
     lightBg: light,
     darkBg: dark,
     // custom theme
-    bgTheme = 'bg0',
+    bg = 'bg0',
     // ViewProps
     style,
     bgStyle,
     ...otherProps
   }) => {
-    const backgroundColor = useThemeColor({ light, dark }, bgTheme);
+    const backgroundColor = useThemeColor({ light, dark }, bg);
 
     return (
       <NativeSafeAreaView

@@ -18,12 +18,12 @@ export const BounceableView: FC<Props> = ({
   lightBg: light,
   darkBg: dark,
   // custom theme
-  bgTheme = 'bg0',
+  bg = 'bg0',
   // ViewProps
   bgStyle,
   ...otherProps
 }) => {
-  const backgroundColor = useThemeColor({ light, dark }, bgTheme);
+  const backgroundColor = useThemeColor({ light, dark }, bg);
 
   return (
     <NativeBounceable
