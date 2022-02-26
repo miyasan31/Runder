@@ -69,7 +69,7 @@ export const SignUp: FC<SignUpScreenProps> = ({ navigation }) => {
         bgStyle={style.buttonBg}
         textStyle={style.buttonText}
         lightBg="#333333"
-        lightText="#FFF"
+        lightColor="#FFF"
       />
     </View>
   );

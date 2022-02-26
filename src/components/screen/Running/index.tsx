@@ -120,7 +120,7 @@ export const Running: FC<Props> = () => {
         {/* <Button
           label={isRunning ? "STOP" : "START"}
           lightBg={isRunning ? "#ffff00" : ""}
-          lightText={isRunning ? "#000000" : ""}
+          lightColor={isRunning ? "#000000" : ""}
           bgStyle={styles.button}
           onPress={onToggleRunningStatus}
         />

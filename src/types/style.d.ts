@@ -12,7 +12,7 @@ export type StyleProps = {
   // Text
   textStyle?: StyleProp<TextStyle>;
   color?: Extract<ThemeProps, TextTheme>;
-  lightText?: string;
+  lightColor?: string;
   darkText?: string;
   // View
   bgStyle?: StyleProp<ViewStyle>;
@@ -23,7 +23,7 @@ export type StyleProps = {
   outlineStyle?: StyleProp<OutlineStyle>;
 };
 
-export type TextStyleProps = Pick<StyleProps, 'textStyle' | 'color' | 'lightText' | 'darkText'>;
+export type TextStyleProps = Pick<StyleProps, 'textStyle' | 'color' | 'lightColor' | 'darkText'>;
 
 export type ViewStyleProps = Pick<StyleProps, 'bgStyle' | 'bg' | 'lightBg' | 'darkBg'>;
 

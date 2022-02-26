@@ -19,7 +19,7 @@ export const DatePicker: FC<TextInputProps> = ({
   // 基本的に使用しない
   lightBg,
   darkBg,
-  lightText: light,
+  lightColor: light,
   darkText: dark,
   // custom theme
   bg = 'bg4',

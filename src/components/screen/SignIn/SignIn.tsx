@@ -46,7 +46,7 @@ export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
         bgStyle={style.buttonBg}
         textStyle={style.buttonText}
         lightBg="#333333"
-        lightText="#FFF"
+        lightColor="#FFF"
         onPress={onSignOut}
       />
       <Button
@@ -56,7 +56,7 @@ export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
         bgStyle={style.buttonBg}
         textStyle={style.buttonText}
         lightBg="#808080"
-        lightText="#FFF"
+        lightColor="#FFF"
         onPress={onSignInEmailNavigate}
       />
 

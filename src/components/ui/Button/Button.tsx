@@ -22,7 +22,7 @@ export const Button: FC<ButtonProps> = memo(
     // custom themeで色を指定する
     lightBg,
     darkBg,
-    lightText,
+    lightColor,
     darkText,
     // custom theme
     bg = 'bg1',
@@ -52,7 +52,7 @@ export const Button: FC<ButtonProps> = memo(
           {...{ lightBg, darkBg, bg, activeOpacity }}
         >
           {leftIcon}
-          <Text style={[defaultStyle.text, textStyle]} {...{ lightText, darkText, color }}>
+          <Text style={[defaultStyle.text, textStyle]} {...{ lightColor, darkText, color }}>
             {label}
           </Text>
           {rightIcon}
