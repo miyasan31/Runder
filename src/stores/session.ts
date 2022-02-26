@@ -1,9 +1,9 @@
 import { proxy } from 'valtio';
 
 export const session = proxy({
-  isSignin: false,
+  isSignIn: false,
 });
 
 export const updateSession = (boolean: boolean) => {
-  session.isSignin = boolean;
+  session.isSignIn = boolean;
 };

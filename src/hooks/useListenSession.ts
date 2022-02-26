@@ -8,11 +8,11 @@ import type { User } from '~/types/fetcher';
 import { supabaseClient, supabaseSelect } from '~/utils/supabase';
 
 type SessionState = {
-  isSignin: boolean;
+  isSignIn: boolean;
   route: 'Main' | 'SignInScreen' | 'UserRegisterScreen';
 };
 
-const unsubscribe = subscribe(session, () => session.isSignin);
+const unsubscribe = subscribe(session, () => session.isSignIn);
 
 export const useListenSession = () => {
   const sessionSnapshot = useSnapshot(session);
@@ -25,7 +25,7 @@ export const useListenSession = () => {
 
     // is Session Empty
     if (!sessionUser) {
-      return { isSignin: false, route: 'SignInScreen' };
+      return { isSignIn: false, route: 'SignInScreen' };
     }
 
     const { data, error } = await supabaseSelect<User>('user', {
@@ -41,19 +41,19 @@ export const useListenSession = () => {
 
     // is Error
     if (error || !data) {
-      return { isSignin: false, route: 'SignInScreen' };
+      return { isSignIn: false, route: 'SignInScreen' };
     }
 
     // is Not User -> UserRegisterScreen Navigation
     if (data.length === 0) {
       updateSession(true);
-      return { isSignin: false, route: 'UserRegisterScreen' };
+      return { isSignIn: false, route: 'UserRegisterScreen' };
     }
 
     // is Success
     getUser(data[0]);
     updateSession(true);
-    return { isSignin: true, route: 'Main' };
+    return { isSignIn: true, route: 'Main' };
   }, []);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export const useListenSession = () => {
     })();
 
     return () => unsubscribe();
-  }, [sessionSnapshot.isSignin]);
+  }, [sessionSnapshot.isSignIn]);
 
   return sessionState;
 };
