@@ -2,13 +2,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { FC } from 'react';
 import React from 'react';
 
-import { GoBackButton } from '~/components/ui/Button';
+import { PrevButton } from '~/components/ui/Button';
 import { useThemeColor } from '~/hooks/useThemeColor';
-import type { TournamentStackParamList } from '~/types';
+import type { TournamentScreenProps, TournamentStackParamList } from '~/types';
 
 import { ModalScreen } from './hoge.modal';
 import { TournamentScreen } from './tournament.screen';
 import { TournamentDetailScreen } from './tournament_detail.screen';
+
+type Option<T extends keyof TournamentStackParamList> = TournamentScreenProps<T>;
 
 const Tournament = createNativeStackNavigator<TournamentStackParamList>();
 
@@ -33,14 +35,14 @@ export const TournamentNavigator: FC = () => {
       <Tournament.Screen
         name="TournamentDetailScreen"
         component={TournamentDetailScreen}
-        options={() => ({
+        options={(options: Option<'TournamentDetailScreen'>) => ({
           title: '大会の詳細・スタート',
           headerTitleAlign: 'left',
           headerTitleStyle: {
             fontWeight: '600',
           },
           headerBackTitleVisible: false,
-          headerLeft: () => <GoBackButton />,
+          headerLeft: () => <PrevButton {...options} screen="TournamentScreen" />,
         })}
       />
 
