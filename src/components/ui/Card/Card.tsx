@@ -1,9 +1,8 @@
 import type { ReactNode, VFC } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
-import { Bounceable } from 'rn-bounceable';
 
-import { TouchableOpacity, View } from '~/components/ui/View';
+import { BounceableView, TouchableOpacity } from '~/components/ui/View';
 import { useThemeColor } from '~/hooks/useThemeColor';
 import type { StyleProps } from '~/types/style';
 
@@ -34,16 +33,14 @@ export const Card: VFC<CardProps> = memo(
     const borderColor = useThemeColor({}, isBorder ? 'border' : bgTheme);
 
     return (
-      <View bgStyle={[defaultStyle.outline, outlineStyle]}>
-        <Bounceable onPress={onPress} activeScale={0.97}>
-          <TouchableOpacity
-            style={[defaultStyle.bg, bgStyle, { borderWidth: isBorder && 1, borderColor }]}
-            {...{ lightBg, darkBg, bgTheme, activeOpacity }}
-          >
-            {children}
-          </TouchableOpacity>
-        </Bounceable>
-      </View>
+      <BounceableView bgStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
+        <TouchableOpacity
+          style={[defaultStyle.bg, bgStyle, { borderWidth: isBorder && 1, borderColor }]}
+          {...{ lightBg, darkBg, bgTheme, activeOpacity }}
+        >
+          {children}
+        </TouchableOpacity>
+      </BounceableView>
     );
   },
 );

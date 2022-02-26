@@ -3,9 +3,8 @@ import { useNavigation } from '@react-navigation/native';
 import type { VFC } from 'react';
 import React, { memo, useCallback } from 'react';
 import { StyleSheet } from 'react-native';
-import { Bounceable } from 'rn-bounceable';
 
-import { View } from '~/components/ui/View';
+import { BounceableView } from '~/components/ui/View';
 import { useThemeColor } from '~/hooks/useThemeColor';
 
 type Props = {
@@ -13,19 +12,21 @@ type Props = {
 };
 
 export const GoBackButton: VFC<Props> = memo(({ isFloating }) => {
-  const navigation = useNavigation();
   const icon = useThemeColor({}, 'icon');
+  const navigation = useNavigation();
 
   const onGoBack = useCallback(() => {
     navigation.goBack();
   }, []);
 
   return (
-    <View style={[style.button, isFloating && style.float]}>
-      <Bounceable onPress={onGoBack} activeScale={0.9}>
-        <MaterialIcons name="keyboard-arrow-left" size={35} color={icon} />
-      </Bounceable>
-    </View>
+    <BounceableView
+      bgStyle={[style.button, isFloating && style.float]}
+      activeScale={0.9}
+      onPress={onGoBack}
+    >
+      <MaterialIcons name="keyboard-arrow-left" size={40} color={icon} />
+    </BounceableView>
   );
 });
 

@@ -1,10 +1,9 @@
 import type { ReactElement, VFC } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
-import { Bounceable } from 'rn-bounceable';
 
 import { Text } from '~/components/ui/Text';
-import { TouchableOpacity, View } from '~/components/ui/View';
+import { BounceableView, TouchableOpacity } from '~/components/ui/View';
 import { useThemeColor } from '~/hooks/useThemeColor';
 import type { StyleProps } from '~/types/style';
 
@@ -46,21 +45,19 @@ export const Button: VFC<ButtonProps> = memo(
     const borderColor = useThemeColor({}, isBorder ? 'border' : bgTheme);
 
     return (
-      <View style={[defaultStyle.outline, outlineStyle]}>
-        <Bounceable onPress={onPress} activeScale={0.97}>
-          <TouchableOpacity
-            // eslint-disable-next-line react-native/no-inline-styles
-            style={[defaultStyle.bg, bgStyle, { borderWidth: 1, borderColor }]}
-            {...{ lightBg, darkBg, bgTheme, activeOpacity }}
-          >
-            {leftIcon}
-            <Text style={[defaultStyle.text, textStyle]} {...{ lightText, darkText, textTheme }}>
-              {label}
-            </Text>
-            {rightIcon}
-          </TouchableOpacity>
-        </Bounceable>
-      </View>
+      <BounceableView bgStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
+        <TouchableOpacity
+          // eslint-disable-next-line react-native/no-inline-styles
+          style={[defaultStyle.bg, bgStyle, { borderWidth: 1, borderColor }]}
+          {...{ lightBg, darkBg, bgTheme, activeOpacity }}
+        >
+          {leftIcon}
+          <Text style={[defaultStyle.text, textStyle]} {...{ lightText, darkText, textTheme }}>
+            {label}
+          </Text>
+          {rightIcon}
+        </TouchableOpacity>
+      </BounceableView>
     );
   },
 );
