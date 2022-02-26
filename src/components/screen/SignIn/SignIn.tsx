@@ -34,7 +34,7 @@ export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
         leftIcon={<Google />}
         label="Googleでサインイン"
         outlineStyle={style.buttonOutline}
-        bgStyle={style.buttonBg}
+        viewStyle={style.buttonBg}
         textStyle={style.buttonText}
         bg="bg1"
         onPress={onSignInGoogle}
@@ -43,7 +43,7 @@ export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
         leftIcon={<Apple />}
         label="Appleでサインイン"
         outlineStyle={style.buttonOutline}
-        bgStyle={style.buttonBg}
+        viewStyle={style.buttonBg}
         textStyle={style.buttonText}
         lightBg="#333333"
         lightColor="#FFF"
@@ -53,7 +53,7 @@ export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
         leftIcon={<Mail />}
         label="メールでサインイン"
         outlineStyle={style.buttonOutline}
-        bgStyle={style.buttonBg}
+        viewStyle={style.buttonBg}
         textStyle={style.buttonText}
         lightBg="#808080"
         lightColor="#FFF"

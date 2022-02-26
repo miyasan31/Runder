@@ -56,7 +56,7 @@ export const SignUp: FC<SignUpScreenProps> = ({ navigation }) => {
         leftIcon={<Google />}
         label="Googleでサインアップ"
         outlineStyle={style.buttonOutline}
-        bgStyle={style.buttonBg}
+        viewStyle={style.buttonBg}
         textStyle={style.buttonText}
         bg="bg1"
         onPress={onSignInGoogle}
@@ -66,7 +66,7 @@ export const SignUp: FC<SignUpScreenProps> = ({ navigation }) => {
         leftIcon={<Apple />}
         label="Appleでサインアップ"
         outlineStyle={style.buttonOutline}
-        bgStyle={style.buttonBg}
+        viewStyle={style.buttonBg}
         textStyle={style.buttonText}
         lightBg="#333333"
         lightColor="#FFF"

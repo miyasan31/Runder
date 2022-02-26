@@ -23,7 +23,7 @@ export const TextInput: FC<TextInputProps> = memo(
     color: fontColor = 'text1',
     // ViewProps
     isBorder,
-    bgStyle,
+    viewStyle,
     // TextInputProps
     style,
     textStyle,
@@ -36,7 +36,7 @@ export const TextInput: FC<TextInputProps> = memo(
     return (
       <View
         // eslint-disable-next-line react-native/no-inline-styles
-        style={[defaultStyle.bg, bgStyle, { borderWidth: 1, borderColor }]}
+        style={[defaultStyle.bg, viewStyle, { borderWidth: 1, borderColor }]}
         {...{ lightBg, darkBg, bg }}
       >
         <NativeTextInput

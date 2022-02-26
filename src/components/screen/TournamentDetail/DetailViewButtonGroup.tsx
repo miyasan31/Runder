@@ -36,7 +36,7 @@ export const DetailViewButtonGroup: FC = () => {
             bg="bg2"
             isBorder
             textStyle={style.buttonText}
-            bgStyle={style.buttonBg}
+            viewStyle={style.buttonBg}
             outlineStyle={style.buttonOutline}
             onPress={() => onOpenModal(item.index)}
           />

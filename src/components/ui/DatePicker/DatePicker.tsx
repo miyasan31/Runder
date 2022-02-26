@@ -26,7 +26,7 @@ export const DatePicker: FC<TextInputProps> = ({
   color: fontColor = 'text1',
   // ViewProps
   isBorder,
-  bgStyle,
+  viewStyle,
   // TextInputProps
   textStyle,
   // props,
@@ -54,7 +54,7 @@ export const DatePicker: FC<TextInputProps> = ({
     <>
       <BounceableView
         // eslint-disable-next-line react-native/no-inline-styles
-        bgStyle={[defaultStyle.bg, bgStyle, { borderWidth: 1, borderColor }]}
+        viewStyle={[defaultStyle.bg, viewStyle, { borderWidth: 1, borderColor }]}
         {...{ lightBg, darkBg, bg }}
         onPress={onToggleDatePicker}
         activeScale={0.97}

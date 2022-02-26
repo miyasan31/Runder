@@ -37,7 +37,7 @@ export const News: FC<ContactScreenProps> = () => {
     const onNavigation = () => console.info('item.id', item.id);
 
     return (
-      <Card bgStyle={style.list} isBorder onPress={onNavigation}>
+      <Card viewStyle={style.list} isBorder onPress={onNavigation}>
         <View>
           <Text style={style.shopName}>{item.name}</Text>
           <Text style={style.date}>{date}</Text>

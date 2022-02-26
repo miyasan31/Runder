@@ -32,7 +32,7 @@ export const Button: FC<ButtonProps> = memo(
     outlineStyle,
     // TouchableOpacityProps
     activeOpacity = 0.9,
-    bgStyle,
+    viewStyle,
     // TextProps
     label,
     textStyle,
@@ -45,10 +45,10 @@ export const Button: FC<ButtonProps> = memo(
     const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
 
     return (
-      <BounceableView bgStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
+      <BounceableView viewStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
         <TouchableOpacity
           // eslint-disable-next-line react-native/no-inline-styles
-          style={[defaultStyle.bg, bgStyle, { borderWidth: 1, borderColor }]}
+          style={[defaultStyle.bg, viewStyle, { borderWidth: 1, borderColor }]}
           {...{ lightBg, darkBg, bg, activeOpacity }}
         >
           {leftIcon}

@@ -20,14 +20,14 @@ export const BounceableView: FC<Props> = ({
   // custom theme
   bg = 'bg0',
   // ViewProps
-  bgStyle,
+  viewStyle,
   ...otherProps
 }) => {
   const backgroundColor = useThemeColor({ light, dark }, bg);
 
   return (
     <NativeBounceable
-      contentContainerStyle={[defaultStyle.bg, bgStyle, { backgroundColor }]}
+      contentContainerStyle={[defaultStyle.bg, viewStyle, { backgroundColor }]}
       activeScale={0.97}
       {...otherProps}
     />

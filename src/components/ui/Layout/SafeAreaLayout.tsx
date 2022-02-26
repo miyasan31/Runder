@@ -17,12 +17,12 @@ export const SafeAreaLayout: FC<LayoutProps> = ({
   // custom theme
   bg = 'bg1',
   // ViewProps
-  bgStyle,
+  viewStyle,
   children,
   isCenter,
 }) => {
   return (
-    <SafeAreaView {...{ lightBg, darkBg, bg, bgStyle }}>
+    <SafeAreaView {...{ lightBg, darkBg, bg, viewStyle }}>
       <View style={[defaultStyle.root, isCenter && defaultStyle.center]}>{children}</View>
     </SafeAreaView>
   );

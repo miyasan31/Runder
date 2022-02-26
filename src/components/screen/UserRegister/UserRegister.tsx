@@ -108,7 +108,7 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
           <BounceableView
             key={radio.active}
             bg="bg1"
-            bgStyle={[style.radioArea]}
+            viewStyle={[style.radioArea]}
             onPress={() => onRadioSelect(radio.active)}
           >
             <Radio value={radio.active} activeValue={sex} />

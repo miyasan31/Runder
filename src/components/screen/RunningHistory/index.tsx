@@ -51,7 +51,7 @@ export const RunningHistory: FC<Props> = (props) => {
       });
     };
     return (
-      <Card bgStyle={styles.list} onPress={onNavigation}>
+      <Card viewStyle={styles.list} onPress={onNavigation}>
         <View>
           <Text style={styles.shopName}>レコード {item.id}</Text>
           <Text style={styles.date} lightColor={color} darkColor={color}>

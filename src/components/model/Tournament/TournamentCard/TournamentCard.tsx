@@ -59,7 +59,7 @@ export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
             activeOpacity={1}
             // style={style.floatButtonArea}
             outlineStyle={style.buttonOutline}
-            bgStyle={style.buttonBg}
+            viewStyle={style.buttonBg}
             textStyle={style.buttonText}
           />
         </View>

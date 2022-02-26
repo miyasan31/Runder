@@ -121,10 +121,10 @@ export const Running: FC<Props> = () => {
           label={isRunning ? "STOP" : "START"}
           lightBg={isRunning ? "#ffff00" : ""}
           lightColor={isRunning ? "#000000" : ""}
-          bgStyle={styles.button}
+          viewStyle={styles.button}
           onPress={onToggleRunningStatus}
         />
-        <Button label="SAVE" lightBg="#f00" bgStyle={styles.button1} onPress={onSave} /> */}
+        <Button label="SAVE" lightBg="#f00" viewStyle={styles.button1} onPress={onSave} /> */}
       </MapView>
     </View>
   );

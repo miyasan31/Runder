@@ -20,7 +20,7 @@ export const Layout: FC<LayoutProps> = ({
   // custom theme
   bg = 'bg1',
   // ViewProps
-  bgStyle,
+  viewStyle,
   layout,
   children,
 }) => {
@@ -40,7 +40,7 @@ export const Layout: FC<LayoutProps> = ({
   }, [layout]);
 
   return (
-    <SafeAreaView {...{ edges, lightBg, darkBg, bg, bgStyle }}>
+    <SafeAreaView {...{ edges, lightBg, darkBg, bg, viewStyle }}>
       <View style={[defaultStyle.root, { marginBottom: tabBarHeight || 0 }]}>{children}</View>
     </SafeAreaView>
   );
