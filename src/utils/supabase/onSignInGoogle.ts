@@ -31,28 +31,9 @@ export const onSignInGoogle = async () => {
         return;
       }
 
-      // ここはサインイン処理が成功したら呼ばれる
-      // ユーザー情報を登録
-      // user.id
-      // user.user_metadata.name
-      // user.email
-      // user.user_metadata.avatar_url
-      // const { error: userCreateError } = await supabaseClient.from('user').insert([
-      //   {
-      //     id: user.id,
-      //     name: user.user_metadata.name,
-      //     email: user.email,
-      //     avatar: user.user_metadata.avatar_url,
-      //   },
-      // ]);
-
-      // if (userCreateError) {
-      //   console.error(userCreateError);
-      // }
-
       toast.success('サインインに成功しました', { icon: '🥳' });
       const secureStorePromise = saveSecureStore(AUTH_PROVIDER_KEY, 'google');
-      const sleepPromise = sleep(1000);
+      const sleepPromise = sleep(600);
       await Promise.all([secureStorePromise, sleepPromise]);
       updateSession(true);
     })
