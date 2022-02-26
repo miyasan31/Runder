@@ -14,7 +14,7 @@ type Props<T> = ViewStyleProps & {
 
 export const Radio = <T,>({
   // 基本的に使用しない
-  // custome themeで色を指定する
+  // custom themeで色を指定する
   lightBg,
   darkBg,
   bgTheme = 'primary',

@@ -17,10 +17,10 @@ export type CardProps = StyleProps & {
 export const Card: VFC<CardProps> = memo(
   ({
     // 基本的に使用しない
-    // custome themeで色を指定する
+    // custom themeで色を指定する
     lightBg,
     darkBg,
-    // custome theme
+    // custom theme
     bgTheme = 'bg1',
     // ViewProps
     isBorder,

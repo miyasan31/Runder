@@ -17,7 +17,7 @@ export const Layout: VFC<LayoutProps> = ({
   // 基本的に使用しない
   lightBg,
   darkBg,
-  // custome theme
+  // custom theme
   bgTheme = 'bg1',
   // ViewProps
   bgStyle,

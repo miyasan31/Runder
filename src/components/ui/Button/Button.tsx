@@ -20,12 +20,12 @@ export type ButtonProps = StyleProps & {
 export const Button: VFC<ButtonProps> = memo(
   ({
     // 基本的に使用しない
-    // custome themeで色を指定する
+    // custom themeで色を指定する
     lightBg,
     darkBg,
     lightText,
     darkText,
-    // custome theme
+    // custom theme
     bgTheme = 'bg1',
     textTheme = 'text1',
     // ViewProps
