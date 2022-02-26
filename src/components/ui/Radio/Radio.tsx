@@ -25,8 +25,8 @@ export const Radio = <T,>({
   const borderColor = useThemeColor({}, 'border');
 
   const onPress = useCallback(() => {
-    onChangeValue && onChangeValue(activeValue);
-  }, [onChangeValue, activeValue]);
+    onChangeValue && onChangeValue(value);
+  }, [onChangeValue, value]);
 
   return (
     <TouchableOpacity
