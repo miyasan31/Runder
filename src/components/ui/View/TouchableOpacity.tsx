@@ -12,7 +12,7 @@ export const TouchableOpacity: VFC<TouchableOpacityProps> = memo(
     // 基本的に使用しない
     lightBg: light,
     darkBg: dark,
-    // custome theme
+    // custom theme
     bgTheme = 'bg1',
     // TextProps
     style,

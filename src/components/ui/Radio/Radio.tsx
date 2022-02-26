@@ -14,7 +14,7 @@ type Props<T> = ViewStyleProps & {
 
 export const Radio = <T,>({
   // 基本的に使用しない
-  // custome themeで色を指定する
+  // custom themeで色を指定する
   lightBg,
   darkBg,
   bgTheme = 'primary',
@@ -25,8 +25,8 @@ export const Radio = <T,>({
   const borderColor = useThemeColor({}, 'border');
 
   const onPress = useCallback(() => {
-    onChangeValue && onChangeValue(activeValue);
-  }, [onChangeValue, activeValue]);
+    onChangeValue && onChangeValue(value);
+  }, [onChangeValue, value]);
 
   return (
     <TouchableOpacity

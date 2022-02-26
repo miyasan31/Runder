@@ -10,10 +10,10 @@ export type ViewProps = NativeView['props'] & ViewStyleProps;
 export const View: VFC<ViewProps> = memo(
   ({
     // 基本的に使用しない
-    // custome themeで色を指定する
+    // custom themeで色を指定する
     lightBg: light,
     darkBg: dark,
-    // custome theme
+    // custom theme
     bgTheme = 'bg0',
     // ViewProps
     style,

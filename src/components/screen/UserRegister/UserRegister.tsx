@@ -5,11 +5,12 @@ import { StyleSheet } from 'react-native';
 
 import type { UserRegisterScreenProps } from '~/components/screen/UserRegister';
 import { Button } from '~/components/ui/Button';
+import { DatePicker } from '~/components/ui/DatePicker';
 import { Radio } from '~/components/ui/Radio';
 import { Text } from '~/components/ui/Text';
 import { TextInput } from '~/components/ui/TextInput';
-import { TouchableOpacity, View } from '~/components/ui/View';
-import { onSignOut, supabaseClient } from '~/utils/supabase';
+import { BounceableView, View } from '~/components/ui/View';
+import { supabaseClient } from '~/utils/supabase';
 
 const radio_group = [
   { id: 1, active: true, label: '男性' },
@@ -17,11 +18,17 @@ const radio_group = [
 ];
 
 export const UserRegister: VFC<UserRegisterScreenProps> = () => {
+  const [name, setName] = useState('');
+  const [sex, onSelectSex] = useState<boolean | null>(null);
+  const [birthday, onSetBirthday] = useState<Date | null>(null);
   const [_sessionUser, setSessionUser] = useState<Session['user'] | null>(null);
-  const [value, onSetValue] = useState<boolean | null>(null);
+
+  const onChangeName = useCallback((value: string) => {
+    setName(value);
+  }, []);
 
   const onRadioSelect = useCallback((_value: boolean) => {
-    onSetValue(_value);
+    onSelectSex(_value);
   }, []);
 
   useEffect(() => {
@@ -36,24 +43,23 @@ export const UserRegister: VFC<UserRegisterScreenProps> = () => {
       <Text style={style.title}>プロフィールを登録</Text>
 
       <Text style={style.label}>ユーザー名</Text>
-      <TextInput />
+      <TextInput value={name} onChangeText={onChangeName} />
 
       <Text style={style.label}>生年月日</Text>
-      <TextInput />
+      <DatePicker value={birthday} onChangeValue={onSetBirthday} />
 
       <Text style={style.label}>選択してください</Text>
       <View style={style.row}>
         {radio_group.map((radio) => (
-          <TouchableOpacity
+          <BounceableView
             key={radio.id}
-            style={style.radioArea}
             bgTheme="bg1"
-            activeOpacity={1}
+            bgStyle={[style.radioArea]}
             onPress={() => onRadioSelect(radio.active)}
           >
-            <Radio value={value} activeValue={radio.active} onChangeValue={onSetValue} />
+            <Radio value={radio.active} activeValue={sex} />
             <Text style={style.radioLabel}>{radio.label}</Text>
-          </TouchableOpacity>
+          </BounceableView>
         ))}
       </View>
 
@@ -62,14 +68,6 @@ export const UserRegister: VFC<UserRegisterScreenProps> = () => {
         textTheme="text0"
         bgTheme="primary"
         outlineStyle={style.buttonOutline}
-      />
-
-      <Button
-        label="サインアウト"
-        textTheme="text0"
-        bgTheme="primary"
-        outlineStyle={style.buttonOutline}
-        onPress={onSignOut}
       />
     </View>
   );
