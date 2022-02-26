@@ -66,6 +66,7 @@ export const DatePicker: VFC<TextInputProps> = ({
         isVisible={isVisible}
         mode="date"
         locale="ja"
+        date={new Date(2000, 0, 1)}
         maximumDate={new Date()}
         minimumDate={new Date(1920, 12, 31)}
         confirmTextIOS="確定"
