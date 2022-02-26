@@ -3,9 +3,9 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import { SafeAreaView, View } from '~/components/ui/View';
-import type { ViewStyleProps } from '~/types/style';
+import type { CustomViewStyleProps } from '~/types/style';
 
-type LayoutProps = ViewStyleProps & {
+type LayoutProps = CustomViewStyleProps & {
   children: ReactNode;
   isCenter?: true;
 };
@@ -15,14 +15,14 @@ export const SafeAreaLayout: FC<LayoutProps> = ({
   lightBg,
   darkBg,
   // custom theme
-  bgTheme = 'bg1',
+  bg = 'bg1',
   // ViewProps
-  bgStyle,
+  viewStyle,
   children,
   isCenter,
 }) => {
   return (
-    <SafeAreaView {...{ lightBg, darkBg, bgTheme, bgStyle }}>
+    <SafeAreaView {...{ lightBg, darkBg, bg, viewStyle }}>
       <View style={[defaultStyle.root, isCenter && defaultStyle.center]}>{children}</View>
     </SafeAreaView>
   );

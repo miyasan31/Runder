@@ -19,22 +19,22 @@ export const DatePicker: FC<TextInputProps> = ({
   // 基本的に使用しない
   lightBg,
   darkBg,
-  lightText: light,
-  darkText: dark,
+  lightColor: light,
+  darkColor: dark,
   // custom theme
-  bgTheme = 'bg4',
-  textTheme = 'text1',
+  bg = 'bg4',
+  color: fontColor = 'color1',
   // ViewProps
   isBorder,
-  bgStyle,
+  viewStyle,
   // TextInputProps
   textStyle,
   // props,
   value,
   onChangeValue,
 }) => {
-  const color = useThemeColor({ light, dark }, textTheme);
-  const borderColor = useThemeColor({}, isBorder ? 'border' : bgTheme);
+  const color = useThemeColor({ light, dark }, fontColor);
+  const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
   const [isVisible, setIsVisible] = useState(false);
 
   const onToggleDatePicker = useCallback(() => {
@@ -54,8 +54,8 @@ export const DatePicker: FC<TextInputProps> = ({
     <>
       <BounceableView
         // eslint-disable-next-line react-native/no-inline-styles
-        bgStyle={[defaultStyle.bg, bgStyle, { borderWidth: 1, borderColor }]}
-        {...{ lightBg, darkBg, bgTheme }}
+        viewStyle={[defaultStyle.bg, viewStyle, { borderWidth: 1, borderColor }]}
+        {...{ lightBg, darkBg, bg }}
         onPress={onToggleDatePicker}
         activeScale={0.97}
       >

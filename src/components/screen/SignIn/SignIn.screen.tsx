@@ -10,7 +10,7 @@ import type { SignInScreenProps } from './ScreenProps';
 export const SignInScreen: FC<SignInScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <SafeAreaLayout bgTheme="bg2" isCenter>
+      <SafeAreaLayout bg="bg2" isCenter>
         <SignIn {...props} />
       </SafeAreaLayout>
     </LayoutErrorBoundary>

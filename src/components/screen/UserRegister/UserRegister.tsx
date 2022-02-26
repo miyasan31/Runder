@@ -107,8 +107,8 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
         {radio_group.map((radio) => (
           <BounceableView
             key={radio.active}
-            bgTheme="bg1"
-            bgStyle={[style.radioArea]}
+            bg="bg1"
+            viewStyle={[style.radioArea]}
             onPress={() => onRadioSelect(radio.active)}
           >
             <Radio value={radio.active} activeValue={sex} />
@@ -119,8 +119,8 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
 
       <Button
         label="登録する"
-        textTheme="text0"
-        bgTheme="primary"
+        color="color0"
+        bg="primary"
         outlineStyle={style.buttonOutline}
         onPress={onRegisterUserInfo}
       />

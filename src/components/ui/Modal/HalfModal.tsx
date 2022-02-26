@@ -28,9 +28,9 @@ export const HalfModal: FC<Props> = ({ children, size = 0.7, isVisible, onCloseM
       style={defaultStyle.modal}
       backdropColor={backdropColor}
     >
-      <View style={[defaultStyle.content, { flex: size }]} bgTheme="bg1">
+      <View style={[defaultStyle.content, { flex: size }]} bg="bg1">
         <View style={defaultStyle.handleWrap}>
-          <View style={defaultStyle.handle} bgTheme="bg3" />
+          <View style={defaultStyle.handle} bg="bg3" />
         </View>
         {children}
       </View>

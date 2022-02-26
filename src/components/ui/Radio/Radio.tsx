@@ -17,7 +17,7 @@ export const Radio = <T,>({
   // custom themeで色を指定する
   lightBg,
   darkBg,
-  bgTheme = 'primary',
+  bg = 'primary',
   value,
   activeValue,
   onChangeValue,
@@ -35,7 +35,7 @@ export const Radio = <T,>({
       onPress={onPress}
     >
       {value === activeValue ? (
-        <View style={defaultStyle.active} {...{ lightBg, darkBg, bgTheme }} />
+        <View style={defaultStyle.active} {...{ lightBg, darkBg, bg }} />
       ) : null}
     </TouchableOpacity>
   );

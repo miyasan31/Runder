@@ -6,7 +6,7 @@ import { View } from '~/components/ui/View';
 import { useThemeColor } from '~/hooks/useThemeColor';
 import type { TextInputStyleProps } from '~/types/style';
 
-export type TextInputProps = NativeTextInput['props'] &
+export type TextInputProps = Omit<NativeTextInput['props'], 'style'> &
   TextInputStyleProps & {
     isBorder?: true;
   };
@@ -16,32 +16,31 @@ export const TextInput: FC<TextInputProps> = memo(
     // 基本的に使用しない
     lightBg,
     darkBg,
-    lightText: light,
-    darkText: dark,
+    lightColor: light,
+    darkColor: dark,
     // custom theme
-    bgTheme = 'bg4',
-    textTheme = 'text1',
+    bg = 'bg4',
+    color: fontColor = 'color1',
     // ViewProps
     isBorder,
-    bgStyle,
+    viewStyle,
     // TextInputProps
-    style,
     textStyle,
     secureTextEntry = false,
     ...otherProps
   }) => {
-    const color = useThemeColor({ light, dark }, textTheme);
-    const borderColor = useThemeColor({}, isBorder ? 'border' : bgTheme);
+    const color = useThemeColor({ light, dark }, fontColor);
+    const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
 
     return (
       <View
         // eslint-disable-next-line react-native/no-inline-styles
-        style={[defaultStyle.bg, bgStyle, { borderWidth: 1, borderColor }]}
-        {...{ lightBg, darkBg, bgTheme }}
+        style={[defaultStyle.bg, viewStyle, { borderWidth: 1, borderColor }]}
+        {...{ lightBg, darkBg, bg }}
       >
         <NativeTextInput
           secureTextEntry={secureTextEntry}
-          style={[defaultStyle.text, style, textStyle, { color }]}
+          style={[defaultStyle.text, textStyle, { color }]}
           {...otherProps}
         />
       </View>

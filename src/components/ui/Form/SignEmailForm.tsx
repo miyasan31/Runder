@@ -27,8 +27,8 @@ export const SignEmailForm: FC<Props> = ({ onSignEmail }) => {
 
       <Button
         label="サインアップ"
-        textTheme="text0"
-        bgTheme="primary"
+        color="color0"
+        bg="primary"
         outlineStyle={style.buttonOutline}
         onPress={() => onSignEmail(email, password)}
       />

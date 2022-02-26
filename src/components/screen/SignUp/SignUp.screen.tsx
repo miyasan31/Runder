@@ -13,7 +13,7 @@ export const SignUpScreen: FC<SignUpScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
       <KeyboardAvoiding>
-        <SafeAreaLayout bgTheme="bg2" isCenter>
+        <SafeAreaLayout bg="bg2" isCenter>
           <GoBackButton isFloating />
           <SignUp {...props} />
         </SafeAreaLayout>

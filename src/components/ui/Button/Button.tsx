@@ -22,17 +22,17 @@ export const Button: FC<ButtonProps> = memo(
     // custom themeで色を指定する
     lightBg,
     darkBg,
-    lightText,
-    darkText,
+    lightColor,
+    darkColor,
     // custom theme
-    bgTheme = 'bg1',
-    textTheme = 'text1',
+    bg = 'bg1',
+    color = 'color1',
     // ViewProps
     isBorder,
     outlineStyle,
     // TouchableOpacityProps
     activeOpacity = 0.9,
-    bgStyle,
+    viewStyle,
     // TextProps
     label,
     textStyle,
@@ -42,17 +42,17 @@ export const Button: FC<ButtonProps> = memo(
     // onPress
     onPress,
   }) => {
-    const borderColor = useThemeColor({}, isBorder ? 'border' : bgTheme);
+    const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
 
     return (
-      <BounceableView bgStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
+      <BounceableView viewStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
         <TouchableOpacity
           // eslint-disable-next-line react-native/no-inline-styles
-          style={[defaultStyle.bg, bgStyle, { borderWidth: 1, borderColor }]}
-          {...{ lightBg, darkBg, bgTheme, activeOpacity }}
+          style={[defaultStyle.bg, viewStyle, { borderWidth: 1, borderColor }]}
+          {...{ lightBg, darkBg, bg, activeOpacity }}
         >
           {leftIcon}
-          <Text style={[defaultStyle.text, textStyle]} {...{ lightText, darkText, textTheme }}>
+          <Text style={[defaultStyle.text, textStyle]} {...{ lightColor, darkColor, color }}>
             {label}
           </Text>
           {rightIcon}

@@ -20,23 +20,23 @@ export const Card: FC<CardProps> = memo(
     lightBg,
     darkBg,
     // custom theme
-    bgTheme = 'bg1',
+    bg = 'bg1',
     // ViewProps
     isBorder,
     outlineStyle,
     // TouchableOpacityProps
     activeOpacity = 0.9,
-    bgStyle,
+    viewStyle,
     children,
     onPress,
   }) => {
-    const borderColor = useThemeColor({}, isBorder ? 'border' : bgTheme);
+    const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
 
     return (
-      <BounceableView bgStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
+      <BounceableView viewStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
         <TouchableOpacity
-          style={[defaultStyle.bg, bgStyle, { borderWidth: isBorder && 1, borderColor }]}
-          {...{ lightBg, darkBg, bgTheme, activeOpacity }}
+          style={[defaultStyle.bg, viewStyle, { borderWidth: isBorder && 1, borderColor }]}
+          {...{ lightBg, darkBg, bg, activeOpacity }}
         >
           {children}
         </TouchableOpacity>

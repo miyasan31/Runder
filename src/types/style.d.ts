@@ -1,30 +1,35 @@
 import type { FlexStyle, StyleProp, TextStyle, TransformsStyle, ViewStyle } from 'react-native';
 
-import type { theme } from '~/styles/theme';
-
-type ThemeProps = keyof typeof theme[keyof typeof theme];
-type TextTheme = 'text0' | 'text1' | 'text2' | 'text3' | 'white' | 'primary' | 'accent';
-type BgTheme = 'bg0' | 'bg1' | 'bg2' | 'bg3' | 'bg4' | 'white' | 'primary';
+import type { BgTheme, BorderTheme, ColorTheme, CommonTheme, IconTheme } from '~/styles/theme';
 
 type OutlineStyle = Pick<ViewStyle, keyof FlexStyle | keyof TransformsStyle>;
 
 export type StyleProps = {
-  // Text
   textStyle?: StyleProp<TextStyle>;
-  textTheme?: Extract<ThemeProps, TextTheme>;
-  lightText?: string;
-  darkText?: string;
-  // View
-  bgStyle?: StyleProp<ViewStyle>;
-  bgTheme?: Extract<ThemeProps, BgTheme>;
+  viewStyle?: StyleProp<ViewStyle>;
+  outlineStyle?: StyleProp<OutlineStyle>;
+
+  color?: CommonTheme | ColorTheme;
+  lightColor?: string;
+  darkColor?: string;
+
+  bg?: CommonTheme | BgTheme;
   lightBg?: string;
   darkBg?: string;
-  // View Outline
-  outlineStyle?: StyleProp<OutlineStyle>;
+
+  icon?: CommonTheme | IconTheme;
+  lightIcon?: string;
+  darkIcon?: string;
+
+  border?: CommonTheme | BorderTheme;
+  lightBorder?: string;
+  darkBorder?: string;
 };
 
-export type TextStyleProps = Pick<StyleProps, 'textStyle' | 'textTheme' | 'lightText' | 'darkText'>;
+export type TextStyleProps = Pick<StyleProps, 'color' | 'lightColor' | 'darkColor'>;
 
-export type ViewStyleProps = Pick<StyleProps, 'bgStyle' | 'bgTheme' | 'lightBg' | 'darkBg'>;
+export type ViewStyleProps = Pick<StyleProps, 'bg' | 'lightBg' | 'darkBg'>;
+
+export type CustomViewStyleProps = Pick<StyleProps, 'viewStyle' | 'bg' | 'lightBg' | 'darkBg'>;
 
 export type TextInputStyleProps = Omit<StyleProps, 'outlineStyle'>;

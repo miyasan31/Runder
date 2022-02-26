@@ -5,10 +5,10 @@ import type { BounceableProps } from 'rn-bounceable';
 import { Bounceable as NativeBounceable } from 'rn-bounceable';
 
 import { useThemeColor } from '~/hooks/useThemeColor';
-import type { ViewStyleProps } from '~/types/style';
+import type { CustomViewStyleProps } from '~/types/style';
 
 type Props = Omit<BounceableProps, 'contentContainerStyle'> &
-  ViewStyleProps & {
+  CustomViewStyleProps & {
     children: ReactNode;
   };
 
@@ -18,16 +18,16 @@ export const BounceableView: FC<Props> = ({
   lightBg: light,
   darkBg: dark,
   // custom theme
-  bgTheme = 'bg0',
+  bg = 'bg0',
   // ViewProps
-  bgStyle,
+  viewStyle,
   ...otherProps
 }) => {
-  const backgroundColor = useThemeColor({ light, dark }, bgTheme);
+  const backgroundColor = useThemeColor({ light, dark }, bg);
 
   return (
     <NativeBounceable
-      contentContainerStyle={[defaultStyle.bg, bgStyle, { backgroundColor }]}
+      contentContainerStyle={[defaultStyle.bg, viewStyle, { backgroundColor }]}
       activeScale={0.97}
       {...otherProps}
     />

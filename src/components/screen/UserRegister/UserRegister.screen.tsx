@@ -12,7 +12,7 @@ export const UserRegisterScreen: FC<UserRegisterScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
       <KeyboardAvoiding>
-        <SafeAreaLayout bgTheme="bg2" isCenter>
+        <SafeAreaLayout bg="bg2" isCenter>
           <UserRegister {...props} />
         </SafeAreaLayout>
       </KeyboardAvoiding>

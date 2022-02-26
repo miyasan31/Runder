@@ -21,7 +21,7 @@ type LocationList = Pick<Location, 'id' | 'created_at'>;
 export type Props = DevListScreenProps<'RunningHistoryScreen'>;
 
 export const RunningHistory: FC<Props> = (props) => {
-  const color = useThemeColor({}, 'text2');
+  const color = useThemeColor({}, 'color2');
   const filter = useSupabaseFilter(
     (query) =>
       query.select(SELECT_COLUMN).order('created_at', {
@@ -51,10 +51,10 @@ export const RunningHistory: FC<Props> = (props) => {
       });
     };
     return (
-      <Card bgStyle={styles.list} onPress={onNavigation}>
+      <Card viewStyle={styles.list} onPress={onNavigation}>
         <View>
           <Text style={styles.shopName}>レコード {item.id}</Text>
-          <Text style={styles.date} lightText={color} darkText={color}>
+          <Text style={styles.date} lightColor={color} darkColor={color}>
             {date}
           </Text>
         </View>

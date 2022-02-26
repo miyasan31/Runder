@@ -69,7 +69,7 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
     <>
       <ProfileEditModal isVisible={isModalVisible} onCloseModal={onCloseModal} />
 
-      <View style={style.container} bgTheme="bg1">
+      <View style={style.container} bg="bg1">
         <View style={style.userInfoContainer}>
           <View style={style.row}>
             <View style={style.leftContainer}>
@@ -79,7 +79,7 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
               <Button
                 label="プロフィール編集"
                 outlineStyle={style.buttonOutline}
-                bgStyle={style.buttonBg}
+                viewStyle={style.buttonBg}
                 textStyle={style.buttonText}
                 isBorder
                 onPress={onOpenModal}
@@ -87,7 +87,7 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
               <Button
                 label="サインアウト"
                 outlineStyle={style.buttonOutline}
-                bgStyle={style.buttonBg}
+                viewStyle={style.buttonBg}
                 textStyle={style.buttonText}
                 isBorder
                 onPress={onSignOut}

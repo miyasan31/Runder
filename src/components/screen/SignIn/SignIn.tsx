@@ -34,29 +34,29 @@ export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
         leftIcon={<Google />}
         label="Googleでサインイン"
         outlineStyle={style.buttonOutline}
-        bgStyle={style.buttonBg}
+        viewStyle={style.buttonBg}
         textStyle={style.buttonText}
-        bgTheme="bg1"
+        bg="bg1"
         onPress={onSignInGoogle}
       />
       <Button
         leftIcon={<Apple />}
         label="Appleでサインイン"
         outlineStyle={style.buttonOutline}
-        bgStyle={style.buttonBg}
+        viewStyle={style.buttonBg}
         textStyle={style.buttonText}
         lightBg="#333333"
-        lightText="#FFF"
+        lightColor="#FFF"
         onPress={onSignOut}
       />
       <Button
         leftIcon={<Mail />}
         label="メールでサインイン"
         outlineStyle={style.buttonOutline}
-        bgStyle={style.buttonBg}
+        viewStyle={style.buttonBg}
         textStyle={style.buttonText}
         lightBg="#808080"
-        lightText="#FFF"
+        lightColor="#FFF"
         onPress={onSignInEmailNavigate}
       />
 

@@ -30,7 +30,7 @@ export const TabBar: FC<Props> = (props) => {
       }}
       indicatorStyle={{ backgroundColor: primary, marginBottom: -1 }}
       renderLabel={({ route, focused }) => (
-        <Text style={style.text} textTheme={focused ? 'primary' : 'text2'}>
+        <Text style={style.text} color={focused ? 'primary' : 'color2'}>
           {route.title}
         </Text>
       )}

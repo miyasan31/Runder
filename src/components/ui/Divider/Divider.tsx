@@ -19,7 +19,7 @@ export const Divider: FC<Props> = memo(({ label = 'または', style }) => {
   return (
     <View style={[defaultStyle.container, style]}>
       <View style={[defaultStyle.divider, { borderColor }]} />
-      <Text style={defaultStyle.dividerText} textTheme="text2">
+      <Text style={defaultStyle.dividerText} color="color2">
         {label}
       </Text>
       <View style={[defaultStyle.divider, { borderColor }]} />

@@ -9,7 +9,7 @@ export const ActivityIndicator: FC = memo(() => {
   const primary = useThemeColor({}, 'primary');
 
   return (
-    <View style={defaultStyle.center} bgTheme="bg1">
+    <View style={defaultStyle.center} bg="bg1">
       <NativeActivityIndicator size="large" color={primary} />
     </View>
   );

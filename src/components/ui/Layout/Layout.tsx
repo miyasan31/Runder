@@ -4,9 +4,9 @@ import React, { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { SafeAreaView, View } from '~/components/ui/View';
-import type { ViewStyleProps } from '~/types/style';
+import type { CustomViewStyleProps } from '~/types/style';
 
-type LayoutProps = ViewStyleProps & {
+type LayoutProps = CustomViewStyleProps & {
   children: ReactNode;
   layout: 'tabheader-bottomtab' | 'header-bottomtab' | 'headerless-bottomtab';
 };
@@ -18,9 +18,9 @@ export const Layout: FC<LayoutProps> = ({
   lightBg,
   darkBg,
   // custom theme
-  bgTheme = 'bg1',
+  bg = 'bg1',
   // ViewProps
-  bgStyle,
+  viewStyle,
   layout,
   children,
 }) => {
@@ -40,7 +40,7 @@ export const Layout: FC<LayoutProps> = ({
   }, [layout]);
 
   return (
-    <SafeAreaView {...{ edges, lightBg, darkBg, bgTheme, bgStyle }}>
+    <SafeAreaView {...{ edges, lightBg, darkBg, bg, viewStyle }}>
       <View style={[defaultStyle.root, { marginBottom: tabBarHeight || 0 }]}>{children}</View>
     </SafeAreaView>
   );

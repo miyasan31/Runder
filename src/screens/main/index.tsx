@@ -17,7 +17,7 @@ import { TournamentNavigator } from './tournament';
 const BottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 
 export const BottomTabNavigator: FC = () => {
-  const icon = useThemeColor({}, 'text2');
+  const icon = useThemeColor({}, 'color2');
   const primary = useThemeColor({}, 'primary');
   const backgroundColor = useThemeColor({}, 'bg1');
 

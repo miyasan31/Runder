@@ -11,18 +11,17 @@ export const Text: FC<TextProps> = memo(
   ({
     // 基本的に使用しない
     // custom themeで色を指定する
-    lightText: light,
-    darkText: dark,
+    lightColor: light,
+    darkColor: dark,
     // custom theme
-    textTheme = 'text1',
+    color: fontColor = 'color1',
     // TextProps
     style,
-    textStyle,
     ...otherProps
   }) => {
-    const color = useThemeColor({ light, dark }, textTheme);
+    const color = useThemeColor({ light, dark }, fontColor);
 
-    return <NativeText style={[defaultStyle.text, style, textStyle, { color }]} {...otherProps} />;
+    return <NativeText style={[defaultStyle.text, style, { color }]} {...otherProps} />;
   },
 );
 

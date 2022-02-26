@@ -25,19 +25,19 @@ export const TournamentDetail: FC<TournamentDetailScreenProps> = () => {
       <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
 
       <View style={style.floatTextArea}>
-        <Text style={style.season} textTheme="white">
+        <Text style={style.season} color="white">
           Monthly
         </Text>
-        <Text style={style.season} textTheme="white">
+        <Text style={style.season} color="white">
           1/1 - 1/31
         </Text>
-        <Text style={style.name} textTheme="white">
+        <Text style={style.name} color="white">
           {data[0].name}
         </Text>
-        <Text style={style.distance} textTheme="white">
+        <Text style={style.distance} color="white">
           {data[0].distance}m
         </Text>
-        <Text style={style.description} textTheme="white">
+        <Text style={style.description} color="white">
           ボタンを押してから5秒後にスタートします。 スタート後の一時停止はできません。
           STARTボタンを押すと、ルールに従うものと されます。
         </Text>
@@ -46,7 +46,7 @@ export const TournamentDetail: FC<TournamentDetailScreenProps> = () => {
       <View style={style.floatButtonGroup}>
         <Button
           label="START"
-          bgTheme="bg2"
+          bg="bg2"
           isBorder
           outlineStyle={style.startButtonOutline}
           textStyle={style.startButtonText}
