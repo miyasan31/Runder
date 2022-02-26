@@ -17,7 +17,7 @@ type ThemeCheck<T extends Theme> = Record<
   Record<keyof T['light'] | keyof T['dark'], string>
 >;
 
-export const createTheme = () => {
+const createTheme = () => {
   const common: ThemeCheck<typeof commonTheme> = commonTheme;
   const color: ThemeCheck<typeof colorTheme> = colorTheme;
   const bg: ThemeCheck<typeof bgTheme> = bgTheme;
