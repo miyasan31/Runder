@@ -46,7 +46,7 @@ export const useListenSession = () => {
 
     // is Not User -> UserRegisterScreen Navigation
     if (data.length === 0) {
-      updateSession(true);
+      updateSession(false);
       return { isSignIn: false, route: 'UserRegisterScreen' };
     }
 
