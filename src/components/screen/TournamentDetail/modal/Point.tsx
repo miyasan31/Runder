@@ -18,26 +18,26 @@ const data = [
 
 export const Point: FC = () => {
   return (
-    <View style={style.content}>
-      <TableHead leftTitle="順位" rightTitle="獲得ポイント" />
+    <>
+      <View style={style.header}>
+        <TableHead leftTitle="順位" rightTitle="獲得ポイント" />
+      </View>
+
       <FlatList
         data={data}
-        style={flatListStyle.list}
-        contentContainerStyle={[flatListStyle.container, style.container]}
+        style={flatListStyle.innerList}
         keyExtractor={(item, _) => String(item.rank)}
         renderItem={({ item }) => {
           return <PointTableBody {...item} />;
         }}
       />
-    </View>
+    </>
   );
 };
 
 const style = StyleSheet.create({
-  content: {
+  header: {
     padding: '4%',
-  },
-  container: {
-    paddingTop: '1%',
+    paddingBottom: '1%',
   },
 });

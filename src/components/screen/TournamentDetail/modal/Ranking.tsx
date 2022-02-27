@@ -17,26 +17,26 @@ const data = [
 
 export const Ranking: FC = () => {
   return (
-    <View style={style.content}>
-      <TableHead leftTitle="順位" rightTitle="記録" />
+    <>
+      <View style={style.header}>
+        <TableHead leftTitle="順位" rightTitle="記録" />
+      </View>
+
       <FlatList
         data={data}
-        style={flatListStyle.list}
-        contentContainerStyle={[flatListStyle.container, style.container]}
+        style={flatListStyle.innerList}
         keyExtractor={(item, _) => String(item.rank)}
         renderItem={({ item }) => {
           return <RecordTableBody {...item} />;
         }}
       />
-    </View>
+    </>
   );
 };
 
 const style = StyleSheet.create({
-  content: {
+  header: {
     padding: '4%',
-  },
-  container: {
-    paddingTop: '1%',
+    paddingBottom: '1%',
   },
 });

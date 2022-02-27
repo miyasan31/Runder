@@ -33,7 +33,7 @@ export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
   }, [navigation]);
 
   return (
-    <Card onPress={onNavigation} outlineStyle={style.cardOutline}>
+    <Card onPress={onNavigation}>
       <View style={style.view}>
         <View style={style.imageView}>
           <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
@@ -69,9 +69,6 @@ export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
 };
 
 const style = StyleSheet.create({
-  cardOutline: {
-    marginBottom: '8%',
-  },
   view: {
     borderRadius: 20,
   },

@@ -2,10 +2,12 @@ import { StyleSheet } from 'react-native';
 
 export const flatListStyle = StyleSheet.create({
   list: {
-    width: '100%',
-  },
-  container: {
     paddingTop: '5%',
     paddingBottom: 150,
+    paddingHorizontal: '5%',
+  },
+  innerList: {
+    paddingBottom: 150,
+    paddingHorizontal: '5%',
   },
 });

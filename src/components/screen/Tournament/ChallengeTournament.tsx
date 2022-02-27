@@ -47,7 +47,6 @@ export const ChallengeTournament: FC<TournamentScreenProps> = (props) => {
     <FlatList
       data={data}
       style={flatListStyle.list}
-      contentContainerStyle={flatListStyle.container}
       keyExtractor={(item, _) => String(item.id)}
       renderItem={({ item }: { item: Tournament }) => {
         return <ChallengeCard {...item} {...props} />;

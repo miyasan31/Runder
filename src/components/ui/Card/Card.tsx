@@ -47,8 +47,7 @@ export const Card: FC<CardProps> = memo(
 
 const defaultStyle = StyleSheet.create({
   outline: {
-    paddingHorizontal: '5%',
-    marginBottom: '5%',
+    marginBottom: '6%',
   },
   bg: {
     borderRadius: 20,
