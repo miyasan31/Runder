@@ -1,3 +1,5 @@
+import { Alert } from 'react-native';
+
 import { sleep } from '~/functions/sleep';
 import { updateSession } from '~/stores/session';
 import { resetUser } from '~/stores/user';
@@ -5,7 +7,7 @@ import { toastKit } from '~/utils/toastKit';
 
 import { supabaseClient } from './supabaseClient';
 
-export const onSignOut = async () => {
+const signOut = async () => {
   const { errorToast, successToast } = toastKit('サインアウトしています...');
 
   const signOutPromise = supabaseClient.auth.signOut();
@@ -20,4 +22,13 @@ export const onSignOut = async () => {
   successToast('サインアウトに成功しました');
   updateSession(false);
   resetUser();
+};
+
+export const onSignOut = async () => {
+  Alert.alert('サインアウトしますか？', '', [
+    {
+      text: 'キャンセル',
+    },
+    { text: 'サインアウト', onPress: signOut },
+  ]);
 };
