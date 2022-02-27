@@ -16,9 +16,9 @@ export const useSupabaseSelect = <T>(
 
   const fetchSupabase = useCallback(async () => {
     try {
-      const suabase = supabaseClient.from<T>(from).select(query.columns, query.options);
+      const supabase = supabaseClient.from<T>(from).select(query.columns, query.options);
 
-      const { data, error, count } = await (query.filter ? query.filter(suabase) : suabase);
+      const { data, error, count } = await (query.filter ? query.filter(supabase) : supabase);
 
       // is Erorr
       if (error) {
