@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { FC } from 'react';
 import React from 'react';
 
-import { TabBarIcon } from '~/components/ui/TabBarIcon';
+import { FeatherIcon } from '~/components/ui/Icon';
 import type { DevelopmentTabParamList } from '~/types';
 
 import { DevListNavigator } from './list';
@@ -23,7 +23,7 @@ export const DevelopmentTabNavigator: FC = () => {
         component={DevRunningNavigator}
         options={{
           tabBarLabel: 'DevRunning',
-          tabBarIcon: ({ color }) => <TabBarIcon name="settings" color={color} />,
+          tabBarIcon: ({ color }) => <FeatherIcon name="settings" color={color} />,
         }}
       />
       <DevelopmentTab.Screen
@@ -31,7 +31,7 @@ export const DevelopmentTabNavigator: FC = () => {
         component={DevListNavigator}
         options={{
           tabBarLabel: 'DevList',
-          tabBarIcon: ({ color }) => <TabBarIcon name="settings" color={color} />,
+          tabBarIcon: ({ color }) => <FeatherIcon name="settings" color={color} />,
         }}
       />
     </DevelopmentTab.Navigator>

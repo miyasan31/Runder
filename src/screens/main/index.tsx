@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { TabBarIcon } from '~/components/ui/TabBarIcon';
+import { FeatherIcon } from '~/components/ui/Icon';
 import { useThemeColor } from '~/hooks/useThemeColor';
 import type { MainBottomTabParamList } from '~/types';
 
@@ -41,7 +41,7 @@ export const BottomTabNavigator: FC = () => {
         component={ContactNavigator}
         options={{
           tabBarLabel: 'お知らせ',
-          tabBarIcon: ({ color }) => <TabBarIcon name="mail" color={color} />,
+          tabBarIcon: ({ color }) => <FeatherIcon name="mail" color={color} />,
         }}
       />
       <BottomTab.Screen
@@ -49,7 +49,7 @@ export const BottomTabNavigator: FC = () => {
         component={RankingNavigator}
         options={() => ({
           title: 'ランキング',
-          tabBarIcon: ({ color }) => <TabBarIcon name="award" color={color} />,
+          tabBarIcon: ({ color }) => <FeatherIcon name="award" color={color} />,
         })}
       />
       <BottomTab.Screen
@@ -57,7 +57,7 @@ export const BottomTabNavigator: FC = () => {
         component={TournamentNavigator}
         options={() => ({
           title: '大会',
-          tabBarIcon: ({ color }) => <TabBarIcon name="star" color={color} />,
+          tabBarIcon: ({ color }) => <FeatherIcon name="star" color={color} />,
         })}
       />
       <BottomTab.Screen
@@ -65,7 +65,7 @@ export const BottomTabNavigator: FC = () => {
         component={ResultNavigator}
         options={() => ({
           title: '履歴',
-          tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
+          tabBarIcon: ({ color }) => <FeatherIcon name="search" color={color} />,
         })}
       />
       <BottomTab.Screen
@@ -73,7 +73,7 @@ export const BottomTabNavigator: FC = () => {
         component={ProfileNavigator}
         options={() => ({
           title: 'プロフィール',
-          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+          tabBarIcon: ({ color }) => <FeatherIcon name="user" color={color} />,
         })}
       />
     </BottomTab.Navigator>
