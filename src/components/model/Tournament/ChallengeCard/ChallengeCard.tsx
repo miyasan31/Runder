@@ -28,7 +28,7 @@ export const ChallengeCard: FC<Tournament & TournamentScreenProps> = ({
   navigation,
 }) => {
   const onNavigation = useCallback(() => {
-    navigation.navigate('TournamentDetailScreen');
+    navigation.navigate('ChallengeDetailScreen');
   }, [navigation]);
 
   return (
