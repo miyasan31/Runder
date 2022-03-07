@@ -17,7 +17,7 @@ type Props = SceneRendererProps & {
 export const TabBar: FC<Props> = (props) => {
   const border = useThemeColor({}, 'border');
   const primary = useThemeColor({}, 'primary');
-  const backgroundColor = useThemeColor({}, 'bg0');
+  const backgroundColor = useThemeColor({}, 'bg1');
 
   return (
     <DefaultTabBar
