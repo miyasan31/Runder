@@ -11,7 +11,7 @@ type Props = {
   colorScheme: ColorSchemeName;
 };
 
-export const Navigations: FC<Props> = ({ colorScheme }) => {
+export const Navigation: FC<Props> = ({ colorScheme }) => {
   const systemTheme = useMemo(() => {
     return colorScheme === 'dark' ? DarkTheme : DefaultTheme;
   }, [colorScheme]);

@@ -7,7 +7,7 @@ import { Toaster } from '~/components/ui/Toaster';
 import { View } from '~/components/ui/View';
 import { useCachedResources } from '~/hooks/useCachedResources';
 import { useColorScheme } from '~/hooks/useColorScheme';
-import { Navigations } from '~/screens';
+import { Navigation } from '~/screens';
 import { viewStyles } from '~/styles';
 
 const App = () => {
@@ -18,8 +18,8 @@ const App = () => {
   return (
     <RecoilRoot>
       <SafeAreaProvider>
-        <View style={viewStyles.flex1} bgTheme="bg1">
-          <Navigations colorScheme={colorScheme} />
+        <View style={viewStyles.flex1} bg="bg1">
+          <Navigation colorScheme={colorScheme} />
           <StatusBar />
         </View>
       </SafeAreaProvider>
