@@ -108,11 +108,11 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
           <BounceableView
             key={radio.active}
             bg="bg1"
-            viewStyle={[style.radioArea]}
+            viewStyle={[style.radio_area]}
             onPress={() => onRadioSelect(radio.active)}
           >
             <Radio value={radio.active} activeValue={sex} />
-            <Text style={style.radioLabel}>{radio.label}</Text>
+            <Text style={style.radio_label}>{radio.label}</Text>
           </BounceableView>
         ))}
       </View>
@@ -121,7 +121,7 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
         label="登録する"
         color="color0"
         bg="primary"
-        outlineStyle={style.buttonOutline}
+        outlineStyle={style.button_outline}
         onPress={onRegisterUserInfo}
       />
     </View>
@@ -147,7 +147,7 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  radioArea: {
+  radio_area: {
     flexDirection: 'row',
     alignItems: 'center',
     width: '46%',
@@ -164,10 +164,10 @@ const style = StyleSheet.create({
     shadowOpacity: 0.2,
     elevation: 1,
   },
-  radioLabel: {
+  radio_label: {
     marginLeft: '25%',
   },
-  buttonOutline: {
+  button_outline: {
     marginTop: '6%',
   },
 });

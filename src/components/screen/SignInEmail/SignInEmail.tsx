@@ -42,8 +42,8 @@ export const SignInEmail: FC<SignInEmailScreenProps> = ({ navigation }) => {
 
       <SignEmailForm onSignEmail={onSignInEmail} />
 
-      <View style={style.registerArea}>
-        <Text style={style.registerText}>新規登録の場合は</Text>
+      <View style={style.register_area}>
+        <Text style={style.register_text}>新規登録の場合は</Text>
         <NativeButton title="こちら" onPress={onSignUpNavigate} />
       </View>
     </View>
@@ -61,13 +61,13 @@ const style = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
   },
-  registerArea: {
+  register_area: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: '3%',
   },
-  registerText: {
+  register_text: {
     width: 'auto',
     fontSize: 18,
     textAlign: 'center',

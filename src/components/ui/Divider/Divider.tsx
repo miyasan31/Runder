@@ -19,7 +19,7 @@ export const Divider: FC<Props> = memo(({ label = 'または', style }) => {
   return (
     <View style={[defaultStyle.container, style]}>
       <View style={[defaultStyle.divider, { borderColor }]} />
-      <Text style={defaultStyle.dividerText} color="color2">
+      <Text style={defaultStyle.divider_text} color="color2">
         {label}
       </Text>
       <View style={[defaultStyle.divider, { borderColor }]} />
@@ -38,7 +38,7 @@ const defaultStyle = StyleSheet.create({
     borderTopWidth: 1,
     height: 0,
   },
-  dividerText: {
+  divider_text: {
     width: 'auto',
     fontSize: 16,
     marginHorizontal: '3%',

@@ -29,7 +29,7 @@ export const SignEmailForm: FC<Props> = ({ onSignEmail }) => {
         label="サインアップ"
         color="color0"
         bg="primary"
-        outlineStyle={style.buttonOutline}
+        outlineStyle={style.button_outline}
         onPress={() => onSignEmail(email, password)}
       />
     </>
@@ -41,7 +41,7 @@ const style = StyleSheet.create({
     lineHeight: 30,
     paddingLeft: '1%',
   },
-  buttonOutline: {
+  button_outline: {
     marginTop: '5%',
   },
 });

@@ -55,9 +55,9 @@ export const SignUp: FC<SignUpScreenProps> = ({ navigation }) => {
       <Button
         leftIcon={<Google />}
         label="Googleでサインアップ"
-        outlineStyle={style.buttonOutline}
-        viewStyle={style.buttonBg}
-        textStyle={style.buttonText}
+        outlineStyle={style.button_outline}
+        viewStyle={style.button_bg}
+        textStyle={style.button_text}
         bg="bg1"
         onPress={onSignInGoogle}
       />
@@ -65,9 +65,9 @@ export const SignUp: FC<SignUpScreenProps> = ({ navigation }) => {
       <Button
         leftIcon={<Apple />}
         label="Appleでサインアップ"
-        outlineStyle={style.buttonOutline}
-        viewStyle={style.buttonBg}
-        textStyle={style.buttonText}
+        outlineStyle={style.button_outline}
+        viewStyle={style.button_bg}
+        textStyle={style.button_text}
         lightBg="#333333"
         lightColor="#FFF"
       />
@@ -89,13 +89,13 @@ const style = StyleSheet.create({
   divider: {
     marginTop: '5%',
   },
-  buttonOutline: {
+  button_outline: {
     marginTop: '5%',
   },
-  buttonBg: {
+  button_bg: {
     height: 60,
   },
-  buttonText: {
+  button_text: {
     width: 'auto',
     marginLeft: '4%',
   },

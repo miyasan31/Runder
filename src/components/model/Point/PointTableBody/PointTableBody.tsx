@@ -25,10 +25,10 @@ export const PointTableBody: FC<PointData> = (props) => {
       // eslint-disable-next-line react-native/no-inline-styles
       style={[style.tr, { borderBottomColor }, { borderBottomWidth: props.rank === 100 ? 0 : 1 }]}
     >
-      <Text style={style.tdRank}>{props.rank === 100 ? 'チャレンジ' : `${props.rank}位`}</Text>
-      <Text style={style.tdPoint}>
+      <Text style={style.td_rank}>{props.rank === 100 ? 'チャレンジ' : `${props.rank}位`}</Text>
+      <Text style={style.td_point}>
         {props.point}
-        <Text style={style.tdPoint}>ポイント</Text>
+        <Text style={style.td_point}>ポイント</Text>
       </Text>
     </View>
   );
@@ -42,13 +42,13 @@ const style = StyleSheet.create({
     paddingVertical: '3%',
     borderBottomWidth: 1,
   },
-  tdRank: {
+  td_rank: {
     flex: 1,
 
     fontWeight: '600',
     fontSize: 16,
   },
-  tdPoint: {
+  td_point: {
     flex: 1,
 
     textAlign: 'right',

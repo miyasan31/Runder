@@ -13,8 +13,8 @@ type Props = {
 export const TableHead: FC<Props> = ({ leftTitle, rightTitle }) => {
   return (
     <View style={style.th} bg="bg2">
-      <Text style={style.thRank}>{leftTitle}</Text>
-      <Text style={style.thPoint}>{rightTitle}</Text>
+      <Text style={style.th_rank}>{leftTitle}</Text>
+      <Text style={style.th_point}>{rightTitle}</Text>
     </View>
   );
 };
@@ -25,11 +25,11 @@ const style = StyleSheet.create({
     padding: '4%',
     borderRadius: 10,
   },
-  thRank: {
+  th_rank: {
     flex: 1,
     fontWeight: '600',
   },
-  thPoint: {
+  th_point: {
     flex: 1,
     textAlign: 'right',
     fontWeight: '600',

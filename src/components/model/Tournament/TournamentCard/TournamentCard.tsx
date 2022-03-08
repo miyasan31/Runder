@@ -35,10 +35,10 @@ export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
   return (
     <Card onPress={onNavigation}>
       <View style={style.view}>
-        <View style={style.imageView}>
+        <View style={style.image_view}>
           <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
 
-          <View style={style.floatTextArea}>
+          <View style={style.float_text_area}>
             <Text style={style.season} color="white">
               Monthly
             </Text>
@@ -58,9 +58,9 @@ export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
             isBorder
             activeOpacity={1}
             // style={style.floatButtonArea}
-            outlineStyle={style.buttonOutline}
-            viewStyle={style.buttonBg}
-            textStyle={style.buttonText}
+            outlineStyle={style.button_outline}
+            viewStyle={style.button_bg}
+            textStyle={style.button_text}
           />
         </View>
       </View>
@@ -72,8 +72,7 @@ const style = StyleSheet.create({
   view: {
     borderRadius: 20,
   },
-  // tournament image
-  imageView: {
+  image_view: {
     position: 'relative',
     borderRadius: 20,
   },
@@ -82,8 +81,7 @@ const style = StyleSheet.create({
     width: '100%',
     borderRadius: 20,
   },
-  //
-  floatTextArea: {
+  float_text_area: {
     position: 'absolute',
     top: 15,
     left: 15,
@@ -101,8 +99,7 @@ const style = StyleSheet.create({
     fontSize: 30,
     fontWeight: '800',
   },
-  //
-  buttonOutline: {
+  button_outline: {
     position: 'absolute',
     bottom: 15,
     right: 15,
@@ -110,10 +107,10 @@ const style = StyleSheet.create({
     justifyContent: 'flex-start',
     width: 90,
   },
-  buttonBg: {
+  button_bg: {
     paddingVertical: 12,
   },
-  buttonText: {
+  button_text: {
     fontSize: 15,
   },
 });

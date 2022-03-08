@@ -70,25 +70,25 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
       <ProfileEditModal isVisible={isModalVisible} onCloseModal={onCloseModal} />
 
       <View style={style.container} bg="bg1">
-        <View style={style.userInfoContainer}>
+        <View style={style.user_info_container}>
           <View style={style.row}>
-            <View style={style.leftContainer}>
-              <Image source={require('assets/develop/lilnasx.png')} style={style.userIcon} />
+            <View style={style.left_container}>
+              <Image source={require('assets/develop/lilnasx.png')} style={style.user_icon} />
             </View>
-            <View style={style.rightContainer}>
+            <View style={style.right_container}>
               <Button
                 label="プロフィール編集"
-                outlineStyle={style.buttonOutline}
-                viewStyle={style.buttonBg}
-                textStyle={style.buttonText}
+                outlineStyle={style.button_outline}
+                viewStyle={style.button_bg}
+                textStyle={style.button_text}
                 isBorder
                 onPress={onOpenModal}
               />
               <Button
                 label="サインアウト"
-                outlineStyle={style.buttonOutline}
-                viewStyle={style.buttonBg}
-                textStyle={style.buttonText}
+                outlineStyle={style.button_outline}
+                viewStyle={style.button_bg}
+                textStyle={style.button_text}
                 isBorder
                 onPress={onSignOut}
               />
@@ -97,7 +97,7 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
             </View>
           </View>
 
-          <View style={style.profileContainer}>
+          <View style={style.profile_container}>
             <Text>R.KWMR</Text>
             <Text>ナイキ ズームライバル フライ</Text>
             <Text>高校まで陸上部</Text>
@@ -119,36 +119,36 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
   },
-  userInfoContainer: {
+  user_info_container: {
     paddingHorizontal: '8%',
   },
-  profileContainer: {
+  profile_container: {
     paddingVertical: '8%',
   },
   row: {
     marginTop: 60,
     flexDirection: 'row',
   },
-  leftContainer: {
+  left_container: {
     flex: 1,
   },
-  rightContainer: {
+  right_container: {
     flex: 1,
   },
-  userIcon: {
+  user_icon: {
     marginTop: '25%',
     width: 100,
     height: 100,
   },
-  buttonOutline: {
+  button_outline: {
     flex: 1,
     alignItems: 'flex-end',
   },
-  buttonBg: {
+  button_bg: {
     paddingVertical: 10,
     paddingHorizontal: 15,
   },
-  buttonText: {
+  button_text: {
     fontSize: 12,
   },
 });

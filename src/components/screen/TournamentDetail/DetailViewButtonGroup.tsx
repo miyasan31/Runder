@@ -28,16 +28,16 @@ export const DetailViewButtonGroup: FC = () => {
 
   return (
     <>
-      <View style={style.buttonGroup}>
+      <View style={style.button_group}>
         {button.map((item) => (
           <Button
             key={item.index}
             label={item.label}
             bg="bg2"
             isBorder
-            textStyle={style.buttonText}
-            viewStyle={style.buttonBg}
-            outlineStyle={style.buttonOutline}
+            textStyle={style.button_text}
+            viewStyle={style.button_bg}
+            outlineStyle={style.button_outline}
             onPress={() => onOpenModal(item.index)}
           />
         ))}
@@ -53,19 +53,19 @@ export const DetailViewButtonGroup: FC = () => {
 };
 
 const style = StyleSheet.create({
-  buttonGroup: {
+  button_group: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: '6%',
   },
-  buttonOutline: {
+  button_outline: {
     width: '31%',
   },
-  buttonBg: {
+  button_bg: {
     paddingVertical: 12,
   },
-  buttonText: {
+  button_text: {
     fontSize: 15,
   },
 });

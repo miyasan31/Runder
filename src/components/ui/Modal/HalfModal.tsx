@@ -29,7 +29,7 @@ export const HalfModal: FC<Props> = ({ children, size = 0.7, isVisible, onCloseM
       backdropColor={backdropColor}
     >
       <View style={[defaultStyle.content, { flex: size }]} bg="bg1">
-        <View style={defaultStyle.handleWrap}>
+        <View style={defaultStyle.handle_wrap}>
           <View style={defaultStyle.handle} bg="bg3" />
         </View>
         {children}
@@ -47,7 +47,7 @@ const defaultStyle = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
-  handleWrap: {
+  handle_wrap: {
     alignItems: 'center',
   },
   handle: {

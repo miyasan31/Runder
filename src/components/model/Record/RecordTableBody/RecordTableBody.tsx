@@ -25,13 +25,13 @@ export const RecordTableBody: FC<RecordData> = ({ rank, record, user: { name, ic
       // eslint-disable-next-line react-native/no-inline-styles
       style={[style.tr, { borderBottomColor }, { borderBottomWidth: rank === 100 ? 0 : 1 }]}
     >
-      <View style={style.tdLeft}>
-        <Text style={style.tdRank}>{rank}位</Text>
-        <Image source={require('assets/develop/lilnasx.png')} style={style.userIcon} />
-        <Text style={style.tdName}>{name}</Text>
+      <View style={style.td_left}>
+        <Text style={style.td_rank}>{rank}位</Text>
+        <Image source={require('assets/develop/lilnasx.png')} style={style.user_icon} />
+        <Text style={style.td_name}>{name}</Text>
       </View>
 
-      <Text style={style.tdPoint}>{record}</Text>
+      <Text style={style.td_point}>{record}</Text>
     </View>
   );
 };
@@ -45,31 +45,30 @@ const style = StyleSheet.create({
     paddingVertical: '3%',
     borderBottomWidth: 1,
   },
-  //
-  tdLeft: {
+  td_left: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
   },
-  userIcon: {
+  user_icon: {
     height: 35,
     width: 35,
     marginLeft: '10%',
     borderRadius: 999,
   },
-  tdRank: {
+  td_rank: {
     width: '30%',
 
     fontSize: 16,
     fontWeight: '600',
   },
-  tdName: {
+  td_name: {
     marginLeft: '10%',
 
     fontSize: 16,
     fontWeight: '600',
   },
-  tdPoint: {
+  td_point: {
     flex: 1,
 
     textAlign: 'right',

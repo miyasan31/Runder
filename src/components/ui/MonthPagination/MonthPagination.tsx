@@ -14,18 +14,18 @@ export const MonthPagination: FC = () => {
 
   return (
     <View style={style.container} bg="bg4">
-      <View style={style.thisMonth}>
-        <Text style={style.thisMonthText}>
+      <View style={style.this_month}>
+        <Text style={style.this_month_text}>
           {format(new Date(date.year, date.month), 'yyyy年M月')}
         </Text>
       </View>
 
       <View style={style.pagination}>
-        <BounceableView viewStyle={style.iconButton} onPress={onPrevMonth}>
+        <BounceableView viewStyle={style.icon_button} onPress={onPrevMonth}>
           <AntDesignIcon name="caretleft" />
         </BounceableView>
 
-        <BounceableView viewStyle={style.iconButton} onPress={onNextMonth}>
+        <BounceableView viewStyle={style.icon_button} onPress={onNextMonth}>
           <AntDesignIcon name="caretright" />
         </BounceableView>
       </View>
@@ -41,10 +41,10 @@ const style = StyleSheet.create({
     paddingHorizontal: '6%',
     paddingVertical: '4%',
   },
-  thisMonth: {
+  this_month: {
     flex: 1,
   },
-  thisMonthText: {
+  this_month_text: {
     fontSize: 25,
     fontWeight: '600',
   },
@@ -54,7 +54,7 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
-  iconButton: {
+  icon_button: {
     width: 'auto',
     marginLeft: '3%',
   },

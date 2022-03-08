@@ -39,7 +39,7 @@ export const TotalRanking: FC<RankingScreenProps> = () => {
     return (
       <Card viewStyle={style.list} isBorder onPress={onNavigation}>
         <View>
-          <Text style={style.shopName}>{item.name}</Text>
+          <Text style={style.shop_name}>{item.name}</Text>
           <Text style={style.date}>{date}</Text>
         </View>
       </Card>
@@ -55,7 +55,7 @@ const style = StyleSheet.create({
     padding: 18,
     marginVertical: '1%',
   },
-  shopName: {
+  shop_name: {
     paddingBottom: 10,
     fontSize: 20,
     textAlign: 'left',

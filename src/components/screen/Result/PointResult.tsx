@@ -58,7 +58,7 @@ export const PointResult: FC<ResultScreenProps> = (props) => {
 
       <FlatList
         data={data}
-        style={flatListStyle.innerList}
+        style={flatListStyle.inner_list}
         keyExtractor={(item, _) => String(item.id)}
         renderItem={({ item }: { item: Tournament }) => {
           return <ResultList {...item} {...props} />;

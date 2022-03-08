@@ -24,7 +24,7 @@ export const TournamentDetail: FC<ChallengeDetailScreenProps> = () => {
     <View>
       <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
 
-      <View style={style.floatTextArea}>
+      <View style={style.float_text_area}>
         <Text style={style.season} color="white">
           Monthly
         </Text>
@@ -43,13 +43,13 @@ export const TournamentDetail: FC<ChallengeDetailScreenProps> = () => {
         </Text>
       </View>
 
-      <View style={style.floatButtonGroup}>
+      <View style={style.float_button_group}>
         <Button
           label="START"
           bg="bg2"
           isBorder
-          outlineStyle={style.startButtonOutline}
-          textStyle={style.startButtonText}
+          outlineStyle={style.start_button_outline}
+          textStyle={style.start_button_text}
         />
         <DetailViewButtonGroup />
       </View>
@@ -64,8 +64,7 @@ const style = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  //
-  floatTextArea: {
+  float_text_area: {
     position: 'absolute',
     top: 0,
     left: 0,
@@ -89,20 +88,18 @@ const style = StyleSheet.create({
     marginTop: 10,
     lineHeight: 22,
   },
-  //
-  floatButtonGroup: {
+  float_button_group: {
     position: 'absolute',
     bottom: 30,
     left: 0,
     width: '100%',
   },
-  //
-  startButtonOutline: {
+  start_button_outline: {
     width: '100%',
     paddingHorizontal: '6%',
     marginBottom: '8%',
   },
-  startButtonText: {
+  start_button_text: {
     fontSize: 20,
     fontWeight: '600',
   },

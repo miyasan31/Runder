@@ -6,7 +6,7 @@ export const flatListStyle = StyleSheet.create({
     paddingBottom: 150,
     paddingHorizontal: '5%',
   },
-  innerList: {
+  inner_list: {
     paddingBottom: 150,
     paddingHorizontal: '5%',
   },

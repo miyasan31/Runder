@@ -5,7 +5,7 @@ export const textStyles = StyleSheet.create({
     paddingBottom: 15,
     fontSize: 25,
   },
-  subtitle: {
+  sub_title: {
     fontSize: 15,
     paddingBottom: 15,
     fontWeight: 'normal',

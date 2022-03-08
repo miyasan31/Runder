@@ -21,11 +21,11 @@ export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
 
   return (
     <View style={style.container}>
-      <View style={style.iconArea}>
+      <View style={style.icon_area}>
         <Runder />
       </View>
 
-      <View style={style.messageArea}>
+      <View style={style.message_area}>
         <Text style={style.message}>あなたのライバルたちが待っています</Text>
         <Text style={style.message}>さっそく走り出しましょう</Text>
       </View>
@@ -33,18 +33,18 @@ export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
       <Button
         leftIcon={<Google />}
         label="Googleでサインイン"
-        outlineStyle={style.buttonOutline}
-        viewStyle={style.buttonBg}
-        textStyle={style.buttonText}
+        outlineStyle={style.button_outline}
+        viewStyle={style.button_bg}
+        textStyle={style.button_text}
         bg="bg1"
         onPress={onSignInGoogle}
       />
       <Button
         leftIcon={<Apple />}
         label="Appleでサインイン"
-        outlineStyle={style.buttonOutline}
-        viewStyle={style.buttonBg}
-        textStyle={style.buttonText}
+        outlineStyle={style.button_outline}
+        viewStyle={style.button_bg}
+        textStyle={style.button_text}
         lightBg="#333333"
         lightColor="#FFF"
         onPress={onSignOut}
@@ -52,16 +52,16 @@ export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
       <Button
         leftIcon={<Mail />}
         label="メールでサインイン"
-        outlineStyle={style.buttonOutline}
-        viewStyle={style.buttonBg}
-        textStyle={style.buttonText}
+        outlineStyle={style.button_outline}
+        viewStyle={style.button_bg}
+        textStyle={style.button_text}
         lightBg="#808080"
         lightColor="#FFF"
         onPress={onSignInEmailNavigate}
       />
 
-      <View style={style.registerArea}>
-        <Text style={style.registerText}>新規登録の場合は</Text>
+      <View style={style.register_area}>
+        <Text style={style.register_text}>新規登録の場合は</Text>
         <NativeButton title="こちら" onPress={onSignUpNavigate} />
       </View>
     </View>
@@ -72,12 +72,12 @@ const style = StyleSheet.create({
   container: {
     padding: '6%',
   },
-  iconArea: {
+  icon_area: {
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '6%',
   },
-  messageArea: {
+  message_area: {
     marginBottom: '40%',
   },
   message: {
@@ -86,22 +86,22 @@ const style = StyleSheet.create({
     fontWeight: '600',
     lineHeight: 28,
   },
-  buttonOutline: {
+  button_outline: {
     marginBottom: '3%',
   },
-  buttonBg: {
+  button_bg: {
     height: 60,
   },
-  buttonText: {
+  button_text: {
     width: 'auto',
     marginLeft: '4%',
   },
-  registerArea: {
+  register_area: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  registerText: {
+  register_text: {
     width: 'auto',
     fontSize: 18,
     textAlign: 'center',

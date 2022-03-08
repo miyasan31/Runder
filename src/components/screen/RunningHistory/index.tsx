@@ -53,7 +53,7 @@ export const RunningHistory: FC<Props> = (props) => {
     return (
       <Card viewStyle={styles.list} onPress={onNavigation}>
         <View>
-          <Text style={styles.shopName}>レコード {item.id}</Text>
+          <Text style={styles.shop_name}>レコード {item.id}</Text>
           <Text style={styles.date} lightColor={color} darkColor={color}>
             {date}
           </Text>
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#88888833',
   },
-  shopName: {
+  shop_name: {
     paddingBottom: 10,
 
     fontSize: 18,

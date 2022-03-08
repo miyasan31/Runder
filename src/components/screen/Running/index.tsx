@@ -36,7 +36,7 @@ export const Running: FC<Props> = () => {
           outlineStyle={styles.button}
           onPress={onToggleRunningStatus}
         />
-        <Button label="SAVE" bg="accent" outlineStyle={styles.button1} onPress={onSave} />
+        <Button label="SAVE" bg="accent" outlineStyle={styles.button_1} onPress={onSave} />
       </MapView>
     </View>
   );
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     width: '80%',
     marginHorizontal: '10%',
   },
-  button1: {
+  button_1: {
     position: 'absolute',
     right: 0,
     left: 0,

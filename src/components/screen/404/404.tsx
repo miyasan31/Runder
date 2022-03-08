@@ -13,7 +13,7 @@ export const NotFound: FC<NotFoundScreenProps> = (props) => {
     <View style={styles.container}>
       <Text style={styles.title}>This screen doesn&apos;t exist.</Text>
       <TouchableOpacity onPress={onRootScreenPush} style={styles.link}>
-        <Text style={styles.linkText}>Go to home screen!</Text>
+        <Text style={styles.link_text}>Go to home screen!</Text>
       </TouchableOpacity>
     </View>
   );
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     paddingVertical: 15,
   },
-  linkText: {
+  link_text: {
     fontSize: 14,
     color: '#2e78b7',
   },
