@@ -20,7 +20,7 @@ export const useSupabaseSelect = <T>(
 
       const { data, error, count } = await (query.filter ? query.filter(supabase) : supabase);
 
-      // is Erorr
+      // is Error
       if (error) {
         setStatus((prev) => {
           return { ...prev, loading: false, error: error };

@@ -7,13 +7,17 @@ export const linkingConfiguration: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.makeUrl('/')],
   config: {
     screens: {
-      Auth: {
-        path: 'auth',
-        screens: {
-          SigninScreen: {
-            path: 'signin',
-          },
-        },
+      SignInScreen: {
+        path: 'signin',
+      },
+      SignInEmailScreen: {
+        path: 'signin/email',
+      },
+      SignUpScreen: {
+        path: 'signup',
+      },
+      UserRegisterScreen: {
+        path: 'user/register',
       },
       Main: {
         path: 'main',
@@ -79,21 +83,21 @@ export const linkingConfiguration: LinkingOptions<RootStackParamList> = {
         path: 'development',
         screens: {
           DevList: {
-            path: 'devlist',
+            path: 'dev_list',
             screens: {
               RunningHistoryScreen: {
-                path: 'runninghistory',
+                path: 'running_history',
               },
               RunningDetailScreen: {
-                path: 'runningdetail/:id',
+                path: 'running_detail/:id',
               },
             },
           },
           DevRunning: {
-            path: 'devrunning',
+            path: 'dev_running',
             screens: {
               RunningScreen: {
-                path: 'runningscreen',
+                path: 'running_screen',
               },
             },
           },
