@@ -13,7 +13,7 @@ export const MonthPagination: FC = () => {
   const { date, onPrevMonth, onNextMonth } = usePagination();
 
   return (
-    <View style={style.root} bg="bg4">
+    <View style={style.root}>
       <View style={style.this_month_box}>
         <Text style={style.this_month_text}>
           {format(new Date(date.year, date.month), 'yyyy年M月')}
@@ -38,11 +38,11 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: '6%',
     paddingVertical: '4%',
   },
   this_month_box: {
     flex: 1,
+    paddingLeft: '1%',
   },
   this_month_text: {
     fontSize: 25,
