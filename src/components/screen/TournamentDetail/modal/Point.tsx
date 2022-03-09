@@ -25,7 +25,7 @@ export const Point: FC = () => {
 
       <FlatList
         data={data}
-        style={flatListStyle.inner_list}
+        style={flatListStyle.list}
         keyExtractor={(item, _) => String(item.rank)}
         renderItem={({ item }) => {
           return <PointTableBody {...item} />;

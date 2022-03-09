@@ -66,7 +66,7 @@ export const CombatHistory: FC<ChallengeDetailScreenProps> = () => {
 
       <FlatList
         data={history_data}
-        style={flatListStyle.inner_list}
+        style={flatListStyle.list}
         keyExtractor={(item, _) => String(item.date)}
         renderItem={({ item, index }) => {
           return <MyRecordTableBody {...item} isLastChild={history_data.length - 1 === index} />;

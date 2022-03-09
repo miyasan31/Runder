@@ -24,7 +24,7 @@ export const Ranking: FC = () => {
 
       <FlatList
         data={data}
-        style={flatListStyle.inner_list}
+        style={flatListStyle.list}
         keyExtractor={(item, _) => String(item.rank)}
         renderItem={({ item }) => {
           return <RecordTableBody {...item} />;
