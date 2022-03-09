@@ -3,18 +3,18 @@ import type { ComponentProps, FC } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
-const BOTTOM_ICON = 25;
-
 type Props = {
   name: ComponentProps<typeof Feather>['name'];
-  color: string;
+  size?: ComponentProps<typeof Feather>['size'];
+  color?: ComponentProps<typeof Feather>['color'];
+  style?: ComponentProps<typeof Feather>['style'];
 };
 
-export const FeatherIcon: FC<Props> = memo((props) => {
-  return <Feather style={style.icon} size={BOTTOM_ICON} {...props} />;
+export const FeatherIcon: FC<Props> = memo(({ size = 25, color, style, ...otherProps }) => {
+  return <Feather {...otherProps} style={[defaultStyle.icon, style]} size={size} color={color} />;
 });
 
-const style = StyleSheet.create({
+const defaultStyle = StyleSheet.create({
   icon: {
     marginTop: 4,
   },

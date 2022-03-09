@@ -6,10 +6,10 @@ import { useTheme } from '~/hooks/useTheme';
 
 type Props = {
   name: ComponentProps<typeof AntDesign>['name'];
+  size?: ComponentProps<typeof AntDesign>['size'];
 };
 
-export const AntDesignIcon: FC<Props> = memo((props) => {
+export const AntDesignIcon: FC<Props> = memo(({ size = 22, ...otherProps }) => {
   const icon = useTheme({}, 'icon');
-
-  return <AntDesign {...props} size={22} color={icon} />;
+  return <AntDesign {...otherProps} size={size} color={icon} />;
 });
