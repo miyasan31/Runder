@@ -40,8 +40,8 @@ const style = StyleSheet.create({
     borderRadius: 999,
   },
   active: {
-    width: 12,
-    height: 12,
+    width: 16,
+    height: 16,
     borderRadius: 999,
   },
 });
