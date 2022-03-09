@@ -2,8 +2,7 @@ import { makeRedirectUri, startAsync } from 'expo-auth-session';
 import { toast } from 'react-hot-toast/src/core/toast';
 import { Platform } from 'react-native';
 
-import { AUTH_PROVIDER_KEY } from '~/constants/SECURE_STORE';
-import { SUPABASE_URL } from '~/constants/SUPABASE';
+import { AUTH_PROVIDER_KEY, SUPABASE_URL } from '~/constants/ENV';
 import { sleep } from '~/functions/sleep';
 import { updateSession } from '~/stores/session';
 import { deleteSecureStore, saveSecureStore } from '~/utils/secureStore';

@@ -5,7 +5,7 @@ import { Button as NativeButton, StyleSheet } from 'react-native';
 import { SignEmailForm } from '~/components/ui/Form';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
-import { AUTH_PROVIDER_KEY } from '~/constants/SECURE_STORE';
+import { AUTH_PROVIDER_KEY } from '~/constants/ENV';
 import { sleep } from '~/functions/sleep';
 import { updateSession } from '~/stores/session';
 import { saveSecureStore } from '~/utils/secureStore';
