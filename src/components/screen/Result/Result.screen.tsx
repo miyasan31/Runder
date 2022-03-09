@@ -1,35 +1,18 @@
 import type { FC } from 'react';
 import React from 'react';
-import { SceneMap, TabView } from 'react-native-tab-view';
 
+import { LayoutErrorBoundary } from '~/components/functional/Error';
 import { BottomTabLayout } from '~/components/ui/Layout';
-import { TabBar } from '~/components/ui/TabBar';
-import { useTabView } from '~/hooks/useTabView';
 
-import { PointResultScene } from './PointResult.scene';
+import { Result } from './Result';
 import type { ResultScreenProps } from './ScreenProps';
-import { TournamentResultScene } from './TournamentResult.scene';
-
-const routes = [
-  { key: 'tournament', title: '大会の参加履歴' },
-  { key: 'point', title: 'ポイントの獲得履歴' },
-];
 
 export const ResultScreen: FC<ResultScreenProps> = (props) => {
-  const { layout, index, onIndexChange } = useTabView();
-
   return (
-    <BottomTabLayout layout="top-horizontal">
-      <TabView
-        renderTabBar={TabBar}
-        navigationState={{ index, routes }}
-        onIndexChange={onIndexChange}
-        initialLayout={{ width: layout.width }}
-        renderScene={SceneMap({
-          tournament: () => <TournamentResultScene {...props} />,
-          point: () => <PointResultScene {...props} />,
-        })}
-      />
-    </BottomTabLayout>
+    <LayoutErrorBoundary>
+      <BottomTabLayout layout="horizontal">
+        <Result {...props} />
+      </BottomTabLayout>
+    </LayoutErrorBoundary>
   );
 };
