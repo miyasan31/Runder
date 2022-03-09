@@ -20,7 +20,7 @@ export const TextInput: FC<TextInputProps> = memo(
     border = 'border1',
     lightBorder,
     darkBorder,
-    shadow = 'shadow',
+    shadow = 'shadow1',
     lightShadow,
     darkShadow,
     // ViewProps

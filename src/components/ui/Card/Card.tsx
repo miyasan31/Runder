@@ -20,7 +20,7 @@ export const Card: FC<CardProps> = memo(
     lightBg,
     darkBg,
     border = 'border1',
-    shadow = 'shadow',
+    shadow = 'shadow1',
     // ViewProps
     isBorder,
     outlineStyle,

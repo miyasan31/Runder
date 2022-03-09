@@ -26,7 +26,7 @@ export const Button: FC<ButtonProps> = memo(
     lightColor,
     darkColor,
     border = 'border1',
-    shadow = 'shadow',
+    shadow = 'shadow1',
     // ViewProps
     isBorder,
     outlineStyle,
