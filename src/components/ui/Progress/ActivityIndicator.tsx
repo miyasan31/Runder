@@ -3,10 +3,10 @@ import React, { memo } from 'react';
 import { ActivityIndicator as NativeActivityIndicator, StyleSheet } from 'react-native';
 
 import { View } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
+import { useTheme } from '~/hooks/useTheme';
 
 export const ActivityIndicator: FC = memo(() => {
-  const primary = useThemeColor({}, 'primary');
+  const primary = useTheme({}, 'primary');
 
   return (
     <View style={style.root} bg="bg1">

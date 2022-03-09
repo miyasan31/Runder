@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
 
 const data = [
   {
@@ -20,9 +19,8 @@ const data = [
 type Tournament = typeof data[0];
 
 export const ResultList: FC<Tournament> = ({ name, distance, start, end }) => {
-  const border = useThemeColor({}, 'border');
   return (
-    <View style={[style.root, { borderColor: border }]}>
+    <View style={style.root}>
       <Text>
         {start} ~ {end}
       </Text>

@@ -1,8 +1,8 @@
 export const shadowTheme = {
   light: {
-    shadow: '#888888',
+    shadow: '#555',
   },
   dark: {
-    shadow: '#888888',
+    shadow: '#BBB',
   },
 } as const;

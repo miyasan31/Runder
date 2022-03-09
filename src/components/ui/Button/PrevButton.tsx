@@ -4,7 +4,7 @@ import React, { memo, useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { Bounceable } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
+import { useTheme } from '~/hooks/useTheme';
 import type { TournamentScreenProps, TournamentStackParamList } from '~/types';
 
 type PrevProps = TournamentScreenProps<keyof TournamentStackParamList> & {
@@ -12,7 +12,7 @@ type PrevProps = TournamentScreenProps<keyof TournamentStackParamList> & {
 };
 
 export const PrevButton: VFC<PrevProps> = memo(({ screen, navigation }) => {
-  const icon = useThemeColor({}, 'icon');
+  const icon = useTheme({}, 'icon');
 
   const onPrevScreen = useCallback(() => {
     navigation.navigate(screen);

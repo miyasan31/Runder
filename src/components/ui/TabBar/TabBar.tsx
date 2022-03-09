@@ -5,7 +5,7 @@ import type { NavigationState, SceneRendererProps } from 'react-native-tab-view'
 import { TabBar as DefaultTabBar } from 'react-native-tab-view';
 
 import { Text } from '~/components/ui/Text';
-import { useThemeColor } from '~/hooks/useThemeColor';
+import { useTheme } from '~/hooks/useTheme';
 
 type Props = SceneRendererProps & {
   navigationState: NavigationState<{
@@ -15,18 +15,18 @@ type Props = SceneRendererProps & {
 };
 
 export const TabBar: FC<Props> = (props) => {
-  const border = useThemeColor({}, 'border');
-  const primary = useThemeColor({}, 'primary');
-  const backgroundColor = useThemeColor({}, 'bg1');
+  const primary = useTheme({}, 'primary');
+  const backgroundColor = useTheme({}, 'bg1');
+  const borderBottomColor = useTheme({}, 'border');
 
   return (
     <DefaultTabBar
       {...props}
       style={{
         maxHeight: 45,
-        backgroundColor,
         borderBottomWidth: 1,
-        borderBottomColor: border,
+        backgroundColor,
+        borderBottomColor,
       }}
       indicatorStyle={{ backgroundColor: primary, marginBottom: -1 }}
       renderLabel={({ route, focused }) => (

@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import type { BounceableProps } from 'rn-bounceable';
 import { Bounceable as NativeBounceable } from 'rn-bounceable';
 
-import { useThemeColor } from '~/hooks/useThemeColor';
+import { useTheme } from '~/hooks/useTheme';
 import type { CustomViewStyleProps } from '~/types/style';
 
 type BounceableViewProps = Omit<BounceableProps, 'contentContainerStyle'> &
@@ -16,20 +16,31 @@ export const Bounceable: FC<BounceableViewProps> = memo(
   ({
     // theme
     bg = 'bg0',
-    lightBg: light,
-    darkBg: dark,
+    lightBg,
+    darkBg,
+    border = 'border',
+    lightBorder,
+    darkBorder,
+    shadow = 'shadow',
+    lightShadow,
+    darkShadow,
     // BounceableViewProps
     viewStyle,
     ...otherProps
   }) => {
-    const backgroundColor = useThemeColor({ light, dark }, bg);
-    const shadowColor = useThemeColor({ light, dark }, 'shadow');
+    const backgroundColor = useTheme({ light: lightBg, dark: darkBg }, bg);
+    const borderColor = useTheme({ light: lightBorder, dark: darkBorder }, border);
+    const shadowColor = useTheme({ light: lightShadow, dark: darkShadow }, shadow);
 
     return (
       <NativeBounceable
         {...otherProps}
         activeScale={0.97}
-        contentContainerStyle={[defaultStyle.view, viewStyle, { backgroundColor, shadowColor }]}
+        contentContainerStyle={[
+          defaultStyle.view,
+          viewStyle,
+          { backgroundColor, borderColor, shadowColor },
+        ]}
       />
     );
   },

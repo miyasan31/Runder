@@ -6,11 +6,9 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 import { Text } from '~/components/ui/Text';
 import { Bounceable } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
 import type { TextInputStyleProps } from '~/types/style';
 
 export type TextInputProps = TextInputStyleProps & {
-  isBorder?: true;
   value: Date | null;
   onChangeValue: Dispatch<SetStateAction<Date | null>>;
 };
@@ -20,11 +18,16 @@ export const DatePicker: FC<TextInputProps> = ({
   bg = 'bg4',
   lightBg,
   darkBg,
-  color: fontColor = 'color1',
-  lightColor: light,
-  darkColor: dark,
+  color = 'color1',
+  lightColor,
+  darkColor,
+  border = 'border',
+  lightBorder,
+  darkBorder,
+  shadow = 'shadow',
+  lightShadow,
+  darkShadow,
   // ViewProps
-  isBorder,
   viewStyle,
   // TextInputProps
   textStyle,
@@ -32,8 +35,6 @@ export const DatePicker: FC<TextInputProps> = ({
   value,
   onChangeValue,
 }) => {
-  const color = useThemeColor({ light, dark }, fontColor);
-  const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
   const [isVisible, setIsVisible] = useState(false);
 
   const onToggleDatePicker = useCallback(() => {
@@ -52,13 +53,24 @@ export const DatePicker: FC<TextInputProps> = ({
   return (
     <>
       <Bounceable
-        // eslint-disable-next-line react-native/no-inline-styles
-        viewStyle={[defaultStyle.view, viewStyle, { borderWidth: 1, borderColor }]}
-        {...{ lightBg, darkBg, bg }}
+        viewStyle={[defaultStyle.view, viewStyle]}
+        {...{
+          bg,
+          lightBg,
+          darkBg,
+          border,
+          lightBorder,
+          darkBorder,
+          shadow,
+          lightShadow,
+          darkShadow,
+        }}
         onPress={onToggleDatePicker}
         activeScale={0.97}
       >
-        <Text style={[defaultStyle.text, textStyle, { color }]}>{date}</Text>
+        <Text style={[defaultStyle.text, textStyle]} {...{ lightColor, darkColor, color }}>
+          {date}
+        </Text>
       </Bounceable>
 
       <DateTimePickerModal

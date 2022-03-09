@@ -1,6 +1,13 @@
 import type { FlexStyle, StyleProp, TextStyle, TransformsStyle, ViewStyle } from 'react-native';
 
-import type { BgTheme, BorderTheme, ColorTheme, CommonTheme, IconTheme } from '~/styles/theme';
+import type {
+  BgTheme,
+  BorderTheme,
+  ColorTheme,
+  CommonTheme,
+  IconTheme,
+  ShadowTheme,
+} from '~/styles/theme';
 
 type OutlineStyle = Pick<ViewStyle, keyof FlexStyle | keyof TransformsStyle>;
 
@@ -24,12 +31,49 @@ export type StyleProps = {
   border?: CommonTheme | BorderTheme;
   lightBorder?: string;
   darkBorder?: string;
+
+  shadow?: CommonTheme | ShadowTheme;
+  lightShadow?: string;
+  darkShadow?: string;
 };
 
 export type TextStyleProps = Pick<StyleProps, 'color' | 'lightColor' | 'darkColor'>;
 
-export type ViewStyleProps = Pick<StyleProps, 'bg' | 'lightBg' | 'darkBg'>;
+export type ViewStyleProps = Pick<
+  StyleProps,
+  | 'bg'
+  | 'lightBg'
+  | 'darkBg'
+  | 'border'
+  | 'lightBorder'
+  | 'darkBorder'
+  | 'shadow'
+  | 'lightShadow'
+  | 'darkShadow'
+>;
 
-export type CustomViewStyleProps = Pick<StyleProps, 'viewStyle' | 'bg' | 'lightBg' | 'darkBg'>;
+export type CustomViewStyleProps = Pick<
+  StyleProps,
+  | 'viewStyle'
+  | 'bg'
+  | 'lightBg'
+  | 'darkBg'
+  | 'border'
+  | 'lightBorder'
+  | 'darkBorder'
+  | 'shadow'
+  | 'lightShadow'
+  | 'darkShadow'
+>;
 
-export type TextInputStyleProps = Omit<StyleProps, 'outlineStyle'>;
+export type ButtonStyleProps = Omit<StyleProps, 'icon' | 'lightIcon' | 'darkIcon'>;
+
+export type CardStyleProps = Omit<
+  StyleProps,
+  'textStyle' | 'color' | 'lightColor' | 'darkColor' | 'icon' | 'lightIcon' | 'darkIcon'
+>;
+
+export type TextInputStyleProps = Omit<
+  StyleProps,
+  'outlineStyle' | 'icon' | 'lightIcon' | 'darkIcon'
+>;

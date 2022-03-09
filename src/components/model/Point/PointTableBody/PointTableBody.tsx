@@ -5,7 +5,6 @@ import { StyleSheet } from 'react-native';
 
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
 
 const data = [
   { rank: 1, point: 500 },
@@ -19,12 +18,8 @@ const data = [
 type PointData = typeof data[0];
 
 export const PointTableBody: FC<PointData> = (props) => {
-  const borderBottomColor = useThemeColor({}, 'border');
-
   return (
-    <View
-      style={[style.root, { borderBottomColor }, { borderBottomWidth: props.rank === 100 ? 0 : 1 }]}
-    >
+    <View style={[style.root, { borderBottomWidth: props.rank === 100 ? 0 : 1 }]}>
       <Text style={style.td_rank}>{props.rank === 100 ? 'チャレンジ' : `${props.rank}位`}</Text>
 
       <Text style={style.td_point}>

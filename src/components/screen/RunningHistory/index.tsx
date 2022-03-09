@@ -11,7 +11,7 @@ import { Progress } from '~/components/ui/Progress';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
-import { useThemeColor } from '~/hooks/useThemeColor';
+import { useTheme } from '~/hooks/useTheme';
 import type { DevListScreenProps } from '~/types';
 import type { Location } from '~/types/fetcher';
 
@@ -21,7 +21,7 @@ type LocationList = Pick<Location, 'id' | 'created_at'>;
 export type Props = DevListScreenProps<'RunningHistoryScreen'>;
 
 export const RunningHistory: FC<Props> = (props) => {
-  const color = useThemeColor({}, 'color2');
+  const color = useTheme({}, 'color2');
   const filter = useSupabaseFilter(
     (query) =>
       query.select(SELECT_COLUMN).order('created_at', {

@@ -54,7 +54,6 @@ export const DetailViewButtonGroup: FC = () => {
 
 const style = StyleSheet.create({
   button_group: {
-    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: '6%',

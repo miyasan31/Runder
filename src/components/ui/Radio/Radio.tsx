@@ -3,7 +3,6 @@ import React, { useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { TouchableOpacity, View } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
 import type { ViewStyleProps } from '~/types/style';
 
 type Props<T> = ViewStyleProps & {
@@ -20,14 +19,12 @@ export const Radio = <T,>({
   activeValue,
   onChangeValue,
 }: Props<T>) => {
-  const borderColor = useThemeColor({}, 'border');
-
   const onPress = useCallback(() => {
     onChangeValue && onChangeValue(value);
   }, [onChangeValue, value]);
 
   return (
-    <TouchableOpacity activeOpacity={1} style={[style.ring, { borderColor }]} onPress={onPress}>
+    <TouchableOpacity activeOpacity={1} style={[style.ring]} onPress={onPress}>
       {value === activeValue ? <View style={style.active} {...{ lightBg, darkBg, bg }} /> : null}
     </TouchableOpacity>
   );

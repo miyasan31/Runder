@@ -4,10 +4,10 @@ import { StyleSheet } from 'react-native';
 import * as RNProgress from 'react-native-progress';
 
 import { View } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
+import { useTheme } from '~/hooks/useTheme';
 
 export const Progress: FC = memo(() => {
-  const primary = useThemeColor({}, 'primary');
+  const primary = useTheme({}, 'primary');
 
   return (
     <View style={style.root}>

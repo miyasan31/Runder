@@ -5,7 +5,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import { FeatherIcon } from '~/components/ui/Icon';
-import { useThemeColor } from '~/hooks/useThemeColor';
+import { useTheme } from '~/hooks/useTheme';
 import type { MainBottomTabParamList } from '~/types';
 
 import { ContactNavigator } from './contact';
@@ -17,9 +17,9 @@ import { TournamentNavigator } from './tournament';
 const BottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 
 export const BottomTabNavigator: FC = () => {
-  const icon = useThemeColor({}, 'color2');
-  const primary = useThemeColor({}, 'primary');
-  const backgroundColor = useThemeColor({}, 'bg1');
+  const icon = useTheme({}, 'color2');
+  const primary = useTheme({}, 'primary');
+  const backgroundColor = useTheme({}, 'bg1');
 
   return (
     <BottomTab.Navigator

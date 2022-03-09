@@ -3,13 +3,10 @@ import React, { memo } from 'react';
 import { StyleSheet, TextInput as NativeTextInput } from 'react-native';
 
 import { View } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
+import { useTheme } from '~/hooks/useTheme';
 import type { TextInputStyleProps } from '~/types/style';
 
-export type TextInputProps = Omit<NativeTextInput['props'], 'style'> &
-  TextInputStyleProps & {
-    isBorder?: true;
-  };
+export type TextInputProps = Omit<NativeTextInput['props'], 'style'> & TextInputStyleProps;
 
 export const TextInput: FC<TextInputProps> = memo(
   ({
@@ -18,24 +15,37 @@ export const TextInput: FC<TextInputProps> = memo(
     lightBg,
     darkBg,
     color: fontColor = 'color1',
-    lightColor: light,
-    darkColor: dark,
+    lightColor,
+    darkColor,
+    border = 'border',
+    lightBorder,
+    darkBorder,
+    shadow = 'shadow',
+    lightShadow,
+    darkShadow,
     // ViewProps
     viewStyle,
-    isBorder,
     // TextInputProps
     textStyle,
     secureTextEntry = false,
     ...otherProps
   }) => {
-    const color = useThemeColor({ light, dark }, fontColor);
-    const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
+    const color = useTheme({ light: lightColor, dark: darkColor }, fontColor);
 
     return (
       <View
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={[defaultStyle.view, viewStyle, { borderWidth: 1, borderColor }]}
-        {...{ lightBg, darkBg, bg }}
+        style={[defaultStyle.view, viewStyle]}
+        {...{
+          bg,
+          lightBg,
+          darkBg,
+          border,
+          lightBorder,
+          darkBorder,
+          shadow,
+          lightShadow,
+          darkShadow,
+        }}
       >
         <NativeTextInput
           {...otherProps}

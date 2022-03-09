@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet, Text as NativeText } from 'react-native';
 
-import { useThemeColor } from '~/hooks/useThemeColor';
+import { useTheme } from '~/hooks/useTheme';
 import type { TextStyleProps } from '~/types/style';
 
 export type TextProps = NativeText['props'] & TextStyleProps;
@@ -17,7 +17,7 @@ export const Text: FC<TextProps> = memo(
     style,
     ...otherProps
   }) => {
-    const color = useThemeColor({ light, dark }, fontColor);
+    const color = useTheme({ light, dark }, fontColor);
 
     return <NativeText {...otherProps} style={[defaultStyle.text, style, { color }]} />;
   },

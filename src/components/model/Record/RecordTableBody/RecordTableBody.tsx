@@ -5,7 +5,6 @@ import { Image, StyleSheet } from 'react-native';
 
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
 
 const data = [
   { rank: 1, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
@@ -19,10 +18,8 @@ const data = [
 type RecordData = typeof data[0];
 
 export const RecordTableBody: FC<RecordData> = ({ rank, record, user: { name, icon: _icon } }) => {
-  const borderBottomColor = useThemeColor({}, 'border');
-
   return (
-    <View style={[style.root, { borderBottomColor }, { borderBottomWidth: rank === 100 ? 0 : 1 }]}>
+    <View style={[style.root, { borderBottomWidth: rank === 100 ? 0 : 1 }]}>
       <View style={style.td_left_box}>
         <Text style={style.td_rank}>{rank}位</Text>
         <Image source={require('assets/develop/lilnasx.png')} style={style.td_user_icon} />

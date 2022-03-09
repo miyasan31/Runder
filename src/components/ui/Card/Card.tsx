@@ -1,12 +1,12 @@
+/* eslint-disable react-native/no-inline-styles */
 import type { FC, ReactNode } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { Bounceable, TouchableOpacity } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
-import type { StyleProps } from '~/types/style';
+import type { CardStyleProps } from '~/types/style';
 
-export type CardProps = StyleProps & {
+export type CardProps = CardStyleProps & {
   children: ReactNode;
   isBorder?: true;
   activeOpacity?: number;
@@ -17,8 +17,8 @@ export const Card: FC<CardProps> = memo(
   ({
     // theme
     bg = 'bg1',
-    lightBg,
-    darkBg,
+    border = 'border',
+    shadow = 'shadow',
     // ViewProps
     isBorder,
     outlineStyle,
@@ -27,18 +27,13 @@ export const Card: FC<CardProps> = memo(
     viewStyle,
     children,
     onPress,
+    ...otherProps
   }) => {
-    const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
-
     return (
       <Bounceable viewStyle={[defaultStyle.bounceable_view, outlineStyle]} onPress={onPress}>
         <TouchableOpacity
-          style={[
-            defaultStyle.touchable_opacity_view,
-            viewStyle,
-            { borderWidth: isBorder && 1, borderColor },
-          ]}
-          {...{ lightBg, darkBg, bg, activeOpacity }}
+          style={[defaultStyle.touchable_opacity_view, viewStyle, isBorder && { borderWidth: 2 }]}
+          {...{ bg, border, shadow, activeOpacity, otherProps }}
         >
           {children}
         </TouchableOpacity>

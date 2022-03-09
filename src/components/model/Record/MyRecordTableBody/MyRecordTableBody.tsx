@@ -4,7 +4,6 @@ import { StyleSheet } from 'react-native';
 
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
 
 const data = [
   { date: '1/2', record: '10:00.0' },
@@ -20,12 +19,10 @@ type RecordData = typeof data[0] & {
 };
 
 export const MyRecordTableBody: FC<RecordData> = ({ date, record, isLastChild }) => {
-  const borderBottomColor = useThemeColor({}, 'border');
-
   return (
     <View
       // eslint-disable-next-line react-native/no-inline-styles
-      style={[style.root, { borderBottomColor }, { borderBottomWidth: isLastChild ? 0 : 1 }]}
+      style={[style.root, { borderBottomWidth: isLastChild ? 0 : 1 }]}
     >
       <Text style={style.td_date}>{date}</Text>
 

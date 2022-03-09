@@ -5,7 +5,6 @@ import { StyleSheet } from 'react-native';
 
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
 import type { OutlineStyle } from '~/types/style';
 
 type Props = {
@@ -14,15 +13,13 @@ type Props = {
 };
 
 export const Divider: FC<Props> = memo(({ label = 'または', outlineStyle }) => {
-  const borderColor = useThemeColor({}, 'border');
-
   return (
     <View style={[defaultStyle.root, outlineStyle]}>
-      <View style={[defaultStyle.divider_border, { borderColor }]} />
+      <View style={[defaultStyle.divider_border]} />
       <Text style={defaultStyle.divider_text} color="color2">
         {label}
       </Text>
-      <View style={[defaultStyle.divider_border, { borderColor }]} />
+      <View style={[defaultStyle.divider_border]} />
     </View>
   );
 });

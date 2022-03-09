@@ -4,7 +4,7 @@ import React from 'react';
 
 import { ActivityIndicator } from '~/components/ui/Progress';
 import { useListenSession } from '~/hooks/useListenSession';
-import { useThemeColor } from '~/hooks/useThemeColor';
+import { useTheme } from '~/hooks/useTheme';
 import type { RootStackParamList } from '~/types';
 
 import { NotFoundScreen } from './404.screen';
@@ -20,7 +20,7 @@ const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 export const RootNavigator: FC = () => {
   const session = useListenSession();
-  const backgroundColor = useThemeColor({}, 'bg1');
+  const backgroundColor = useTheme({}, 'bg1');
 
   if (!session) return <ActivityIndicator />;
   return (

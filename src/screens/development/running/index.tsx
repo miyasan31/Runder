@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { FC } from 'react';
 import React from 'react';
 
-import { useThemeColor } from '~/hooks/useThemeColor';
+import { useTheme } from '~/hooks/useTheme';
 import type { DevRunningStackParamList } from '~/types';
 
 import { RunningScreen } from './running.screen';
@@ -10,7 +10,7 @@ import { RunningScreen } from './running.screen';
 const DevRunning = createNativeStackNavigator<DevRunningStackParamList>();
 
 export const DevRunningNavigator: FC = () => {
-  const backgroundColor = useThemeColor({}, 'bg1');
+  const backgroundColor = useTheme({}, 'bg1');
 
   return (
     <DevRunning.Navigator

@@ -1,13 +1,13 @@
+/* eslint-disable react-native/no-inline-styles */
 import type { FC, ReactElement } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { Text } from '~/components/ui/Text';
 import { Bounceable, TouchableOpacity } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
-import type { StyleProps } from '~/types/style';
+import type { ButtonStyleProps } from '~/types/style';
 
-export type ButtonProps = StyleProps & {
+export type ButtonProps = ButtonStyleProps & {
   label: string;
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
@@ -20,8 +20,8 @@ export const Button: FC<ButtonProps> = memo(
   ({
     // theme
     bg = 'bg1',
-    lightBg,
-    darkBg,
+    border = 'border',
+    shadow = 'shadow',
     color = 'color1',
     lightColor,
     darkColor,
@@ -39,15 +39,13 @@ export const Button: FC<ButtonProps> = memo(
     rightIcon,
     // onPress
     onPress,
+    ...otherProps
   }) => {
-    const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
-
     return (
       <Bounceable viewStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
         <TouchableOpacity
-          // eslint-disable-next-line react-native/no-inline-styles
-          style={[defaultStyle.view, viewStyle, { borderWidth: 1, borderColor }]}
-          {...{ lightBg, darkBg, bg, activeOpacity }}
+          style={[defaultStyle.view, viewStyle, isBorder && { borderWidth: 2 }]}
+          {...{ bg, border, shadow, activeOpacity, otherProps }}
         >
           {leftIcon}
           <Text style={[defaultStyle.text, textStyle]} {...{ lightColor, darkColor, color }}>

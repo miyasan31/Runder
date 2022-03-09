@@ -5,14 +5,14 @@ import React, { memo, useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { Bounceable } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
+import { useTheme } from '~/hooks/useTheme';
 
 type Props = {
   isFloating?: true;
 };
 
 export const GoBackButton: FC<Props> = memo(({ isFloating }) => {
-  const icon = useThemeColor({}, 'icon');
+  const icon = useTheme({}, 'icon');
   const navigation = useNavigation();
 
   const onGoBack = useCallback(() => {

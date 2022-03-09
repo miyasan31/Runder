@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import type { NativeSafeAreaViewProps } from 'react-native-safe-area-context';
 import { SafeAreaView as NativeSafeAreaView } from 'react-native-safe-area-context';
 
-import { useThemeColor } from '~/hooks/useThemeColor';
+import { useTheme } from '~/hooks/useTheme';
 import type { ViewStyleProps } from '~/types/style';
 
 export type SafeAreaViewProps = NativeSafeAreaViewProps & ViewStyleProps;
@@ -13,19 +13,26 @@ export const SafeAreaView: FC<SafeAreaViewProps> = memo(
   ({
     // theme
     bg = 'bg0',
-    lightBg: light,
-    darkBg: dark,
+    lightBg,
+    darkBg,
+    border = 'border',
+    lightBorder,
+    darkBorder,
+    shadow = 'shadow',
+    lightShadow,
+    darkShadow,
     // SafeAreaViewProps
     style,
     ...otherProps
   }) => {
-    const backgroundColor = useThemeColor({ light, dark }, bg);
-    const shadowColor = useThemeColor({ light, dark }, 'shadow');
+    const backgroundColor = useTheme({ light: lightBg, dark: darkBg }, bg);
+    const borderColor = useTheme({ light: lightBorder, dark: darkBorder }, border);
+    const shadowColor = useTheme({ light: lightShadow, dark: darkShadow }, shadow);
 
     return (
       <NativeSafeAreaView
         {...otherProps}
-        style={[defaultStyle.view, style, { backgroundColor, shadowColor }]}
+        style={[defaultStyle.view, style, { backgroundColor, borderColor, shadowColor }]}
       />
     );
   },
