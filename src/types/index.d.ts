@@ -117,6 +117,7 @@ export type TournamentScreenProps<T extends keyof TournamentStackParamList> = Co
 /* result */
 export type ResultStackParamList = {
   ResultScreen: undefined;
+  ResultDetailScreen: undefined;
   Modal: undefined;
 };
 export type ResultScreenProps<T extends keyof ResultStackParamList> = CompositeScreenProps<
