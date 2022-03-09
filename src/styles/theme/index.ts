@@ -3,12 +3,14 @@ import { borderTheme } from './border.theme';
 import { colorTheme } from './color.theme';
 import { commonTheme } from './common.theme';
 import { iconTheme } from './icon.theme';
+import { shadowTheme } from './shadow.theme';
 
 export type CommonTheme = keyof typeof commonTheme[keyof typeof commonTheme];
 export type BgTheme = keyof typeof bgTheme[keyof typeof bgTheme];
 export type ColorTheme = keyof typeof colorTheme[keyof typeof colorTheme];
 export type IconTheme = keyof typeof iconTheme[keyof typeof iconTheme];
 export type BorderTheme = keyof typeof borderTheme[keyof typeof borderTheme];
+export type ShadowTheme = keyof typeof shadowTheme[keyof typeof shadowTheme];
 
 // Themeのlightとdarkのkeyが同じものがあることを確認する
 type Theme = Record<'light' | 'dark', Record<string, string>>;
@@ -23,6 +25,7 @@ const createTheme = () => {
   const bg: ThemeCheck<typeof bgTheme> = bgTheme;
   const border: ThemeCheck<typeof borderTheme> = borderTheme;
   const icon: ThemeCheck<typeof iconTheme> = iconTheme;
+  const shadow: ThemeCheck<typeof shadowTheme> = shadowTheme;
 
   return {
     light: {
@@ -31,6 +34,7 @@ const createTheme = () => {
       ...bg.light,
       ...border.light,
       ...icon.light,
+      ...shadow.light,
     },
     dark: {
       ...common.dark,
@@ -38,6 +42,7 @@ const createTheme = () => {
       ...bg.dark,
       ...border.dark,
       ...icon.dark,
+      ...shadow.dark,
     },
   };
 };
