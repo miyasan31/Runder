@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from 'react';
-import React from 'react';
+import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 import type { BounceableProps } from 'rn-bounceable';
 import { Bounceable as NativeBounceable } from 'rn-bounceable';
@@ -7,35 +7,35 @@ import { Bounceable as NativeBounceable } from 'rn-bounceable';
 import { useThemeColor } from '~/hooks/useThemeColor';
 import type { CustomViewStyleProps } from '~/types/style';
 
-type Props = Omit<BounceableProps, 'contentContainerStyle'> &
+type BounceableViewProps = Omit<BounceableProps, 'contentContainerStyle'> &
   CustomViewStyleProps & {
     children: ReactNode;
   };
 
-export const BounceableView: FC<Props> = ({
-  // 基本的に使用しない
-  // custom themeで色を指定する
-  lightBg: light,
-  darkBg: dark,
-  // custom theme
-  bg = 'bg0',
-  // ViewProps
-  viewStyle,
-  ...otherProps
-}) => {
-  const backgroundColor = useThemeColor({ light, dark }, bg);
+export const BounceableView: FC<BounceableViewProps> = memo(
+  ({
+    // theme
+    bg = 'bg0',
+    lightBg: light,
+    darkBg: dark,
+    // BounceableViewProps
+    viewStyle,
+    ...otherProps
+  }) => {
+    const backgroundColor = useThemeColor({ light, dark }, bg);
 
-  return (
-    <NativeBounceable
-      contentContainerStyle={[defaultStyle.bg, viewStyle, { backgroundColor }]}
-      activeScale={0.97}
-      {...otherProps}
-    />
-  );
-};
+    return (
+      <NativeBounceable
+        {...otherProps}
+        activeScale={0.97}
+        contentContainerStyle={[defaultStyle.view, viewStyle, { backgroundColor }]}
+      />
+    );
+  },
+);
 
 const defaultStyle = StyleSheet.create({
-  bg: {
+  view: {
     width: '100%',
   },
 });

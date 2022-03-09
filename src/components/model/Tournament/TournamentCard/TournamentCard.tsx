@@ -34,11 +34,11 @@ export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
 
   return (
     <Card onPress={onNavigation}>
-      <View style={style.view}>
-        <View style={style.image_view}>
+      <View style={style.root}>
+        <View style={style.image_box}>
           <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
 
-          <View style={style.float_text_area}>
+          <View style={style.float_text_box}>
             <Text style={style.season} color="white">
               Monthly
             </Text>
@@ -69,10 +69,10 @@ export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
 };
 
 const style = StyleSheet.create({
-  view: {
+  root: {
     borderRadius: 20,
   },
-  image_view: {
+  image_box: {
     position: 'relative',
     borderRadius: 20,
   },
@@ -81,7 +81,7 @@ const style = StyleSheet.create({
     width: '100%',
     borderRadius: 20,
   },
-  float_text_area: {
+  float_text_box: {
     position: 'absolute',
     top: 15,
     left: 15,

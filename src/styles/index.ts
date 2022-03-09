@@ -1,6 +1,6 @@
-export { buttonStyles } from './button';
+export { buttonStyle } from './button';
 export { flatListStyle } from './flatList';
-export { textStyles } from './text';
-export { textInputStyles } from './textInput';
+export { textStyle } from './text';
+export { textInputStyle } from './textInput';
 export { theme } from './theme';
-export { viewStyles } from './view';
+export { viewStyle } from './view';

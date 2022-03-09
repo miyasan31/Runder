@@ -23,14 +23,14 @@ export const TabBar: FC<Props> = (props) => {
     <DefaultTabBar
       {...props}
       style={{
+        maxHeight: 45,
         backgroundColor,
         borderBottomWidth: 1,
         borderBottomColor: border,
-        maxHeight: 45,
       }}
       indicatorStyle={{ backgroundColor: primary, marginBottom: -1 }}
       renderLabel={({ route, focused }) => (
-        <Text style={style.text} color={focused ? 'primary' : 'color2'}>
+        <Text style={style.tab_title} color={focused ? 'primary' : 'color2'}>
           {route.title}
         </Text>
       )}
@@ -39,7 +39,7 @@ export const TabBar: FC<Props> = (props) => {
 };
 
 const style = StyleSheet.create({
-  text: {
+  tab_title: {
     fontSize: 16,
     fontWeight: '500',
   },

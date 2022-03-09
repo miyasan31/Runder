@@ -15,12 +15,10 @@ export type CardProps = StyleProps & {
 
 export const Card: FC<CardProps> = memo(
   ({
-    // 基本的に使用しない
-    // custom themeで色を指定する
+    // theme
+    bg = 'bg1',
     lightBg,
     darkBg,
-    // custom theme
-    bg = 'bg1',
     // ViewProps
     isBorder,
     outlineStyle,
@@ -33,9 +31,13 @@ export const Card: FC<CardProps> = memo(
     const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
 
     return (
-      <BounceableView viewStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
+      <BounceableView viewStyle={[defaultStyle.bounceable_view, outlineStyle]} onPress={onPress}>
         <TouchableOpacity
-          style={[defaultStyle.bg, viewStyle, { borderWidth: isBorder && 1, borderColor }]}
+          style={[
+            defaultStyle.touchable_opacity_view,
+            viewStyle,
+            { borderWidth: isBorder && 1, borderColor },
+          ]}
           {...{ lightBg, darkBg, bg, activeOpacity }}
         >
           {children}
@@ -46,10 +48,10 @@ export const Card: FC<CardProps> = memo(
 );
 
 const defaultStyle = StyleSheet.create({
-  outline: {
+  bounceable_view: {
     marginBottom: '6%',
   },
-  bg: {
+  touchable_opacity_view: {
     borderRadius: 20,
 
     shadowOffset: {

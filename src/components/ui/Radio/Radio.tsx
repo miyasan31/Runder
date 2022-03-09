@@ -13,8 +13,6 @@ type Props<T> = ViewStyleProps & {
 };
 
 export const Radio = <T,>({
-  // 基本的に使用しない
-  // custom themeで色を指定する
   lightBg,
   darkBg,
   bg = 'primary',
@@ -29,23 +27,16 @@ export const Radio = <T,>({
   }, [onChangeValue, value]);
 
   return (
-    <TouchableOpacity
-      style={[defaultStyle.ring, { borderColor }]}
-      activeOpacity={1}
-      onPress={onPress}
-    >
-      {value === activeValue ? (
-        <View style={defaultStyle.active} {...{ lightBg, darkBg, bg }} />
-      ) : null}
+    <TouchableOpacity activeOpacity={1} style={[style.ring, { borderColor }]} onPress={onPress}>
+      {value === activeValue ? <View style={style.active} {...{ lightBg, darkBg, bg }} /> : null}
     </TouchableOpacity>
   );
 };
 
-const defaultStyle = StyleSheet.create({
+const style = StyleSheet.create({
   ring: {
     justifyContent: 'center',
     alignItems: 'center',
-
     width: 24,
     height: 24,
     borderWidth: 1,

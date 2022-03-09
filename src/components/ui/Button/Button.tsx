@@ -18,15 +18,13 @@ export type ButtonProps = StyleProps & {
 
 export const Button: FC<ButtonProps> = memo(
   ({
-    // 基本的に使用しない
-    // custom themeで色を指定する
+    // theme
+    bg = 'bg1',
     lightBg,
     darkBg,
+    color = 'color1',
     lightColor,
     darkColor,
-    // custom theme
-    bg = 'bg1',
-    color = 'color1',
     // ViewProps
     isBorder,
     outlineStyle,
@@ -48,7 +46,7 @@ export const Button: FC<ButtonProps> = memo(
       <BounceableView viewStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
         <TouchableOpacity
           // eslint-disable-next-line react-native/no-inline-styles
-          style={[defaultStyle.bg, viewStyle, { borderWidth: 1, borderColor }]}
+          style={[defaultStyle.view, viewStyle, { borderWidth: 1, borderColor }]}
           {...{ lightBg, darkBg, bg, activeOpacity }}
         >
           {leftIcon}
@@ -67,7 +65,7 @@ const defaultStyle = StyleSheet.create({
     width: '100%',
     borderRadius: 999,
   },
-  bg: {
+  view: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

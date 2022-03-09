@@ -93,22 +93,22 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
   }, []);
 
   return (
-    <View style={style.container}>
-      <Text style={style.title}>プロフィールを登録</Text>
+    <>
+      <Text style={style.screen_title}>プロフィールを登録</Text>
 
-      <Text style={style.label}>ユーザー名</Text>
+      <Text style={style.from_label}>ユーザー名</Text>
       <TextInput value={name} onChangeText={onChangeName} />
 
-      <Text style={style.label}>生年月日</Text>
+      <Text style={style.from_label}>生年月日</Text>
       <DatePicker value={birthday} onChangeValue={onSetBirthday} />
 
-      <Text style={style.label}>選択してください</Text>
-      <View style={style.row}>
+      <Text style={style.from_label}>選択してください</Text>
+      <View style={style.align_horizontal}>
         {radio_group.map((radio) => (
           <BounceableView
             key={radio.active}
             bg="bg1"
-            viewStyle={[style.radio_area]}
+            viewStyle={[style.bounceable_view]}
             onPress={() => onRadioSelect(radio.active)}
           >
             <Radio value={radio.active} activeValue={sex} />
@@ -124,34 +124,29 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
         outlineStyle={style.button_outline}
         onPress={onRegisterUserInfo}
       />
-    </View>
+    </>
   );
 };
 
 const style = StyleSheet.create({
-  container: {
-    padding: '6%',
-  },
-  title: {
+  screen_title: {
     marginBottom: '6%',
-
     textAlign: 'center',
     fontSize: 18,
     fontWeight: '600',
   },
-  label: {
+  from_label: {
     lineHeight: 30,
     paddingLeft: '1%',
   },
-  row: {
+  align_horizontal: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  radio_area: {
+  bounceable_view: {
     flexDirection: 'row',
     alignItems: 'center',
     width: '46%',
-
     paddingVertical: 12,
     paddingHorizontal: 15,
     borderRadius: 10,

@@ -33,32 +33,32 @@ export const ChallengeCard: FC<Tournament & TournamentScreenProps> = ({
 
   return (
     <Card onPress={onNavigation} outlineStyle={style.card_outline}>
-      <View style={style.view}>
-        <View style={style.image_view}>
+      <View style={style.root}>
+        <View style={style.image_box}>
           <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
-          <View style={style.float_text_area}>
-            <Text style={style.season} color="white">
+          <View style={style.float_text_box}>
+            <Text style={style.tournament_season} color="white">
               Monthly
             </Text>
-            <Text style={style.season} color="white">
+            <Text style={style.tournament_season} color="white">
               1/1 - 1/31
             </Text>
-            <Text style={style.name} color="white">
+            <Text style={style.tournament_name} color="white">
               {name}
             </Text>
-            <Text style={style.distance} color="white">
+            <Text style={style.tournament_distance} color="white">
               {distance}m
             </Text>
           </View>
         </View>
 
-        <View style={style.info_view}>
-          <View style={style.row}>
-            <Text style={style.info_label_Left}>あなたのベストタイム</Text>
+        <View style={style.challenge_info_box}>
+          <View style={style.align_horizontal}>
+            <Text style={style.info_label_left}>あなたのベストタイム</Text>
             <Text style={style.info_label_right}>チャレンジできる残り回数</Text>
           </View>
 
-          <View style={style.row}>
+          <View style={style.align_horizontal}>
             <Text style={style.info_result_left}>10:00.00</Text>
             <Text style={style.info_result_right}>10</Text>
           </View>
@@ -72,10 +72,10 @@ const style = StyleSheet.create({
   card_outline: {
     marginBottom: '6%',
   },
-  view: {
+  root: {
     borderRadius: 20,
   },
-  image_view: {
+  image_box: {
     position: 'relative',
     borderRadius: 20,
   },
@@ -85,35 +85,35 @@ const style = StyleSheet.create({
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
   },
-  float_text_area: {
+  float_text_box: {
     position: 'absolute',
     bottom: 15,
     left: 15,
   },
-  season: {
+  tournament_season: {
     fontSize: 15,
     fontWeight: '600',
   },
-  name: {
+  tournament_name: {
     fontSize: 20,
     fontWeight: '600',
     marginTop: 10,
   },
-  distance: {
+  tournament_distance: {
     fontSize: 30,
     fontWeight: '800',
   },
-  info_view: {
+  challenge_info_box: {
     paddingHorizontal: 15,
     paddingVertical: 10,
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
   },
-  row: {
+  align_horizontal: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  info_label_Left: {
+  info_label_left: {
     width: '50%',
     fontSize: 12,
     lineHeight: 18,

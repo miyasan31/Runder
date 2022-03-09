@@ -25,32 +25,30 @@ export const MyRecordTableBody: FC<RecordData> = ({ date, record, isLastChild })
   return (
     <View
       // eslint-disable-next-line react-native/no-inline-styles
-      style={[style.tr, { borderBottomColor }, { borderBottomWidth: isLastChild ? 0 : 1 }]}
+      style={[style.root, { borderBottomColor }, { borderBottomWidth: isLastChild ? 0 : 1 }]}
     >
-      <Text style={style.td_rank}>{date}</Text>
+      <Text style={style.td_date}>{date}</Text>
 
-      <Text style={style.td_point}>{record}</Text>
+      <Text style={style.td_record}>{record}</Text>
     </View>
   );
 };
 
 const style = StyleSheet.create({
-  tr: {
+  root: {
     alignItems: 'center',
     flexDirection: 'row',
     paddingHorizontal: '3%',
     paddingVertical: '3%',
     borderBottomWidth: 1,
   },
-  td_rank: {
+  td_date: {
     flex: 1,
-
     fontWeight: '600',
     fontSize: 16,
   },
-  td_point: {
+  td_record: {
     flex: 1,
-
     textAlign: 'right',
     fontWeight: '600',
     fontSize: 16,

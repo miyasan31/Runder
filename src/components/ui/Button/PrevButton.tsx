@@ -1,6 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import type { VFC } from 'react';
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { BounceableView } from '~/components/ui/View';
@@ -11,7 +11,7 @@ type PrevProps = TournamentScreenProps<keyof TournamentStackParamList> & {
   screen: 'TournamentScreen';
 };
 
-export const PrevButton: VFC<PrevProps> = ({ screen, navigation }) => {
+export const PrevButton: VFC<PrevProps> = memo(({ screen, navigation }) => {
   const icon = useThemeColor({}, 'icon');
 
   const onPrevScreen = useCallback(() => {
@@ -19,14 +19,14 @@ export const PrevButton: VFC<PrevProps> = ({ screen, navigation }) => {
   }, [navigation, screen]);
 
   return (
-    <BounceableView viewStyle={[defaultStyle.button]} activeScale={0.9} onPress={onPrevScreen}>
+    <BounceableView activeScale={0.9} viewStyle={style.bounceable_view} onPress={onPrevScreen}>
       <MaterialIcons name="keyboard-arrow-left" size={40} color={icon} />
     </BounceableView>
   );
-};
+});
 
-const defaultStyle = StyleSheet.create({
-  button: {
+const style = StyleSheet.create({
+  bounceable_view: {
     width: 'auto',
   },
 });

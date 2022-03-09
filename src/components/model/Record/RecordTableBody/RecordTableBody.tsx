@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import type { FC } from 'react';
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
@@ -21,23 +22,20 @@ export const RecordTableBody: FC<RecordData> = ({ rank, record, user: { name, ic
   const borderBottomColor = useThemeColor({}, 'border');
 
   return (
-    <View
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={[style.tr, { borderBottomColor }, { borderBottomWidth: rank === 100 ? 0 : 1 }]}
-    >
-      <View style={style.td_left}>
+    <View style={[style.root, { borderBottomColor }, { borderBottomWidth: rank === 100 ? 0 : 1 }]}>
+      <View style={style.td_left_box}>
         <Text style={style.td_rank}>{rank}位</Text>
-        <Image source={require('assets/develop/lilnasx.png')} style={style.user_icon} />
-        <Text style={style.td_name}>{name}</Text>
+        <Image source={require('assets/develop/lilnasx.png')} style={style.td_user_icon} />
+        <Text style={style.td_user_name}>{name}</Text>
       </View>
 
-      <Text style={style.td_point}>{record}</Text>
+      <Text style={style.td_record}>{record}</Text>
     </View>
   );
 };
 
 const style = StyleSheet.create({
-  tr: {
+  root: {
     alignItems: 'center',
     flexDirection: 'row',
 
@@ -45,12 +43,12 @@ const style = StyleSheet.create({
     paddingVertical: '3%',
     borderBottomWidth: 1,
   },
-  td_left: {
+  td_left_box: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
   },
-  user_icon: {
+  td_user_icon: {
     height: 35,
     width: 35,
     marginLeft: '10%',
@@ -62,13 +60,13 @@ const style = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
-  td_name: {
+  td_user_name: {
     marginLeft: '10%',
 
     fontSize: 16,
     fontWeight: '600',
   },
-  td_point: {
+  td_record: {
     flex: 1,
 
     textAlign: 'right',

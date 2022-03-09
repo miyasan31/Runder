@@ -37,9 +37,9 @@ export const TotalRanking: FC<RankingScreenProps> = () => {
     const onNavigation = () => console.info('item.id', item.id);
 
     return (
-      <Card viewStyle={style.list} isBorder onPress={onNavigation}>
+      <Card viewStyle={style.root} isBorder onPress={onNavigation}>
         <View>
-          <Text style={style.shop_name}>{item.name}</Text>
+          <Text style={style.name}>{item.name}</Text>
           <Text style={style.date}>{date}</Text>
         </View>
       </Card>
@@ -48,14 +48,14 @@ export const TotalRanking: FC<RankingScreenProps> = () => {
 };
 
 const style = StyleSheet.create({
-  list: {
+  root: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 18,
     marginVertical: '1%',
   },
-  shop_name: {
+  name: {
     paddingBottom: 10,
     fontSize: 20,
     textAlign: 'left',

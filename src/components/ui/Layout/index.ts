@@ -1,2 +1,2 @@
-export { Layout } from './Layout';
-export { SafeAreaLayout } from './SafeAreaLayout';
+export { BottomTabLayout } from './BottomTabLayout';
+export { FullScreenLayout } from './FullScreenLayout';

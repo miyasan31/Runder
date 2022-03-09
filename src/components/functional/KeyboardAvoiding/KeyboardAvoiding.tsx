@@ -13,7 +13,7 @@ export const KeyboardAvoiding: FC<Props> = (props) => {
     <TouchableWithoutFeedback onPress={onKeyBoardClose}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={defaultStyle.flex_1}
+        style={defaultStyle.root}
       >
         {props.children}
       </KeyboardAvoidingView>
@@ -22,7 +22,7 @@ export const KeyboardAvoiding: FC<Props> = (props) => {
 };
 
 const defaultStyle = StyleSheet.create({
-  flex_1: {
+  root: {
     flex: 1,
   },
 });

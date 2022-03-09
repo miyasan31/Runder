@@ -18,7 +18,7 @@ const data = [
 export const Ranking: FC = () => {
   return (
     <>
-      <View style={style.header}>
+      <View style={style.th_box}>
         <TableHead leftTitle="順位" rightTitle="記録" />
       </View>
 
@@ -35,7 +35,7 @@ export const Ranking: FC = () => {
 };
 
 const style = StyleSheet.create({
-  header: {
+  th_box: {
     padding: '4%',
     paddingBottom: '1%',
   },

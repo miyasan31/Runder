@@ -11,27 +11,21 @@ export type Props = StackScreenProps<'Modal'>;
 
 export const Modal: FC<Props> = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Modal 1</Text>
-      <View style={styles.separator} lightBg="#eee" darkBg="rgba(255,255,255,0.1)" />
+    <View style={styles.root}>
+      <Text style={styles.screen_title}>Modal 1</Text>
       <StatusBar style={Platform.OS === 'ios' ? 'dark' : 'auto'} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  root: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
+  screen_title: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
 });

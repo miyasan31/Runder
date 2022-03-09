@@ -22,7 +22,7 @@ type Tournament = typeof data[0];
 export const ResultList: FC<Tournament> = ({ name, distance, start, end }) => {
   const border = useThemeColor({}, 'border');
   return (
-    <View style={[style.list, { borderColor: border }]}>
+    <View style={[style.root, { borderColor: border }]}>
       <Text>
         {start} ~ {end}
       </Text>
@@ -33,7 +33,7 @@ export const ResultList: FC<Tournament> = ({ name, distance, start, end }) => {
 };
 
 const style = StyleSheet.create({
-  list: {
+  root: {
     borderBottomWidth: 1,
     paddingVertical: '4%',
   },

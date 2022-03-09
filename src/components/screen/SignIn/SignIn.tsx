@@ -20,14 +20,14 @@ export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
   }, [navigation]);
 
   return (
-    <View style={style.container}>
-      <View style={style.icon_area}>
+    <>
+      <View style={style.icon_box}>
         <Runder />
       </View>
 
-      <View style={style.message_area}>
-        <Text style={style.message}>あなたのライバルたちが待っています</Text>
-        <Text style={style.message}>さっそく走り出しましょう</Text>
+      <View style={style.app_message_box}>
+        <Text style={style.app_message}>あなたのライバルたちが待っています</Text>
+        <Text style={style.app_message}>さっそく走り出しましょう</Text>
       </View>
 
       <Button
@@ -60,27 +60,24 @@ export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
         onPress={onSignInEmailNavigate}
       />
 
-      <View style={style.register_area}>
+      <View style={style.register_box}>
         <Text style={style.register_text}>新規登録の場合は</Text>
         <NativeButton title="こちら" onPress={onSignUpNavigate} />
       </View>
-    </View>
+    </>
   );
 };
 
 const style = StyleSheet.create({
-  container: {
-    padding: '6%',
-  },
-  icon_area: {
+  icon_box: {
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '6%',
   },
-  message_area: {
+  app_message_box: {
     marginBottom: '40%',
   },
-  message: {
+  app_message: {
     textAlign: 'center',
     fontSize: 18,
     fontWeight: '600',
@@ -96,7 +93,7 @@ const style = StyleSheet.create({
     width: 'auto',
     marginLeft: '4%',
   },
-  register_area: {
+  register_box: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

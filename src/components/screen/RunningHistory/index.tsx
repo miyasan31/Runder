@@ -6,7 +6,7 @@ import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
 import { Card } from '~/components/ui/Card';
-import { Layout } from '~/components/ui/Layout';
+import { BottomTabLayout } from '~/components/ui/Layout';
 import { Progress } from '~/components/ui/Progress';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
@@ -37,9 +37,9 @@ export const RunningHistory: FC<Props> = (props) => {
   if (error) return <Text>エラー</Text>;
   if (!data) return <Text>データなし</Text>;
   return (
-    <Layout layout="tabheader-bottomtab">
+    <BottomTabLayout layout="top-horizontal">
       <FlatList data={data} renderItem={renderItem} keyExtractor={(item, _) => String(item.id)} />
-    </Layout>
+    </BottomTabLayout>
   );
 
   // eslint-disable-next-line func-style

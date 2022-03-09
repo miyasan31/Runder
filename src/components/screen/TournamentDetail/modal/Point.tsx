@@ -19,7 +19,7 @@ const data = [
 export const Point: FC = () => {
   return (
     <>
-      <View style={style.header}>
+      <View style={style.th_box}>
         <TableHead leftTitle="順位" rightTitle="獲得ポイント" />
       </View>
 
@@ -36,7 +36,7 @@ export const Point: FC = () => {
 };
 
 const style = StyleSheet.create({
-  header: {
+  th_box: {
     padding: '4%',
     paddingBottom: '1%',
   },

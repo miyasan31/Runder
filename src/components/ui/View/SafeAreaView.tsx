@@ -11,25 +11,24 @@ export type SafeAreaViewProps = NativeSafeAreaViewProps & ViewStyleProps;
 
 export const SafeAreaView: FC<SafeAreaViewProps> = memo(
   ({
-    // 基本的に使用しない
+    // theme
+    bg = 'bg0',
     lightBg: light,
     darkBg: dark,
-    // custom theme
-    bg = 'bg0',
-    // ViewProps
+    // SafeAreaViewProps
     style,
     ...otherProps
   }) => {
     const backgroundColor = useThemeColor({ light, dark }, bg);
 
     return (
-      <NativeSafeAreaView style={[defaultStyle.bg, style, { backgroundColor }]} {...otherProps} />
+      <NativeSafeAreaView {...otherProps} style={[defaultStyle.view, style, { backgroundColor }]} />
     );
   },
 );
 
 const defaultStyle = StyleSheet.create({
-  bg: {
+  view: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',

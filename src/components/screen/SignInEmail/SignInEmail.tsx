@@ -37,31 +37,27 @@ export const SignInEmail: FC<SignInEmailScreenProps> = ({ navigation }) => {
   }, [navigation]);
 
   return (
-    <View style={style.container}>
-      <Text style={style.title}>メールアドレスでサインイン</Text>
+    <>
+      <Text style={style.screen_title}>メールアドレスでサインイン</Text>
 
       <SignEmailForm onSignEmail={onSignInEmail} />
 
-      <View style={style.register_area}>
+      <View style={style.register_box}>
         <Text style={style.register_text}>新規登録の場合は</Text>
         <NativeButton title="こちら" onPress={onSignUpNavigate} />
       </View>
-    </View>
+    </>
   );
 };
 
 const style = StyleSheet.create({
-  container: {
-    padding: '6%',
-  },
-  title: {
+  screen_title: {
     marginBottom: '6%',
-
     textAlign: 'center',
     fontSize: 18,
     fontWeight: '600',
   },
-  register_area: {
+  register_box: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

@@ -13,17 +13,16 @@ export type TextInputProps = Omit<NativeTextInput['props'], 'style'> &
 
 export const TextInput: FC<TextInputProps> = memo(
   ({
-    // 基本的に使用しない
+    // theme
+    bg = 'bg4',
     lightBg,
     darkBg,
+    color: fontColor = 'color1',
     lightColor: light,
     darkColor: dark,
-    // custom theme
-    bg = 'bg4',
-    color: fontColor = 'color1',
     // ViewProps
-    isBorder,
     viewStyle,
+    isBorder,
     // TextInputProps
     textStyle,
     secureTextEntry = false,
@@ -35,13 +34,13 @@ export const TextInput: FC<TextInputProps> = memo(
     return (
       <View
         // eslint-disable-next-line react-native/no-inline-styles
-        style={[defaultStyle.bg, viewStyle, { borderWidth: 1, borderColor }]}
+        style={[defaultStyle.view, viewStyle, { borderWidth: 1, borderColor }]}
         {...{ lightBg, darkBg, bg }}
       >
         <NativeTextInput
-          secureTextEntry={secureTextEntry}
-          style={[defaultStyle.text, textStyle, { color }]}
           {...otherProps}
+          secureTextEntry={secureTextEntry}
+          style={[defaultStyle.text_input, textStyle, { color }]}
         />
       </View>
     );
@@ -49,7 +48,7 @@ export const TextInput: FC<TextInputProps> = memo(
 );
 
 const defaultStyle = StyleSheet.create({
-  bg: {
+  view: {
     width: '100%',
     paddingVertical: 12,
     paddingHorizontal: 15,
@@ -63,7 +62,7 @@ const defaultStyle = StyleSheet.create({
     shadowOpacity: 0.2,
     elevation: 1,
   },
-  text: {
+  text_input: {
     fontSize: 18,
   },
 });

@@ -43,7 +43,7 @@ export const CombatHistory: FC<ChallengeDetailScreenProps> = () => {
 
   return (
     <>
-      <Text style={style.best_time_label} color="color2">
+      <Text style={style.best_time_title} color="color2">
         あなたのベストタイム
       </Text>
       <Text style={style.best_time}>14:00.00</Text>
@@ -60,7 +60,7 @@ export const CombatHistory: FC<ChallengeDetailScreenProps> = () => {
         <Polyline coordinates={coordinateResult} strokeColors={strokeResult} strokeWidth={6} />
       </MapView>
 
-      <View style={style.header}>
+      <View style={style.th_box}>
         <TableHead leftTitle="日付" rightTitle="タイム" />
       </View>
 
@@ -77,7 +77,7 @@ export const CombatHistory: FC<ChallengeDetailScreenProps> = () => {
 };
 
 const style = StyleSheet.create({
-  best_time_label: {
+  best_time_title: {
     paddingTop: '4%',
     paddingHorizontal: '4%',
     fontSize: 16,
@@ -91,7 +91,7 @@ const style = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: '30%',
   },
-  header: {
+  th_box: {
     padding: '4%',
     paddingBottom: '1%',
   },

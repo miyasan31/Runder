@@ -10,30 +10,30 @@ import type { OutlineStyle } from '~/types/style';
 
 type Props = {
   label?: string;
-  style?: StyleProp<OutlineStyle>;
+  outlineStyle?: StyleProp<OutlineStyle>;
 };
 
-export const Divider: FC<Props> = memo(({ label = 'または', style }) => {
+export const Divider: FC<Props> = memo(({ label = 'または', outlineStyle }) => {
   const borderColor = useThemeColor({}, 'border');
 
   return (
-    <View style={[defaultStyle.container, style]}>
-      <View style={[defaultStyle.divider, { borderColor }]} />
+    <View style={[defaultStyle.root, outlineStyle]}>
+      <View style={[defaultStyle.divider_border, { borderColor }]} />
       <Text style={defaultStyle.divider_text} color="color2">
         {label}
       </Text>
-      <View style={[defaultStyle.divider, { borderColor }]} />
+      <View style={[defaultStyle.divider_border, { borderColor }]} />
     </View>
   );
 });
 
 const defaultStyle = StyleSheet.create({
-  container: {
+  root: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  divider: {
+  divider_border: {
     flex: 1,
     borderTopWidth: 1,
     height: 0,

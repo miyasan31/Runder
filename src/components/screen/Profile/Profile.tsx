@@ -69,71 +69,66 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
     <>
       <ProfileEditModal isVisible={isModalVisible} onCloseModal={onCloseModal} />
 
-      <View style={style.container} bg="bg1">
-        <View style={style.user_info_container}>
-          <View style={style.row}>
-            <View style={style.left_container}>
-              <Image source={require('assets/develop/lilnasx.png')} style={style.user_icon} />
-            </View>
-            <View style={style.right_container}>
-              <Button
-                label="プロフィール編集"
-                outlineStyle={style.button_outline}
-                viewStyle={style.button_bg}
-                textStyle={style.button_text}
-                isBorder
-                onPress={onOpenModal}
-              />
-              <Button
-                label="サインアウト"
-                outlineStyle={style.button_outline}
-                viewStyle={style.button_bg}
-                textStyle={style.button_text}
-                isBorder
-                onPress={onSignOut}
-              />
-              <Text>ランキング</Text>
-              <Text>1位</Text>
-            </View>
+      <View style={style.user_info_box}>
+        <View style={style.align_horizontal}>
+          <View style={style.left_box}>
+            <Image source={require('assets/develop/lilnasx.png')} style={style.user_icon} />
           </View>
-
-          <View style={style.profile_container}>
-            <Text>R.KWMR</Text>
-            <Text>ナイキ ズームライバル フライ</Text>
-            <Text>高校まで陸上部</Text>
-            <Text>中距離ランナー</Text>
-            <Text>得意な種目は800mと1500m</Text>
-            <Text>2000m以上は苦手です...</Text>
+          <View style={style.right_box}>
+            <Button
+              label="プロフィール編集"
+              outlineStyle={style.button_outline}
+              viewStyle={style.button_bg}
+              textStyle={style.button_text}
+              isBorder
+              onPress={onOpenModal}
+            />
+            <Button
+              label="サインアウト"
+              outlineStyle={style.button_outline}
+              viewStyle={style.button_bg}
+              textStyle={style.button_text}
+              isBorder
+              onPress={onSignOut}
+            />
+            <Text>ランキング</Text>
+            <Text>1位</Text>
           </View>
         </View>
 
-        <View style={style.container}>
-          <HistoryTab {...props} />
+        <View style={style.profile_box}>
+          <Text>R.KWMR</Text>
+          <Text>ナイキ ズームライバル フライ</Text>
+          <Text>高校まで陸上部</Text>
+          <Text>中距離ランナー</Text>
+          <Text>得意な種目は800mと1500m</Text>
+          <Text>2000m以上は苦手です...</Text>
         </View>
+      </View>
+
+      <View style={style.tab_box}>
+        <HistoryTab {...props} />
       </View>
     </>
   );
 };
 
 const style = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  user_info_container: {
+  user_info_box: {
     paddingHorizontal: '8%',
   },
-  profile_container: {
-    paddingVertical: '8%',
-  },
-  row: {
+  align_horizontal: {
     marginTop: 60,
     flexDirection: 'row',
   },
-  left_container: {
+  left_box: {
     flex: 1,
   },
-  right_container: {
+  right_box: {
     flex: 1,
+  },
+  profile_box: {
+    paddingVertical: '8%',
   },
   user_icon: {
     marginTop: '25%',
@@ -150,5 +145,8 @@ const style = StyleSheet.create({
   },
   button_text: {
     fontSize: 12,
+  },
+  tab_box: {
+    flex: 1,
   },
 });

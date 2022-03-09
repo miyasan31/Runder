@@ -5,7 +5,7 @@ import React from 'react';
 import { Dimensions, StyleSheet } from 'react-native';
 import MapView, { Polyline } from 'react-native-maps';
 
-import { Layout } from '~/components/ui/Layout';
+import { BottomTabLayout } from '~/components/ui/Layout';
 import { Text } from '~/components/ui/Text';
 import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import type { DevListScreenProps } from '~/types';
@@ -33,7 +33,7 @@ export const RunningDetail: FC<Props> = (props) => {
   const strokeResult = data[0].location.map((coordinate) => coordinate.color);
 
   return (
-    <Layout viewStyle={styles.root} layout="tabheader-bottomtab">
+    <BottomTabLayout viewStyle={styles.root} layout="top-horizontal">
       <MapView
         style={styles.map}
         initialRegion={{
@@ -45,7 +45,7 @@ export const RunningDetail: FC<Props> = (props) => {
       >
         <Polyline coordinates={coordinateResult} strokeColors={strokeResult} strokeWidth={6} />
       </MapView>
-    </Layout>
+    </BottomTabLayout>
   );
 };
 

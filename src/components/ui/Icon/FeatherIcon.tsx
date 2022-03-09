@@ -11,10 +11,10 @@ type Props = {
 };
 
 export const FeatherIcon: FC<Props> = memo((props) => {
-  return <Feather style={defaultStyle.icon} size={BOTTOM_ICON} {...props} />;
+  return <Feather style={style.icon} size={BOTTOM_ICON} {...props} />;
 });
 
-const defaultStyle = StyleSheet.create({
+const style = StyleSheet.create({
   icon: {
     marginTop: 4,
   },

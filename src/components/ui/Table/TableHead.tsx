@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React from 'react';
+import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { Text } from '~/components/ui/Text';
@@ -10,26 +10,26 @@ type Props = {
   rightTitle: string;
 };
 
-export const TableHead: FC<Props> = ({ leftTitle, rightTitle }) => {
+export const TableHead: FC<Props> = memo(({ leftTitle, rightTitle }) => {
   return (
-    <View style={style.th} bg="bg2">
-      <Text style={style.th_rank}>{leftTitle}</Text>
-      <Text style={style.th_point}>{rightTitle}</Text>
+    <View style={style.root} bg="bg2">
+      <Text style={style.th_left}>{leftTitle}</Text>
+      <Text style={style.th_right}>{rightTitle}</Text>
     </View>
   );
-};
+});
 
 const style = StyleSheet.create({
-  th: {
+  root: {
     flexDirection: 'row',
     padding: '4%',
     borderRadius: 10,
   },
-  th_rank: {
+  th_left: {
     flex: 1,
     fontWeight: '600',
   },
-  th_point: {
+  th_right: {
     flex: 1,
     textAlign: 'right',
     fontWeight: '600',

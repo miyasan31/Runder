@@ -20,16 +20,16 @@ export const HalfModal: FC<Props> = ({ children, size = 0.7, isVisible, onCloseM
       isVisible={isVisible}
       coverScreen
       animationIn="slideInUp"
-      swipeDirection={['down']}
       propagateSwipe
+      swipeDirection={['down']}
       useNativeDriverForBackdrop
       onSwipeComplete={onCloseModal}
       onBackdropPress={onCloseModal}
       style={defaultStyle.modal}
       backdropColor={backdropColor}
     >
-      <View style={[defaultStyle.content, { flex: size }]} bg="bg1">
-        <View style={defaultStyle.handle_wrap}>
+      <View style={[defaultStyle.modal_box, { flex: size }]} bg="bg1">
+        <View style={defaultStyle.handle_box}>
           <View style={defaultStyle.handle} bg="bg3" />
         </View>
         {children}
@@ -40,14 +40,14 @@ export const HalfModal: FC<Props> = ({ children, size = 0.7, isVisible, onCloseM
 
 const defaultStyle = StyleSheet.create({
   modal: {
-    margin: 0,
     justifyContent: 'flex-end',
+    margin: 0,
   },
-  content: {
+  modal_box: {
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
-  handle_wrap: {
+  handle_box: {
     alignItems: 'center',
   },
   handle: {

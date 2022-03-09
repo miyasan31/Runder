@@ -9,24 +9,22 @@ export type ViewProps = NativeView['props'] & ViewStyleProps;
 
 export const View: FC<ViewProps> = memo(
   ({
-    // 基本的に使用しない
-    // custom themeで色を指定する
+    // theme
+    bg = 'bg0',
     lightBg: light,
     darkBg: dark,
-    // custom theme
-    bg = 'bg0',
     // ViewProps
     style,
     ...otherProps
   }) => {
     const backgroundColor = useThemeColor({ light, dark }, bg);
 
-    return <NativeView style={[defaultStyle.bg, style, { backgroundColor }]} {...otherProps} />;
+    return <NativeView {...otherProps} style={[defaultStyle.view, style, { backgroundColor }]} />;
   },
 );
 
 const defaultStyle = StyleSheet.create({
-  bg: {
+  view: {
     width: '100%',
   },
 });

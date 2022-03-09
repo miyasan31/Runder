@@ -21,41 +21,39 @@ const data = [
 
 export const TournamentDetail: FC<TournamentDetailScreenProps> = () => {
   return (
-    <View>
+    <>
       <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
 
-      <View style={style.float_text_area}>
-        <Text style={style.season} color="white">
+      <View style={style.float_text_box}>
+        <Text style={style.tournament_season} color="white">
           Monthly
         </Text>
-        <Text style={style.season} color="white">
+        <Text style={style.tournament_season} color="white">
           1/1 - 1/31
         </Text>
-        <Text style={style.name} color="white">
+        <Text style={style.tournament_name} color="white">
           {data[0].name}
         </Text>
-        <Text style={style.distance} color="white">
+        <Text style={style.tournament_distance} color="white">
           {data[0].distance}m
         </Text>
-        <Text style={style.description} color="white">
+        <Text style={style.tournament_description} color="white">
           ボタンを押してから5秒後にスタートします。 スタート後の一時停止はできません。
           STARTボタンを押すと、ルールに従うものと されます。
         </Text>
       </View>
 
-      <View style={style.float_button_group}>
+      <View style={style.float_button_box}>
         <Button
           label="START"
           bg="bg2"
           isBorder
-          outlineStyle={style.start_button_outline}
-          textStyle={style.start_button_text}
+          outlineStyle={style.button_outline}
+          textStyle={style.button_text}
         />
         <DetailViewButtonGroup />
       </View>
-
-      <View />
-    </View>
+    </>
   );
 };
 
@@ -64,42 +62,42 @@ const style = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  float_text_area: {
+  float_text_box: {
     position: 'absolute',
     top: 0,
     left: 0,
     padding: '6%',
   },
-  season: {
+  tournament_season: {
     fontSize: 20,
     fontWeight: '600',
   },
-  name: {
+  tournament_name: {
     fontSize: 25,
     fontWeight: '600',
     marginTop: 10,
   },
-  distance: {
+  tournament_distance: {
     fontSize: 35,
     fontWeight: '800',
   },
-  description: {
+  tournament_description: {
     fontSize: 16,
     marginTop: 10,
     lineHeight: 22,
   },
-  float_button_group: {
+  float_button_box: {
     position: 'absolute',
     bottom: 30,
     left: 0,
     width: '100%',
   },
-  start_button_outline: {
+  button_outline: {
     width: '100%',
     paddingHorizontal: '6%',
     marginBottom: '8%',
   },
-  start_button_text: {
+  button_text: {
     fontSize: 20,
     fontWeight: '600',
   },

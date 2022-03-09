@@ -7,7 +7,6 @@ import { Divider } from '~/components/ui/Divider';
 import { SignEmailForm } from '~/components/ui/Form';
 import { Apple, Google } from '~/components/ui/Icon';
 import { Text } from '~/components/ui/Text';
-import { View } from '~/components/ui/View';
 import { AUTH_PROVIDER_KEY } from '~/constants/SECURE_STORE';
 import { sleep } from '~/functions/sleep';
 import { saveSecureStore } from '~/utils/secureStore';
@@ -45,12 +44,12 @@ export const SignUp: FC<SignUpScreenProps> = ({ navigation }) => {
   );
 
   return (
-    <View style={style.container}>
-      <Text style={style.title}>メールアドレスでサインアップ</Text>
+    <>
+      <Text style={style.screen_title}>メールアドレスでサインアップ</Text>
 
       <SignEmailForm onSignEmail={onSignUpEmail} />
 
-      <Divider style={style.divider} />
+      <Divider outlineStyle={style.divider_outline} />
 
       <Button
         leftIcon={<Google />}
@@ -71,22 +70,18 @@ export const SignUp: FC<SignUpScreenProps> = ({ navigation }) => {
         lightBg="#333333"
         lightColor="#FFF"
       />
-    </View>
+    </>
   );
 };
 
 const style = StyleSheet.create({
-  container: {
-    padding: '6%',
-  },
-  title: {
+  screen_title: {
     marginBottom: '6%',
-
     textAlign: 'center',
     fontSize: 18,
     fontWeight: '600',
   },
-  divider: {
+  divider_outline: {
     marginTop: '5%',
   },
   button_outline: {

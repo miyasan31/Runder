@@ -21,7 +21,7 @@ export const GoBackButton: FC<Props> = memo(({ isFloating }) => {
 
   return (
     <BounceableView
-      viewStyle={[style.button, isFloating && style.float]}
+      viewStyle={[style.bounceable_view, isFloating && style.float]}
       activeScale={0.9}
       onPress={onGoBack}
     >
@@ -31,7 +31,7 @@ export const GoBackButton: FC<Props> = memo(({ isFloating }) => {
 });
 
 const style = StyleSheet.create({
-  button: {
+  bounceable_view: {
     width: 'auto',
   },
   float: {

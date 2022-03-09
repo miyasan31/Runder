@@ -10,8 +10,8 @@ export const NotFound: FC<NotFoundScreenProps> = (props) => {
   }, [props.navigation]);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>This screen doesn&apos;t exist.</Text>
+    <View style={styles.root}>
+      <Text style={styles.screen_title}>This screen doesn&apos;t exist.</Text>
       <TouchableOpacity onPress={onRootScreenPush} style={styles.link}>
         <Text style={styles.link_text}>Go to home screen!</Text>
       </TouchableOpacity>
@@ -20,14 +20,14 @@ export const NotFound: FC<NotFoundScreenProps> = (props) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  root: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
   },
-  title: {
+  screen_title: {
     fontSize: 20,
     fontWeight: 'bold',
   },

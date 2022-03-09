@@ -10,14 +10,14 @@ export const Progress: FC = memo(() => {
   const primary = useThemeColor({}, 'primary');
 
   return (
-    <View style={defaultStyle.center}>
+    <View style={style.root}>
       <RNProgress.CircleSnail color={primary} size={50} thickness={4} spinDuration={800} />
     </View>
   );
 });
 
-const defaultStyle = StyleSheet.create({
-  center: {
+const style = StyleSheet.create({
+  root: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',

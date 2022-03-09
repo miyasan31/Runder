@@ -9,14 +9,14 @@ export const ActivityIndicator: FC = memo(() => {
   const primary = useThemeColor({}, 'primary');
 
   return (
-    <View style={defaultStyle.center} bg="bg1">
+    <View style={style.root} bg="bg1">
       <NativeActivityIndicator size="large" color={primary} />
     </View>
   );
 });
 
-const defaultStyle = StyleSheet.create({
-  center: {
+const style = StyleSheet.create({
+  root: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',

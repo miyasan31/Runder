@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React from 'react';
 import { SceneMap, TabView } from 'react-native-tab-view';
 
-import { Layout } from '~/components/ui/Layout';
+import { BottomTabLayout } from '~/components/ui/Layout';
 import { TabBar } from '~/components/ui/TabBar';
 import { useTabView } from '~/hooks/useTabView';
 
@@ -19,7 +19,7 @@ export const TournamentScreen: FC<TournamentScreenProps> = (props) => {
   const { layout, index, onIndexChange } = useTabView();
 
   return (
-    <Layout layout="tabheader-bottomtab">
+    <BottomTabLayout layout="top-horizontal">
       <TabView
         renderTabBar={TabBar}
         navigationState={{ index, routes }}
@@ -30,6 +30,6 @@ export const TournamentScreen: FC<TournamentScreenProps> = (props) => {
           challenge: () => <ChallengeTournamentScene {...props} />,
         })}
       />
-    </Layout>
+    </BottomTabLayout>
   );
 };
