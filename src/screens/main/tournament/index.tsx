@@ -3,28 +3,18 @@ import type { FC } from 'react';
 import React from 'react';
 
 import { PrevButton } from '~/components/ui/Button';
-import { useTheme } from '~/hooks/useTheme';
-import type { TournamentScreenProps, TournamentStackParamList } from '~/types';
+import type { TournamentStackParamList } from '~/types';
 
 import { ChallengeDetailScreen } from './challenge_detail.screen';
 import { ModalScreen } from './hoge.modal';
 import { TournamentScreen } from './tournament.screen';
 import { TournamentDetailScreen } from './tournament_detail.screen';
 
-type Option<T extends keyof TournamentStackParamList> = TournamentScreenProps<T>;
-
 const Tournament = createNativeStackNavigator<TournamentStackParamList>();
 
 export const TournamentNavigator: FC = () => {
-  const backgroundColor = useTheme({}, 'bg1');
-
   return (
-    <Tournament.Navigator
-      initialRouteName="TournamentScreen"
-      screenOptions={{
-        headerStyle: { backgroundColor },
-      }}
-    >
+    <Tournament.Navigator initialRouteName="TournamentScreen">
       <Tournament.Screen
         name="TournamentScreen"
         component={TournamentScreen}
@@ -36,28 +26,34 @@ export const TournamentNavigator: FC = () => {
       <Tournament.Screen
         name="TournamentDetailScreen"
         component={TournamentDetailScreen}
-        options={(options: Option<'TournamentDetailScreen'>) => ({
+        options={({ navigation }) => ({
           title: '大会の詳細・スタート',
           headerTitleAlign: 'left',
           headerTitleStyle: {
             fontWeight: '600',
           },
           headerBackTitleVisible: false,
-          headerLeft: () => <PrevButton {...options} screen="TournamentScreen" />,
+          headerLeft: () => {
+            const onPrevScreen = () => navigation.goBack();
+            return <PrevButton onPress={onPrevScreen} />;
+          },
         })}
       />
 
       <Tournament.Screen
         name="ChallengeDetailScreen"
         component={ChallengeDetailScreen}
-        options={(options: Option<'ChallengeDetailScreen'>) => ({
+        options={({ navigation }) => ({
           title: '大会の詳細・スタート',
           headerTitleAlign: 'left',
           headerTitleStyle: {
             fontWeight: '600',
           },
           headerBackTitleVisible: false,
-          headerLeft: () => <PrevButton {...options} screen="TournamentScreen" />,
+          headerLeft: () => {
+            const onPrevScreen = () => navigation.goBack();
+            return <PrevButton onPress={onPrevScreen} />;
+          },
         })}
       />
 

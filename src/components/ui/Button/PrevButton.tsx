@@ -1,26 +1,21 @@
-import { MaterialIcons } from '@expo/vector-icons';
 import type { VFC } from 'react';
-import React, { memo, useCallback } from 'react';
+import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
+import { FeatherIcon } from '~/components/ui/Icon';
 import { Bounceable } from '~/components/ui/View';
 import { useTheme } from '~/hooks/useTheme';
-import type { TournamentScreenProps, TournamentStackParamList } from '~/types';
 
-type PrevProps = TournamentScreenProps<keyof TournamentStackParamList> & {
-  screen: 'TournamentScreen';
+type PrevProps = {
+  onPress: () => void;
 };
 
-export const PrevButton: VFC<PrevProps> = memo(({ screen, navigation }) => {
+export const PrevButton: VFC<PrevProps> = memo(({ onPress }) => {
   const icon = useTheme({}, 'icon');
 
-  const onPrevScreen = useCallback(() => {
-    navigation.navigate(screen);
-  }, [navigation, screen]);
-
   return (
-    <Bounceable activeScale={0.9} viewStyle={style.bounceable_view} onPress={onPrevScreen}>
-      <MaterialIcons name="keyboard-arrow-left" size={40} color={icon} />
+    <Bounceable activeScale={0.8} viewStyle={style.bounceable_view} onPress={onPress}>
+      <FeatherIcon name="chevron-left" size={30} color={icon} />
     </Bounceable>
   );
 });
@@ -28,5 +23,8 @@ export const PrevButton: VFC<PrevProps> = memo(({ screen, navigation }) => {
 const style = StyleSheet.create({
   bounceable_view: {
     width: 'auto',
+  },
+  icon: {
+    marginTop: 0,
   },
 });
