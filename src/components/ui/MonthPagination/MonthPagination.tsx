@@ -45,7 +45,7 @@ const style = StyleSheet.create({
     paddingLeft: '1%',
   },
   this_month_text: {
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: '600',
   },
   pagination_box: {
