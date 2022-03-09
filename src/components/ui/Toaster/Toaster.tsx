@@ -67,7 +67,6 @@ const ToastBar = memo(
               width: 0,
               height: 1,
             },
-            shadowColor: '#888888',
             shadowOpacity: 0.4,
             elevation: 1,
           }}

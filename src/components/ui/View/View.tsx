@@ -18,8 +18,14 @@ export const View: FC<ViewProps> = memo(
     ...otherProps
   }) => {
     const backgroundColor = useThemeColor({ light, dark }, bg);
+    const shadowColor = useThemeColor({ light, dark }, 'shadow');
 
-    return <NativeView {...otherProps} style={[defaultStyle.view, style, { backgroundColor }]} />;
+    return (
+      <NativeView
+        {...otherProps}
+        style={[defaultStyle.view, style, { backgroundColor, shadowColor }]}
+      />
+    );
   },
 );
 

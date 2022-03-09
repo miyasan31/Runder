@@ -18,7 +18,10 @@ export const TouchableOpacity: FC<TouchableOpacityProps> = memo(
     ...otherProps
   }) => {
     const backgroundColor = useThemeColor({ light, dark }, bg);
+    const shadowColor = useThemeColor({ light, dark }, 'shadow');
 
-    return <NativeTouchableOpacity {...otherProps} style={[style, { backgroundColor }]} />;
+    return (
+      <NativeTouchableOpacity {...otherProps} style={[style, { backgroundColor, shadowColor }]} />
+    );
   },
 );

@@ -88,7 +88,6 @@ const defaultStyle = StyleSheet.create({
       width: 0,
       height: 0,
     },
-    shadowColor: '#888888',
     shadowOpacity: 0.2,
     elevation: 1,
   },

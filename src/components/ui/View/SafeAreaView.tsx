@@ -20,9 +20,13 @@ export const SafeAreaView: FC<SafeAreaViewProps> = memo(
     ...otherProps
   }) => {
     const backgroundColor = useThemeColor({ light, dark }, bg);
+    const shadowColor = useThemeColor({ light, dark }, 'shadow');
 
     return (
-      <NativeSafeAreaView {...otherProps} style={[defaultStyle.view, style, { backgroundColor }]} />
+      <NativeSafeAreaView
+        {...otherProps}
+        style={[defaultStyle.view, style, { backgroundColor, shadowColor }]}
+      />
     );
   },
 );
