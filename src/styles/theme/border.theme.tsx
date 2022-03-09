@@ -1,8 +1,10 @@
 export const borderTheme = {
   light: {
-    border: '#BBBBBB30',
+    border1: '#BBBBBB30',
+    border2: '#BBBBBB',
   },
   dark: {
-    border: '#7D8B9C30',
+    border1: '#7D8B9C30',
+    border2: '#7D8B9C',
   },
 } as const;

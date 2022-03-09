@@ -17,7 +17,9 @@ export const Card: FC<CardProps> = memo(
   ({
     // theme
     bg = 'bg1',
-    border = 'border',
+    lightBg,
+    darkBg,
+    border = 'border1',
     shadow = 'shadow',
     // ViewProps
     isBorder,
@@ -33,7 +35,7 @@ export const Card: FC<CardProps> = memo(
       <Bounceable viewStyle={[defaultStyle.bounceable_view, outlineStyle]} onPress={onPress}>
         <TouchableOpacity
           style={[defaultStyle.touchable_opacity_view, viewStyle, isBorder && { borderWidth: 2 }]}
-          {...{ bg, border, shadow, activeOpacity, otherProps }}
+          {...{ bg, lightBg, darkBg, border, shadow, activeOpacity, otherProps }}
         >
           {children}
         </TouchableOpacity>

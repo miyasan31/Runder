@@ -17,7 +17,7 @@ export const TextInput: FC<TextInputProps> = memo(
     color: fontColor = 'color1',
     lightColor,
     darkColor,
-    border = 'border',
+    border = 'border1',
     lightBorder,
     darkBorder,
     shadow = 'shadow',

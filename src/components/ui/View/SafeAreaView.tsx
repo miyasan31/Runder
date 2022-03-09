@@ -15,7 +15,7 @@ export const SafeAreaView: FC<SafeAreaViewProps> = memo(
     bg = 'bg0',
     lightBg,
     darkBg,
-    border = 'border',
+    border = 'border1',
     lightBorder,
     darkBorder,
     shadow = 'shadow',

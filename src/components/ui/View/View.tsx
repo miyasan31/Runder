@@ -13,7 +13,7 @@ export const View: FC<ViewProps> = memo(
     bg = 'bg0',
     lightBg,
     darkBg,
-    border = 'border',
+    border = 'border1',
     lightBorder,
     darkBorder,
     shadow = 'shadow',

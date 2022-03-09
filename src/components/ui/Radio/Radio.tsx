@@ -24,7 +24,7 @@ export const Radio = <T,>({
   }, [onChangeValue, value]);
 
   return (
-    <TouchableOpacity activeOpacity={1} style={[style.ring]} onPress={onPress}>
+    <TouchableOpacity activeOpacity={1} style={[style.ring]} onPress={onPress} border="border2">
       {value === activeValue ? <View style={style.active} {...{ lightBg, darkBg, bg }} /> : null}
     </TouchableOpacity>
   );

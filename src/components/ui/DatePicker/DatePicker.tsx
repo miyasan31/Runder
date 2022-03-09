@@ -21,7 +21,7 @@ export const DatePicker: FC<TextInputProps> = ({
   color = 'color1',
   lightColor,
   darkColor,
-  border = 'border',
+  border = 'border1',
   lightBorder,
   darkBorder,
   shadow = 'shadow',
