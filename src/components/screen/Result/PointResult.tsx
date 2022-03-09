@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import React from 'react';
 import { FlatList } from 'react-native';
 
-import { ResultList } from '~/components/model/Tournament/ResultList';
+import { ResultList } from '~/components/model/tournament/ResultList';
 import { MonthPagination } from '~/components/ui/MonthPagination';
 import { flatListStyle } from '~/styles';
 

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Dimensions, FlatList, StyleSheet } from 'react-native';
 import MapView, { Polyline } from 'react-native-maps';
 
-import { MyRecordTableBody } from '~/components/model/Record/MyRecordTableBody';
+import { MyRecordTableBody } from '~/components/model/record/MyRecordTableBody';
 import { TableHead } from '~/components/ui/Table';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';

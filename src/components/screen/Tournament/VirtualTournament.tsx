@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import React from 'react';
 import { FlatList } from 'react-native';
 
-import { TournamentCard } from '~/components/model/Tournament/TournamentCard';
+import { TournamentCard } from '~/components/model/tournament/TournamentCard';
 import { flatListStyle } from '~/styles';
 
 import type { TournamentScreenProps } from './ScreenProps';

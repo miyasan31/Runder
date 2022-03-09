@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import React from 'react';
 import { FlatList } from 'react-native';
 
-import { ChallengeCard } from '~/components/model/Tournament/ChallengeCard';
+import { ChallengeCard } from '~/components/model/tournament/ChallengeCard';
 import { flatListStyle } from '~/styles';
 
 import type { TournamentScreenProps } from './ScreenProps';

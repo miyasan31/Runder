@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
-import { PointTableBody } from '~/components/model/Point/PointTableBody';
+import { PointTableBody } from '~/components/model/point/PointTableBody';
 import { TableHead } from '~/components/ui/Table';
 import { View } from '~/components/ui/View';
 import { flatListStyle } from '~/styles';
