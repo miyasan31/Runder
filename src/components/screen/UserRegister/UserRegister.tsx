@@ -10,7 +10,7 @@ import { DatePicker } from '~/components/ui/DatePicker';
 import { Radio } from '~/components/ui/Radio';
 import { Text } from '~/components/ui/Text';
 import { TextInput } from '~/components/ui/TextInput';
-import { BounceableView, View } from '~/components/ui/View';
+import { Bounceable, View } from '~/components/ui/View';
 import { sleep } from '~/functions/sleep';
 import { updateSession } from '~/stores/session';
 import { supabaseClient } from '~/utils/supabase';
@@ -105,7 +105,7 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
       <Text style={style.from_label}>選択してください</Text>
       <View style={style.align_horizontal}>
         {radio_group.map((radio) => (
-          <BounceableView
+          <Bounceable
             key={radio.active}
             bg="bg1"
             viewStyle={[style.bounceable_view]}
@@ -113,7 +113,7 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
           >
             <Radio value={radio.active} activeValue={sex} />
             <Text style={style.radio_label}>{radio.label}</Text>
-          </BounceableView>
+          </Bounceable>
         ))}
       </View>
 

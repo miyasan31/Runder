@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import React, { memo, useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { BounceableView } from '~/components/ui/View';
+import { Bounceable } from '~/components/ui/View';
 import { useThemeColor } from '~/hooks/useThemeColor';
 
 type Props = {
@@ -20,13 +20,13 @@ export const GoBackButton: FC<Props> = memo(({ isFloating }) => {
   }, []);
 
   return (
-    <BounceableView
+    <Bounceable
       viewStyle={[style.bounceable_view, isFloating && style.float]}
       activeScale={0.9}
       onPress={onGoBack}
     >
       <MaterialIcons name="keyboard-arrow-left" size={40} color={icon} />
-    </BounceableView>
+    </Bounceable>
   );
 });
 

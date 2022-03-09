@@ -12,7 +12,7 @@ type BounceableViewProps = Omit<BounceableProps, 'contentContainerStyle'> &
     children: ReactNode;
   };
 
-export const BounceableView: FC<BounceableViewProps> = memo(
+export const Bounceable: FC<BounceableViewProps> = memo(
   ({
     // theme
     bg = 'bg0',

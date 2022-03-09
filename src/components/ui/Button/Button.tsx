@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { Text } from '~/components/ui/Text';
-import { BounceableView, TouchableOpacity } from '~/components/ui/View';
+import { Bounceable, TouchableOpacity } from '~/components/ui/View';
 import { useThemeColor } from '~/hooks/useThemeColor';
 import type { StyleProps } from '~/types/style';
 
@@ -43,7 +43,7 @@ export const Button: FC<ButtonProps> = memo(
     const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
 
     return (
-      <BounceableView viewStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
+      <Bounceable viewStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
         <TouchableOpacity
           // eslint-disable-next-line react-native/no-inline-styles
           style={[defaultStyle.view, viewStyle, { borderWidth: 1, borderColor }]}
@@ -55,7 +55,7 @@ export const Button: FC<ButtonProps> = memo(
           </Text>
           {rightIcon}
         </TouchableOpacity>
-      </BounceableView>
+      </Bounceable>
     );
   },
 );

@@ -2,7 +2,7 @@ import type { FC, ReactNode } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { BounceableView, TouchableOpacity } from '~/components/ui/View';
+import { Bounceable, TouchableOpacity } from '~/components/ui/View';
 import { useThemeColor } from '~/hooks/useThemeColor';
 import type { StyleProps } from '~/types/style';
 
@@ -31,7 +31,7 @@ export const Card: FC<CardProps> = memo(
     const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
 
     return (
-      <BounceableView viewStyle={[defaultStyle.bounceable_view, outlineStyle]} onPress={onPress}>
+      <Bounceable viewStyle={[defaultStyle.bounceable_view, outlineStyle]} onPress={onPress}>
         <TouchableOpacity
           style={[
             defaultStyle.touchable_opacity_view,
@@ -42,7 +42,7 @@ export const Card: FC<CardProps> = memo(
         >
           {children}
         </TouchableOpacity>
-      </BounceableView>
+      </Bounceable>
     );
   },
 );

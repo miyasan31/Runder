@@ -3,7 +3,7 @@ import type { VFC } from 'react';
 import React, { memo, useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { BounceableView } from '~/components/ui/View';
+import { Bounceable } from '~/components/ui/View';
 import { useThemeColor } from '~/hooks/useThemeColor';
 import type { TournamentScreenProps, TournamentStackParamList } from '~/types';
 
@@ -19,9 +19,9 @@ export const PrevButton: VFC<PrevProps> = memo(({ screen, navigation }) => {
   }, [navigation, screen]);
 
   return (
-    <BounceableView activeScale={0.9} viewStyle={style.bounceable_view} onPress={onPrevScreen}>
+    <Bounceable activeScale={0.9} viewStyle={style.bounceable_view} onPress={onPrevScreen}>
       <MaterialIcons name="keyboard-arrow-left" size={40} color={icon} />
-    </BounceableView>
+    </Bounceable>
   );
 });
 

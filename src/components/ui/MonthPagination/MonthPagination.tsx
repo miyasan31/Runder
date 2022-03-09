@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native';
 
 import { AntDesignIcon } from '~/components/ui/Icon';
 import { Text } from '~/components/ui/Text';
-import { BounceableView, View } from '~/components/ui/View';
+import { Bounceable, View } from '~/components/ui/View';
 
 import { usePagination } from './usePagination';
 
@@ -21,13 +21,13 @@ export const MonthPagination: FC = () => {
       </View>
 
       <View style={style.pagination_box}>
-        <BounceableView viewStyle={style.icon_button} onPress={onPrevMonth}>
+        <Bounceable viewStyle={style.icon_button} onPress={onPrevMonth}>
           <AntDesignIcon name="caretleft" />
-        </BounceableView>
+        </Bounceable>
 
-        <BounceableView viewStyle={style.icon_button} onPress={onNextMonth}>
+        <Bounceable viewStyle={style.icon_button} onPress={onNextMonth}>
           <AntDesignIcon name="caretright" />
-        </BounceableView>
+        </Bounceable>
       </View>
     </View>
   );

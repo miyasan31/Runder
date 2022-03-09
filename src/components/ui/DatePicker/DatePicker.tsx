@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 import { Text } from '~/components/ui/Text';
-import { BounceableView } from '~/components/ui/View';
+import { Bounceable } from '~/components/ui/View';
 import { useThemeColor } from '~/hooks/useThemeColor';
 import type { TextInputStyleProps } from '~/types/style';
 
@@ -51,7 +51,7 @@ export const DatePicker: FC<TextInputProps> = ({
 
   return (
     <>
-      <BounceableView
+      <Bounceable
         // eslint-disable-next-line react-native/no-inline-styles
         viewStyle={[defaultStyle.view, viewStyle, { borderWidth: 1, borderColor }]}
         {...{ lightBg, darkBg, bg }}
@@ -59,7 +59,7 @@ export const DatePicker: FC<TextInputProps> = ({
         activeScale={0.97}
       >
         <Text style={[defaultStyle.text, textStyle, { color }]}>{date}</Text>
-      </BounceableView>
+      </Bounceable>
 
       <DateTimePickerModal
         isVisible={isVisible}
