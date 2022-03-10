@@ -3,6 +3,7 @@ import React from 'react';
 import { FlatList, Image, StyleSheet } from 'react-native';
 
 import { RecordTableBody } from '~/components/model/record/RecordTableBody';
+import { SexAndAgeHierarchySelect } from '~/components/ui/SexAndAgeHierarchySelect';
 import { TableHead } from '~/components/ui/Table';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
@@ -79,6 +80,9 @@ export const ResultDetail: FC<ResultDetailScreenProps> = () => {
             <Text style={style.section_title} color="color1">
               ランキング・ポイント
             </Text>
+
+            <SexAndAgeHierarchySelect />
+
             <TableHead leftTitle="大会" rightTitle="記録" />
           </View>
         </>
