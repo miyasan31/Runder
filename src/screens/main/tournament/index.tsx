@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import React from 'react';
 
 import { PrevButton } from '~/components/ui/Button';
+import { useTheme } from '~/hooks/useTheme';
 import type { TournamentStackParamList } from '~/types';
 
 import { ChallengeDetailScreen } from './challenge_detail.screen';
@@ -13,8 +14,13 @@ import { TournamentDetailScreen } from './tournament_detail.screen';
 const Tournament = createNativeStackNavigator<TournamentStackParamList>();
 
 export const TournamentNavigator: FC = () => {
+  const backgroundColor = useTheme({}, 'bg1');
+
   return (
-    <Tournament.Navigator initialRouteName="TournamentScreen">
+    <Tournament.Navigator
+      initialRouteName="TournamentScreen"
+      screenOptions={{ headerStyle: { backgroundColor } }}
+    >
       <Tournament.Screen
         name="TournamentScreen"
         component={TournamentScreen}

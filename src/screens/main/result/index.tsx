@@ -4,6 +4,7 @@ import React from 'react';
 
 import { PrevButton } from '~/components/ui/Button';
 import { Text } from '~/components/ui/Text';
+import { useTheme } from '~/hooks/useTheme';
 import type { ResultStackParamList } from '~/types';
 
 import { ResultScreen } from './result.screen';
@@ -17,12 +18,15 @@ const HeaderTitle: FC<{ title: string }> = ({ title }) => (
 const Result = createNativeStackNavigator<ResultStackParamList>();
 
 export const ResultNavigator: FC = () => {
+  const backgroundColor = useTheme({}, 'bg1');
+
   return (
     <Result.Navigator
       initialRouteName="ResultScreen"
       screenOptions={{
         headerTitleAlign: 'left',
         headerShadowVisible: false,
+        headerStyle: { backgroundColor },
         headerTitleStyle: {
           fontSize: 18,
           fontWeight: '600',
