@@ -13,6 +13,7 @@ import { TextInput } from '~/components/ui/TextInput';
 import { Bounceable, View } from '~/components/ui/View';
 import { sleep } from '~/functions/sleep';
 import { updateSession } from '~/stores/session';
+import { layoutStyle } from '~/styles';
 import { supabaseClient } from '~/utils/supabase';
 import { toastKit } from '~/utils/toastKit';
 
@@ -93,7 +94,7 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
   }, []);
 
   return (
-    <>
+    <View style={layoutStyle.auth}>
       <Text style={style.screen_title}>プロフィールを登録</Text>
 
       <Text style={style.from_label}>ユーザー名</Text>
@@ -124,7 +125,7 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
         outlineStyle={style.button_outline}
         onPress={onRegisterUserInfo}
       />
-    </>
+    </View>
   );
 };
 

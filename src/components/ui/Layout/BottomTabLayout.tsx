@@ -1,18 +1,19 @@
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import type { FC, ReactNode } from 'react';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { SafeAreaView, View } from '~/components/ui/View';
+import { SafeAreaView } from '~/components/ui/View';
 import type { CustomViewStyleProps } from '~/types/style';
+
+import type { SafeArea } from './edgesLayout';
+import { edgesLayout } from './edgesLayout';
 
 type BottomTabLayoutProps = CustomViewStyleProps & {
   children: ReactNode;
   isCenter?: true;
-  layout: 'top-horizontal' | 'horizontal' | 'top-horizontal';
+  safeArea: SafeArea;
 };
-
-type Edges = ('top' | 'bottom' | 'left' | 'right')[];
 
 export const BottomTabLayout: FC<BottomTabLayoutProps> = ({
   // theme
@@ -21,36 +22,24 @@ export const BottomTabLayout: FC<BottomTabLayoutProps> = ({
   darkBg,
   // BottomTabLayoutProps
   children,
-  layout,
+  safeArea,
   isCenter,
   viewStyle,
 }) => {
   const tabBarHeight = useBottomTabBarHeight();
-
-  const edges: Edges = useMemo(() => {
-    switch (layout) {
-      case 'top-horizontal':
-        return ['top', 'left', 'right'];
-      case 'horizontal':
-        return ['left', 'right'];
-      default:
-        return ['top', 'bottom', 'left', 'right'];
-    }
-  }, [layout]);
+  const edges = edgesLayout(safeArea);
 
   return (
-    <SafeAreaView {...{ edges, lightBg, darkBg, bg, viewStyle }}>
-      <View style={[style.root, isCenter && style.center, { marginBottom: tabBarHeight || 0 }]}>
-        {children}
-      </View>
+    <SafeAreaView
+      {...{ edges, lightBg, darkBg, bg, viewStyle }}
+      style={[isCenter && style.center, { marginBottom: tabBarHeight || 0 }]}
+    >
+      {children}
     </SafeAreaView>
   );
 };
 
 const style = StyleSheet.create({
-  root: {
-    flex: 1,
-  },
   center: {
     justifyContent: 'center',
     alignItems: 'center',

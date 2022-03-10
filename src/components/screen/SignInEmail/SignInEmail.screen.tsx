@@ -13,7 +13,7 @@ export const SignInEmailScreen: FC<SignInEmailScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
       <KeyboardAvoiding>
-        <FullScreenLayout bg="bg2" isCenter>
+        <FullScreenLayout isCenter>
           <GoBackButton isFloating />
           <SignInEmail {...props} />
         </FullScreenLayout>

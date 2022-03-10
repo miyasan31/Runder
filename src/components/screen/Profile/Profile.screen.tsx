@@ -10,7 +10,7 @@ import type { ProfileScreenProps } from './ScreenProps';
 export const ProfileScreen: FC<ProfileScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <BottomTabLayout layout="top-horizontal">
+      <BottomTabLayout safeArea="top-horizontal">
         <Profile {...props} />
       </BottomTabLayout>
     </LayoutErrorBoundary>

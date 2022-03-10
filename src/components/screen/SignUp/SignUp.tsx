@@ -7,8 +7,10 @@ import { Divider } from '~/components/ui/Divider';
 import { SignEmailForm } from '~/components/ui/Form';
 import { Apple, Google } from '~/components/ui/Icon';
 import { Text } from '~/components/ui/Text';
+import { View } from '~/components/ui/View';
 import { AUTH_PROVIDER_KEY } from '~/constants/ENV';
 import { sleep } from '~/functions/sleep';
+import { layoutStyle } from '~/styles';
 import { saveSecureStore } from '~/utils/secureStore';
 import { onSignInGoogle, supabaseClient } from '~/utils/supabase';
 import { toastKit } from '~/utils/toastKit';
@@ -44,7 +46,7 @@ export const SignUp: FC<SignUpScreenProps> = ({ navigation }) => {
   );
 
   return (
-    <>
+    <View style={layoutStyle.auth}>
       <Text style={style.screen_title}>メールアドレスでサインアップ</Text>
 
       <SignEmailForm onSignEmail={onSignUpEmail} />
@@ -70,7 +72,7 @@ export const SignUp: FC<SignUpScreenProps> = ({ navigation }) => {
         lightBg="#333333"
         lightColor="#FFF"
       />
-    </>
+    </View>
   );
 };
 

@@ -8,6 +8,7 @@ import { View } from '~/components/ui/View';
 import { AUTH_PROVIDER_KEY } from '~/constants/ENV';
 import { sleep } from '~/functions/sleep';
 import { updateSession } from '~/stores/session';
+import { layoutStyle } from '~/styles';
 import { saveSecureStore } from '~/utils/secureStore';
 import { supabaseClient } from '~/utils/supabase';
 import { toastKit } from '~/utils/toastKit';
@@ -37,7 +38,7 @@ export const SignInEmail: FC<SignInEmailScreenProps> = ({ navigation }) => {
   }, [navigation]);
 
   return (
-    <>
+    <View style={layoutStyle.auth}>
       <Text style={style.screen_title}>メールアドレスでサインイン</Text>
 
       <SignEmailForm onSignEmail={onSignInEmail} />
@@ -46,7 +47,7 @@ export const SignInEmail: FC<SignInEmailScreenProps> = ({ navigation }) => {
         <Text style={style.register_text}>新規登録の場合は</Text>
         <NativeButton title="こちら" onPress={onSignUpNavigate} />
       </View>
-    </>
+    </View>
   );
 };
 

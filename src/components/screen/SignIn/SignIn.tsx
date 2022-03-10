@@ -6,6 +6,7 @@ import { Button } from '~/components/ui/Button';
 import { Apple, Google, Mail, Runder } from '~/components/ui/Icon';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import { layoutStyle } from '~/styles';
 import { onSignInGoogle, onSignOut } from '~/utils/supabase';
 
 import type { SignInScreenProps } from './ScreenProps';
@@ -20,7 +21,7 @@ export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
   }, [navigation]);
 
   return (
-    <>
+    <View style={layoutStyle.auth}>
       <View style={style.icon_box}>
         <Runder />
       </View>
@@ -64,7 +65,7 @@ export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
         <Text style={style.register_text}>新規登録の場合は</Text>
         <NativeButton title="こちら" onPress={onSignUpNavigate} />
       </View>
-    </>
+    </View>
   );
 };
 

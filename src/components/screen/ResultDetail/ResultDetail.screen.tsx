@@ -10,7 +10,7 @@ import type { ResultDetailScreenProps } from './ScreenProps';
 export const ResultDetailScreen: FC<ResultDetailScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <BottomTabLayout layout="horizontal">
+      <BottomTabLayout safeArea="horizontal">
         <ResultDetail {...props} />
       </BottomTabLayout>
     </LayoutErrorBoundary>

@@ -10,7 +10,7 @@ import { TournamentDetail } from './TournamentDetail';
 export const TournamentDetailScene: FC<ChallengeDetailScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <BottomTabLayout layout="horizontal">
+      <BottomTabLayout safeArea="horizontal">
         <TournamentDetail {...props} />
       </BottomTabLayout>
     </LayoutErrorBoundary>

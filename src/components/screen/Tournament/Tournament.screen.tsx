@@ -19,7 +19,7 @@ export const TournamentScreen: FC<TournamentScreenProps> = (props) => {
   const { layout, index, onIndexChange } = useTabView();
 
   return (
-    <BottomTabLayout layout="top-horizontal">
+    <BottomTabLayout safeArea="top-horizontal">
       <TabView
         renderTabBar={TabBar}
         navigationState={{ index, routes }}

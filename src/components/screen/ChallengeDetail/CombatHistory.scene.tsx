@@ -10,7 +10,7 @@ import type { ChallengeDetailScreenProps } from './ScreenProps';
 export const CombatHistoryScene: FC<ChallengeDetailScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <BottomTabLayout layout="horizontal">
+      <BottomTabLayout safeArea="horizontal">
         <CombatHistory {...props} />
       </BottomTabLayout>
     </LayoutErrorBoundary>
