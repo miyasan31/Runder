@@ -1,0 +1,1 @@
+export { ResultTableBody } from './ResultTableBody';

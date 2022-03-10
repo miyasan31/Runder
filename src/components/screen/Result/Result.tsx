@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
-import { ResultList } from '~/components/model/tournament/ResultList';
+import { ResultTableBody } from '~/components/model/tournament/ResultTableBody';
 import { MonthPagination } from '~/components/ui/MonthPagination';
 import { TableHead } from '~/components/ui/Table';
 import { View } from '~/components/ui/View';
@@ -78,7 +78,7 @@ export const Result: FC<ResultScreenProps> = (props) => {
         style={flatListStyle.list}
         keyExtractor={(item, _) => String(item.id)}
         renderItem={({ item }: { item: Tournament }) => {
-          return <ResultList {...item} {...props} />;
+          return <ResultTableBody {...item} {...props} />;
         }}
         ListFooterComponent={() => <View style={flatListStyle.bottom_space_large} />}
       />

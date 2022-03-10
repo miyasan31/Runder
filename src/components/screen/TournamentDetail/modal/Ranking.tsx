@@ -3,6 +3,7 @@ import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
 import { RecordTableBody } from '~/components/model/record/RecordTableBody';
+import { SexAndAgeHierarchySelect } from '~/components/ui/SexAndAgeHierarchySelect';
 import { TableHead } from '~/components/ui/Table';
 import { View } from '~/components/ui/View';
 import { flatListStyle } from '~/styles';
@@ -19,6 +20,8 @@ export const Ranking: FC = () => {
   return (
     <>
       <View style={style.th_box}>
+        <SexAndAgeHierarchySelect />
+
         <TableHead leftTitle="順位" rightTitle="記録" />
       </View>
 

@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import type { FC, ReactNode } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
@@ -8,7 +7,6 @@ import type { CardStyleProps } from '~/types/style';
 
 export type CardProps = CardStyleProps & {
   children: ReactNode;
-  isBorder?: true;
   activeOpacity?: number;
   onPress?: () => void;
 };
@@ -22,7 +20,6 @@ export const List: FC<CardProps> = memo(
     border = 'border1',
     shadow = 'shadow1',
     // ViewProps
-    isBorder,
     outlineStyle,
     // TouchableOpacityProps
     activeOpacity = 0.9,
@@ -33,7 +30,7 @@ export const List: FC<CardProps> = memo(
   }) => {
     return (
       <TouchableOpacity
-        style={[outlineStyle, isBorder && { borderBottomWidth: 1 }]}
+        style={[outlineStyle]}
         {...{ bg, lightBg, darkBg, border, shadow, activeOpacity, otherProps }}
         onPress={onPress}
       >

@@ -68,8 +68,8 @@ export const CombatHistory: FC<ChallengeDetailScreenProps> = () => {
         data={history_data}
         style={flatListStyle.list}
         keyExtractor={(item, _) => String(item.date)}
-        renderItem={({ item, index }) => {
-          return <MyRecordTableBody {...item} isLastChild={history_data.length - 1 === index} />;
+        renderItem={({ item }) => {
+          return <MyRecordTableBody {...item} />;
         }}
         ListFooterComponent={() => <View style={flatListStyle.bottom_space_medium} />}
       />

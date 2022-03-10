@@ -23,12 +23,13 @@ export const RecordTableBody: FC<RecordData> = ({
   user: { name, icon: _icon },
 }) => {
   return (
-    <List viewStyle={[style.root]}>
+    <List viewStyle={style.root}>
       <View style={style.td_left}>
         <Text style={style.td_rank}>{rank}位</Text>
         <Image source={require('assets/develop/lilnasx.png')} style={style.td_user_icon} />
         <Text style={style.td_user_name}>{name}</Text>
       </View>
+
       {point ? (
         <>
           <Text style={style.td_center}>{record}</Text>
@@ -46,6 +47,7 @@ const style = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     paddingHorizontal: '4%',
+    paddingVertical: '3%',
   },
 
   td_left: {
