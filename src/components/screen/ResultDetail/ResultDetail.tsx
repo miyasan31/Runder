@@ -12,29 +12,23 @@ import { flatListStyle } from '~/styles';
 import type { ResultDetailScreenProps } from './ScreenProps';
 
 const data = [
-  { rank: 1, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-  { rank: 2, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-  { rank: 3, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-  { rank: 4, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-  { rank: 5, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-  { rank: 6, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-  { rank: 7, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-  { rank: 8, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-  { rank: 9, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-  { rank: 100, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
+  { rank: 1, record: '10:00.00', point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 2, record: '10:00.00', point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 3, record: '10:00.00', point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 4, record: '10:00.00', point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 5, record: '10:00.00', point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 6, record: '10:00.00', point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 7, record: '10:00.00', point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 8, record: '10:00.00', point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 9, record: '10:00.00', point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 100, record: '10:00.00', point: 100, user: { name: 'ユーザー1', icon: '' } },
 ];
 
 export const ResultDetail: FC<ResultDetailScreenProps> = () => {
   return (
     <FlatList
       data={data}
-      style={flatListStyle.bottom_space}
       keyExtractor={(item, _) => String(item.rank)}
-      renderItem={({ item }) => (
-        <View style={style.box}>
-          <RecordTableBody {...item} />
-        </View>
-      )}
       ListHeaderComponent={() => (
         <>
           <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
@@ -55,38 +49,35 @@ export const ResultDetail: FC<ResultDetailScreenProps> = () => {
           </View>
 
           <View style={style.box}>
-            <Text style={style.section_title} color="color1">
+            <Text style={style.section_title} color="color2">
               あなたの結果
             </Text>
 
             <View style={style.align_horizontal}>
-              <Text style={style.info_label_left} color="color2">
-                順位
+              <Text style={style.info_result_left} color="color1">
+                10th
               </Text>
-              <Text style={style.info_label_right} color="color2">
-                ベストタイム
-              </Text>
-            </View>
-
-            <View style={style.align_horizontal}>
-              <Text style={style.info_result_left} color="primary">
-                10{'位'}
-              </Text>
-              <Text style={style.info_result_right} color="primary">
+              <Text style={style.info_result_right} color="color1">
                 10:00.00
               </Text>
             </View>
 
-            <Text style={style.section_title} color="color1">
+            <Text style={style.section_title} color="color2">
               ランキング・ポイント
             </Text>
 
             <SexAndAgeHierarchySelect />
 
-            <TableHead leftTitle="大会" rightTitle="記録" />
+            <TableHead leftTitle="順位" centerTile="記録" rightTitle="ポイント" />
           </View>
         </>
       )}
+      renderItem={({ item }) => (
+        <View style={style.box}>
+          <RecordTableBody {...item} />
+        </View>
+      )}
+      ListFooterComponent={() => <View style={flatListStyle.bottom_space_large} />}
     />
   );
 };
@@ -96,7 +87,7 @@ const style = StyleSheet.create({
     paddingHorizontal: '3%',
   },
   section_title: {
-    marginTop: '6%',
+    marginTop: '8%',
     marginBottom: '3%',
 
     fontSize: 20,
@@ -104,7 +95,7 @@ const style = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 160,
+    height: 150,
   },
   float_text_box: {
     position: 'absolute',
@@ -113,53 +104,45 @@ const style = StyleSheet.create({
 
     justifyContent: 'center',
     padding: '6%',
-    height: 160,
+    height: 150,
   },
   tournament_season: {
     marginBottom: '1%',
 
     fontWeight: '600',
+    fontStyle: 'italic',
   },
   tournament_name: {
     marginTop: '1%',
     marginBottom: '1%',
 
     fontWeight: '600',
-    fontSize: 24,
+    fontSize: 18,
+    fontStyle: 'italic',
   },
   tournament_distance: {
-    fontWeight: '800',
-    fontSize: 26,
+    fontWeight: '600',
+    fontSize: 22,
+    fontStyle: 'italic',
   },
-  //
   align_horizontal: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: '2%',
-    paddingHorizontal: '2%',
-  },
-  info_label_left: {
-    width: '50%',
-
-    fontSize: 16,
-  },
-  info_label_right: {
-    width: '50%',
-
-    fontSize: 16,
-    textAlign: 'right',
+    marginTop: '2%',
   },
   info_result_left: {
-    width: '50%',
+    flex: 1,
 
-    fontSize: 34,
+    fontSize: 38,
     fontWeight: '800',
+    fontStyle: 'italic',
   },
   info_result_right: {
-    width: '50%',
+    flex: 2,
 
-    fontSize: 34,
+    fontSize: 38,
     fontWeight: '800',
+    fontStyle: 'italic',
     textAlign: 'right',
   },
 });

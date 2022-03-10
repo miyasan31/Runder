@@ -54,19 +54,22 @@ export const SexAndAgeHierarchySelect: FC = () => {
   return (
     <View>
       <View style={style.sex_button_group}>
-        {sex_button_group.map(({ index, label }) => (
-          <Button
-            key={index}
-            label={label}
-            isBorder
-            bg={filter.sex === index ? 'primary' : 'bg2'}
-            color={filter.sex === index ? 'white' : 'color1'}
-            textStyle={style.sex_button_text}
-            viewStyle={style.sex_button_bg}
-            outlineStyle={style.sex_button_outline}
-            onPress={() => dispatch({ type: 'SELECT_SEX', value: index })}
-          />
-        ))}
+        {sex_button_group.map(({ index, label }) => {
+          const isActive = filter.sex === index;
+          return (
+            <Button
+              key={index}
+              label={label}
+              isBorder
+              bg={isActive ? 'primary' : 'bg2'}
+              color={isActive ? 'white' : 'color1'}
+              outlineStyle={style.sex_button_outline}
+              viewStyle={style.sex_button_bg}
+              textStyle={[style.sex_button_text, isActive && style.active_button_text]}
+              onPress={() => dispatch({ type: 'SELECT_SEX', value: index })}
+            />
+          );
+        })}
       </View>
 
       <FlatList
@@ -76,16 +79,17 @@ export const SexAndAgeHierarchySelect: FC = () => {
         keyExtractor={(item) => String(item.index)}
         horizontal={true}
         renderItem={({ item: { index, label } }) => {
+          const isActive = filter.ageHierarchy === index;
           return (
             <Button
               key={index}
               label={label}
               isBorder
-              bg={filter.ageHierarchy === index ? 'primary' : 'bg2'}
-              color={filter.ageHierarchy === index ? 'white' : 'color1'}
-              textStyle={style.age_button_text}
-              viewStyle={style.age_button_bg}
+              bg={isActive ? 'primary' : 'bg2'}
+              color={isActive ? 'white' : 'color1'}
               outlineStyle={style.age_button_outline}
+              viewStyle={style.age_button_bg}
+              textStyle={[style.age_button_text, isActive && style.active_button_text]}
               onPress={() => dispatch({ type: 'SELECT_AGE_HIERARCHY', value: index })}
             />
           );
@@ -99,31 +103,34 @@ const style = StyleSheet.create({
   sex_button_group: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: '2%',
-    marginBottom: '1%',
+    marginVertical: '2%',
   },
   sex_button_outline: {
     width: '48%',
   },
   sex_button_bg: {
-    paddingVertical: 8,
+    paddingVertical: '4%',
   },
   sex_button_text: {
     fontSize: 14,
+    fontWeight: '400',
   },
 
   age_button_group: {
-    marginTop: '1%',
     marginBottom: '4%',
   },
   age_button_outline: {
-    width: 100,
-    marginRight: 15,
+    width: 80,
+    marginRight: 12,
   },
   age_button_bg: {
-    paddingVertical: 6,
+    paddingVertical: '8%',
   },
   age_button_text: {
     fontSize: 14,
+    fontWeight: '400',
+  },
+  active_button_text: {
+    fontWeight: '500',
   },
 });
