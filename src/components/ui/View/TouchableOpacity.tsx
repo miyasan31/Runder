@@ -23,7 +23,6 @@ export const TouchableOpacity: FC<TouchableOpacityProps> = memo(
     style,
     ...otherProps
   }) => {
-    console.info(lightBg, darkBg);
     const backgroundColor = useTheme({ light: lightBg, dark: darkBg }, bg);
     const borderColor = useTheme({ light: lightBorder, dark: darkBorder }, border);
     const shadowColor = useTheme({ light: lightShadow, dark: darkShadow }, shadow);

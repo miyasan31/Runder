@@ -43,7 +43,6 @@ export const Button: FC<ButtonProps> = memo(
     onPress,
     ...otherProps
   }) => {
-    console.info(otherProps);
     return (
       <Bounceable viewStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
         <TouchableOpacity
