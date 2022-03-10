@@ -19,7 +19,15 @@ export const TournamentNavigator: FC = () => {
   return (
     <Tournament.Navigator
       initialRouteName="TournamentScreen"
-      screenOptions={{ headerStyle: { backgroundColor } }}
+      screenOptions={{
+        headerShadowVisible: false,
+        headerStyle: { backgroundColor },
+        headerBackTitleVisible: false,
+        headerTitleStyle: {
+          fontSize: 18,
+          fontWeight: '600',
+        },
+      }}
     >
       <Tournament.Screen
         name="TournamentScreen"
@@ -34,11 +42,6 @@ export const TournamentNavigator: FC = () => {
         component={TournamentDetailScreen}
         options={({ navigation }) => ({
           title: '大会の詳細・スタート',
-          headerTitleAlign: 'left',
-          headerTitleStyle: {
-            fontWeight: '600',
-          },
-          headerBackTitleVisible: false,
           headerLeft: () => {
             const onPrevScreen = () => navigation.goBack();
             return <PrevButton onPress={onPrevScreen} />;
@@ -51,11 +54,6 @@ export const TournamentNavigator: FC = () => {
         component={ChallengeDetailScreen}
         options={({ navigation }) => ({
           title: '大会の詳細・スタート',
-          headerTitleAlign: 'left',
-          headerTitleStyle: {
-            fontWeight: '600',
-          },
-          headerBackTitleVisible: false,
           headerLeft: () => {
             const onPrevScreen = () => navigation.goBack();
             return <PrevButton onPress={onPrevScreen} />;

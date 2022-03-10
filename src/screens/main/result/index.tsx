@@ -12,22 +12,27 @@ import { ResultDetailScreen } from './result_detail.screen';
 
 const HeaderTitle: FC<{ title: string }> = ({ title }) => (
   // eslint-disable-next-line react-native/no-inline-styles
-  <Text style={{ fontSize: 22, fontWeight: '600' }}>{title}</Text>
+  <Text style={{ fontSize: 20, fontWeight: '600' }}>{title}</Text>
 );
 
 const Result = createNativeStackNavigator<ResultStackParamList>();
 
 export const ResultNavigator: FC = () => {
   const backgroundColor = useTheme({}, 'bg1');
+  // const icon = useTheme({}, 'icon');
+  // const color = useTheme({}, 'color1');
 
   return (
     <Result.Navigator
       initialRouteName="ResultScreen"
       screenOptions={{
-        headerTitleAlign: 'left',
         headerShadowVisible: false,
         headerStyle: { backgroundColor },
+        headerBackTitleVisible: false,
+        // TODO:戻るボタンの変更したが位置変更できないので保留
+        // headerTintColor: icon,
         headerTitleStyle: {
+          // color,
           fontSize: 18,
           fontWeight: '600',
         },
@@ -38,7 +43,6 @@ export const ResultNavigator: FC = () => {
         component={ResultScreen}
         options={() => ({
           title: '',
-          headerLayoutPreset: 'left',
           headerLeft: () => <HeaderTitle title="大会の結果一覧" />,
         })}
       />
@@ -47,8 +51,6 @@ export const ResultNavigator: FC = () => {
         component={ResultDetailScreen}
         options={({ navigation }) => ({
           title: '大会の結果',
-          headerTitleAlign: 'left',
-          headerBackTitleVisible: false,
           headerLeft: () => {
             const onPrevScreen = () => navigation.goBack();
             return <PrevButton onPress={onPrevScreen} />;

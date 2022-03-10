@@ -16,11 +16,22 @@ export const ProfileNavigator: FC = () => {
     <Profile.Navigator
       initialRouteName="ProfileScreen"
       screenOptions={{
-        headerShown: false,
+        headerShadowVisible: false,
         headerStyle: { backgroundColor },
+        headerBackTitleVisible: false,
+        headerTitleStyle: {
+          fontSize: 18,
+          fontWeight: '600',
+        },
       }}
     >
-      <Profile.Screen name="ProfileScreen" component={ProfileScreen} options={() => ({})} />
+      <Profile.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
+        options={() => ({
+          headerShown: false,
+        })}
+      />
     </Profile.Navigator>
   );
 };

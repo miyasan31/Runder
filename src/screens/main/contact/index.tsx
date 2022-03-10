@@ -16,11 +16,22 @@ export const ContactNavigator: FC = () => {
     <Contact.Navigator
       initialRouteName="ContactScreen"
       screenOptions={{
-        headerShown: false,
+        headerShadowVisible: false,
         headerStyle: { backgroundColor },
+        headerBackTitleVisible: false,
+        headerTitleStyle: {
+          fontSize: 18,
+          fontWeight: '600',
+        },
       }}
     >
-      <Contact.Screen name="ContactScreen" component={ContactScreen} options={() => ({})} />
+      <Contact.Screen
+        name="ContactScreen"
+        component={ContactScreen}
+        options={() => ({
+          headerShown: false,
+        })}
+      />
     </Contact.Navigator>
   );
 };

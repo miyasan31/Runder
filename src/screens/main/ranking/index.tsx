@@ -16,11 +16,22 @@ export const RankingNavigator: FC = () => {
     <Ranking.Navigator
       initialRouteName="RankingScreen"
       screenOptions={{
-        headerShown: false,
+        headerShadowVisible: false,
         headerStyle: { backgroundColor },
+        headerBackTitleVisible: false,
+        headerTitleStyle: {
+          fontSize: 18,
+          fontWeight: '600',
+        },
       }}
     >
-      <Ranking.Screen name="RankingScreen" component={RankingScreen} options={() => ({})} />
+      <Ranking.Screen
+        name="RankingScreen"
+        component={RankingScreen}
+        options={() => ({
+          headerShown: false,
+        })}
+      />
     </Ranking.Navigator>
   );
 };
