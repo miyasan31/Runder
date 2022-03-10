@@ -80,7 +80,7 @@ export const Result: FC<ResultScreenProps> = (props) => {
         renderItem={({ item }: { item: Tournament }) => {
           return <ResultList {...item} {...props} />;
         }}
-        ListHeaderComponent={<></>}
+        ListFooterComponent={() => <View style={flatListStyle.bottom_space_large} />}
       />
     </>
   );

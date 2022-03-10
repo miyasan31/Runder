@@ -71,6 +71,7 @@ export const CombatHistory: FC<ChallengeDetailScreenProps> = () => {
         renderItem={({ item, index }) => {
           return <MyRecordTableBody {...item} isLastChild={history_data.length - 1 === index} />;
         }}
+        ListFooterComponent={() => <View style={flatListStyle.bottom_space_medium} />}
       />
     </>
   );

@@ -5,6 +5,7 @@ import React from 'react';
 import { FlatList } from 'react-native';
 
 import { ChallengeCard } from '~/components/model/tournament/ChallengeCard';
+import { View } from '~/components/ui/View';
 import { flatListStyle } from '~/styles';
 
 import type { TournamentScreenProps } from './ScreenProps';
@@ -51,6 +52,7 @@ export const ChallengeTournament: FC<TournamentScreenProps> = (props) => {
       renderItem={({ item }: { item: Tournament }) => {
         return <ChallengeCard {...item} {...props} />;
       }}
+      ListFooterComponent={() => <View style={flatListStyle.bottom_space_large} />}
     />
   );
 };

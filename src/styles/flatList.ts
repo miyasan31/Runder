@@ -10,7 +10,10 @@ export const flatListStyle = StyleSheet.create({
     paddingBottom: 150,
     paddingHorizontal: '3%',
   },
-  bottom_space: {
+  bottom_space_large: {
     paddingBottom: 150,
+  },
+  bottom_space_medium: {
+    paddingBottom: 100,
   },
 });
