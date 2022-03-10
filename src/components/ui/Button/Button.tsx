@@ -46,7 +46,7 @@ export const Button: FC<ButtonProps> = memo(
     return (
       <Bounceable viewStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
         <TouchableOpacity
-          style={[defaultStyle.view, viewStyle, isBorder && { borderWidth: 2 }]}
+          style={[defaultStyle.view, viewStyle, isBorder && { borderWidth: 1.2 }]}
           {...{ bg, lightBg, darkBg, border, shadow, activeOpacity, otherProps }}
         >
           {leftIcon}
