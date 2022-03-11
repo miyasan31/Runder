@@ -54,9 +54,10 @@ export const ResultDetail: FC<ResultDetailScreenProps> = () => {
             </Text>
 
             <View style={style.align_horizontal}>
-              <Text style={style.info_result_left} color="color1">
-                10th
-              </Text>
+              <View style={style.info_result_left}>
+                <Text style={style.info_result_rank}>10</Text>
+                <Text style={style.info_result_space}>位</Text>
+              </View>
               <Text style={style.info_result_right} color="color1">
                 10:00.00
               </Text>
@@ -132,10 +133,19 @@ const style = StyleSheet.create({
   },
   info_result_left: {
     flex: 1,
-
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  info_result_rank: {
+    width: 'auto',
     fontSize: 38,
     fontWeight: '800',
     fontStyle: 'italic',
+  },
+  info_result_space: {
+    fontSize: 20,
+    paddingLeft: '3%',
+    marginTop: 10,
   },
   info_result_right: {
     flex: 2,
