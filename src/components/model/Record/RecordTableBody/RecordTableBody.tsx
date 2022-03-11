@@ -61,7 +61,7 @@ const style = StyleSheet.create({
   td_user_icon: {
     height: 32,
     width: 32,
-    marginHorizontal: 5,
+    marginRight: '4%',
     borderRadius: 999,
   },
   td_user_name: {},
