@@ -1,10 +1,12 @@
 /* eslint-disable react/jsx-handler-names */
 import type { FC, Reducer } from 'react';
 import React, { useReducer } from 'react';
+import type { StyleProp } from 'react-native';
 import { FlatList, StyleSheet } from 'react-native';
 
 import { Button } from '~/components/ui/Button';
 import { View } from '~/components/ui/View';
+import type { OutlineStyle } from '~/types/style';
 
 const sex_button_group = [
   { index: 1, label: '男性' },
@@ -48,12 +50,16 @@ const reducerFunc: Reducer<Store, Action> = (state, action) => {
   }
 };
 
-export const SexAndAgeHierarchySelect: FC = () => {
+type Props = {
+  outlineStyle?: StyleProp<OutlineStyle>;
+};
+
+export const SexAndAgeHierarchySelect: FC<Props> = ({ outlineStyle }) => {
   const [filter, dispatch] = useReducer(reducerFunc, initialState);
 
   return (
-    <View>
-      <View style={style.sex_button_group}>
+    <View style={outlineStyle}>
+      <View style={[defaultStyle.sex_button_group]}>
         {sex_button_group.map(({ index, label }) => {
           const isActive = filter.sex === index;
           return (
@@ -63,9 +69,12 @@ export const SexAndAgeHierarchySelect: FC = () => {
               isBorder
               bg={isActive ? 'primary' : 'bg2'}
               color={isActive ? 'white' : 'color1'}
-              outlineStyle={style.sex_button_outline}
-              viewStyle={style.sex_button_bg}
-              textStyle={[style.sex_button_text, isActive && style.active_button_text]}
+              outlineStyle={defaultStyle.sex_button_outline}
+              viewStyle={defaultStyle.sex_button_bg}
+              textStyle={[
+                defaultStyle.sex_button_text,
+                isActive && defaultStyle.active_button_text,
+              ]}
               onPress={() => dispatch({ type: 'SELECT_SEX', value: index })}
             />
           );
@@ -74,7 +83,6 @@ export const SexAndAgeHierarchySelect: FC = () => {
 
       <FlatList
         data={age_button_group}
-        style={style.age_button_group}
         scrollsToTop
         keyExtractor={(item) => String(item.index)}
         horizontal={true}
@@ -87,9 +95,12 @@ export const SexAndAgeHierarchySelect: FC = () => {
               isBorder
               bg={isActive ? 'primary' : 'bg2'}
               color={isActive ? 'white' : 'color1'}
-              outlineStyle={style.age_button_outline}
-              viewStyle={style.age_button_bg}
-              textStyle={[style.age_button_text, isActive && style.active_button_text]}
+              outlineStyle={defaultStyle.age_button_outline}
+              viewStyle={defaultStyle.age_button_bg}
+              textStyle={[
+                defaultStyle.age_button_text,
+                isActive && defaultStyle.active_button_text,
+              ]}
               onPress={() => dispatch({ type: 'SELECT_AGE_HIERARCHY', value: index })}
             />
           );
@@ -99,29 +110,26 @@ export const SexAndAgeHierarchySelect: FC = () => {
   );
 };
 
-const style = StyleSheet.create({
+const defaultStyle = StyleSheet.create({
   sex_button_group: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: '2%',
+    marginBottom: '3%',
   },
   sex_button_outline: {
     width: '48%',
   },
   sex_button_bg: {
-    paddingVertical: '4%',
+    paddingVertical: '5%',
   },
   sex_button_text: {
     fontSize: 14,
     fontWeight: '400',
   },
 
-  age_button_group: {
-    marginBottom: '4%',
-  },
   age_button_outline: {
     width: 80,
-    marginRight: 12,
+    marginRight: 10,
   },
   age_button_bg: {
     paddingVertical: '8%',
@@ -130,7 +138,8 @@ const style = StyleSheet.create({
     fontSize: 14,
     fontWeight: '400',
   },
+
   active_button_text: {
-    fontWeight: '500',
+    fontWeight: '600',
   },
 });

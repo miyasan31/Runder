@@ -1,19 +1,22 @@
 import type { FC } from 'react';
 import React from 'react';
+import type { StyleProp } from 'react-native';
 import { Image, StyleSheet } from 'react-native';
 
 import { List } from '~/components/ui/List';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import type { OutlineStyle } from '~/types/style';
 
 type RecordData = {
   rank: number;
-  record: string;
+  record?: string;
   point?: number;
   user: {
     name: string;
     icon: string;
   };
+  outlineStyle?: StyleProp<OutlineStyle>;
 };
 
 export const RecordTableBody: FC<RecordData> = ({
@@ -21,32 +24,32 @@ export const RecordTableBody: FC<RecordData> = ({
   record,
   point,
   user: { name, icon: _icon },
+  outlineStyle,
 }) => {
   return (
-    <List viewStyle={style.root}>
-      <View style={style.td_left}>
-        <Text style={style.td_rank}>{rank}位</Text>
-        <Image source={require('assets/develop/lilnasx.png')} style={style.td_user_icon} />
-        <Text style={style.td_user_name}>{name}</Text>
+    <List outlineStyle={outlineStyle} viewStyle={[defaultStyle.root]}>
+      <View style={defaultStyle.td_left}>
+        <Text style={defaultStyle.td_rank}>{rank}位</Text>
+        <Image source={require('assets/develop/lilnasx.png')} style={defaultStyle.td_user_icon} />
+        <Text style={defaultStyle.td_user_name}>{name}</Text>
       </View>
 
       {point ? (
         <>
-          <Text style={style.td_center}>{record}</Text>
-          <Text style={style.td_right}>{point}</Text>
+          <Text style={defaultStyle.td_center}>{record}</Text>
+          <Text style={defaultStyle.td_right}>{point}</Text>
         </>
       ) : (
-        <Text style={style.td_right}>{record}</Text>
+        <Text style={defaultStyle.td_right}>{record}</Text>
       )}
     </List>
   );
 };
 
-const style = StyleSheet.create({
+const defaultStyle = StyleSheet.create({
   root: {
     alignItems: 'center',
     flexDirection: 'row',
-    paddingHorizontal: '4%',
     paddingVertical: '3%',
   },
 
