@@ -4,7 +4,6 @@ import { FlatList, StyleSheet } from 'react-native';
 
 import { PointTableBody } from '~/components/model/point/PointTableBody';
 import { TableHead } from '~/components/ui/Table';
-import { View } from '~/components/ui/View';
 import { flatListStyle } from '~/styles';
 
 const data = [
@@ -18,26 +17,23 @@ const data = [
 
 export const Point: FC = () => {
   return (
-    <>
-      <View style={style.th_box}>
-        <TableHead leftTitle="順位" rightTitle="獲得ポイント" />
-      </View>
-
-      <FlatList
-        data={data}
-        style={flatListStyle.list}
-        keyExtractor={(item, _) => String(item.rank)}
-        renderItem={({ item }) => {
-          return <PointTableBody {...item} />;
-        }}
-      />
-    </>
+    <FlatList
+      data={data}
+      style={flatListStyle.list}
+      keyExtractor={(item, _) => String(item.rank)}
+      ListHeaderComponent={() => (
+        <TableHead outlineStyle={style.table_head} leftTitle="順位" rightTitle="獲得ポイント" />
+      )}
+      renderItem={({ item }) => {
+        return <PointTableBody {...item} />;
+      }}
+    />
   );
 };
 
 const style = StyleSheet.create({
-  th_box: {
-    padding: '4%',
-    paddingBottom: '1%',
+  table_head: {
+    marginTop: '4%',
+    marginBottom: '2%',
   },
 });
