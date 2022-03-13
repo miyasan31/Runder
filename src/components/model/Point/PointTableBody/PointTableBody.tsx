@@ -1,9 +1,11 @@
 import type { FC } from 'react';
 import React from 'react';
+import type { StyleProp } from 'react-native';
 import { StyleSheet } from 'react-native';
 
 import { List } from '~/components/ui/List';
 import { Text } from '~/components/ui/Text';
+import type { OutlineStyle } from '~/types/style';
 
 const data = [
   { rank: 1, point: 500 },
@@ -14,15 +16,17 @@ const data = [
   { rank: 100, point: 10 },
 ];
 
-type PointData = typeof data[0];
+type PointData = typeof data[0] & {
+  outlineStyle?: StyleProp<OutlineStyle>;
+};
 
-export const PointTableBody: FC<PointData> = (props) => {
+export const PointTableBody: FC<PointData> = ({ outlineStyle, rank, point }) => {
   return (
-    <List viewStyle={style.root}>
-      <Text style={style.td_rank}>{props.rank === 100 ? 'チャレンジ' : `${props.rank}位`}</Text>
+    <List outlineStyle={outlineStyle} viewStyle={style.root}>
+      <Text style={style.td_rank}>{rank === 100 ? 'チャレンジ' : `${rank}位`}</Text>
 
       <Text style={style.td_point}>
-        {props.point}
+        {point}
         <Text>ポイント</Text>
       </Text>
     </List>
