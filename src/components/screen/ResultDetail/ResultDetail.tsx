@@ -58,7 +58,7 @@ export const ResultDetail: FC<ResultDetailScreenProps> = () => {
                 <Text style={style.info_result_rank}>10</Text>
                 <Text style={style.info_result_space}>位</Text>
               </View>
-              <Text style={style.info_result_right} color="color1">
+              <Text style={style.info_result_record} color="color1">
                 10:00.00
               </Text>
             </View>
@@ -69,15 +69,16 @@ export const ResultDetail: FC<ResultDetailScreenProps> = () => {
 
             <SexAndAgeHierarchySelect />
 
-            <TableHead leftTitle="順位" centerTile="記録" rightTitle="ポイント" />
+            <TableHead
+              outlineStyle={style.table_head}
+              leftTitle="順位"
+              centerTile="記録"
+              rightTitle="ポイント"
+            />
           </View>
         </>
       )}
-      renderItem={({ item }) => (
-        <View style={style.box}>
-          <RecordTableBody {...item} />
-        </View>
-      )}
+      renderItem={({ item }) => <RecordTableBody {...item} outlineStyle={style.list} />}
       ListFooterComponent={() => <View style={flatListStyle.bottom_space_large} />}
     />
   );
@@ -85,74 +86,75 @@ export const ResultDetail: FC<ResultDetailScreenProps> = () => {
 
 const style = StyleSheet.create({
   box: {
-    paddingHorizontal: '3%',
+    paddingHorizontal: '4%',
+  },
+  list: {
+    paddingHorizontal: '6%',
   },
   section_title: {
-    marginTop: '8%',
-    marginBottom: '3%',
-
+    marginVertical: '6%',
     fontSize: 20,
-    fontWeight: '500',
+    fontWeight: '600',
   },
+
   image: {
     width: '100%',
-    height: 150,
+    height: 160,
   },
   float_text_box: {
     position: 'absolute',
     top: 0,
     left: 0,
-
     justifyContent: 'center',
-    padding: '6%',
-    height: 150,
+    height: 160,
+    padding: '4%',
   },
   tournament_season: {
-    marginBottom: '1%',
-
     fontWeight: '600',
     fontStyle: 'italic',
   },
   tournament_name: {
-    marginTop: '1%',
-    marginBottom: '1%',
-
+    fontSize: 20,
     fontWeight: '600',
-    fontSize: 18,
     fontStyle: 'italic',
+    marginVertical: '2%',
   },
   tournament_distance: {
+    fontSize: 20,
     fontWeight: '600',
-    fontSize: 22,
     fontStyle: 'italic',
   },
+
   align_horizontal: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: '2%',
   },
   info_result_left: {
-    flex: 1,
+    width: 'auto',
     flexDirection: 'row',
     alignItems: 'center',
   },
   info_result_rank: {
     width: 'auto',
-    fontSize: 38,
+    fontSize: 42,
     fontWeight: '800',
     fontStyle: 'italic',
   },
-  info_result_space: {
-    fontSize: 20,
-    paddingLeft: '3%',
-    marginTop: 10,
-  },
-  info_result_right: {
-    flex: 2,
-
-    fontSize: 38,
+  info_result_record: {
+    width: 'auto',
+    fontSize: 42,
     fontWeight: '800',
     fontStyle: 'italic',
     textAlign: 'right',
+  },
+  info_result_space: {
+    width: 'auto',
+    marginTop: 14,
+    marginLeft: 4,
+    fontSize: 18,
+  },
+  table_head: {
+    marginTop: '4%',
+    marginBottom: '2%',
   },
 });
