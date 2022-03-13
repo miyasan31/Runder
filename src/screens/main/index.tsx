@@ -1,10 +1,11 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { BlurView } from 'expo-blur';
+// import { BlurView } from 'expo-blur';
 import type { FC } from 'react';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { FeatherIcon } from '~/components/ui/Icon';
+import { FeatherIcon, RunderLogo } from '~/components/ui/Icon';
+import { View } from '~/components/ui/View';
 import { useTheme } from '~/hooks/useTheme';
 import type { MainBottomTabParamList } from '~/types';
 
@@ -19,7 +20,7 @@ const BottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 export const BottomTabNavigator: FC = () => {
   const icon = useTheme({}, 'color2');
   const primary = useTheme({}, 'primary');
-  const backgroundColor = useTheme({}, 'bg1');
+  const backgroundColor = useTheme({}, 'bg4');
 
   return (
     <BottomTab.Navigator
@@ -33,7 +34,7 @@ export const BottomTabNavigator: FC = () => {
           marginTop: 4,
         },
         tabBarStyle: { position: 'absolute', backgroundColor },
-        tabBarBackground: () => <BlurView intensity={10} style={StyleSheet.absoluteFill} />,
+        // tabBarBackground: () => <BlurView intensity={10} style={StyleSheet.absoluteFill} />,
       }}
     >
       <BottomTab.Screen
@@ -56,8 +57,8 @@ export const BottomTabNavigator: FC = () => {
         name="Tournament"
         component={TournamentNavigator}
         options={() => ({
-          title: '大会',
-          tabBarIcon: ({ color }) => <FeatherIcon name="star" color={color} />,
+          title: '',
+          tabBarIcon: () => <BottomTabRunderLogo />,
         })}
       />
       <BottomTab.Screen
@@ -79,3 +80,30 @@ export const BottomTabNavigator: FC = () => {
     </BottomTab.Navigator>
   );
 };
+
+const BottomTabRunderLogo = () => {
+  return (
+    <View style={style.root} bg="bg4">
+      <RunderLogo />
+    </View>
+  );
+};
+
+const style = StyleSheet.create({
+  root: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 40,
+    height: 40,
+    borderRadius: 999,
+    padding: 34,
+    marginTop: 12,
+
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.2,
+    elevation: 1,
+  },
+});
