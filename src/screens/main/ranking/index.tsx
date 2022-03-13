@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { FC } from 'react';
 import React from 'react';
 
+import { HeaderTitle } from '~/components/ui/HeaderTitle';
 import { useTheme } from '~/hooks/useTheme';
 import type { RankingStackParamList } from '~/types';
 
@@ -29,7 +30,8 @@ export const RankingNavigator: FC = () => {
         name="RankingScreen"
         component={RankingScreen}
         options={() => ({
-          headerShown: false,
+          title: '',
+          headerLeft: () => <HeaderTitle title="ランキング" />,
         })}
       />
     </Ranking.Navigator>

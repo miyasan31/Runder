@@ -3,17 +3,12 @@ import type { FC } from 'react';
 import React from 'react';
 
 import { PrevButton } from '~/components/ui/Button';
-import { Text } from '~/components/ui/Text';
+import { HeaderTitle } from '~/components/ui/HeaderTitle';
 import { useTheme } from '~/hooks/useTheme';
 import type { ResultStackParamList } from '~/types';
 
 import { ResultScreen } from './result.screen';
 import { ResultDetailScreen } from './result_detail.screen';
-
-const HeaderTitle: FC<{ title: string }> = ({ title }) => (
-  // eslint-disable-next-line react-native/no-inline-styles
-  <Text style={{ fontSize: 20, fontWeight: '600' }}>{title}</Text>
-);
 
 const Result = createNativeStackNavigator<ResultStackParamList>();
 
