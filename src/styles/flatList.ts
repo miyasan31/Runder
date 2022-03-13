@@ -8,7 +8,7 @@ export const flatListStyle = StyleSheet.create({
   },
   list: {
     paddingBottom: 150,
-    paddingHorizontal: '3%',
+    paddingHorizontal: '4%',
   },
   separator: {
     width: '94%',
