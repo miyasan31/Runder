@@ -128,6 +128,7 @@ export type ResultScreenProps<T extends keyof ResultStackParamList> = CompositeS
 /* profile */
 export type ProfileStackParamList = {
   ProfileScreen: undefined;
+  ProfileEditScreen: undefined;
   Modal: undefined;
 };
 export type ProfileScreenProps<T extends keyof ProfileStackParamList> = CompositeScreenProps<
