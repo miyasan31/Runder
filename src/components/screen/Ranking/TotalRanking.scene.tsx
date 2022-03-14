@@ -1,6 +1,7 @@
 import type { FC } from 'react';
-import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import React, { memo } from 'react';
+import { StyleSheet } from 'react-native';
+import { HFlatList } from 'react-native-head-tab-view';
 
 import { RecordTableBody } from '~/components/model/record/RecordTableBody';
 import { SexAndAgeHierarchySelect } from '~/components/ui/SexAndAgeHierarchySelect';
@@ -23,10 +24,12 @@ const data = [
   { rank: 100, point: 100, user: { name: 'ユーザー1', icon: '' } },
 ];
 
-export const TotalRankingScene: FC<RankingScreenProps> = () => {
+export const TotalRankingScene: FC<RankingScreenProps> = memo(() => {
   return (
-    <FlatList
+    <HFlatList
+      index={0}
       data={data}
+      isRefreshing={false}
       style={flatListStyle.list}
       keyExtractor={(item, _) => String(item.rank)}
       ListHeaderComponent={() => (
@@ -39,7 +42,7 @@ export const TotalRankingScene: FC<RankingScreenProps> = () => {
       ListFooterComponent={() => <View style={flatListStyle.bottom_space_medium} />}
     />
   );
-};
+});
 
 const style = StyleSheet.create({
   sex_and_age_hierarchy_box: {

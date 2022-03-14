@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { SceneMap, TabView } from 'react-native-tab-view';
 
 import { TabBar } from '~/components/ui/TabBar';
@@ -17,16 +17,20 @@ const routes = [
 export const ChallengeDetailScreen: FC<ChallengeDetailScreenProps> = (props) => {
   const { layout, index, onIndexChange } = useTabView();
 
+  const renderScene = useMemo(() => {
+    return SceneMap({
+      detail: () => <TournamentDetailScene {...props} />,
+      combat: () => <CombatHistoryScene {...props} />,
+    });
+  }, [props]);
+
   return (
     <TabView
       renderTabBar={TabBar}
       navigationState={{ index, routes }}
       onIndexChange={onIndexChange}
       initialLayout={{ width: layout.width }}
-      renderScene={SceneMap({
-        detail: () => <TournamentDetailScene {...props} />,
-        combat: () => <CombatHistoryScene {...props} />,
-      })}
+      renderScene={renderScene}
     />
   );
 };
