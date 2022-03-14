@@ -137,8 +137,8 @@ const style = StyleSheet.create({
     fontWeight: '600',
   },
   from_label: {
-    lineHeight: 30,
     paddingLeft: '1%',
+    paddingVertical: '4%',
   },
   align_horizontal: {
     flexDirection: 'row',
