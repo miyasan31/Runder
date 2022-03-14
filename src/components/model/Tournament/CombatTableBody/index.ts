@@ -1,0 +1,1 @@
+export { CombatTableBody } from './CombatTableBody';
