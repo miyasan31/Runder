@@ -1,7 +1,8 @@
 import type { FC } from 'react';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
-import { SceneMap, TabView } from 'react-native-tab-view';
+import { SceneMap } from 'react-native-tab-view';
+import { CollapsibleHeaderTabView } from 'react-native-tab-view-collapsible-header';
 
 import { TabBar } from '~/components/ui/TabBar';
 import { Text } from '~/components/ui/Text';
@@ -20,61 +21,68 @@ const routes = [
 export const Ranking: FC<RankingScreenProps> = (props) => {
   const { layout, index, onIndexChange } = useTabView();
 
+  const renderScene = useMemo(() => {
+    return SceneMap({
+      total: () => <TotalRankingScene {...props} />,
+      monthly: () => <MonthlyRankingScene {...props} />,
+    });
+  }, [props]);
+
   return (
-    <>
-      <View style={style.box}>
-        <Text style={style.section_title} color="color2">
-          あなたのランキング
-        </Text>
+    <CollapsibleHeaderTabView
+      renderTabBar={TabBar}
+      navigationState={{ index, routes }}
+      renderScrollHeader={() => {
+        return (
+          <View style={style.box} bg="bg1">
+            <Text style={style.section_title} color="color2">
+              あなたのランキング
+            </Text>
 
-        <Text style={style.sub_title} color="color2">
-          総合ランキング
-        </Text>
+            <Text style={style.sub_title} color="color2">
+              総合ランキング
+            </Text>
 
-        <View style={style.align_horizontal}>
-          <View style={style.info_result_left}>
-            <Text style={style.info_result}>1</Text>
-            <Text style={style.info_result_space}>位</Text>
+            <View style={style.align_horizontal}>
+              <View style={style.info_result_left}>
+                <Text style={style.info_result}>1</Text>
+                <Text style={style.info_result_space}>位</Text>
+              </View>
+
+              <View style={style.info_result_right}>
+                <Text style={style.info_result}>1200</Text>
+                <Text style={style.info_result_space}>ポイント</Text>
+              </View>
+            </View>
+
+            <Text style={style.sub_title} color="color2">
+              月間ランキング
+            </Text>
+
+            <View style={style.align_horizontal}>
+              <View style={style.info_result_left}>
+                <Text style={style.info_result}>10</Text>
+                <Text style={style.info_result_space}>位</Text>
+              </View>
+
+              <View style={style.info_result_right}>
+                <Text style={style.info_result}>300</Text>
+                <Text style={style.info_result_space}>ポイント</Text>
+              </View>
+            </View>
+
+            <Text style={style.section_title} color="color2">
+              クラス別ランキング
+            </Text>
           </View>
-
-          <View style={style.info_result_right}>
-            <Text style={style.info_result}>1200</Text>
-            <Text style={style.info_result_space}>ポイント</Text>
-          </View>
-        </View>
-
-        <Text style={style.sub_title} color="color2">
-          月間ランキング
-        </Text>
-
-        <View style={style.align_horizontal}>
-          <View style={style.info_result_left}>
-            <Text style={style.info_result}>10</Text>
-            <Text style={style.info_result_space}>位</Text>
-          </View>
-
-          <View style={style.info_result_right}>
-            <Text style={style.info_result}>300</Text>
-            <Text style={style.info_result_space}>ポイント</Text>
-          </View>
-        </View>
-
-        <Text style={style.section_title} color="color2">
-          クラス別ランキング
-        </Text>
-      </View>
-
-      <TabView
-        renderTabBar={TabBar}
-        navigationState={{ index, routes }}
-        onIndexChange={onIndexChange}
-        initialLayout={{ width: layout.width }}
-        renderScene={SceneMap({
-          total: () => <TotalRankingScene {...props} />,
-          monthly: () => <MonthlyRankingScene {...props} />,
-        })}
-      />
-    </>
+        );
+      }}
+      onIndexChange={onIndexChange}
+      initialLayout={{ width: layout.width }}
+      renderScene={renderScene}
+      scrollEnabled={false}
+      isRefreshing={false}
+    />
   );
 };
 
