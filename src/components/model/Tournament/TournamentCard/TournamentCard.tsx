@@ -61,6 +61,7 @@ export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
             outlineStyle={style.button_outline}
             viewStyle={style.button_bg}
             textStyle={style.button_text}
+            onPress={onNavigation}
           />
         </View>
       </View>
