@@ -6,6 +6,7 @@ import { PrevButton } from '~/components/ui/Button';
 import { useTheme } from '~/hooks/useTheme';
 import type { ProfileStackParamList } from '~/types';
 
+import { AvatarEditScreen } from './avatar_edit.screen';
 import { ProfileScreen } from './profile.screen';
 import { ProfileEditScreen } from './profile_edit.screen';
 
@@ -41,6 +42,17 @@ export const ProfileNavigator: FC = () => {
           component={ProfileEditScreen}
           options={({ navigation }) => ({
             title: 'プロフィール編集',
+            headerLeft: () => {
+              const onPrevScreen = () => navigation.goBack();
+              return <PrevButton type="close" onPress={onPrevScreen} />;
+            },
+          })}
+        />
+        <Profile.Screen
+          name="AvatarEditScreen"
+          component={AvatarEditScreen}
+          options={({ navigation }) => ({
+            title: 'アバター編集',
             headerLeft: () => {
               const onPrevScreen = () => navigation.goBack();
               return <PrevButton type="close" onPress={onPrevScreen} />;
