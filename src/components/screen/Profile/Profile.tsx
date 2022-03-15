@@ -34,6 +34,10 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
     props.navigation.navigate('ProfileEditScreen');
   }, []);
 
+  const onAvatarEditNavigate = useCallback(() => {
+    props.navigation.navigate('AvatarEditScreen');
+  }, []);
+
   return (
     <CollapsibleHeaderTabView
       renderTabBar={TabBar}
@@ -53,6 +57,7 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
                   activeOpacity={0.9}
                   style={style.icon_edit_button}
                   border="border0"
+                  onPress={onAvatarEditNavigate}
                 >
                   <AntDesignIcon name="pluscircle" size={26} icon="accent" />
                 </TouchableOpacity>
