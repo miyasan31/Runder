@@ -12,7 +12,7 @@ import { View } from '~/components/ui/View';
 import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import type { User } from '~/types/fetcher';
 
-import type { ContactScreenProps } from './ScreenProps';
+import type { ContactScreenProps } from '.';
 
 export const DevOps: FC<ContactScreenProps> = () => {
   const filter = useSupabaseFilter((query) => query.limit(10), []);

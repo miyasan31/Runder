@@ -11,7 +11,7 @@ import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import { flatListStyle } from '~/styles';
 import type { Location } from '~/types/fetcher';
 
-import type { ChallengeDetailScreenProps } from './ScreenProps';
+import type { ChallengeDetailScreenProps } from '.';
 
 const SELECT_COLUMN = 'location';
 const history_data = [

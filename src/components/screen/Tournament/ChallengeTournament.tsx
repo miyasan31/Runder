@@ -8,7 +8,7 @@ import { ChallengeCard } from '~/components/model/tournament/ChallengeCard';
 import { View } from '~/components/ui/View';
 import { flatListStyle } from '~/styles';
 
-import type { TournamentScreenProps } from './ScreenProps';
+import type { TournamentScreenProps } from '.';
 
 const data = [
   {

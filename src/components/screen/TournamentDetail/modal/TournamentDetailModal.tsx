@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import { useMemo } from 'react';
 import { SceneMap, TabView } from 'react-native-tab-view';
 
+import { HalfModal } from '~/components/ui/Modal';
 import { TabBar } from '~/components/ui/TabBar';
 import { useTabView } from '~/hooks/useTabView';
 
@@ -16,10 +17,12 @@ const routes = [
 ];
 
 type Props = {
+  isVisible: boolean;
   activeTabIndex?: number;
+  onCloseModal: () => void;
 };
 
-export const TournamentDetailTab: FC<Props> = (props) => {
+export const TournamentDetailModal: FC<Props> = (props) => {
   const { layout, index, onIndexChange } = useTabView(props.activeTabIndex);
 
   const renderScene = useMemo(() => {
@@ -31,12 +34,14 @@ export const TournamentDetailTab: FC<Props> = (props) => {
   }, []);
 
   return (
-    <TabView
-      renderTabBar={TabBar}
-      navigationState={{ index, routes }}
-      onIndexChange={onIndexChange}
-      initialLayout={{ width: layout.width }}
-      renderScene={renderScene}
-    />
+    <HalfModal {...props} size={0.7}>
+      <TabView
+        renderTabBar={TabBar}
+        navigationState={{ index, routes }}
+        onIndexChange={onIndexChange}
+        initialLayout={{ width: layout.width }}
+        renderScene={renderScene}
+      />
+    </HalfModal>
   );
 };

@@ -8,8 +8,9 @@ import { TableHead } from '~/components/ui/Table';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { flatListStyle } from '~/styles';
+import type { ResultScreenProps as Props } from '~/types';
 
-import type { ResultDetailScreenProps } from './ScreenProps';
+export type ResultDetailScreenProps = Props<'ResultDetailScreen'>;
 
 const data = [
   { rank: 1, record: '10:00.00', point: 100, user: { name: 'ユーザー1', icon: '' } },

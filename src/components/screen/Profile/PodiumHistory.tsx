@@ -7,6 +7,8 @@ import { PointTableBody } from '~/components/model/point/PointTableBody';
 import { TableHead } from '~/components/ui/Table';
 import { flatListStyle } from '~/styles';
 
+import type { ProfileScreenProps } from './Profile';
+
 const data = [
   { rank: 1, point: 500 },
   { rank: 2, point: 400 },
@@ -16,7 +18,7 @@ const data = [
   { rank: 100, point: 10 },
 ];
 
-export const PodiumHistory: FC = () => {
+export const PodiumHistory: FC<ProfileScreenProps> = () => {
   return (
     <HFlatList
       index={0}

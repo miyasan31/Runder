@@ -7,9 +7,10 @@ import { Apple, Google, Mail, Runder } from '~/components/ui/Icon';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { layoutStyle } from '~/styles';
+import type { AuthGroupScreenProps } from '~/types';
 import { onSignInGoogle, onSignOut } from '~/utils/supabase';
 
-import type { SignInScreenProps } from './ScreenProps';
+export type SignInScreenProps = AuthGroupScreenProps<'SignInScreen'>;
 
 export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
   const onSignInEmailNavigate = useCallback(() => {

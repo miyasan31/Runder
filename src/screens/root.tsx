@@ -13,7 +13,6 @@ import { SignInEmailScreen } from './auth/signin_email.screen';
 import { SignUpScreen } from './auth/signup.screen';
 import { UserRegisterScreen } from './auth/user_register.screen';
 import { DevelopmentTabNavigator } from './development';
-import { ModalScreen } from './hoge.modal';
 import { BottomTabNavigator } from './main';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -47,10 +46,6 @@ export const RootNavigator: FC = () => {
         component={NotFoundScreen}
         options={{ title: 'Oops!' }}
       />
-
-      <RootStack.Group screenOptions={{ presentation: 'modal' }}>
-        <RootStack.Screen name="Modal" component={ModalScreen} options={{ title: 'Oops!' }} />
-      </RootStack.Group>
     </RootStack.Navigator>
   );
 };

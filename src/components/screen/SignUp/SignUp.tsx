@@ -11,11 +11,12 @@ import { View } from '~/components/ui/View';
 import { AUTH_PROVIDER_KEY } from '~/constants/ENV';
 import { sleep } from '~/functions/sleep';
 import { layoutStyle } from '~/styles';
+import type { AuthGroupScreenProps as Props } from '~/types';
 import { saveSecureStore } from '~/utils/secureStore';
 import { onSignInGoogle, supabaseClient } from '~/utils/supabase';
 import { toastKit } from '~/utils/toastKit';
 
-import type { SignUpScreenProps } from './ScreenProps';
+export type SignUpScreenProps = Props<'SignUpScreen'>;
 
 const AlreadyRegisteredMessage = 'User already registered';
 

@@ -8,10 +8,12 @@ import { TabBar } from '~/components/ui/TabBar';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { useTabView } from '~/hooks/useTabView';
+import type { RankingScreenProps as Props } from '~/types';
 
-import { MonthlyRankingScene } from './MonthlyRanking.scene';
-import type { RankingScreenProps } from './ScreenProps';
-import { TotalRankingScene } from './TotalRanking.scene';
+import { MonthlyRanking } from './MonthlyRanking';
+import { TotalRanking } from './TotalRanking';
+
+export type RankingScreenProps = Props<'RankingScreen'>;
 
 const routes = [
   { key: 'total', title: '総合ランキング' },
@@ -23,8 +25,8 @@ export const Ranking: FC<RankingScreenProps> = (props) => {
 
   const renderScene = useMemo(() => {
     return SceneMap({
-      total: () => <TotalRankingScene {...props} />,
-      monthly: () => <MonthlyRankingScene {...props} />,
+      total: () => <TotalRanking {...props} />,
+      monthly: () => <MonthlyRanking {...props} />,
     });
   }, [props]);
 

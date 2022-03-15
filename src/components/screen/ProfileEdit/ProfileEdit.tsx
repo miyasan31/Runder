@@ -7,9 +7,10 @@ import { Text } from '~/components/ui/Text';
 import { TextInput } from '~/components/ui/TextInput';
 import { View } from '~/components/ui/View';
 import { layoutStyle } from '~/styles';
+import type { ProfileScreenProps as Props } from '~/types';
 import { onSignOut } from '~/utils/supabase';
 
-import type { ProfileEditScreenProps } from './ScreenProps';
+export type ProfileEditScreenProps = Props<'ProfileEditScreen'>;
 
 export const ProfileEdit: FC<ProfileEditScreenProps> = () => {
   const [name, setName] = useState('');

@@ -10,7 +10,7 @@ import { TableHead } from '~/components/ui/Table';
 import { View } from '~/components/ui/View';
 import { flatListStyle } from '~/styles';
 
-import type { ProfileScreenProps } from './ScreenProps';
+import type { ProfileScreenProps } from './Profile';
 
 const data = [
   {

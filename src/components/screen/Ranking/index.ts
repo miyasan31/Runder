@@ -1,2 +1,2 @@
-export { RankingScreen } from './Ranking.screen';
-export type { RankingScreenProps } from './ScreenProps';
+export type { RankingScreenProps } from './Ranking';
+export { Ranking } from './Ranking';

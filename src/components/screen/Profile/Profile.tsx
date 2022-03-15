@@ -10,10 +10,12 @@ import { TabBar } from '~/components/ui/TabBar';
 import { Text } from '~/components/ui/Text';
 import { TouchableOpacity, View } from '~/components/ui/View';
 import { useTabView } from '~/hooks/useTabView';
+import type { ProfileScreenProps as Props } from '~/types';
 
-import { CombatHistory } from './CombatHistory.scene';
-import { PodiumHistory } from './PodiumHistory.scene';
-import type { ProfileScreenProps } from './ScreenProps';
+import { CombatHistory } from './CombatHistory';
+import { PodiumHistory } from './PodiumHistory';
+
+export type ProfileScreenProps = Props<'ProfileScreen'>;
 
 const routes = [
   { key: 'podium', title: '入賞回数' },

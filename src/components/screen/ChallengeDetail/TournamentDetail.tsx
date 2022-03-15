@@ -7,7 +7,7 @@ import { Button } from '~/components/ui/Button';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 
-import type { ChallengeDetailScreenProps } from './ScreenProps';
+import type { ChallengeDetailScreenProps } from '.';
 
 const data = [
   {

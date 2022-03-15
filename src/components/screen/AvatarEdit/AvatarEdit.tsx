@@ -7,11 +7,13 @@ import type { FC } from 'react';
 import React, { useCallback, useState } from 'react';
 import { Alert, Platform, StyleSheet } from 'react-native';
 
-import type { AvatarEditScreenProps } from '~/components/screen/AvatarEdit/ScreenProps';
 import { Button } from '~/components/ui/Button';
 import { Image } from '~/components/ui/Image';
 import { View } from '~/components/ui/View';
 import { layoutStyle } from '~/styles';
+import type { ProfileScreenProps as Props } from '~/types';
+
+export type AvatarEditScreenProps = Props<'AvatarEditScreen'>;
 
 export const AvatarEdit: FC<AvatarEditScreenProps> = () => {
   const [image, setImage] = useState<string | null>(null);

@@ -9,7 +9,7 @@ import { TableHead } from '~/components/ui/Table';
 import { View } from '~/components/ui/View';
 import { flatListStyle } from '~/styles';
 
-import type { RankingScreenProps } from './ScreenProps';
+import type { RankingScreenProps } from './Ranking';
 
 const data = [
   { rank: 1, point: 100, user: { name: 'ユーザー1', icon: '' } },
@@ -24,7 +24,7 @@ const data = [
   { rank: 100, point: 100, user: { name: 'ユーザー1', icon: '' } },
 ];
 
-export const TotalRankingScene: FC<RankingScreenProps> = memo(() => {
+export const TotalRanking: FC<RankingScreenProps> = memo(() => {
   return (
     <HFlatList
       index={0}

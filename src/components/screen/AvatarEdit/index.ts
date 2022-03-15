@@ -1,2 +1,2 @@
-export { AvatarEditScreen } from './AvatarEdit.screen';
-export type { AvatarEditScreenProps } from './ScreenProps';
+export type { AvatarEditScreenProps } from './AvatarEdit';
+export { AvatarEdit } from './AvatarEdit';

@@ -9,8 +9,9 @@ import { MonthPagination } from '~/components/ui/MonthPagination';
 import { TableHead } from '~/components/ui/Table';
 import { View } from '~/components/ui/View';
 import { flatListStyle } from '~/styles';
+import type { ResultScreenProps as Props } from '~/types';
 
-import type { ResultScreenProps } from './ScreenProps';
+export type ResultScreenProps = Props<'ResultScreen'>;
 
 const data = [
   {

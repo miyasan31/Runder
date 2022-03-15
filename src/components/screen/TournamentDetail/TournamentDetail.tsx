@@ -5,9 +5,11 @@ import { Image, StyleSheet } from 'react-native';
 import { Button } from '~/components/ui/Button';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import type { TournamentScreenProps as Props } from '~/types';
 
 import { DetailViewButtonGroup } from './DetailViewButtonGroup';
-import type { TournamentDetailScreenProps } from './ScreenProps';
+
+export type TournamentDetailScreenProps = Props<'TournamentDetailScreen'>;
 
 const data = [
   {

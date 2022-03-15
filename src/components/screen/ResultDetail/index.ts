@@ -1,2 +1,2 @@
-export { ResultDetailScreen } from './ResultDetail.screen';
-export type { ResultDetailScreenProps } from './ScreenProps';
+export type { ResultDetailScreenProps } from './ResultDetail';
+export { ResultDetail } from './ResultDetail';

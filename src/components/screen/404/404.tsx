@@ -2,7 +2,9 @@ import type { FC } from 'react';
 import React, { useCallback } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import type { NotFoundScreenProps } from './ScreenProps';
+import type { StackScreenProps as Props } from '~/types';
+
+export type NotFoundScreenProps = Props<'NotFoundScreen'>;
 
 export const NotFound: FC<NotFoundScreenProps> = (props) => {
   const onRootScreenPush = useCallback(() => {

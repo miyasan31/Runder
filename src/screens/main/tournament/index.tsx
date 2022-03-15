@@ -7,7 +7,6 @@ import { useTheme } from '~/hooks/useTheme';
 import type { TournamentStackParamList } from '~/types';
 
 import { ChallengeDetailScreen } from './challenge_detail.screen';
-import { ModalScreen } from './hoge.modal';
 import { TournamentScreen } from './tournament.screen';
 import { TournamentDetailScreen } from './tournament_detail.screen';
 
@@ -62,10 +61,6 @@ export const TournamentNavigator: FC = () => {
           },
         })}
       />
-
-      <Tournament.Group screenOptions={{ presentation: 'modal' }}>
-        <Tournament.Screen name="Modal" component={ModalScreen} options={{ title: 'Oops!' }} />
-      </Tournament.Group>
     </Tournament.Navigator>
   );
 };

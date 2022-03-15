@@ -7,13 +7,13 @@ import MapView, { Polyline } from 'react-native-maps';
 
 import { Button } from '~/components/ui/Button';
 import { View } from '~/components/ui/View';
-import type { DevRunningScreenProps } from '~/types';
+import type { DevRunningScreenProps as Props } from '~/types';
 
 import { useRunning } from './useRunning';
 
-export type Props = DevRunningScreenProps<'RunningScreen'>;
+export type DevRunningScreenProps = Props<'RunningScreen'>;
 
-export const Running: FC<Props> = () => {
+export const Running: FC<DevRunningScreenProps> = () => {
   const { isRunning, coordinates, onToggleRunningStatus, coordinateResult, strokeResult, onSave } =
     useRunning();
 
