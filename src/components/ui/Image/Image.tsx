@@ -13,6 +13,9 @@ export type ImageProps = NativeImage['props'] &
 
 export const Image: FC<ImageProps> = ({
   // theme
+  bg = 'bg1',
+  lightBg,
+  darkBg,
   border = 'border1',
   lightBorder,
   darkBorder,
@@ -23,7 +26,10 @@ export const Image: FC<ImageProps> = ({
   style,
   ...otherProps
 }) => {
+  const backgroundColor = useTheme({ light: lightBg, dark: darkBg }, bg);
   const borderColor = useTheme({ light: lightBorder, dark: darkBorder }, border);
   const shadowColor = useTheme({ light: lightShadow, dark: darkShadow }, shadow);
-  return <NativeImage {...otherProps} style={[style, { borderColor, shadowColor }]} />;
+  return (
+    <NativeImage {...otherProps} style={[style, { backgroundColor, borderColor, shadowColor }]} />
+  );
 };
