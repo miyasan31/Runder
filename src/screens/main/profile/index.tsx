@@ -13,6 +13,7 @@ import { ProfileEditScreen } from './profile_edit.screen';
 const Profile = createNativeStackNavigator<ProfileStackParamList>();
 
 export const ProfileNavigator: FC = () => {
+  const color = useTheme({}, 'color1');
   const backgroundColor = useTheme({}, 'bg1');
 
   return (
@@ -23,6 +24,7 @@ export const ProfileNavigator: FC = () => {
         headerStyle: { backgroundColor },
         headerBackTitleVisible: false,
         headerTitleStyle: {
+          color,
           fontSize: 18,
           fontWeight: '600',
         },

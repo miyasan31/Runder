@@ -14,6 +14,7 @@ import { TournamentDetailScreen } from './tournament_detail.screen';
 const Tournament = createNativeStackNavigator<TournamentStackParamList>();
 
 export const TournamentNavigator: FC = () => {
+  const color = useTheme({}, 'color1');
   const backgroundColor = useTheme({}, 'bg1');
 
   return (
@@ -24,6 +25,7 @@ export const TournamentNavigator: FC = () => {
         headerStyle: { backgroundColor },
         headerBackTitleVisible: false,
         headerTitleStyle: {
+          color,
           fontSize: 18,
           fontWeight: '600',
         },

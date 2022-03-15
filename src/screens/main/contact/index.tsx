@@ -10,6 +10,7 @@ import { ContactScreen } from './contact.screen';
 const Contact = createNativeStackNavigator<ContactStackParamList>();
 
 export const ContactNavigator: FC = () => {
+  const color = useTheme({}, 'color1');
   const backgroundColor = useTheme({}, 'bg1');
 
   return (
@@ -20,6 +21,7 @@ export const ContactNavigator: FC = () => {
         headerStyle: { backgroundColor },
         headerBackTitleVisible: false,
         headerTitleStyle: {
+          color,
           fontSize: 18,
           fontWeight: '600',
         },

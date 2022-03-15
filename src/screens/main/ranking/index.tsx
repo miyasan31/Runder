@@ -11,6 +11,7 @@ import { RankingScreen } from './ranking.screen';
 const Ranking = createNativeStackNavigator<RankingStackParamList>();
 
 export const RankingNavigator: FC = () => {
+  const color = useTheme({}, 'color1');
   const backgroundColor = useTheme({}, 'bg1');
 
   return (
@@ -21,6 +22,7 @@ export const RankingNavigator: FC = () => {
         headerStyle: { backgroundColor },
         headerBackTitleVisible: false,
         headerTitleStyle: {
+          color,
           fontSize: 18,
           fontWeight: '600',
         },

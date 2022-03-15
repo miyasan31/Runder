@@ -13,9 +13,9 @@ import { ResultDetailScreen } from './result_detail.screen';
 const Result = createNativeStackNavigator<ResultStackParamList>();
 
 export const ResultNavigator: FC = () => {
+  const color = useTheme({}, 'color1');
   const backgroundColor = useTheme({}, 'bg1');
   // const icon = useTheme({}, 'icon');
-  // const color = useTheme({}, 'color1');
 
   return (
     <Result.Navigator
@@ -27,7 +27,7 @@ export const ResultNavigator: FC = () => {
         // TODO:戻るボタンの変更したが位置変更できないので保留
         // headerTintColor: icon,
         headerTitleStyle: {
-          // color,
+          color,
           fontSize: 18,
           fontWeight: '600',
         },
