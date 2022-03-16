@@ -84,9 +84,11 @@ const style = StyleSheet.create({
     fontSize: 16,
   },
   best_time: {
-    paddingVertical: '4%',
+    paddingVertical: '3%',
     paddingHorizontal: '4%',
     fontSize: 40,
+    fontStyle: 'italic',
+    fontWeight: '800',
   },
   map: {
     width: Dimensions.get('window').width,

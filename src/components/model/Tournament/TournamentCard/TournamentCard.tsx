@@ -71,34 +71,37 @@ export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
 
 const style = StyleSheet.create({
   root: {
-    borderRadius: 20,
+    // borderRadius: 20,
   },
   image_box: {
     position: 'relative',
-    borderRadius: 20,
+    // borderRadius: 20,
   },
   image: {
-    height: 450,
+    height: 350,
     width: '100%',
-    borderRadius: 20,
+    // borderRadius: 20,
   },
   float_text_box: {
     position: 'absolute',
-    top: 15,
-    left: 15,
+    height: 350,
+    padding: '4%',
   },
   season: {
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: '600',
+    fontStyle: 'italic',
   },
   name: {
-    fontSize: 20,
+    marginVertical: '2%',
+    fontSize: 22,
     fontWeight: '600',
-    marginTop: 10,
+    fontStyle: 'italic',
   },
   distance: {
-    fontSize: 30,
+    fontSize: 34,
     fontWeight: '800',
+    fontStyle: 'italic',
   },
   button_outline: {
     position: 'absolute',

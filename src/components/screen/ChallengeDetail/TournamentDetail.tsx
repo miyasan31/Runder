@@ -69,21 +69,24 @@ const style = StyleSheet.create({
     padding: '6%',
   },
   tournament_season: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '600',
+    fontStyle: 'italic',
   },
   tournament_name: {
-    fontSize: 25,
+    marginVertical: '2%',
+    fontSize: 24,
     fontWeight: '600',
-    marginTop: 10,
+    fontStyle: 'italic',
   },
   tournament_distance: {
-    fontSize: 35,
+    fontSize: 36,
     fontWeight: '800',
+    fontStyle: 'italic',
   },
   tournament_description: {
+    marginTop: 20,
     fontSize: 16,
-    marginTop: 10,
     lineHeight: 22,
   },
   float_button_box: {
@@ -100,5 +103,6 @@ const style = StyleSheet.create({
   button_text: {
     fontSize: 20,
     fontWeight: '600',
+    fontStyle: 'italic',
   },
 });

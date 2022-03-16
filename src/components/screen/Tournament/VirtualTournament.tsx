@@ -47,7 +47,7 @@ export const VirtualTournament: FC<TournamentScreenProps> = (props) => {
   return (
     <FlatList
       data={data}
-      style={flatListStyle.card}
+      // style={flatListStyle.card}
       keyExtractor={(item, _) => String(item.id)}
       renderItem={({ item }: { item: Tournament }) => {
         return <TournamentCard {...item} {...props} />;

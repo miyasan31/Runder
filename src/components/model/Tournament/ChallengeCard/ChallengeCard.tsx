@@ -32,7 +32,7 @@ export const ChallengeCard: FC<Tournament & TournamentScreenProps> = ({
   }, [navigation]);
 
   return (
-    <Card onPress={onNavigation} outlineStyle={style.card_outline}>
+    <Card onPress={onNavigation}>
       <View style={style.root}>
         <View style={style.image_box}>
           <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
@@ -54,8 +54,12 @@ export const ChallengeCard: FC<Tournament & TournamentScreenProps> = ({
 
         <View style={style.challenge_info_box}>
           <View style={style.align_horizontal}>
-            <Text style={style.info_label_left}>あなたのベストタイム</Text>
-            <Text style={style.info_label_right}>チャレンジできる残り回数</Text>
+            <Text style={style.info_label_left} color="color2">
+              あなたのベストタイム
+            </Text>
+            <Text style={style.info_label_right} color="color2">
+              チャレンジできる残り回数
+            </Text>
           </View>
 
           <View style={style.align_horizontal}>
@@ -69,70 +73,74 @@ export const ChallengeCard: FC<Tournament & TournamentScreenProps> = ({
 };
 
 const style = StyleSheet.create({
-  card_outline: {
-    marginBottom: '6%',
-  },
   root: {
-    borderRadius: 20,
+    // borderRadius: 20,
   },
   image_box: {
     position: 'relative',
-    borderRadius: 20,
+    // borderRadius: 20,
   },
   image: {
     height: 180,
     width: '100%',
-    borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
+    // borderTopRightRadius: 20,
+    // borderTopLeftRadius: 20,
   },
   float_text_box: {
     position: 'absolute',
-    bottom: 15,
-    left: 15,
+    justifyContent: 'center',
+    height: 180,
+    paddingLeft: '4%',
   },
   tournament_season: {
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: '600',
+    fontStyle: 'italic',
   },
   tournament_name: {
-    fontSize: 20,
+    marginVertical: '2%',
+    fontSize: 22,
     fontWeight: '600',
-    marginTop: 10,
+    fontStyle: 'italic',
   },
   tournament_distance: {
-    fontSize: 30,
+    fontSize: 34,
     fontWeight: '800',
+    fontStyle: 'italic',
   },
   challenge_info_box: {
     paddingHorizontal: 15,
     paddingVertical: 10,
-    borderBottomRightRadius: 20,
-    borderBottomLeftRadius: 20,
+    // borderBottomRightRadius: 20,
+    // borderBottomLeftRadius: 20,
   },
+
   align_horizontal: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   info_label_left: {
-    width: '50%',
+    flex: 1,
     fontSize: 12,
     lineHeight: 18,
   },
   info_label_right: {
-    width: '50%',
+    flex: 1,
     fontSize: 12,
     textAlign: 'right',
     lineHeight: 18,
   },
   info_result_left: {
-    width: '50%',
-    fontSize: 30,
+    flex: 1,
+    fontSize: 28,
     fontWeight: '800',
+    fontStyle: 'italic',
   },
   info_result_right: {
-    width: '50%',
-    fontSize: 30,
+    flex: 1,
+    fontSize: 28,
     fontWeight: '800',
+    fontStyle: 'italic',
     textAlign: 'right',
   },
 });
