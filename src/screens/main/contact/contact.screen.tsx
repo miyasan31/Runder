@@ -19,22 +19,28 @@ export const ContactScreen: FC<ContactScreenProps> = (props) => {
 
   const renderScene = useMemo(() => {
     return SceneMap({
-      news: () => <News {...props} />,
-      devOps: () => <DevOps {...props} />,
+      news: () => (
+        <LayoutErrorBoundary>
+          <News {...props} />
+        </LayoutErrorBoundary>
+      ),
+      devOps: () => (
+        <LayoutErrorBoundary>
+          <DevOps {...props} />
+        </LayoutErrorBoundary>
+      ),
     });
   }, [props]);
 
   return (
-    <LayoutErrorBoundary>
-      <BottomTabLayout safeArea="top-horizontal">
-        <TabView
-          renderTabBar={TabBar}
-          navigationState={{ index, routes }}
-          onIndexChange={onIndexChange}
-          initialLayout={{ width: layout.width }}
-          renderScene={renderScene}
-        />
-      </BottomTabLayout>
-    </LayoutErrorBoundary>
+    <BottomTabLayout safeArea="top-horizontal">
+      <TabView
+        renderTabBar={TabBar}
+        navigationState={{ index, routes }}
+        onIndexChange={onIndexChange}
+        initialLayout={{ width: layout.width }}
+        renderScene={renderScene}
+      />
+    </BottomTabLayout>
   );
 };

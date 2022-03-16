@@ -19,22 +19,28 @@ export const ChallengeDetailScreen: FC<ChallengeDetailScreenProps> = (props) => 
 
   const renderScene = useMemo(() => {
     return SceneMap({
-      detail: () => <TournamentDetail {...props} />,
-      combat: () => <CombatHistory {...props} />,
+      detail: () => (
+        <LayoutErrorBoundary>
+          <TournamentDetail {...props} />
+        </LayoutErrorBoundary>
+      ),
+      combat: () => (
+        <LayoutErrorBoundary>
+          <CombatHistory {...props} />
+        </LayoutErrorBoundary>
+      ),
     });
   }, [props]);
 
   return (
-    <LayoutErrorBoundary>
-      <BottomTabLayout safeArea="horizontal">
-        <TabView
-          renderTabBar={TabBar}
-          navigationState={{ index, routes }}
-          onIndexChange={onIndexChange}
-          initialLayout={{ width: layout.width }}
-          renderScene={renderScene}
-        />
-      </BottomTabLayout>
-    </LayoutErrorBoundary>
+    <BottomTabLayout safeArea="horizontal">
+      <TabView
+        renderTabBar={TabBar}
+        navigationState={{ index, routes }}
+        onIndexChange={onIndexChange}
+        initialLayout={{ width: layout.width }}
+        renderScene={renderScene}
+      />
+    </BottomTabLayout>
   );
 };
