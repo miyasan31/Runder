@@ -7,4 +7,7 @@ export const layoutStyle = StyleSheet.create({
   modal: {
     paddingHorizontal: '6%',
   },
+  scene: {
+    padding: '6%',
+  },
 });
