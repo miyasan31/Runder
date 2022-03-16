@@ -10489,6 +10489,11 @@ rn-bounceable@^1.1.0:
   resolved "https://registry.yarnpkg.com/rn-bounceable/-/rn-bounceable-1.1.0.tgz#85717f999168cda3cb264ea0479e9b97ee842ff1"
   integrity sha512-JZmMjL9bc3y0HAP8yLQ3EooGVI/NrN620BbfSbrB8wVwJMWBXYDP9BxPFkIUJd0PE9UVdGhk7zg69mAnMGMaNw==
 
+rn-swipe-button@1.2.9:
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/rn-swipe-button/-/rn-swipe-button-1.2.9.tgz#079bfabaee87e9d929107d3443aaf5bd7eba48eb"
+  integrity sha512-KQatMI2gQH4BBX/it4h+i8ihkK6cdOo0BdGeQO6rKAB1fmfVZW5NM/VQRgSZ6IWnmV7Sxrydvzf5ooFLA/E4EA==
+
 rsvp@^4.8.4:
   version "4.8.5"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"
