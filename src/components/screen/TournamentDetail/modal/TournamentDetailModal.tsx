@@ -22,8 +22,8 @@ type Props = {
   onCloseModal: () => void;
 };
 
-export const TournamentDetailModal: FC<Props> = (props) => {
-  const { layout, index, onIndexChange } = useTabView(props.activeTabIndex);
+export const TournamentDetailModal: FC<Props> = ({ activeTabIndex, ...otherProps }) => {
+  const { layout, index, onIndexChange } = useTabView();
 
   const renderScene = useMemo(() => {
     return SceneMap({
@@ -34,10 +34,10 @@ export const TournamentDetailModal: FC<Props> = (props) => {
   }, []);
 
   return (
-    <HalfModal {...props} size={0.7}>
+    <HalfModal {...otherProps} size={0.7}>
       <TabView
         renderTabBar={TabBar}
-        navigationState={{ index, routes }}
+        navigationState={{ index: activeTabIndex || index, routes }}
         onIndexChange={onIndexChange}
         initialLayout={{ width: layout.width }}
         renderScene={renderScene}
