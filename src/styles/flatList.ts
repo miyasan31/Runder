@@ -11,10 +11,8 @@ export const flatListStyle = StyleSheet.create({
     paddingHorizontal: '4%',
   },
   separator: {
-    width: '94%',
-    marginHorizontal: '3%',
+    width: '95%',
     borderBottomWidth: 1,
-    borderBottomColor: '#eaeaea',
   },
   bottom_space_large: {
     paddingBottom: 150,
