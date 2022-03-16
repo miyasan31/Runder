@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import { SceneMap, TabView } from 'react-native-tab-view';
 
 import { LayoutErrorBoundary } from '~/components/functional/Error';
+import { KeyboardAvoiding } from '~/components/functional/KeyboardAvoiding';
 import type { ContactScreenProps } from '~/components/screen/Contact';
 import { DevOps, News } from '~/components/screen/Contact';
 import { BottomTabLayout } from '~/components/ui/Layout';
@@ -26,7 +27,9 @@ export const ContactScreen: FC<ContactScreenProps> = (props) => {
       ),
       devOps: () => (
         <LayoutErrorBoundary>
-          <DevOps {...props} />
+          <KeyboardAvoiding>
+            <DevOps {...props} />
+          </KeyboardAvoiding>
         </LayoutErrorBoundary>
       ),
     });
