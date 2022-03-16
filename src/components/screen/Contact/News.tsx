@@ -1,68 +1,28 @@
-import 'react-native-url-polyfill/auto';
-
-import { format } from 'date-fns';
 import type { FC } from 'react';
 import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList } from 'react-native';
 
-import { Card } from '~/components/ui/Card';
-import { Progress } from '~/components/ui/Progress';
-import { Text } from '~/components/ui/Text';
+import { NewsList } from '~/components/model/news/NewsList';
 import { View } from '~/components/ui/View';
-import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
-import type { User } from '~/types/fetcher';
+import { flatListStyle } from '~/styles';
 
 import type { ContactScreenProps } from '.';
 
+const data = [
+  { id: 1, title: 'お知らせ1 お知らせ1 お知らせ1', created_at: new Date(2020, 0, 1) },
+  { id: 2, title: 'お知らせ2 お知らせ2 お知らせ2', created_at: new Date(2020, 0, 1) },
+  { id: 3, title: 'お知らせ3 お知らせ3 お知らせ3', created_at: new Date(2020, 0, 1) },
+  { id: 4, title: 'お知らせ4 お知らせ4 お知らせ4', created_at: new Date(2020, 0, 1) },
+];
+
 export const News: FC<ContactScreenProps> = () => {
-  const filter = useSupabaseFilter((query) => query.limit(10), []);
-  const { loading, error, data } = useSupabaseSelect<User>('user', {
-    options: {
-      count: 'exact',
-    },
-    filter,
-  });
-
-  if (loading) return <Progress />;
-  if (error) return <Text>エラー</Text>;
-  if (!data) return <Text>データなし</Text>;
-
   return (
-    <FlatList data={data} renderItem={renderItem} keyExtractor={(item, _) => String(item.id)} />
+    <FlatList
+      data={data}
+      style={flatListStyle.list}
+      ItemSeparatorComponent={() => <View style={flatListStyle.separator} />}
+      renderItem={({ item }) => <NewsList {...item} />}
+      keyExtractor={(item) => item.id.toString()}
+    />
   );
-
-  // eslint-disable-next-line func-style
-  function renderItem({ item }: { item: User }) {
-    const date = format(new Date(item.created_at || ''), 'yyyy年M月d日');
-    const onNavigation = () => console.info('item.id', item.id);
-
-    return (
-      <Card viewStyle={style.root} isBorder onPress={onNavigation}>
-        <View>
-          <Text style={style.name}>{item.name}</Text>
-          <Text style={style.date}>{date}</Text>
-        </View>
-      </Card>
-    );
-  }
 };
-
-const style = StyleSheet.create({
-  root: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 18,
-    marginVertical: '1%',
-  },
-  name: {
-    paddingBottom: 10,
-    fontSize: 20,
-    textAlign: 'left',
-  },
-  date: {
-    fontSize: 15,
-    fontWeight: 'normal',
-    textAlign: 'left',
-  },
-});
