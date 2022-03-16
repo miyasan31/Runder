@@ -48,9 +48,14 @@ export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
             <Text style={style.name} color="white">
               {name}
             </Text>
-            <Text style={style.distance} color="white">
-              {distance}m
-            </Text>
+            <View style={style.distance_box}>
+              <Text style={style.distance} color="white">
+                {distance}
+              </Text>
+              <Text style={style.distance_unit} color="white">
+                m
+              </Text>
+            </View>
           </View>
 
           <Button
@@ -88,19 +93,34 @@ const style = StyleSheet.create({
     padding: '4%',
   },
   season: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '600',
     fontStyle: 'italic',
+    lineHeight: 24,
   },
   name: {
     marginVertical: '2%',
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: '600',
     fontStyle: 'italic',
   },
+  distance_box: {
+    width: 'auto',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+  },
   distance: {
-    fontSize: 34,
+    width: 'auto',
+    fontSize: 38,
     fontWeight: '800',
+    fontStyle: 'italic',
+  },
+  distance_unit: {
+    width: 'auto',
+    marginBottom: 4,
+    marginLeft: 2,
+    fontSize: 22,
+    fontWeight: '600',
     fontStyle: 'italic',
   },
   button_outline: {

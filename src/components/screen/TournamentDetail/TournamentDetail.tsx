@@ -27,19 +27,25 @@ export const TournamentDetail: FC<TournamentDetailScreenProps> = () => {
       <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
 
       <View style={style.float_text_box}>
-        <Text style={style.tournament_season} color="white">
+        <Text style={style.season} color="white">
           Monthly
         </Text>
-        <Text style={style.tournament_season} color="white">
+        <Text style={style.season} color="white">
           1/1 - 1/31
         </Text>
-        <Text style={style.tournament_name} color="white">
+        <Text style={style.name} color="white">
           {data[0].name}
         </Text>
-        <Text style={style.tournament_distance} color="white">
-          {data[0].distance}m
-        </Text>
-        <Text style={style.tournament_description} color="white">
+        <View style={style.distance_box}>
+          <Text style={style.distance} color="white">
+            {data[0].distance}
+          </Text>
+          <Text style={style.distance_unit} color="white">
+            m
+          </Text>
+        </View>
+
+        <Text style={style.description} color="white">
           ボタンを押してから5秒後にスタートします。 スタート後の一時停止はできません。
           STARTボタンを押すと、ルールに従うものと されます。
         </Text>
@@ -66,27 +72,41 @@ const style = StyleSheet.create({
   },
   float_text_box: {
     position: 'absolute',
-    top: 0,
-    left: 0,
+    width: '100%',
     padding: '6%',
   },
-  tournament_season: {
+  season: {
     fontSize: 18,
     fontWeight: '600',
     fontStyle: 'italic',
+    lineHeight: 24,
   },
-  tournament_name: {
+  name: {
     marginVertical: '2%',
     fontSize: 24,
     fontWeight: '600',
     fontStyle: 'italic',
   },
-  tournament_distance: {
-    fontSize: 36,
+  distance_box: {
+    width: 'auto',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+  },
+  distance: {
+    width: 'auto',
+    fontSize: 38,
     fontWeight: '800',
     fontStyle: 'italic',
   },
-  tournament_description: {
+  distance_unit: {
+    width: 'auto',
+    marginBottom: 4,
+    marginLeft: 2,
+    fontSize: 22,
+    fontWeight: '600',
+    fontStyle: 'italic',
+  },
+  description: {
     marginTop: 20,
     fontSize: 16,
     lineHeight: 22,
