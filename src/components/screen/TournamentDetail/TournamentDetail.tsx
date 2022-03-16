@@ -2,12 +2,12 @@ import type { FC } from 'react';
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 
-import { Button } from '~/components/ui/Button';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import type { TournamentScreenProps as Props } from '~/types';
 
 import { DetailViewButtonGroup } from './DetailViewButtonGroup';
+import { SwipeStartButton } from './SwipeStartButton';
 
 export type TournamentDetailScreenProps = Props<'TournamentDetailScreen'>;
 
@@ -52,13 +52,7 @@ export const TournamentDetail: FC<TournamentDetailScreenProps> = () => {
       </View>
 
       <View style={style.float_button_box}>
-        <Button
-          label="START"
-          bg="bg2"
-          isBorder
-          outlineStyle={style.button_outline}
-          textStyle={style.button_text}
-        />
+        <SwipeStartButton />
         <DetailViewButtonGroup />
       </View>
     </>
@@ -114,17 +108,6 @@ const style = StyleSheet.create({
   float_button_box: {
     position: 'absolute',
     bottom: 30,
-    left: 0,
-    width: '100%',
-  },
-  button_outline: {
-    width: '100%',
     paddingHorizontal: '6%',
-    marginBottom: '8%',
-  },
-  button_text: {
-    fontSize: 20,
-    fontWeight: '600',
-    fontStyle: 'italic',
   },
 });

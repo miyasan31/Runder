@@ -6,3 +6,5 @@ export { Mail } from './Mail';
 export { MaterialIcon } from './MaterialIcon';
 export { Runder } from './Runder';
 export { RunderLogo } from './RunderLogo';
+export { RunderMonochrome } from './RunderMonochrome';
+export { Start } from './Start';

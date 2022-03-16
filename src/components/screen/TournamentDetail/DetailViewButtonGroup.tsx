@@ -56,7 +56,6 @@ const style = StyleSheet.create({
   button_group: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: '6%',
   },
   button_outline: {
     width: '31%',
