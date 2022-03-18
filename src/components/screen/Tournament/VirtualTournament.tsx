@@ -25,7 +25,8 @@ export const VirtualTournament: FC<TournamentScreenProps> = (props) => {
   });
 
   if (loading) return <ActivityIndicator message="大会一覧を取得中..." />;
-  if (error) return <Text>エラーが発生しました</Text>;
+  if (error) return <Text>エラーが発生しました。</Text>;
+  if (!data) return <Text>データが見つかりませんでした。</Text>;
 
   return (
     <FlatList
