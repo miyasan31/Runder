@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import type { FC } from 'react';
 import React, { useCallback } from 'react';
 import { Image, StyleSheet } from 'react-native';
@@ -7,27 +8,26 @@ import { Button } from '~/components/ui/Button';
 import { Card } from '~/components/ui/Card';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import { termCheck } from '~/functions/termCheck';
+import type { Tournament } from '~/types/model';
 
-const data = [
-  {
-    id: '1',
-    name: 'Winter Distance Challenge',
-    distance: 3000,
-    created_at: '2020-01-01',
-    image: 'assets/develop/tournament.jpeg',
-  },
-];
+type SelectColumn = 'id' | 'name' | 'distance' | 'start' | 'end' | 'image' | 'term' | 'created_at';
 
-type Tournament = typeof data[0];
-
-export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
-  id: _id,
+export const TournamentCard: FC<Pick<Tournament, SelectColumn> & TournamentScreenProps> = ({
   name,
   distance,
+  start,
+  end,
+  image,
+  term,
+  id: _id,
   created_at: _created_at,
-  image: _image,
   navigation,
 }) => {
+  const termResult = termCheck(term);
+  const startDate = format(new Date(start), 'M/d');
+  const endDate = format(new Date(end), 'M/d');
+
   const onNavigation = useCallback(() => {
     navigation.navigate('TournamentDetailScreen');
   }, [navigation]);
@@ -36,14 +36,14 @@ export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
     <Card onPress={onNavigation}>
       <View style={style.root}>
         <View style={style.image_box}>
-          <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
+          <Image source={{ uri: image }} style={style.image} />
 
           <View style={style.float_text_box}>
             <Text style={style.season} color="white">
-              Monthly
+              {termResult}
             </Text>
             <Text style={style.season} color="white">
-              1/1 - 1/31
+              {`${startDate} - ${endDate}`}
             </Text>
             <Text style={style.name} color="white">
               {name}

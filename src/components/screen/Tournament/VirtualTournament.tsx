@@ -5,45 +5,28 @@ import React from 'react';
 import { FlatList } from 'react-native';
 
 import { TournamentCard } from '~/components/model/tournament/TournamentCard';
+import { ActivityIndicator } from '~/components/ui/Progress';
+import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import { flatListStyle } from '~/styles';
+import type { Tournament } from '~/types/model';
 
 import type { TournamentScreenProps } from '.';
 
-const data = [
-  {
-    id: '1',
-    name: 'Winter Distance Challenge',
-    distance: 3000,
-    created_at: '2020-01-01',
-    image: './assets/develop/tournament.jpeg',
-  },
-  {
-    id: '2',
-    name: 'Winter Distance Challenge',
-    distance: 1000,
-    created_at: '2020-01-01',
-    image: './assets/develop/tournament.jpeg',
-  },
-  {
-    id: '3',
-    name: 'Winter Distance Challenge',
-    distance: 1000,
-    created_at: '2020-01-01',
-    image: './assets/develop/tournament.jpeg',
-  },
-  {
-    id: '4',
-    name: 'Winter Distance Challenge',
-    distance: 1000,
-    created_at: '2020-01-01',
-    image: './assets/develop/tournament.jpeg',
-  },
-];
-
-type Tournament = typeof data[0];
+const FROM = 'tournament';
+const COLUMN = 'id, name, distance, start, end, image, term';
+const ORDER = 'start';
 
 export const VirtualTournament: FC<TournamentScreenProps> = (props) => {
+  const filter = useSupabaseFilter((query) => query.select(COLUMN).order(ORDER), []);
+  const { loading, error, data } = useSupabaseSelect<Tournament>(FROM, {
+    filter,
+  });
+
+  if (loading) return <ActivityIndicator message="大会一覧を取得中..." />;
+  if (error) return <Text>エラーが発生しました</Text>;
+
   return (
     <FlatList
       data={data}
