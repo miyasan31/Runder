@@ -7,28 +7,43 @@ import type { TournamentScreenProps } from '~/components/screen/Tournament';
 import { Card } from '~/components/ui/Card';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import { formatRecord } from '~/functions/formatRecord';
 import { termCheck } from '~/functions/termCheck';
-import type { Tournament } from '~/types/model';
+import type { Record, Tournament } from '~/types/model';
 
-type SelectColumn = 'id' | 'name' | 'distance' | 'start' | 'end' | 'image' | 'term';
+type ChallengeTournamentList = {
+  tournament: Tournament;
+  count: number;
+  record: Record;
+};
 
-export const ChallengeCard: FC<Pick<Tournament, SelectColumn> & TournamentScreenProps> = ({
-  id,
-  name,
-  distance,
-  start,
-  end,
-  image,
-  term,
+export const ChallengeCard: FC<ChallengeTournamentList & TournamentScreenProps> = ({
+  tournament: {
+    id: tournament_id,
+    name,
+    distance,
+    start,
+    end,
+    image,
+    term,
+    count: tournament_count,
+  },
+  record: { record },
+  count,
   navigation,
 }) => {
   const termResult = termCheck(term);
   const startDate = format(new Date(start), 'M/d');
   const endDate = format(new Date(end), 'M/d');
+  const recordResult = formatRecord(record);
 
   const onNavigation = useCallback(() => {
-    navigation.navigate('ChallengeDetailScreen', { tournament_id: id });
-  }, [navigation, id]);
+    navigation.navigate('ChallengeDetailScreen', { tournament_id });
+  }, [navigation, tournament_id]);
+
+  if (tournament_count - count < 0) {
+    return null;
+  }
 
   return (
     <Card onPress={onNavigation}>
@@ -68,8 +83,8 @@ export const ChallengeCard: FC<Pick<Tournament, SelectColumn> & TournamentScreen
           </View>
 
           <View style={style.align_horizontal}>
-            <Text style={style.info_result_left}>10:00.00</Text>
-            <Text style={style.info_result_right}>10</Text>
+            <Text style={style.info_result_left}>{recordResult}</Text>
+            <Text style={style.info_result_right}>{tournament_count - count}</Text>
           </View>
         </View>
       </View>
