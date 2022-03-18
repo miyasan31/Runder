@@ -19,6 +19,7 @@ import type { ChallengeDetailScreenProps } from '.';
 
 const FROM = 'record';
 const SELECT = 'id, user_id, record, created_at, location(id, location)';
+const ORDER = 'record';
 
 export const CombatHistory: FC<ChallengeDetailScreenProps> = memo((props) => {
   const userSnapshot = useSnapshot(user);
@@ -35,7 +36,7 @@ export const CombatHistory: FC<ChallengeDetailScreenProps> = memo((props) => {
         .select(SELECT)
         .eq('tournament_id', tournament_id)
         .eq('user_id', userSnapshot.id)
-        .order('record'),
+        .order(ORDER),
     [],
   );
   const { loading, error, data } = useSupabaseSelect<Record>(FROM, { filter });

@@ -13,6 +13,7 @@ import type { Record } from '~/types/model';
 
 const FROM = 'record';
 const COLUMN = 'id, user(id, name, avatar), record';
+const ORDER = 'record';
 
 type Props = {
   id: number;
@@ -21,7 +22,7 @@ type Props = {
 export const Ranking: FC<Props> = ({ id }) => {
   // TODO:男女年齢フィルターを実装する
   const filter = useSupabaseFilter(
-    (query) => query.select(COLUMN).eq('tournament_id', id).order('record'),
+    (query) => query.select(COLUMN).eq('tournament_id', id).order(ORDER),
     [],
   );
   const { loading, error, data } = useSupabaseSelect<Record>(FROM, { filter });
