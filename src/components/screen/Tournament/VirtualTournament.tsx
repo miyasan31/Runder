@@ -6,7 +6,7 @@ import { FlatList } from 'react-native';
 
 import { TournamentCard } from '~/components/model/tournament/TournamentCard';
 import { ActivityIndicator } from '~/components/ui/Progress';
-import { Text } from '~/components/ui/Text';
+import { ExceptionText } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import { flatListStyle } from '~/styles';
@@ -25,8 +25,8 @@ export const VirtualTournament: FC<TournamentScreenProps> = (props) => {
   });
 
   if (loading) return <ActivityIndicator message="大会一覧を取得中..." />;
-  if (error) return <Text>エラーが発生しました。</Text>;
-  if (!data) return <Text>データが見つかりませんでした。</Text>;
+  if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;
+  if (!data) return <ExceptionText label="開催中の大会が見つかりませんでした。" />;
 
   return (
     <FlatList

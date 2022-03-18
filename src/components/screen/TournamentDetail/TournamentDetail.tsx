@@ -5,7 +5,7 @@ import { Image, StyleSheet } from 'react-native';
 
 import { Button } from '~/components/ui/Button';
 import { ActivityIndicator } from '~/components/ui/Progress';
-import { Text } from '~/components/ui/Text';
+import { ExceptionText, Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { termCheck } from '~/functions/termCheck';
 import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
@@ -25,8 +25,8 @@ export const TournamentDetail: FC<TournamentDetailScreenProps> = (props) => {
   const { loading, error, data } = useSupabaseSelect<Tournament>(FROM, { filter });
 
   if (loading) return <ActivityIndicator message="大会情報を取得中..." />;
-  if (error) return <Text>エラーが発生しました。</Text>;
-  if (!data) return <Text>データが見つかりませんでした。</Text>;
+  if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;
+  if (!data) return <ExceptionText label="大会情報が見つかりませんでした。" />;
 
   const { id, name, distance, start, end, image, term } = data[0];
   const termResult = termCheck(term);
