@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
+import { sleep } from '~/functions/sleep';
 import type { SupabaseFetchStatus, SupabaseFrom, SupabaseQuery } from '~/types/supabase';
 import { supabaseClient } from '~/utils/supabase';
 
@@ -18,7 +19,10 @@ export const useSupabaseSelect = <T>(
     try {
       const supabase = supabaseClient.from<T>(from).select(query.columns, query.options);
 
-      const { data, error, count } = await (query.filter ? query.filter(supabase) : supabase);
+      // const { data, error, count } = await (query.filter ? query.filter(supabase) : supabase);
+      const sleepPromise = sleep(400);
+      const fetchPromise = query.filter ? query.filter(supabase) : supabase;
+      const [{ data, error, count }] = await Promise.all([fetchPromise, sleepPromise]);
 
       // is Error
       if (error) {
