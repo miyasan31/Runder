@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import type { FC } from 'react';
-import React from 'react';
+import React, { memo } from 'react';
 import { Image, StyleSheet } from 'react-native';
 
 import { DetailViewButtonGroup } from '~/components/screen/TournamentDetail/DetailViewButtonGroup';
@@ -17,7 +17,7 @@ import type { ChallengeDetailScreenProps } from '.';
 const FROM = 'tournament';
 const SELECT = 'id, name, distance, start, end, image, term';
 
-export const TournamentDetail: FC<ChallengeDetailScreenProps> = (props) => {
+export const TournamentDetail: FC<ChallengeDetailScreenProps> = memo((props) => {
   const { tournament_id } = props.route.params;
   const filter = useSupabaseFilter((query) => query.select(SELECT).eq('id', tournament_id), []);
   const { loading, error, data } = useSupabaseSelect<Tournament>(FROM, { filter });
@@ -72,7 +72,7 @@ export const TournamentDetail: FC<ChallengeDetailScreenProps> = (props) => {
       </View>
     </>
   );
-};
+});
 
 const style = StyleSheet.create({
   image: {
