@@ -17,7 +17,7 @@ import { DetailViewButtonGroup } from './DetailViewButtonGroup';
 export type TournamentDetailScreenProps = Props<'TournamentDetailScreen'>;
 
 const FROM = 'tournament';
-const COLUMN = 'id, name, distance, start, end, image, term, rule';
+const COLUMN = 'id, name, distance, start, end, image, term';
 
 export const TournamentDetail: FC<TournamentDetailScreenProps> = (props) => {
   const { tournament_id } = props.route.params;
@@ -28,7 +28,7 @@ export const TournamentDetail: FC<TournamentDetailScreenProps> = (props) => {
   if (error) return <Text>エラーが発生しました。</Text>;
   if (!data) return <Text>データが見つかりませんでした。</Text>;
 
-  const { id, name, distance, start, end, image, term, rule } = data[0];
+  const { id, name, distance, start, end, image, term } = data[0];
   const termResult = termCheck(term);
   const startDate = format(new Date(start), 'M/d');
   const endDate = format(new Date(end), 'M/d');
@@ -70,7 +70,7 @@ export const TournamentDetail: FC<TournamentDetailScreenProps> = (props) => {
           outlineStyle={style.button_outline}
           textStyle={style.button_text}
         />
-        <DetailViewButtonGroup id={id} rule={rule} />
+        <DetailViewButtonGroup id={id} />
       </View>
     </>
   );

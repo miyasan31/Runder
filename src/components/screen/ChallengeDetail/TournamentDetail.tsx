@@ -1,42 +1,53 @@
+import { format } from 'date-fns';
 import type { FC } from 'react';
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 
 import { DetailViewButtonGroup } from '~/components/screen/TournamentDetail/DetailViewButtonGroup';
 import { Button } from '~/components/ui/Button';
+import { ActivityIndicator } from '~/components/ui/Progress';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import { termCheck } from '~/functions/termCheck';
+import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
+import type { Tournament } from '~/types/model';
 
 import type { ChallengeDetailScreenProps } from '.';
 
-const data = [
-  {
-    id: '1',
-    name: 'Winter Distance Challenge',
-    distance: 3000,
-    created_at: '2020-01-01',
-    image: 'assets/develop/tournament.jpeg',
-  },
-];
+const FROM = 'tournament';
+const SELECT = 'id, name, distance, start, end, image, term';
 
-export const TournamentDetail: FC<ChallengeDetailScreenProps> = () => {
+export const TournamentDetail: FC<ChallengeDetailScreenProps> = (props) => {
+  const { tournament_id } = props.route.params;
+  const filter = useSupabaseFilter((query) => query.select(SELECT).eq('id', tournament_id), []);
+  const { loading, error, data } = useSupabaseSelect<Tournament>(FROM, { filter });
+
+  if (loading) return <ActivityIndicator message="大会情報を取得中..." />;
+  if (error) return <Text>エラーが発生しました。</Text>;
+  if (!data) return <Text>データが見つかりませんでした。</Text>;
+
+  const { id, name, distance, start, end, image, term } = data[0];
+  const termResult = termCheck(term);
+  const startDate = format(new Date(start), 'M/d');
+  const endDate = format(new Date(end), 'M/d');
+
   return (
     <>
-      <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
+      <Image source={{ uri: image }} style={style.image} />
 
       <View style={style.float_text_box}>
         <Text style={style.season} color="white">
-          Monthly
+          {termResult}
         </Text>
         <Text style={style.season} color="white">
-          1/1 - 1/31
+          {`${startDate} - ${endDate}`}
         </Text>
         <Text style={style.name} color="white">
-          {data[0].name}
+          {name}
         </Text>
         <View style={style.distance_box}>
           <Text style={style.distance} color="white">
-            {data[0].distance}
+            {distance}
           </Text>
           <Text style={style.distance_unit} color="white">
             m
@@ -57,7 +68,7 @@ export const TournamentDetail: FC<ChallengeDetailScreenProps> = () => {
           outlineStyle={style.button_outline}
           textStyle={style.button_text}
         />
-        <DetailViewButtonGroup />
+        <DetailViewButtonGroup id={id} />
       </View>
     </>
   );
