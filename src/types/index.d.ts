@@ -105,8 +105,12 @@ export type RankingScreenProps<T extends keyof RankingStackParamList> = Composit
 /* tournament */
 export type TournamentStackParamList = {
   TournamentScreen: undefined;
-  TournamentDetailScreen: undefined;
-  ChallengeDetailScreen: undefined;
+  TournamentDetailScreen: {
+    tournament_id: number;
+  };
+  ChallengeDetailScreen: {
+    tournament_id: number;
+  };
   Modal: undefined;
 };
 export type TournamentScreenProps<T extends keyof TournamentStackParamList> = CompositeScreenProps<
