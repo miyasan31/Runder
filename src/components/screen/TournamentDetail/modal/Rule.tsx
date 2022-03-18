@@ -5,14 +5,15 @@ import { StyleSheet } from 'react-native';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 
-export const Rule: FC = () => {
+type Props = {
+  // TODO:optionalを外す
+  rule?: string;
+};
+
+export const Rule: FC<Props> = ({ rule }) => {
   return (
     <View style={style.root}>
-      <Text style={style.tournament_rule}>
-        12月1日(月)6:00から12月31日(金)11:59までの 期間で開催されます。
-        チャレンジできる回数は10回です。 期間中に3000mを走ってください。
-        タイム順にランキングを集計します。 同タイムの場合は測定日が早い方の記録が優先 されます。
-      </Text>
+      <Text style={style.tournament_rule}>{rule}</Text>
     </View>
   );
 };

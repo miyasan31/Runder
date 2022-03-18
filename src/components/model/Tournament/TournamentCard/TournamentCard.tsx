@@ -11,17 +11,16 @@ import { View } from '~/components/ui/View';
 import { termCheck } from '~/functions/termCheck';
 import type { Tournament } from '~/types/model';
 
-type SelectColumn = 'id' | 'name' | 'distance' | 'start' | 'end' | 'image' | 'term' | 'created_at';
+type SelectColumn = 'id' | 'name' | 'distance' | 'start' | 'end' | 'image' | 'term';
 
 export const TournamentCard: FC<Pick<Tournament, SelectColumn> & TournamentScreenProps> = ({
+  id,
   name,
   distance,
   start,
   end,
   image,
   term,
-  id: _id,
-  created_at: _created_at,
   navigation,
 }) => {
   const termResult = termCheck(term);
@@ -29,8 +28,8 @@ export const TournamentCard: FC<Pick<Tournament, SelectColumn> & TournamentScree
   const endDate = format(new Date(end), 'M/d');
 
   const onNavigation = useCallback(() => {
-    navigation.navigate('TournamentDetailScreen');
-  }, [navigation]);
+    navigation.navigate('TournamentDetailScreen', { tournament_id: id });
+  }, [navigation, id]);
 
   return (
     <Card onPress={onNavigation}>

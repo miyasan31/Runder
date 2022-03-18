@@ -13,7 +13,13 @@ const button = [
   { index: 2, label: 'ランキング' },
 ];
 
-export const DetailViewButtonGroup: FC = () => {
+type Props = {
+  // TODO:optionalを外す
+  id?: number;
+  rule?: string;
+};
+
+export const DetailViewButtonGroup: FC<Props> = ({ id, rule }) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
@@ -47,6 +53,8 @@ export const DetailViewButtonGroup: FC = () => {
         isVisible={isModalVisible}
         activeTabIndex={activeTabIndex}
         onCloseModal={onCloseModal}
+        id={id}
+        rule={rule}
       />
     </>
   );

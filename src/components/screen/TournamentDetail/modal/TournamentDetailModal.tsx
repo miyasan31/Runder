@@ -20,14 +20,23 @@ type Props = {
   isVisible: boolean;
   activeTabIndex?: number;
   onCloseModal: () => void;
+  // TODO:optionalを外す
+  id?: number;
+  rule?: string;
 };
 
-export const TournamentDetailModal: FC<Props> = ({ activeTabIndex, ...otherProps }) => {
+export const TournamentDetailModal: FC<Props> = ({
+  // TODO:optionalを外す
+  id: _id,
+  rule,
+  activeTabIndex,
+  ...otherProps
+}) => {
   const { layout, index, onIndexChange } = useTabView();
 
   const renderScene = useMemo(() => {
     return SceneMap({
-      rule: () => <Rule />,
+      rule: () => <Rule rule={rule} />,
       point: () => <Point />,
       ranking: () => <Ranking />,
     });
