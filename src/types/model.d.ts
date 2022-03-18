@@ -12,7 +12,7 @@
 export type Term = 'Monthly' | 'Weekly' | 'Daily';
 
 export type Tournament = {
-  id: string;
+  id: number;
   name: string;
   distance: number;
   created_at: string;
