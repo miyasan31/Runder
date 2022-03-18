@@ -16,10 +16,11 @@ import type { ChallengeDetailScreenProps } from '.';
 
 const FROM = 'tournament';
 const SELECT = 'id, name, distance, start, end, image, term';
+const EQUAL = 'id';
 
 export const TournamentDetail: FC<ChallengeDetailScreenProps> = memo((props) => {
   const { tournament_id } = props.route.params;
-  const filter = useSupabaseFilter((query) => query.select(SELECT).eq('id', tournament_id), []);
+  const filter = useSupabaseFilter((query) => query.select(SELECT).eq(EQUAL, tournament_id), []);
   const { loading, error, data } = useSupabaseSelect<Tournament>(FROM, { filter });
 
   if (loading) return <ActivityIndicator message="大会情報を取得中..." />;

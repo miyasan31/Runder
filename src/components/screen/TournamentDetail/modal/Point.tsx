@@ -12,13 +12,14 @@ import type { PointTable } from '~/types/model';
 
 const FROM = 'point_table';
 const COLUMN = 'id, rank, point';
+const EQUAL = 'tournament_id';
 
 type Props = {
   id: number;
 };
 
 export const Point: FC<Props> = memo(({ id }) => {
-  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq('tournament_id', id), []);
+  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq(EQUAL, id), []);
   const { loading, error, data } = useSupabaseSelect<PointTable>(FROM, { filter });
 
   if (loading) return <ActivityIndicator message="ポイント情報を取得中..." />;

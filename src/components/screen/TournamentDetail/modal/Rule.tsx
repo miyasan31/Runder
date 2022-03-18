@@ -10,13 +10,14 @@ import type { Tournament } from '~/types/model';
 
 const FROM = 'tournament';
 const COLUMN = 'rule';
+const EQUAL = 'id';
 
 type Props = {
   id: number;
 };
 
 export const Rule: FC<Props> = memo(({ id }) => {
-  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq('id', id), []);
+  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq(EQUAL, id), []);
   const { loading, error, data } = useSupabaseSelect<Tournament>(FROM, { filter });
 
   if (loading) return <ActivityIndicator message="大会ルールを取得中..." />;

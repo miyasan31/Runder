@@ -18,10 +18,11 @@ export type TournamentDetailScreenProps = Props<'TournamentDetailScreen'>;
 
 const FROM = 'tournament';
 const COLUMN = 'id, name, distance, start, end, image, term';
+const EQUAL = 'id';
 
 export const TournamentDetail: FC<TournamentDetailScreenProps> = (props) => {
   const { tournament_id } = props.route.params;
-  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq('id', tournament_id), []);
+  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq(EQUAL, tournament_id), []);
   const { loading, error, data } = useSupabaseSelect<Tournament>(FROM, { filter });
 
   if (loading) return <ActivityIndicator message="大会情報を取得中..." />;
