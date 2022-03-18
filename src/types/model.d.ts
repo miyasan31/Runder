@@ -39,9 +39,6 @@ export type Tournament = {
   button_image: string;
   slide_color: string;
   created_at: Date;
-
-  record: Record[];
-  point_table: PointTable[];
 };
 
 export type PointTable = {
