@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-ignore
+// @ts-nocheck
 import type { FC } from 'react';
 import React from 'react';
 import { StyleSheet } from 'react-native';
@@ -6,6 +9,8 @@ import SwipeButton from 'rn-swipe-button';
 import { RunderMonochrome, Start } from '~/components/ui/Icon';
 import { View } from '~/components/ui/View';
 import { useTheme } from '~/hooks/useTheme';
+
+const Icon = (<Start />) as string;
 
 export const SwipeStartButton: FC = () => {
   const bg1 = useTheme({}, 'bg1');
@@ -20,9 +25,9 @@ export const SwipeStartButton: FC = () => {
 
   return (
     <SwipeButton
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      title={<Start />}
+      title="START"
+      // eslint-disable-next-line react/jsx-no-duplicate-props
+      title={Icon}
       height={70}
       containerStyles={style.container}
       thumbIconWidth={70}
@@ -56,6 +61,7 @@ const style = StyleSheet.create({
   },
   title: {
     fontWeight: '600',
+    fontSize: 30,
     fontStyle: 'italic',
   },
   button: {
