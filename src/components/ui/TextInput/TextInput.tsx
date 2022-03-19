@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import React, { memo, useCallback, useRef, useState } from 'react';
 import { StyleSheet, TextInput as NativeTextInput } from 'react-native';
 
-import { View } from '~/components/ui/View';
+import { TouchableOpacity } from '~/components/ui/View';
 import { useTheme } from '~/hooks/useTheme';
 import type { TextInputStyleProps } from '~/types/style';
 
@@ -34,13 +34,18 @@ export const TextInput: FC<TextInputProps> = memo(
     const primary = useTheme({}, 'primary');
     const color = useTheme({ light: lightColor, dark: darkColor }, fontColor);
 
-    const inputRef = useRef(null);
+    const inputRef = useRef<NativeTextInput>(null);
+
     const [isFocused, setIsFocused] = useState(false);
-    const onFocus = useCallback(() => setIsFocused(true), []);
+    const onFocus = useCallback(() => {
+      setIsFocused(true);
+      inputRef.current?.focus();
+    }, []);
     const onBlur = useCallback(() => setIsFocused(false), []);
 
     return (
-      <View
+      <TouchableOpacity
+        activeOpacity={1}
         style={[
           defaultStyle.view,
           viewStyle,
@@ -61,6 +66,7 @@ export const TextInput: FC<TextInputProps> = memo(
           lightShadow,
           darkShadow,
         }}
+        onPressOut={onFocus}
       >
         <NativeTextInput
           {...otherProps}
@@ -71,7 +77,7 @@ export const TextInput: FC<TextInputProps> = memo(
           onPressOut={onFocus}
           onBlur={onBlur}
         />
-      </View>
+      </TouchableOpacity>
     );
   },
 );
