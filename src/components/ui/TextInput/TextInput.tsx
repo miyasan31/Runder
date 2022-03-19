@@ -92,5 +92,6 @@ const defaultStyle = StyleSheet.create({
   },
   text_input: {
     fontSize: 18,
+    textAlignVertical: 'top',
   },
 });

@@ -33,7 +33,7 @@ export const RunningDetail: FC<Props> = (props) => {
   const strokeResult = data[0].location.map((coordinate) => coordinate.color);
 
   return (
-    <BottomTabLayout viewStyle={styles.root} layout="top-horizontal">
+    <BottomTabLayout viewStyle={styles.root} safeArea="top-horizontal">
       <MapView
         style={styles.map}
         initialRegion={{

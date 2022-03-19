@@ -1,152 +1,231 @@
-import 'react-native-url-polyfill/auto';
-
 import type { FC } from 'react';
-import React, { useCallback, useState } from 'react';
-// import { toast } from 'react-hot-toast/src/core/toast';
-import { Image, StyleSheet } from 'react-native';
+import React, { useCallback, useMemo } from 'react';
+import { StyleSheet } from 'react-native';
+import { SceneMap } from 'react-native-tab-view';
+import { CollapsibleHeaderTabView } from 'react-native-tab-view-collapsible-header';
 
-import { Button } from '~/components/ui/Button';
+import { AntDesignIcon } from '~/components/ui/Icon';
+import { Image } from '~/components/ui/Image';
+import { TabBar } from '~/components/ui/TabBar';
 import { Text } from '~/components/ui/Text';
-import { View } from '~/components/ui/View';
-import { onSignOut } from '~/utils/supabase';
+import { TouchableOpacity, View } from '~/components/ui/View';
+import { useTabView } from '~/hooks/useTabView';
+import type { ProfileScreenProps as Props } from '~/types';
 
-// import { toastKit } from '~/utils/toastKit';
-import { HistoryTab } from './History.tab';
-import { ProfileEditModal } from './modal';
-import type { ProfileScreenProps } from './ScreenProps';
+import { CombatHistory } from './CombatHistory';
+import { PodiumHistory } from './PodiumHistory';
+
+export type ProfileScreenProps = Props<'ProfileScreen'>;
+
+const routes = [
+  { key: 'podium', title: '入賞回数' },
+  { key: 'combat', title: '戦歴' },
+];
 
 export const Profile: FC<ProfileScreenProps> = (props) => {
-  const [isModalVisible, setModalVisible] = useState(false);
+  const { layout, index, onIndexChange } = useTabView();
 
-  const onCloseModal = useCallback(() => {
-    setModalVisible(false);
+  const renderScene = useMemo(() => {
+    return SceneMap({
+      podium: () => <PodiumHistory {...props} />,
+      combat: () => <CombatHistory {...props} />,
+    });
+  }, [props]);
+
+  const onProfileEditNavigate = useCallback(() => {
+    props.navigation.navigate('ProfileEditScreen');
   }, []);
 
-  const onOpenModal = useCallback(() => {
-    setModalVisible(true);
+  const onAvatarEditNavigate = useCallback(() => {
+    props.navigation.navigate('AvatarEditScreen');
   }, []);
-
-  // const onPress = async () => {
-  //   const { errorToast, successToast } = toastKit();
-  //   // delay 1s
-  //   await new Promise((resolve) => setTimeout(resolve, 2000));
-  //   errorToast();
-
-  //   await new Promise((resolve) => setTimeout(resolve, 2000));
-  //   successToast('成功しました');
-  // };
-
-  // const onPressPromise = async () => {
-  //   const myPromise = new Promise((resolve) => setTimeout(resolve, 2000));
-  //   toast.promise(
-  //     myPromise,
-  //     {
-  //       loading: 'Loading',
-  //       error: 'Error when fetching',
-  //       success: 'Got the data',
-  //     },
-  //     {
-  //       style: {
-  //         minWidth: '250px',
-  //       },
-  //       loading: {
-  //         duration: 3000,
-  //         icon: '🔥',
-  //       },
-  //       error: {
-  //         duration: 3000,
-  //         icon: '🔥',
-  //       },
-  //       success: {
-  //         duration: 3000,
-  //         icon: '🔥',
-  //       },
-  //     },
-  //   );
-  // };
 
   return (
-    <>
-      <ProfileEditModal isVisible={isModalVisible} onCloseModal={onCloseModal} />
+    <CollapsibleHeaderTabView
+      renderTabBar={TabBar}
+      navigationState={{ index, routes }}
+      renderScrollHeader={() => {
+        return (
+          <>
+            <View style={style.user_info_box} bg="bg1">
+              <View style={style.align_horizontal}>
+                <Image
+                  source={require('assets/develop/lilnasx.png')}
+                  border="border1"
+                  style={style.user_icon}
+                />
 
-      <View style={style.user_info_box}>
-        <View style={style.align_horizontal}>
-          <View style={style.left_box}>
-            <Image source={require('assets/develop/lilnasx.png')} style={style.user_icon} />
-          </View>
-          <View style={style.right_box}>
-            <Button
-              label="プロフィール編集"
-              outlineStyle={style.button_outline}
-              viewStyle={style.button_bg}
-              textStyle={style.button_text}
-              isBorder
-              onPress={onOpenModal}
-            />
-            <Button
-              label="サインアウト"
-              outlineStyle={style.button_outline}
-              viewStyle={style.button_bg}
-              textStyle={style.button_text}
-              isBorder
-              onPress={onSignOut}
-            />
-            <Text>ランキング</Text>
-            <Text>1位</Text>
-          </View>
-        </View>
+                <TouchableOpacity
+                  activeOpacity={0.9}
+                  style={style.icon_edit_button}
+                  border="border0"
+                  onPress={onAvatarEditNavigate}
+                >
+                  <AntDesignIcon name="pluscircle" size={26} icon="accent" />
+                </TouchableOpacity>
 
-        <View style={style.profile_box}>
-          <Text>R.KWMR</Text>
-          <Text>ナイキ ズームライバル フライ</Text>
-          <Text>高校まで陸上部</Text>
-          <Text>中距離ランナー</Text>
-          <Text>得意な種目は800mと1500m</Text>
-          <Text>2000m以上は苦手です...</Text>
-        </View>
-      </View>
+                <View style={style.user_info_right}>
+                  <Text style={style.total_ranking_title} color="color2">
+                    総合ランキング
+                  </Text>
 
-      <View style={style.tab_box}>
-        <HistoryTab {...props} />
-      </View>
-    </>
+                  <View style={style.align_horizontal}>
+                    <View style={style.user_ranking_box}>
+                      <Text style={style.user_ranking_result}>10</Text>
+
+                      <Text style={style.user_ranking_result_space}>位</Text>
+
+                      <Text style={style.user_age_hierarchy} color="color2">
+                        20歳〜
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+
+              <View style={[style.align_horizontal, style.user_name_box]}>
+                <Text style={style.user_name}>川村諒</Text>
+                <Text style={style.edit_button} onPress={onProfileEditNavigate} color="accent">
+                  編集する
+                </Text>
+              </View>
+
+              <Text style={style.user_profile}>
+                {`高校まで陸上部  
+中距離ランナー
+得意な種目は800mと1500m
+2000m以上は苦手です......`}
+              </Text>
+
+              <Text style={style.user_shoes} color="color2">
+                {'👟'} ナイキ ズームライバル フライ
+              </Text>
+            </View>
+          </>
+        );
+      }}
+      onIndexChange={onIndexChange}
+      initialLayout={{ width: layout.width }}
+      renderScene={renderScene}
+      scrollEnabled={false}
+      isRefreshing={false}
+    />
   );
 };
 
 const style = StyleSheet.create({
   user_info_box: {
-    paddingHorizontal: '8%',
-  },
-  align_horizontal: {
-    marginTop: 60,
-    flexDirection: 'row',
-  },
-  left_box: {
-    flex: 1,
-  },
-  right_box: {
-    flex: 1,
-  },
-  profile_box: {
-    paddingVertical: '8%',
+    marginTop: 40,
+    paddingHorizontal: '6%',
   },
   user_icon: {
-    marginTop: '25%',
-    width: 100,
-    height: 100,
+    width: 110,
+    height: 110,
+    borderRadius: 999,
+    // borderWidth: 1.25,
   },
-  button_outline: {
+  icon_edit_button: {
+    position: 'absolute',
+    top: 80,
+    left: 80,
+    borderWidth: 3,
+    borderRadius: 999,
+  },
+  align_horizontal: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  user_info_right: {
     flex: 1,
+    marginTop: '5%',
+    marginLeft: '10%',
+  },
+  total_ranking_title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: '5%',
+  },
+  user_ranking_box: {
+    width: 'auto',
+    flexDirection: 'row',
     alignItems: 'flex-end',
   },
-  button_bg: {
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+  user_ranking_result: {
+    width: 'auto',
+    fontSize: 46,
+    fontWeight: '800',
+    fontStyle: 'italic',
   },
-  button_text: {
-    fontSize: 12,
+  user_ranking_result_space: {
+    width: 'auto',
+    marginLeft: 4,
+    fontSize: 22,
+    marginBottom: 10,
   },
-  tab_box: {
-    flex: 1,
+  user_age_hierarchy: {
+    width: 'auto',
+    marginLeft: '10%',
+    marginBottom: 8,
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  user_name_box: {
+    marginVertical: '4%',
+    alignItems: 'flex-end',
+  },
+  user_name: {
+    width: 'auto',
+    fontSize: 24,
+    fontWeight: '600',
+  },
+  edit_button: {
+    width: 'auto',
+    marginLeft: 10,
+    fontWeight: '600',
+  },
+  user_profile: {
+    lineHeight: 20,
+  },
+  user_shoes: {
+    marginTop: '2%',
   },
 });
+
+// const onPress = async () => {
+//   const { errorToast, successToast } = toastKit();
+//   // delay 1s
+//   await new Promise((resolve) => setTimeout(resolve, 2000));
+//   errorToast();
+
+//   await new Promise((resolve) => setTimeout(resolve, 2000));
+//   successToast('成功しました');
+// };
+
+// const onPressPromise = async () => {
+//   const myPromise = new Promise((resolve) => setTimeout(resolve, 2000));
+//   toast.promise(
+//     myPromise,
+//     {
+//       loading: 'Loading',
+//       error: 'Error when fetching',
+//       success: 'Got the data',
+//     },
+//     {
+//       style: {
+//         minWidth: '250px',
+//       },
+//       loading: {
+//         duration: 3000,
+//         icon: '🔥',
+//       },
+//       error: {
+//         duration: 3000,
+//         icon: '🔥',
+//       },
+//       success: {
+//         duration: 3000,
+//         icon: '🔥',
+//       },
+//     },
+//   );
+// };

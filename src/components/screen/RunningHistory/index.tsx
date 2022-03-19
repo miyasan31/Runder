@@ -37,7 +37,7 @@ export const RunningHistory: FC<Props> = (props) => {
   if (error) return <Text>エラー</Text>;
   if (!data) return <Text>データなし</Text>;
   return (
-    <BottomTabLayout layout="top-horizontal">
+    <BottomTabLayout safeArea="top-horizontal">
       <FlatList data={data} renderItem={renderItem} keyExtractor={(item, _) => String(item.id)} />
     </BottomTabLayout>
   );

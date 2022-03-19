@@ -1,2 +1,2 @@
-export type { TournamentDetailScreenProps } from './ScreenProps';
-export { TournamentDetailScreen } from './TournamentDetail.screen';
+export type { TournamentDetailScreenProps } from './TournamentDetail';
+export { TournamentDetail } from './TournamentDetail';

@@ -1,2 +1,2 @@
-export type { UserRegisterScreenProps } from './ScreenProps';
-export { UserRegisterScreen } from './UserRegister.screen';
+export type { UserRegisterScreenProps } from './UserRegister';
+export { UserRegister } from './UserRegister';

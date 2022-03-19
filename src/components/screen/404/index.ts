@@ -1,2 +1,2 @@
-export { NotFoundScreen } from './404.screen';
-export type { NotFoundScreenProps } from './ScreenProps';
+export type { NotFoundScreenProps } from './404';
+export { NotFound } from './404';

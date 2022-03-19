@@ -1,68 +1,58 @@
-import 'react-native-url-polyfill/auto';
-
-import { format } from 'date-fns';
 import type { FC } from 'react';
-import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import React, { memo } from 'react';
+import { StyleSheet } from 'react-native';
+import { HFlatList } from 'react-native-head-tab-view';
 
-import { Card } from '~/components/ui/Card';
-import { Progress } from '~/components/ui/Progress';
-import { Text } from '~/components/ui/Text';
+import { RecordTableBody } from '~/components/model/record/RecordTableBody';
+import { SexAndAgeHierarchySelect } from '~/components/ui/SexAndAgeHierarchySelect';
+import { TableHead } from '~/components/ui/Table';
 import { View } from '~/components/ui/View';
-import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
-import type { User } from '~/types/fetcher';
+import { flatListStyle } from '~/styles';
 
-import type { RankingScreenProps } from './ScreenProps';
+import type { RankingScreenProps } from './Ranking';
 
-export const TotalRanking: FC<RankingScreenProps> = () => {
-  const filter = useSupabaseFilter((query) => query.limit(10), []);
-  const { loading, error, data } = useSupabaseSelect<User>('user', {
-    options: {
-      count: 'exact',
-    },
-    filter,
-  });
+const data = [
+  { rank: 1, point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 2, point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 3, point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 4, point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 5, point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 6, point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 7, point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 8, point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 9, point: 100, user: { name: 'ユーザー1', icon: '' } },
+  { rank: 100, point: 100, user: { name: 'ユーザー1', icon: '' } },
+];
 
-  if (loading) return <Progress />;
-  if (error) return <Text>エラー</Text>;
-  if (!data) return <Text>データなし</Text>;
-
+export const TotalRanking: FC<RankingScreenProps> = memo(() => {
   return (
-    <FlatList data={data} renderItem={renderItem} keyExtractor={(item, _) => String(item.id)} />
+    <HFlatList
+      index={0}
+      data={data}
+      isRefreshing={false}
+      style={flatListStyle.list}
+      keyExtractor={(item, _) => String(item.rank)}
+      ListHeaderComponent={() => (
+        <>
+          <SexAndAgeHierarchySelect outlineStyle={style.sex_and_age_hierarchy_box} />
+          <TableHead outlineStyle={style.table_head} leftTitle="順位" rightTitle="ポイント" />
+        </>
+      )}
+      renderItem={({ item }) => <RecordTableBody {...item} outlineStyle={style.list} />}
+      ListFooterComponent={() => <View style={flatListStyle.bottom_space_medium} />}
+    />
   );
-
-  // eslint-disable-next-line func-style
-  function renderItem({ item }: { item: User }) {
-    const date = format(new Date(item.created_at || ''), 'yyyy年M月d日');
-    const onNavigation = () => console.info('item.id', item.id);
-
-    return (
-      <Card viewStyle={style.root} isBorder onPress={onNavigation}>
-        <View>
-          <Text style={style.name}>{item.name}</Text>
-          <Text style={style.date}>{date}</Text>
-        </View>
-      </Card>
-    );
-  }
-};
+});
 
 const style = StyleSheet.create({
-  root: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 18,
-    marginVertical: '1%',
+  sex_and_age_hierarchy_box: {
+    paddingTop: '4%',
   },
-  name: {
-    paddingBottom: 10,
-    fontSize: 20,
-    textAlign: 'left',
+  list: {
+    paddingHorizontal: '2%',
   },
-  date: {
-    fontSize: 15,
-    fontWeight: 'normal',
-    textAlign: 'left',
+  table_head: {
+    marginTop: '4%',
+    marginBottom: '2%',
   },
 });

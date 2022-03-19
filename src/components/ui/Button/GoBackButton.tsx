@@ -36,7 +36,7 @@ const style = StyleSheet.create({
   },
   float: {
     position: 'absolute',
-    top: 5,
+    top: '6%',
     left: '3%',
   },
 });

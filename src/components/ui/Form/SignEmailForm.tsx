@@ -38,10 +38,10 @@ export const SignEmailForm: FC<Props> = ({ onSignEmail }) => {
 
 const style = StyleSheet.create({
   label: {
-    lineHeight: 30,
     paddingLeft: '1%',
+    paddingVertical: '4%',
   },
   button_outline: {
-    marginTop: '5%',
+    marginTop: '6%',
   },
 });

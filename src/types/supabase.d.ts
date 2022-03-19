@@ -1,7 +1,16 @@
 import type { PostgrestFilterBuilder } from '@supabase/postgrest-js';
 import type { PostgrestError } from '@supabase/supabase-js';
 
-export type SupabaseFrom = 'user' | 'location';
+export type SupabaseFrom =
+  | 'tournament'
+  | 'user'
+  | 'point'
+  | 'info'
+  | 'location'
+  | 'point_table'
+  | 'record'
+  | 'shoes'
+  | 'suggestion';
 
 export type CountOption = 'exact' | 'planned' | 'estimated';
 

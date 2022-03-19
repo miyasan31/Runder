@@ -1,1 +1,1 @@
-export { TournamentDetailModal } from './TournamentDetail.modal';
+export { TournamentDetailModal } from './TournamentDetailModal';

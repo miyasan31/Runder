@@ -1,2 +1,2 @@
-export { ProfileScreen } from './Profile.screen';
-export type { ProfileScreenProps } from './ScreenProps';
+export type { ProfileScreenProps } from './Profile';
+export { Profile } from './Profile';

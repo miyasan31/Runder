@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import type { FC } from 'react';
 import React, { useCallback } from 'react';
 import { Image, StyleSheet } from 'react-native';
@@ -7,50 +8,53 @@ import { Button } from '~/components/ui/Button';
 import { Card } from '~/components/ui/Card';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import { termCheck } from '~/functions/termCheck';
+import type { Tournament } from '~/types/model';
 
-const data = [
-  {
-    id: '1',
-    name: 'Winter Distance Challenge',
-    distance: 3000,
-    created_at: '2020-01-01',
-    image: 'assets/develop/tournament.jpeg',
-  },
-];
+type SelectColumn = 'id' | 'name' | 'distance' | 'start' | 'end' | 'image' | 'term';
 
-type Tournament = typeof data[0];
-
-export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
-  id: _id,
+export const TournamentCard: FC<Pick<Tournament, SelectColumn> & TournamentScreenProps> = ({
+  id,
   name,
   distance,
-  created_at: _created_at,
-  image: _image,
+  start,
+  end,
+  image,
+  term,
   navigation,
 }) => {
+  const termResult = termCheck(term);
+  const startDate = format(new Date(start), 'M/d');
+  const endDate = format(new Date(end), 'M/d');
+
   const onNavigation = useCallback(() => {
-    navigation.navigate('TournamentDetailScreen');
-  }, [navigation]);
+    navigation.navigate('TournamentDetailScreen', { tournament_id: id });
+  }, [navigation, id]);
 
   return (
     <Card onPress={onNavigation}>
       <View style={style.root}>
         <View style={style.image_box}>
-          <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
+          <Image source={{ uri: image }} style={style.image} />
 
           <View style={style.float_text_box}>
             <Text style={style.season} color="white">
-              Monthly
+              {termResult}
             </Text>
             <Text style={style.season} color="white">
-              1/1 - 1/31
+              {`${startDate} - ${endDate}`}
             </Text>
             <Text style={style.name} color="white">
               {name}
             </Text>
-            <Text style={style.distance} color="white">
-              {distance}m
-            </Text>
+            <View style={style.distance_box}>
+              <Text style={style.distance} color="white">
+                {distance}
+              </Text>
+              <Text style={style.distance_unit} color="white">
+                m
+              </Text>
+            </View>
           </View>
 
           <Button
@@ -61,6 +65,7 @@ export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
             outlineStyle={style.button_outline}
             viewStyle={style.button_bg}
             textStyle={style.button_text}
+            onPress={onNavigation}
           />
         </View>
       </View>
@@ -70,34 +75,52 @@ export const TournamentCard: FC<Tournament & TournamentScreenProps> = ({
 
 const style = StyleSheet.create({
   root: {
-    borderRadius: 20,
+    // borderRadius: 20,
   },
   image_box: {
     position: 'relative',
-    borderRadius: 20,
+    // borderRadius: 20,
   },
   image: {
-    height: 450,
+    height: 350,
     width: '100%',
-    borderRadius: 20,
+    // borderRadius: 20,
   },
   float_text_box: {
     position: 'absolute',
-    top: 15,
-    left: 15,
+    height: 350,
+    padding: '4%',
   },
   season: {
-    fontSize: 15,
+    fontSize: 18,
     fontWeight: '600',
+    fontStyle: 'italic',
+    lineHeight: 24,
   },
   name: {
-    fontSize: 20,
+    marginVertical: '2%',
+    fontSize: 24,
     fontWeight: '600',
-    marginTop: 10,
+    fontStyle: 'italic',
+  },
+  distance_box: {
+    width: 'auto',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
   },
   distance: {
-    fontSize: 30,
+    width: 'auto',
+    fontSize: 38,
     fontWeight: '800',
+    fontStyle: 'italic',
+  },
+  distance_unit: {
+    width: 'auto',
+    marginBottom: 4,
+    marginLeft: 2,
+    fontSize: 22,
+    fontWeight: '600',
+    fontStyle: 'italic',
   },
   button_outline: {
     position: 'absolute',

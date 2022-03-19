@@ -1,2 +1,5 @@
-export type { TournamentScreenProps } from './ScreenProps';
-export { TournamentScreen } from './Tournament.screen';
+import type { TournamentScreenProps as Props } from '~/types';
+
+export type TournamentScreenProps = Props<'TournamentScreen'>;
+export { ChallengeTournament } from './ChallengeTournament';
+export { VirtualTournament } from './VirtualTournament';

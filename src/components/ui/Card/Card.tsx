@@ -46,14 +46,14 @@ export const Card: FC<CardProps> = memo(
 
 const defaultStyle = StyleSheet.create({
   bounceable_view: {
-    marginBottom: '6%',
+    marginBottom: '4%',
   },
   touchable_opacity_view: {
-    borderRadius: 20,
+    // borderRadius: 20,
 
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 0,
     },
     shadowOpacity: 0.4,
     elevation: 1,

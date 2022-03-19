@@ -1,21 +1,35 @@
 import type { FC } from 'react';
-import React from 'react';
+import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { Text } from '~/components/ui/Text';
+import { ActivityIndicator } from '~/components/ui/Progress';
+import { ExceptionText, Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
+import type { Tournament } from '~/types/model';
 
-export const Rule: FC = () => {
+const FROM = 'tournament';
+const COLUMN = 'rule';
+const EQUAL = 'id';
+
+type Props = {
+  id: number;
+};
+
+export const Rule: FC<Props> = memo(({ id }) => {
+  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq(EQUAL, id), []);
+  const { loading, error, data } = useSupabaseSelect<Tournament>(FROM, { filter });
+
+  if (loading) return <ActivityIndicator message="大会ルールを取得中..." />;
+  if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;
+  if (!data) return <ExceptionText label="ルールが登録されていません。" />;
+
   return (
     <View style={style.root}>
-      <Text style={style.tournament_rule}>
-        12月1日(月)6:00から12月31日(金)11:59までの 期間で開催されます。
-        チャレンジできる回数は10回です。 期間中に3000mを走ってください。
-        タイム順にランキングを集計します。 同タイムの場合は測定日が早い方の記録が優先 されます。
-      </Text>
+      <Text style={style.tournament_rule}>{data[0].rule}</Text>
     </View>
   );
-};
+});
 
 const style = StyleSheet.create({
   root: {

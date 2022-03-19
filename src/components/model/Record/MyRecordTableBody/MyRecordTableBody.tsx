@@ -1,33 +1,39 @@
+import { format } from 'date-fns';
 import type { FC } from 'react';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
+import { List } from '~/components/ui/List';
 import { Text } from '~/components/ui/Text';
-import { View } from '~/components/ui/View';
+import { formatRecord } from '~/functions/formatRecord';
+import type { Record } from '~/types/model';
 
-const data = [
-  { date: '1/2', record: '10:00.0' },
-  { date: '1/13', record: '10:00.0' },
-  { date: '1/30', record: '10:00.0' },
-  { date: '1/21', record: '10:00.0' },
-  { date: '1/5', record: '10:00.0' },
-  { date: '1/22', record: '10:00.0' },
-];
-
-type RecordData = typeof data[0] & {
-  isLastChild: boolean;
+type Props = Record & {
+  index: number;
+  activeIndex: number;
+  onSelectRecord: (id: number) => void;
 };
 
-export const MyRecordTableBody: FC<RecordData> = ({ date, record, isLastChild }) => {
+export const MyRecordTableBody: FC<Props> = ({
+  index,
+  activeIndex,
+  record,
+  created_at,
+  onSelectRecord,
+}) => {
+  const date = format(new Date(created_at), 'M/d');
+  const recordResult = formatRecord(record);
+
   return (
-    <View
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={[style.root, { borderBottomWidth: isLastChild ? 0 : 1 }]}
+    <List
+      viewStyle={style.root}
+      onPress={() => onSelectRecord(index)}
+      bg={index === activeIndex ? 'primaryA' : 'bg0'}
     >
       <Text style={style.td_date}>{date}</Text>
 
-      <Text style={style.td_record}>{record}</Text>
-    </View>
+      <Text style={style.td_record}>{recordResult}</Text>
+    </List>
   );
 };
 
@@ -35,19 +41,14 @@ const style = StyleSheet.create({
   root: {
     alignItems: 'center',
     flexDirection: 'row',
-    paddingHorizontal: '3%',
-    paddingVertical: '3%',
-    borderBottomWidth: 1,
+    paddingHorizontal: '4%',
+    paddingVertical: '4%',
   },
   td_date: {
     flex: 1,
-    fontWeight: '600',
-    fontSize: 16,
   },
   td_record: {
     flex: 1,
     textAlign: 'right',
-    fontWeight: '600',
-    fontSize: 16,
   },
 });

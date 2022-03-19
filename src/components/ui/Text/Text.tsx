@@ -26,5 +26,7 @@ export const Text: FC<TextProps> = memo(
 const defaultStyle = StyleSheet.create({
   text: {
     width: '100%',
+    fontSize: 14,
+    fontWeight: '400',
   },
 });

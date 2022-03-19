@@ -41,7 +41,5 @@ export const SafeAreaView: FC<SafeAreaViewProps> = memo(
 const defaultStyle = StyleSheet.create({
   view: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });

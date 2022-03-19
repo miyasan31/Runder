@@ -66,6 +66,8 @@ export type CustomViewStyleProps = Pick<
   | 'darkShadow'
 >;
 
+export type IconStyleProps = Pick<StyleProps, 'icon' | 'lightIcon' | 'darkIcon'>;
+
 export type ButtonStyleProps = Omit<StyleProps, 'icon' | 'lightIcon' | 'darkIcon'>;
 
 export type CardStyleProps = Omit<

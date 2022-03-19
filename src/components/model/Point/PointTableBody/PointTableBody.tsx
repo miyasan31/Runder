@@ -1,10 +1,11 @@
-/* eslint-disable react-native/no-inline-styles */
 import type { FC } from 'react';
 import React from 'react';
+import type { StyleProp } from 'react-native';
 import { StyleSheet } from 'react-native';
 
+import { List } from '~/components/ui/List';
 import { Text } from '~/components/ui/Text';
-import { View } from '~/components/ui/View';
+import type { OutlineStyle } from '~/types/style';
 
 const data = [
   { rank: 1, point: 500 },
@@ -15,18 +16,20 @@ const data = [
   { rank: 100, point: 10 },
 ];
 
-type PointData = typeof data[0];
+type PointData = typeof data[0] & {
+  outlineStyle?: StyleProp<OutlineStyle>;
+};
 
-export const PointTableBody: FC<PointData> = (props) => {
+export const PointTableBody: FC<PointData> = ({ outlineStyle, rank, point }) => {
   return (
-    <View style={[style.root, { borderBottomWidth: props.rank === 100 ? 0 : 1 }]}>
-      <Text style={style.td_rank}>{props.rank === 100 ? 'チャレンジ' : `${props.rank}位`}</Text>
+    <List outlineStyle={outlineStyle} viewStyle={style.root}>
+      <Text style={style.td_rank}>{rank === 1000 ? 'チャレンジ' : `${rank}位`}</Text>
 
       <Text style={style.td_point}>
-        {props.point}
+        {point}
         <Text>ポイント</Text>
       </Text>
-    </View>
+    </List>
   );
 };
 
@@ -34,19 +37,14 @@ const style = StyleSheet.create({
   root: {
     alignItems: 'center',
     flexDirection: 'row',
-    paddingHorizontal: '3%',
-    paddingVertical: '3%',
-    borderBottomWidth: 1,
+    paddingHorizontal: '4%',
+    paddingVertical: '4%',
   },
   td_rank: {
     flex: 1,
-    fontWeight: '600',
-    fontSize: 16,
   },
   td_point: {
     flex: 1,
     textAlign: 'right',
-    fontWeight: '600',
-    fontSize: 16,
   },
 });

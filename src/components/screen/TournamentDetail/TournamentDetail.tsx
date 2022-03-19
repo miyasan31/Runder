@@ -1,43 +1,63 @@
+import { format } from 'date-fns';
 import type { FC } from 'react';
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 
 import { Button } from '~/components/ui/Button';
-import { Text } from '~/components/ui/Text';
+import { ActivityIndicator } from '~/components/ui/Progress';
+import { ExceptionText, Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import { termCheck } from '~/functions/termCheck';
+import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
+import type { TournamentScreenProps as Props } from '~/types';
+import type { Tournament } from '~/types/model';
 
 import { DetailViewButtonGroup } from './DetailViewButtonGroup';
-import type { TournamentDetailScreenProps } from './ScreenProps';
 
-const data = [
-  {
-    id: '1',
-    name: 'Winter Distance Challenge',
-    distance: 3000,
-    created_at: '2020-01-01',
-    image: 'assets/develop/tournament.jpeg',
-  },
-];
+export type TournamentDetailScreenProps = Props<'TournamentDetailScreen'>;
 
-export const TournamentDetail: FC<TournamentDetailScreenProps> = () => {
+const FROM = 'tournament';
+const COLUMN = 'id, name, distance, start, end, image, term';
+const EQUAL = 'id';
+
+export const TournamentDetail: FC<TournamentDetailScreenProps> = (props) => {
+  const { tournament_id } = props.route.params;
+  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq(EQUAL, tournament_id), []);
+  const { loading, error, data } = useSupabaseSelect<Tournament>(FROM, { filter });
+
+  if (loading) return <ActivityIndicator message="大会情報を取得中..." />;
+  if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;
+  if (!data) return <ExceptionText label="大会情報が見つかりませんでした。" />;
+
+  const { id, name, distance, start, end, image, term } = data[0];
+  const termResult = termCheck(term);
+  const startDate = format(new Date(start), 'M/d');
+  const endDate = format(new Date(end), 'M/d');
+
   return (
     <>
-      <Image source={require('assets/develop/tournament.jpeg')} style={style.image} />
+      <Image source={{ uri: image }} style={style.image} />
 
       <View style={style.float_text_box}>
-        <Text style={style.tournament_season} color="white">
-          Monthly
+        <Text style={style.season} color="white">
+          {termResult}
         </Text>
-        <Text style={style.tournament_season} color="white">
-          1/1 - 1/31
+        <Text style={style.season} color="white">
+          {`${startDate} - ${endDate}`}
         </Text>
-        <Text style={style.tournament_name} color="white">
-          {data[0].name}
+        <Text style={style.name} color="white">
+          {name}
         </Text>
-        <Text style={style.tournament_distance} color="white">
-          {data[0].distance}m
-        </Text>
-        <Text style={style.tournament_description} color="white">
+        <View style={style.distance_box}>
+          <Text style={style.distance} color="white">
+            {distance}
+          </Text>
+          <Text style={style.distance_unit} color="white">
+            m
+          </Text>
+        </View>
+
+        <Text style={style.description} color="white">
           ボタンを押してから5秒後にスタートします。 スタート後の一時停止はできません。
           STARTボタンを押すと、ルールに従うものと されます。
         </Text>
@@ -51,7 +71,7 @@ export const TournamentDetail: FC<TournamentDetailScreenProps> = () => {
           outlineStyle={style.button_outline}
           textStyle={style.button_text}
         />
-        <DetailViewButtonGroup />
+        <DetailViewButtonGroup id={id} />
       </View>
     </>
   );
@@ -64,26 +84,43 @@ const style = StyleSheet.create({
   },
   float_text_box: {
     position: 'absolute',
-    top: 0,
-    left: 0,
+    width: '100%',
     padding: '6%',
   },
-  tournament_season: {
-    fontSize: 20,
+  season: {
+    fontSize: 18,
     fontWeight: '600',
+    fontStyle: 'italic',
+    lineHeight: 24,
   },
-  tournament_name: {
-    fontSize: 25,
+  name: {
+    marginVertical: '2%',
+    fontSize: 24,
     fontWeight: '600',
-    marginTop: 10,
+    fontStyle: 'italic',
   },
-  tournament_distance: {
-    fontSize: 35,
+  distance_box: {
+    width: 'auto',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+  },
+  distance: {
+    width: 'auto',
+    fontSize: 38,
     fontWeight: '800',
+    fontStyle: 'italic',
   },
-  tournament_description: {
+  distance_unit: {
+    width: 'auto',
+    marginBottom: 4,
+    marginLeft: 2,
+    fontSize: 22,
+    fontWeight: '600',
+    fontStyle: 'italic',
+  },
+  description: {
+    marginTop: 20,
     fontSize: 16,
-    marginTop: 10,
     lineHeight: 22,
   },
   float_button_box: {
@@ -100,5 +137,6 @@ const style = StyleSheet.create({
   button_text: {
     fontSize: 20,
     fontWeight: '600',
+    fontStyle: 'italic',
   },
 });

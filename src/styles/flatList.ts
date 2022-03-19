@@ -1,13 +1,23 @@
 import { StyleSheet } from 'react-native';
 
 export const flatListStyle = StyleSheet.create({
-  list: {
-    paddingTop: '5%',
+  card: {
+    paddingTop: '4%',
     paddingBottom: 150,
-    paddingHorizontal: '5%',
+    paddingHorizontal: '4%',
   },
-  inner_list: {
+  list: {
     paddingBottom: 150,
-    paddingHorizontal: '5%',
+    paddingHorizontal: '4%',
+  },
+  separator: {
+    width: '95%',
+    borderBottomWidth: 1,
+  },
+  bottom_space_large: {
+    paddingBottom: 150,
+  },
+  bottom_space_medium: {
+    paddingBottom: 100,
   },
 });

@@ -4,7 +4,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast/src/core/toast';
 import { StyleSheet } from 'react-native';
 
-import type { UserRegisterScreenProps } from '~/components/screen/UserRegister';
 import { Button } from '~/components/ui/Button';
 import { DatePicker } from '~/components/ui/DatePicker';
 import { Radio } from '~/components/ui/Radio';
@@ -13,8 +12,12 @@ import { TextInput } from '~/components/ui/TextInput';
 import { Bounceable, View } from '~/components/ui/View';
 import { sleep } from '~/functions/sleep';
 import { updateSession } from '~/stores/session';
+import { layoutStyle } from '~/styles';
+import type { AuthGroupScreenProps as Props } from '~/types';
 import { supabaseClient } from '~/utils/supabase';
 import { toastKit } from '~/utils/toastKit';
+
+export type UserRegisterScreenProps = Props<'UserRegisterScreen'>;
 
 const radio_group = [
   { active: 1, label: '男性' },
@@ -93,7 +96,7 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
   }, []);
 
   return (
-    <>
+    <View style={layoutStyle.auth}>
       <Text style={style.screen_title}>プロフィールを登録</Text>
 
       <Text style={style.from_label}>ユーザー名</Text>
@@ -124,7 +127,7 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
         outlineStyle={style.button_outline}
         onPress={onRegisterUserInfo}
       />
-    </>
+    </View>
   );
 };
 
@@ -136,8 +139,8 @@ const style = StyleSheet.create({
     fontWeight: '600',
   },
   from_label: {
-    lineHeight: 30,
     paddingLeft: '1%',
+    paddingVertical: '4%',
   },
   align_horizontal: {
     flexDirection: 'row',
