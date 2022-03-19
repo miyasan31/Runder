@@ -8,7 +8,7 @@ import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { layoutStyle } from '~/styles';
 import type { AuthGroupScreenProps } from '~/types';
-import { onSignInGoogle, onSignOut } from '~/utils/supabase';
+import { onSignInApple, onSignInGoogle } from '~/utils/supabase';
 
 export type SignInScreenProps = AuthGroupScreenProps<'SignInScreen'>;
 
@@ -57,7 +57,7 @@ export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
             lightColor="#FFF"
             darkBg="#333"
             darkColor="#FFF"
-            onPress={onSignOut}
+            onPress={onSignInApple}
           />
           <Button
             leftIcon={<Mail />}

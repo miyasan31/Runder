@@ -1,3 +1,4 @@
+export { onSignInApple } from './onSignInApple';
 export { onSignInGoogle } from './onSignInGoogle';
 export { onSignOut } from './onSignOut';
 export { onSignUpEmail } from './onSignUpEmail';
