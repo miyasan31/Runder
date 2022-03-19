@@ -17,21 +17,22 @@ const routes = [
 ];
 
 type Props = {
+  id: number;
   isVisible: boolean;
   activeTabIndex?: number;
   onCloseModal: () => void;
 };
 
-export const TournamentDetailModal: FC<Props> = ({ activeTabIndex, ...otherProps }) => {
+export const TournamentDetailModal: FC<Props> = ({ id, activeTabIndex, ...otherProps }) => {
   const { layout, index, onIndexChange } = useTabView();
 
   const renderScene = useMemo(() => {
     return SceneMap({
-      rule: () => <Rule />,
-      point: () => <Point />,
-      ranking: () => <Ranking />,
+      rule: () => <Rule id={id} />,
+      point: () => <Point id={id} />,
+      ranking: () => <Ranking id={id} />,
     });
-  }, []);
+  }, [id]);
 
   return (
     <HalfModal {...otherProps} size={0.7}>

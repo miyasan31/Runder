@@ -23,7 +23,7 @@ type PointData = typeof data[0] & {
 export const PointTableBody: FC<PointData> = ({ outlineStyle, rank, point }) => {
   return (
     <List outlineStyle={outlineStyle} viewStyle={style.root}>
-      <Text style={style.td_rank}>{rank === 100 ? 'チャレンジ' : `${rank}位`}</Text>
+      <Text style={style.td_rank}>{rank === 1000 ? 'チャレンジ' : `${rank}位`}</Text>
 
       <Text style={style.td_point}>
         {point}

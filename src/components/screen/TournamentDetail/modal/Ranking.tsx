@@ -3,32 +3,45 @@ import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
 import { RecordTableBody } from '~/components/model/record/RecordTableBody';
+import { ActivityIndicator } from '~/components/ui/Progress';
 import { SexAndAgeHierarchySelect } from '~/components/ui/SexAndAgeHierarchySelect';
 import { TableHead } from '~/components/ui/Table';
+import { ExceptionText } from '~/components/ui/Text';
+import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import { flatListStyle } from '~/styles';
+import type { Record } from '~/types/model';
 
-const data = [
-  { rank: 1, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-  { rank: 2, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-  { rank: 3, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-  { rank: 4, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-  { rank: 100, record: '10:00.00', user: { name: 'ユーザー1', icon: '' } },
-];
+const FROM = 'record';
+const COLUMN = 'id, user(id, name, avatar), record';
+const ORDER = 'record';
+const EQUAL = 'tournament_id';
 
-export const Ranking: FC = () => {
+type Props = {
+  id: number;
+};
+
+export const Ranking: FC<Props> = ({ id }) => {
+  // TODO:男女年齢フィルターを実装する
+  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq(EQUAL, id).order(ORDER), []);
+  const { loading, error, data } = useSupabaseSelect<Record>(FROM, { filter });
+
+  if (loading) return <ActivityIndicator message="ポイント情報を取得中..." />;
+  if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;
+  if (!data) return <ExceptionText label="記録がまだありません。" />;
+
   return (
     <FlatList
       data={data}
       style={flatListStyle.list}
-      keyExtractor={(item, _) => String(item.rank)}
+      keyExtractor={(item, _) => String(item.id)}
       ListHeaderComponent={() => (
         <>
           <SexAndAgeHierarchySelect outlineStyle={style.sex_and_age_hierarchy_box} />
           <TableHead outlineStyle={style.table_head} leftTitle="順位" rightTitle="記録" />
         </>
       )}
-      renderItem={({ item }) => {
-        return <RecordTableBody {...item} outlineStyle={style.list} />;
+      renderItem={({ item, index }) => {
+        return <RecordTableBody {...item} index={index + 1} outlineStyle={style.list} />;
       }}
     />
   );

@@ -13,17 +13,30 @@ const button = [
   { index: 2, label: 'ランキング' },
 ];
 
-export const DetailViewButtonGroup: FC = () => {
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
+type Props = {
+  id: number;
+};
 
-  const onCloseModal = useCallback(() => {
-    setModalVisible(false);
+type Status = {
+  isModalVisible: boolean;
+  activeTabIndex: number;
+};
+
+export const DetailViewButtonGroup: FC<Props> = ({ id }) => {
+  const [status, setStatus] = useState<Status>({
+    isModalVisible: false,
+    activeTabIndex: 0,
+  });
+
+  const onOpenModal = useCallback(async (index: number) => {
+    setStatus({
+      isModalVisible: true,
+      activeTabIndex: index,
+    });
   }, []);
 
-  const onOpenModal = useCallback((index: number) => {
-    setActiveTabIndex(index);
-    setModalVisible(true);
+  const onCloseModal = useCallback(() => {
+    setStatus((prev) => ({ ...prev, isModalVisible: false }));
   }, []);
 
   return (
@@ -43,11 +56,14 @@ export const DetailViewButtonGroup: FC = () => {
         ))}
       </View>
 
-      <TournamentDetailModal
-        isVisible={isModalVisible}
-        activeTabIndex={activeTabIndex}
-        onCloseModal={onCloseModal}
-      />
+      {status.isModalVisible ? (
+        <TournamentDetailModal
+          id={id}
+          isVisible={status.isModalVisible}
+          activeTabIndex={status.activeTabIndex}
+          onCloseModal={onCloseModal}
+        />
+      ) : null}
     </>
   );
 };
