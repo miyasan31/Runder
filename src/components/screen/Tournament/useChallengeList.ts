@@ -96,6 +96,13 @@ export const useChallengeList = () => {
           };
         });
 
+      if (recordFilterResult.length === 0) {
+        setChallenges((prev) => {
+          return { ...prev, loading: false, data: undefined };
+        });
+        return;
+      }
+
       setChallenges({
         loading: false,
         error: undefined,
