@@ -93,6 +93,17 @@ export type ProfileScreenProps<T extends keyof ProfileStackParamList> = Composit
   NativeStackScreenProps<RootStackParamList>
 >;
 
+/* setting group */
+export type SettingGroupStackParamList = {
+  SettingScreen: undefined;
+  ThemeScreen: undefined;
+  PrivacyScreen: undefined;
+  TermsScreen: undefined;
+  ContactScreen: undefined;
+  AccountDeletionScreen: undefined;
+  AccountDeletionConfirmationScreen: undefined;
+};
+
 /* development tabs */
 export type DevelopmentTabParamList = {
   DevList: NavigatorScreenParams<DevListStackParamList> | undefined;
