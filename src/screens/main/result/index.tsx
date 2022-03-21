@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { FC } from 'react';
 import React from 'react';
 
-import { PrevButton } from '~/components/ui/Button';
+import { IconButton } from '~/components/ui/Button';
 import { HeaderTitle } from '~/components/ui/HeaderTitle';
 import { useTheme } from '~/hooks/useTheme';
 import type { ResultStackParamList } from '~/types';
@@ -48,7 +48,7 @@ export const ResultNavigator: FC = () => {
           title: '大会の結果',
           headerLeft: () => {
             const onPrevScreen = () => navigation.goBack();
-            return <PrevButton onPress={onPrevScreen} />;
+            return <IconButton onPress={onPrevScreen} />;
           },
         })}
       />

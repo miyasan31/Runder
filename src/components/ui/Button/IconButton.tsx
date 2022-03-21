@@ -2,7 +2,7 @@ import type { VFC } from 'react';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { AntDesignIcon } from '~/components/ui/Icon';
+import { ChevronLeftIcon, CogIcon, XIcon } from '~/components/ui/Icon';
 import { Bounceable } from '~/components/ui/View';
 
 type PrevProps = {
@@ -10,10 +10,12 @@ type PrevProps = {
   type?: 'close' | 'left' | 'setting';
 };
 
-export const PrevButton: VFC<PrevProps> = memo(({ onPress, type = 'left' }) => {
+export const IconButton: VFC<PrevProps> = memo(({ onPress, type = 'left' }) => {
   return (
     <Bounceable activeScale={0.8} viewStyle={style.bounceable_view} onPress={onPress}>
-      <AntDesignIcon name={type} size={24} icon="icon" />
+      {type === 'left' && <ChevronLeftIcon size={28} />}
+      {type === 'close' && <XIcon size={28} />}
+      {type === 'setting' && <CogIcon size={28} />}
     </Bounceable>
   );
 });

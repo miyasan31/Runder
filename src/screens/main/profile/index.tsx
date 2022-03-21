@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { FC } from 'react';
 import React from 'react';
 
-import { PrevButton } from '~/components/ui/Button';
+import { IconButton } from '~/components/ui/Button';
 import { useTheme } from '~/hooks/useTheme';
 import type { ProfileStackParamList } from '~/types';
 
@@ -43,7 +43,7 @@ export const ProfileNavigator: FC = () => {
           title: '',
           headerRight: () => {
             const onNavigationSetting = () => navigation.navigate('SettingScreen');
-            return <PrevButton type="setting" onPress={onNavigationSetting} />;
+            return <IconButton type="setting" onPress={onNavigationSetting} />;
           },
         })}
       />
@@ -56,7 +56,7 @@ export const ProfileNavigator: FC = () => {
             title: '設定',
             headerLeft: () => {
               const onPrevScreen = () => navigation.goBack();
-              return <PrevButton onPress={onPrevScreen} />;
+              return <IconButton onPress={onPrevScreen} />;
             },
           })}
         />
@@ -67,7 +67,7 @@ export const ProfileNavigator: FC = () => {
             title: 'テーマ',
             headerLeft: () => {
               const onPrevScreen = () => navigation.goBack();
-              return <PrevButton onPress={onPrevScreen} />;
+              return <IconButton onPress={onPrevScreen} />;
             },
           })}
         />
@@ -78,7 +78,7 @@ export const ProfileNavigator: FC = () => {
             title: 'プライバシーポリシー',
             headerLeft: () => {
               const onPrevScreen = () => navigation.goBack();
-              return <PrevButton onPress={onPrevScreen} />;
+              return <IconButton onPress={onPrevScreen} />;
             },
           })}
         />
@@ -89,7 +89,7 @@ export const ProfileNavigator: FC = () => {
             title: '利用規約',
             headerLeft: () => {
               const onPrevScreen = () => navigation.goBack();
-              return <PrevButton onPress={onPrevScreen} />;
+              return <IconButton onPress={onPrevScreen} />;
             },
           })}
         />
@@ -100,7 +100,7 @@ export const ProfileNavigator: FC = () => {
             title: 'お問い合わせ',
             headerLeft: () => {
               const onPrevScreen = () => navigation.goBack();
-              return <PrevButton onPress={onPrevScreen} />;
+              return <IconButton onPress={onPrevScreen} />;
             },
           })}
         />
@@ -111,7 +111,7 @@ export const ProfileNavigator: FC = () => {
             title: 'アカウント削除',
             headerLeft: () => {
               const onPrevScreen = () => navigation.goBack();
-              return <PrevButton onPress={onPrevScreen} />;
+              return <IconButton onPress={onPrevScreen} />;
             },
           })}
         />
@@ -125,7 +125,7 @@ export const ProfileNavigator: FC = () => {
             title: 'プロフィール編集',
             headerLeft: () => {
               const onPrevScreen = () => navigation.goBack();
-              return <PrevButton type="close" onPress={onPrevScreen} />;
+              return <IconButton type="close" onPress={onPrevScreen} />;
             },
           })}
         />
@@ -136,7 +136,7 @@ export const ProfileNavigator: FC = () => {
             title: 'アバター編集',
             headerLeft: () => {
               const onPrevScreen = () => navigation.goBack();
-              return <PrevButton type="close" onPress={onPrevScreen} />;
+              return <IconButton type="close" onPress={onPrevScreen} />;
             },
           })}
         />

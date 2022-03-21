@@ -1,18 +1,16 @@
-import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import type { FC } from 'react';
 import React, { memo, useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 
+import { ChevronLeftIcon } from '~/components/ui/Icon';
 import { Bounceable } from '~/components/ui/View';
-import { useTheme } from '~/hooks/useTheme';
 
 type Props = {
   isFloating?: true;
 };
 
 export const GoBackButton: FC<Props> = memo(({ isFloating }) => {
-  const icon = useTheme({}, 'icon');
   const navigation = useNavigation();
 
   const onGoBack = useCallback(() => {
@@ -25,7 +23,7 @@ export const GoBackButton: FC<Props> = memo(({ isFloating }) => {
       activeScale={0.9}
       onPress={onGoBack}
     >
-      <MaterialIcons name="keyboard-arrow-left" size={40} color={icon} />
+      <ChevronLeftIcon />
     </Bounceable>
   );
 });

@@ -79,3 +79,7 @@ export type TextInputStyleProps = Omit<
   StyleProps,
   'outlineStyle' | 'icon' | 'lightIcon' | 'darkIcon'
 >;
+
+export type HeroIconStyle = IconStyleProps & {
+  size?: number;
+};
