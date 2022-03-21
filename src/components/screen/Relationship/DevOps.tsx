@@ -29,8 +29,10 @@ export const DevOps: FC<RelationshipScreenProps> = () => {
   return (
     <View style={layoutStyle.scene}>
       <Text style={style.message}>
-        {`このアプリについてご意見、ご要望をいただけたらと思います。
-「〇〇画面のを〇〇の機能をこうして欲しい」「こんな新機能が欲しい」など何でもお送りください。開発の参考にさせていただきます。`}
+        {`アプリについてご意見･ご要望を頂けますと幸いです。
+「〇〇画面のを〇〇の機能をこうして欲しい」「こんな新機能が欲しい」など何でもお送りください。
+
+開発の参考にさせていただきます。`}
       </Text>
 
       <TextInput
