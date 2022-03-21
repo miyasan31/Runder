@@ -1,8 +1,10 @@
 export const iconTheme = {
   light: {
-    icon: '#BBBBBB',
+    icon1: '#333333',
+    icon2: '#BBBBBB',
   },
   dark: {
-    icon: '#7D8B9C',
+    icon1: '#FFFFFF',
+    icon2: '#7D8B9C',
   },
 } as const;
