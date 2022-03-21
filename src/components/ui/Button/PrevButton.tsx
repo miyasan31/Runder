@@ -7,7 +7,7 @@ import { Bounceable } from '~/components/ui/View';
 
 type PrevProps = {
   onPress: () => void;
-  type?: 'close' | 'left';
+  type?: 'close' | 'left' | 'setting';
 };
 
 export const PrevButton: VFC<PrevProps> = memo(({ onPress, type = 'left' }) => {
