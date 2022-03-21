@@ -100,7 +100,7 @@ export type SettingGroupStackParamList = {
   ThemeScreen: undefined;
   PrivacyScreen: undefined;
   TermsScreen: undefined;
-  RelationshipScreen: undefined;
+  ContactScreen: undefined;
   AccountDeletionScreen: undefined;
   AccountDeletionConfirmationScreen: undefined;
 };
