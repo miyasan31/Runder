@@ -9,7 +9,7 @@ import { AUTH_PROVIDER_KEY } from '~/constants/ENV';
 import { sleep } from '~/functions/sleep';
 import { updateSession } from '~/stores/session';
 import { layoutStyle } from '~/styles';
-import type { AuthGroupScreenProps as Props } from '~/types';
+import type { StackScreenProps as Props } from '~/types';
 import { saveSecureStore } from '~/utils/secureStore';
 import { supabaseClient } from '~/utils/supabase';
 import { toastKit } from '~/utils/toastKit';

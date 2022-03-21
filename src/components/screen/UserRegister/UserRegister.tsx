@@ -13,7 +13,7 @@ import { Bounceable, View } from '~/components/ui/View';
 import { sleep } from '~/functions/sleep';
 import { updateSession } from '~/stores/session';
 import { layoutStyle } from '~/styles';
-import type { AuthGroupScreenProps as Props } from '~/types';
+import type { StackScreenProps as Props } from '~/types';
 import { supabaseClient } from '~/utils/supabase';
 import { toastKit } from '~/utils/toastKit';
 
