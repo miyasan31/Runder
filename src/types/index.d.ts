@@ -11,7 +11,6 @@ declare global {
 export type RootStackParamList = AuthGroupStackParamList & {
   Main: NavigatorScreenParams<MainBottomTabParamList> | undefined;
   Development: NavigatorScreenParams<DevelopmentTabParamList> | undefined;
-  Modal: undefined;
   NotFoundScreen: undefined;
 };
 export type StackScreenProps<T extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -24,7 +23,6 @@ export type StackScreenProps<T extends keyof RootStackParamList> = NativeStackSc
 export type DevelopmentTabParamList = {
   DevList: NavigatorScreenParams<DevListStackParamList> | undefined;
   DevRunning: NavigatorScreenParams<DevRunningStackParamList> | undefined;
-  Modal: undefined;
 };
 export type DevelopmentScreenProps<T extends keyof DevelopmentTabParamList> = CompositeScreenProps<
   BottomTabScreenProps<DevelopmentTabParamList, T>,
@@ -37,7 +35,6 @@ export type DevListStackParamList = {
   RunningDetailScreen: {
     id: number;
   };
-  Modal: undefined;
 };
 export type DevListScreenProps<T extends keyof DevListStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<DevListStackParamList, T>,
@@ -47,7 +44,6 @@ export type DevListScreenProps<T extends keyof DevListStackParamList> = Composit
 /* dev running  */
 export type DevRunningStackParamList = {
   RunningScreen: undefined;
-  Modal: undefined;
 };
 export type DevRunningScreenProps<T extends keyof DevRunningStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<DevRunningStackParamList, T>,
@@ -61,7 +57,6 @@ export type AuthGroupStackParamList = {
   SignInEmailScreen: undefined;
   SignUpScreen: undefined;
   UserRegisterScreen: undefined;
-  Modal: undefined;
 };
 export type AuthGroupScreenProps<T extends keyof AuthGroupStackParamList> = CompositeScreenProps<
   NativeStackScreenProps<AuthGroupStackParamList, T>,
@@ -85,7 +80,6 @@ export type MainBottomTabScreenProps<T extends keyof MainBottomTabParamList> = C
 /* contact */
 export type ContactStackParamList = {
   ContactScreen: undefined;
-  Modal: undefined;
 };
 export type ContactScreenProps<T extends keyof ContactStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<ContactStackParamList, T>,
@@ -95,7 +89,6 @@ export type ContactScreenProps<T extends keyof ContactStackParamList> = Composit
 /* ranking */
 export type RankingStackParamList = {
   RankingScreen: undefined;
-  Modal: undefined;
 };
 export type RankingScreenProps<T extends keyof RankingStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<RankingStackParamList, T>,
@@ -111,7 +104,6 @@ export type TournamentStackParamList = {
   ChallengeDetailScreen: {
     tournament_id: number;
   };
-  Modal: undefined;
 };
 export type TournamentScreenProps<T extends keyof TournamentStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<TournamentStackParamList, T>,
@@ -122,7 +114,6 @@ export type TournamentScreenProps<T extends keyof TournamentStackParamList> = Co
 export type ResultStackParamList = {
   ResultScreen: undefined;
   ResultDetailScreen: undefined;
-  Modal: undefined;
 };
 export type ResultScreenProps<T extends keyof ResultStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<ResultStackParamList, T>,
@@ -134,7 +125,6 @@ export type ProfileStackParamList = {
   ProfileScreen: undefined;
   ProfileEditScreen: undefined;
   AvatarEditScreen: undefined;
-  Modal: undefined;
 };
 export type ProfileScreenProps<T extends keyof ProfileStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<ProfileStackParamList, T>,
