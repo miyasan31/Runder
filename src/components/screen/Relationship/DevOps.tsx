@@ -10,9 +10,9 @@ import { sleep } from '~/functions/sleep';
 import { layoutStyle } from '~/styles';
 import { toastKit } from '~/utils/toastKit';
 
-import type { ContactScreenProps } from '.';
+import type { RelationshipScreenProps } from '.';
 
-export const DevOps: FC<ContactScreenProps> = () => {
+export const DevOps: FC<RelationshipScreenProps> = () => {
   const [text, setText] = useState('');
 
   const onChangeText = useCallback((value: string) => {

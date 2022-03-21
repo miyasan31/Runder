@@ -22,11 +22,11 @@ export const linkingConfiguration: LinkingOptions<RootStackParamList> = {
       Main: {
         path: 'main',
         screens: {
-          Contact: {
-            path: 'contact',
+          Relationship: {
+            path: 'relationship',
             screens: {
-              ContactScreen: {
-                path: 'contact',
+              RelationshipScreen: {
+                path: 'relationship',
               },
             },
           },

@@ -28,7 +28,7 @@ export type AuthGroupStackParamList = {
 
 /* tabs */
 export type MainBottomTabParamList = {
-  Contact: NavigatorScreenParams<ContactStackParamList> | undefined;
+  Relationship: NavigatorScreenParams<RelationshipStackParamList> | undefined;
   Ranking: NavigatorScreenParams<RankingStackParamList> | undefined;
   Tournament: NavigatorScreenParams<TournamentStackParamList> | undefined;
   Result: NavigatorScreenParams<ResultStackParamList> | undefined;
@@ -39,14 +39,15 @@ export type MainBottomTabScreenProps<T extends keyof MainBottomTabParamList> = C
   NativeStackScreenProps<RootStackParamList>
 >;
 
-/* contact */
-export type ContactStackParamList = {
-  ContactScreen: undefined;
+/* Relationship */
+export type RelationshipStackParamList = {
+  RelationshipScreen: undefined;
 };
-export type ContactScreenProps<T extends keyof ContactStackParamList> = CompositeScreenProps<
-  BottomTabScreenProps<ContactStackParamList, T>,
-  NativeStackScreenProps<RootStackParamList>
->;
+export type RelationshipScreenProps<T extends keyof RelationshipStackParamList> =
+  CompositeScreenProps<
+    BottomTabScreenProps<RelationshipStackParamList, T>,
+    NativeStackScreenProps<RootStackParamList>
+  >;
 
 /* ranking */
 export type RankingStackParamList = {
@@ -99,7 +100,7 @@ export type SettingGroupStackParamList = {
   ThemeScreen: undefined;
   PrivacyScreen: undefined;
   TermsScreen: undefined;
-  ContactScreen: undefined;
+  RelationshipScreen: undefined;
   AccountDeletionScreen: undefined;
   AccountDeletionConfirmationScreen: undefined;
 };

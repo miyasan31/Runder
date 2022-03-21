@@ -6,7 +6,7 @@ import { NewsList } from '~/components/model/news/NewsList';
 import { View } from '~/components/ui/View';
 import { flatListStyle } from '~/styles';
 
-import type { ContactScreenProps } from '.';
+import type { RelationshipScreenProps } from '.';
 
 const data = [
   { id: 1, title: 'お知らせ1 お知らせ1 お知らせ1', created_at: new Date(2020, 0, 1) },
@@ -15,7 +15,7 @@ const data = [
   { id: 4, title: 'お知らせ4 お知らせ4 お知らせ4', created_at: new Date(2020, 0, 1) },
 ];
 
-export const News: FC<ContactScreenProps> = () => {
+export const News: FC<RelationshipScreenProps> = () => {
   return (
     <FlatList
       data={data}

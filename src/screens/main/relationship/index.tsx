@@ -3,19 +3,19 @@ import type { FC } from 'react';
 import React from 'react';
 
 import { useTheme } from '~/hooks/useTheme';
-import type { ContactStackParamList } from '~/types';
+import type { RelationshipStackParamList } from '~/types';
 
-import { ContactScreen } from './contact.screen';
+import { RelationshipScreen } from './relationship.screen';
 
-const Contact = createNativeStackNavigator<ContactStackParamList>();
+const Relationship = createNativeStackNavigator<RelationshipStackParamList>();
 
-export const ContactNavigator: FC = () => {
+export const RelationshipNavigator: FC = () => {
   const color = useTheme({}, 'color1');
   const backgroundColor = useTheme({}, 'bg1');
 
   return (
-    <Contact.Navigator
-      initialRouteName="ContactScreen"
+    <Relationship.Navigator
+      initialRouteName="RelationshipScreen"
       screenOptions={{
         headerShadowVisible: false,
         headerStyle: { backgroundColor },
@@ -27,13 +27,13 @@ export const ContactNavigator: FC = () => {
         },
       }}
     >
-      <Contact.Screen
-        name="ContactScreen"
-        component={ContactScreen}
+      <Relationship.Screen
+        name="RelationshipScreen"
+        component={RelationshipScreen}
         options={() => ({
           headerShown: false,
         })}
       />
-    </Contact.Navigator>
+    </Relationship.Navigator>
   );
 };

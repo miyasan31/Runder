@@ -10,9 +10,9 @@ import { Bounceable } from '~/components/ui/View';
 import { useTheme } from '~/hooks/useTheme';
 import type { MainBottomTabParamList } from '~/types';
 
-import { ContactNavigator } from './contact';
 import { ProfileNavigator } from './profile';
 import { RankingNavigator } from './ranking';
+import { RelationshipNavigator } from './relationship';
 import { ResultNavigator } from './result';
 import { TournamentNavigator } from './tournament';
 
@@ -39,8 +39,8 @@ export const BottomTabNavigator: FC = () => {
       }}
     >
       <BottomTab.Screen
-        name="Contact"
-        component={ContactNavigator}
+        name="Relationship"
+        component={RelationshipNavigator}
         options={{
           tabBarLabel: 'お知らせ',
           tabBarShowLabel: false,
