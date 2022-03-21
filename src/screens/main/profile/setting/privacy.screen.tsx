@@ -4,14 +4,14 @@ import React from 'react';
 import { LayoutErrorBoundary } from '~/components/functional/Error';
 import type { PrivacyScreenProps } from '~/components/screen/Privacy';
 import { Privacy } from '~/components/screen/Privacy';
-import { FullScreenLayout } from '~/components/ui/Layout';
+import { BottomTabLayout } from '~/components/ui/Layout';
 
 export const PrivacyScreen: FC<PrivacyScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <FullScreenLayout safeArea="bottom-horizontal">
+      <BottomTabLayout safeArea="horizontal">
         <Privacy {...props} />
-      </FullScreenLayout>
+      </BottomTabLayout>
     </LayoutErrorBoundary>
   );
 };

@@ -4,14 +4,14 @@ import React from 'react';
 import { LayoutErrorBoundary } from '~/components/functional/Error';
 import type { ContactScreenProps } from '~/components/screen/Contact';
 import { Contact } from '~/components/screen/Contact';
-import { FullScreenLayout } from '~/components/ui/Layout';
+import { BottomTabLayout } from '~/components/ui/Layout';
 
 export const ContactScreen: FC<ContactScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <FullScreenLayout safeArea="bottom-horizontal">
+      <BottomTabLayout safeArea="horizontal">
         <Contact {...props} />
-      </FullScreenLayout>
+      </BottomTabLayout>
     </LayoutErrorBoundary>
   );
 };
