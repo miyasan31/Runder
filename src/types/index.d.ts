@@ -102,7 +102,6 @@ export type SettingGroupStackParamList = {
   TermsScreen: undefined;
   ContactScreen: undefined;
   AccountDeletionScreen: undefined;
-  AccountDeletionConfirmationScreen: undefined;
 };
 
 /* development tabs */
