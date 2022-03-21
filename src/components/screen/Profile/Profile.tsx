@@ -115,7 +115,6 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
 
 const style = StyleSheet.create({
   user_info_box: {
-    marginTop: 40,
     paddingHorizontal: '6%',
   },
   user_icon: {

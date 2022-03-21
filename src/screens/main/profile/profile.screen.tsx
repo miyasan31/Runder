@@ -9,7 +9,7 @@ import { BottomTabLayout } from '~/components/ui/Layout';
 export const ProfileScreen: FC<ProfileScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <BottomTabLayout safeArea="top-horizontal">
+      <BottomTabLayout safeArea="horizontal">
         <Profile {...props} />
       </BottomTabLayout>
     </LayoutErrorBoundary>
