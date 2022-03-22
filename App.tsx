@@ -12,7 +12,7 @@ const App = () => {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
-  if (!isLoadingComplete) return null;
+  if (!isLoadingComplete || !colorScheme) return null;
   return (
     <RecoilRoot>
       <SafeAreaProvider>

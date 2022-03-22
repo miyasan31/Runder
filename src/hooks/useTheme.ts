@@ -1,12 +1,13 @@
-import { theme } from '~/styles';
+import { useSnapshot } from 'valtio';
 
-import { useColorScheme } from './useColorScheme';
+import { customTheme } from '~/stores/theme';
+import { theme } from '~/styles';
 
 export const useTheme = (
   themeProps: { light?: string; dark?: string },
   themeName: keyof typeof theme.light & keyof typeof theme.dark,
 ) => {
-  const themeColor = useColorScheme();
-  const colorFromProps = themeProps[themeColor];
-  return colorFromProps || theme[themeColor][themeName];
+  const customThemeSnapshot = useSnapshot(customTheme);
+  const colorFromProps = themeProps[customThemeSnapshot.theme];
+  return colorFromProps || theme[customThemeSnapshot.theme][themeName];
 };

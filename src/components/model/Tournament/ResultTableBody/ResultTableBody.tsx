@@ -74,6 +74,7 @@ const style = StyleSheet.create({
   },
   tournament_info: {
     padding: '1%',
+    fontStyle: 'italic',
   },
   td_right: {
     flex: 1,
@@ -84,5 +85,6 @@ const style = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     textAlign: 'right',
+    fontStyle: 'italic',
   },
 });

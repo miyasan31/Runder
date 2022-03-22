@@ -2,7 +2,6 @@ import type { FC } from 'react';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { SettingList } from '~/components/screen/Setting/SettingList';
 import {
   ChevronRightIcon,
   ColorSwatchIcon,
@@ -15,7 +14,7 @@ import { View } from '~/components/ui/View';
 import type { ProfileScreenProps } from '~/types';
 import { onSignOut } from '~/utils/supabase';
 
-export type SettingScreenProps = ProfileScreenProps<'SettingScreen'>;
+import { SettingList } from './SettingList';
 
 const SETTING_LIST_DATA = [
   {
@@ -24,6 +23,7 @@ const SETTING_LIST_DATA = [
     leftText: 'テーマ',
     leftComponent: <SparklesIcon />,
     rightComponent: <ChevronRightIcon icon="icon2" />,
+    isDivider: true,
     onPress: null,
   },
   {
@@ -53,7 +53,7 @@ const SETTING_LIST_DATA = [
   {
     id: 'version',
     navigate: undefined,
-    leftText: 'アプリバージョン',
+    leftText: 'バージョン',
     leftComponent: <ColorSwatchIcon />,
     rightText: '1.0.0',
     isDivider: true,
@@ -75,6 +75,8 @@ const SETTING_LIST_DATA = [
     onPress: null,
   },
 ] as const;
+
+export type SettingScreenProps = ProfileScreenProps<'SettingScreen'>;
 
 export const Setting: FC<SettingScreenProps> = ({ navigation }) => {
   return (
