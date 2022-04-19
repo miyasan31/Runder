@@ -15,7 +15,7 @@ import type { Tournament } from '~/types/model';
 import type { TournamentScreenProps } from '.';
 
 const FROM = 'tournament';
-const COLUMN = 'id, name, distance, start, end, image, term';
+const COLUMN = 'id, name, distance, start, end, term, tournament_design(image_semi)';
 const ORDER = 'start';
 
 export const VirtualTournament: FC<TournamentScreenProps> = (props) => {

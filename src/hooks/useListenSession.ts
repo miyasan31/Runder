@@ -30,8 +30,9 @@ export const useListenSession = () => {
 
     const { data, error } = await supabaseSelect<User>('user', {
       columns: 'id, name, avatar, profile, sex',
-      filter: (query) => query.eq('id', sessionUser && sessionUser.id),
+      filter: (query) => query.eq('id', sessionUser.id),
     });
+    console.info(data, error);
 
     // --- or ---
     // const { data, error } = await supabaseClient
