@@ -129,6 +129,7 @@ export type Tournament = {
   count: number;
   rule: string;
   created_at: Date;
+  tournament_design: TournamentDesign[];
 };
 
 /**

@@ -10,3 +10,6 @@ npm-debug.*
 
 .DS_Store
 tsconfig.tsbuildinfo
+
+# Supabase
+supabase/
