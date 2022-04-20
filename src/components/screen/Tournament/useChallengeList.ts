@@ -9,7 +9,8 @@ import type { Record, Tournament } from '~/types/model';
 import { supabaseClient } from '~/utils/supabase';
 
 const TOURNAMENT_FROM = 'tournament';
-const TOURNAMENT_COLUMN = 'id, name, distance, start, end, image, term, count';
+const TOURNAMENT_COLUMN =
+  'id, name, distance, start, end, term, count, tournament_design(image_semi)';
 const TOURNAMENT_ORDER = 'created_at';
 
 const RECORD_FROM = 'record';

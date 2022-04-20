@@ -13,7 +13,9 @@ import type { Tournament } from '~/types/model';
 
 type SelectColumn = 'id' | 'name' | 'distance' | 'start' | 'end' | 'tournament_design' | 'term';
 
-export const TournamentCard: FC<Pick<Tournament, SelectColumn> & TournamentScreenProps> = ({
+type Props = TournamentScreenProps & Pick<Tournament, SelectColumn>;
+
+export const TournamentCard: FC<Props> = ({
   id,
   name,
   distance,

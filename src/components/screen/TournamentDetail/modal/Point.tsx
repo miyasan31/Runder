@@ -11,7 +11,7 @@ import { flatListStyle } from '~/styles';
 import type { PointTable } from '~/types/model';
 
 const FROM = 'point_table';
-const COLUMN = 'id, rank, point';
+const COLUMN = 'id, rank, later_point';
 const EQUAL = 'tournament_id';
 
 type Props = {
@@ -19,7 +19,7 @@ type Props = {
 };
 
 export const Point: FC<Props> = memo(({ id }) => {
-  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq(EQUAL, id), []);
+  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq(EQUAL, id).order('rank'), []);
   const { loading, error, data } = useSupabaseSelect<PointTable>(FROM, { filter });
 
   if (loading) return <ActivityIndicator message="ポイント情報を取得中..." />;

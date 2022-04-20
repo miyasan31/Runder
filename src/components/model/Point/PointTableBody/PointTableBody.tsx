@@ -5,28 +5,21 @@ import { StyleSheet } from 'react-native';
 
 import { List } from '~/components/ui/List';
 import { Text } from '~/components/ui/Text';
+import type { PointTable } from '~/types/model';
 import type { OutlineStyle } from '~/types/style';
 
-const data = [
-  { rank: 1, point: 500 },
-  { rank: 2, point: 400 },
-  { rank: 3, point: 300 },
-  { rank: 4, point: 200 },
-  { rank: 5, point: 100 },
-  { rank: 100, point: 10 },
-];
+type SelectColumn = 'id' | 'rank' | 'later_point';
 
-type PointData = typeof data[0] & {
+type PointData = Pick<PointTable, SelectColumn> & {
   outlineStyle?: StyleProp<OutlineStyle>;
 };
 
-export const PointTableBody: FC<PointData> = ({ outlineStyle, rank, point }) => {
+export const PointTableBody: FC<PointData> = ({ outlineStyle, rank, later_point }) => {
   return (
     <List outlineStyle={outlineStyle} viewStyle={style.root}>
       <Text style={style.td_rank}>{rank === 1000 ? 'チャレンジ' : `${rank}位`}</Text>
-
       <Text style={style.td_point}>
-        {point}
+        {later_point}
         <Text>ポイント</Text>
       </Text>
     </List>

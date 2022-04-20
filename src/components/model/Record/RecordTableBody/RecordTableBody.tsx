@@ -26,7 +26,7 @@ export const RecordTableBody: FC<RecordData> = ({
   index,
   record,
   point,
-  user: { id: _id, name, avatar },
+  user: { name, avatar },
   outlineStyle,
 }) => {
   const recordResult = formatRecord(record);

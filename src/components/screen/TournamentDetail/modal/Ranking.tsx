@@ -12,7 +12,7 @@ import { flatListStyle } from '~/styles';
 import type { Record } from '~/types/model';
 
 const FROM = 'record';
-const COLUMN = 'id, user(id, name, avatar), record';
+const COLUMN = 'id, record, user(name, avatar)';
 const ORDER = 'record';
 const EQUAL = 'tournament_id';
 

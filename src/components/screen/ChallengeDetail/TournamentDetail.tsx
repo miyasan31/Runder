@@ -15,7 +15,7 @@ import type { Tournament } from '~/types/model';
 import type { ChallengeDetailScreenProps } from '.';
 
 const FROM = 'tournament';
-const SELECT = 'id, name, distance, start, end, image, term';
+const SELECT = 'id, name, distance, start, end, term, tournament_design(image_full)';
 const EQUAL = 'id';
 
 export const TournamentDetail: FC<ChallengeDetailScreenProps> = memo((props) => {
@@ -27,14 +27,14 @@ export const TournamentDetail: FC<ChallengeDetailScreenProps> = memo((props) => 
   if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;
   if (!data) return <ExceptionText label="大会情報が見つかりませんでした。" />;
 
-  const { id, name, distance, start, end, image, term } = data[0];
+  const { id, name, distance, start, end, tournament_design, term } = data[0];
   const termResult = termCheck(term);
   const startDate = format(new Date(start), 'M/d');
   const endDate = format(new Date(end), 'M/d');
 
   return (
     <>
-      <Image source={{ uri: image }} style={style.image} />
+      <Image source={{ uri: tournament_design[0].image_full }} style={style.image} />
 
       <View style={style.float_text_box}>
         <Text style={style.season} color="white">

@@ -24,7 +24,7 @@ export const ChallengeCard: FC<ChallengeTournamentList & TournamentScreenProps> 
     distance,
     start,
     end,
-    image,
+    tournament_design,
     term,
     count: tournament_count,
   },
@@ -49,7 +49,7 @@ export const ChallengeCard: FC<ChallengeTournamentList & TournamentScreenProps> 
     <Card onPress={onNavigation}>
       <View style={style.root}>
         <View style={style.image_box}>
-          <Image source={{ uri: image }} style={style.image} />
+          <Image source={{ uri: tournament_design[0].image_semi }} style={style.image} />
 
           <View style={style.float_text_box}>
             <Text style={style.season} color="white">
