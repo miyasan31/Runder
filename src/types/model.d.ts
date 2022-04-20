@@ -72,18 +72,6 @@ export type Term = 'Monthly' | 'Weekly' | 'Daily';
 //   created_at: Date;
 // };
 
-export type LocationData = {
-  color: string;
-  speed: number;
-  heading: number;
-  accuracy: number;
-  altitude: number;
-  latitude: number;
-  longitude: number;
-  timestamp: number;
-  altitudeAccuracy: number;
-};
-
 // ==============================
 
 /**
@@ -93,13 +81,13 @@ export type LocationData = {
 export type User = {
   id: string;
   name: string;
-  runder_id: string | null;
+  runder_id: string;
   email: string;
   sex: number;
   birthday: Date;
   age_hierarchy: number;
-  profile: string | null;
-  avatar: string | null;
+  profile: string;
+  avatar: string;
   created_at: Date;
 };
 
@@ -113,6 +101,8 @@ export type Shoes = {
   shoes: string;
   brand: string;
   created_at: Date;
+
+  user: User;
 };
 
 /**
@@ -129,6 +119,7 @@ export type Tournament = {
   count: number;
   rule: string;
   created_at: Date;
+
   tournament_design: TournamentDesign[];
 };
 
@@ -160,6 +151,10 @@ export type Record = {
   location_id: number;
   record: number;
   created_at: Date;
+
+  user: User;
+  tournament: Tournament;
+  location: Location;
 };
 
 /**
@@ -172,6 +167,10 @@ export type Point = {
   tournament_id: number;
   point_id: number;
   created_at: Date;
+
+  user: User;
+  tournament: Tournament;
+  point: Point;
 };
 
 /**
@@ -184,6 +183,8 @@ export type PointTable = {
   rank: number;
   later_point: number;
   created_at: Date;
+
+  tournament: Tournament;
 };
 
 /**
@@ -195,6 +196,8 @@ export type Suggestion = {
   user_id: string;
   contents: string;
   created_at: Date;
+
+  user: User;
 };
 
 /**
@@ -218,14 +221,19 @@ export type Location = {
   location: LocationData[];
   created_at: Date;
 };
-// export type LocationData = {
-//   color: string;
-//   speed: number;
-//   heading: number;
-//   accuracy: number;
-//   altitude: number;
-//   latitude: number;
-//   longitude: number;
-//   timestamp: number;
-//   altitudeAccuracy: number;
-// };
+
+/**
+ * Model location_data
+ *
+ */
+export type LocationData = {
+  color: string;
+  speed: number;
+  heading: number;
+  accuracy: number;
+  altitude: number;
+  latitude: number;
+  longitude: number;
+  timestamp: number;
+  altitudeAccuracy: number;
+};
