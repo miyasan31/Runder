@@ -23,7 +23,6 @@ export const HalfModal: FC<Props> = ({ children, size = 0.7, isVisible, onCloseM
       onSwipeComplete={onCloseModal}
       onBackdropPress={onCloseModal}
       style={defaultStyle.modal}
-      // backdropColor={backdropColor}
     >
       <View style={[defaultStyle.modal_box, { flex: size }]} bg="bg1">
         <View style={defaultStyle.handle_box}>

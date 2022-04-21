@@ -65,7 +65,7 @@ export const BottomTabNavigator: FC = () => {
         options={() => ({
           title: '',
           tabBarShowLabel: false,
-          tabBarIcon: ({ focused }) => <BottomTabRunderLogo focused={focused} />,
+          tabBarIcon: ({ focused }) => <BottomTabThunderLogo focused={focused} />,
         })}
       />
       <BottomTab.Screen
@@ -94,7 +94,7 @@ export const BottomTabNavigator: FC = () => {
   );
 };
 
-const BottomTabRunderLogo: FC<{ focused: boolean }> = ({ focused }) => {
+const BottomTabThunderLogo: FC<{ focused: boolean }> = ({ focused }) => {
   const iconColor = focused ? 'primary' : 'icon2';
   return (
     <Bounceable viewStyle={style.tournament_icon} activeScale={0.95} bg="bg4">

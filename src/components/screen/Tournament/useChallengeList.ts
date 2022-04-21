@@ -2,7 +2,7 @@ import 'react-native-url-polyfill/auto';
 
 import type { PostgrestError, PostgrestResponse } from '@supabase/supabase-js';
 import { useCallback, useEffect, useState } from 'react';
-import { useSnapshot } from 'valtio';
+import { useRecoilValue } from 'recoil';
 
 import { user } from '~/stores/user';
 import type { Record, Tournament } from '~/types/model';
@@ -36,7 +36,7 @@ type ChallengeTournamentResult = {
 };
 
 export const useChallengeList = () => {
-  const userSnapshot = useSnapshot(user);
+  const userInfo = useRecoilValue(user);
 
   const [challenges, setChallenges] = useState<ChallengeTournamentResult>({
     loading: true,
@@ -65,7 +65,7 @@ export const useChallengeList = () => {
             .from<Record>(RECORD_FROM)
             .select(RECORD_COLUMN, { count: 'exact' })
             .match({
-              [RECORD_EQUAL_1]: userSnapshot.id,
+              [RECORD_EQUAL_1]: userInfo?.user?.id,
               [RECORD_EQUAL_2]: _tournament_data.id,
             })
             .limit(RECORD_LIMIT)
@@ -110,7 +110,7 @@ export const useChallengeList = () => {
         data: recordFilterResult,
       });
     }
-  }, [userSnapshot.id]);
+  }, [userInfo?.user?.id]);
 
   useEffect(() => {
     fetchChallengeList();

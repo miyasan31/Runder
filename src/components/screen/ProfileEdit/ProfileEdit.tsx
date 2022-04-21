@@ -6,13 +6,14 @@ import { Button } from '~/components/ui/Button';
 import { Text } from '~/components/ui/Text';
 import { TextInput } from '~/components/ui/TextInput';
 import { View } from '~/components/ui/View';
+import { useSignOut } from '~/hooks/supabase';
 import { layoutStyle } from '~/styles';
 import type { ProfileScreenProps as Props } from '~/types';
-import { onSignOut } from '~/utils/supabase';
 
 export type ProfileEditScreenProps = Props<'ProfileEditScreen'>;
 
 export const ProfileEdit: FC<ProfileEditScreenProps> = () => {
+  const { onSignOut } = useSignOut();
   const [name, setName] = useState('');
 
   const onChangeName = useCallback((value: string) => {

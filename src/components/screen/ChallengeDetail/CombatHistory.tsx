@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React, { memo, useCallback, useState } from 'react';
 import { Dimensions, FlatList, StyleSheet } from 'react-native';
 import MapView, { Polyline } from 'react-native-maps';
-import { useSnapshot } from 'valtio';
+import { useRecoilValue } from 'recoil';
 
 import { MyRecordTableBody } from '~/components/model/record/MyRecordTableBody';
 import { ActivityIndicator } from '~/components/ui/Progress';
@@ -22,7 +22,7 @@ const SELECT = 'id, user_id, record, created_at, location(id, location)';
 const ORDER = 'record';
 
 export const CombatHistory: FC<ChallengeDetailScreenProps> = memo((props) => {
-  const userSnapshot = useSnapshot(user);
+  const userInfo = useRecoilValue(user);
 
   const [selectRecord, setSelectRecord] = useState(0);
   const onSelectRecord = useCallback((id: number) => {
@@ -35,7 +35,7 @@ export const CombatHistory: FC<ChallengeDetailScreenProps> = memo((props) => {
       query
         .select(SELECT)
         .eq('tournament_id', tournament_id)
-        .eq('user_id', userSnapshot.id)
+        .eq('user_id', userInfo?.user?.id)
         .order(ORDER),
     [],
   );

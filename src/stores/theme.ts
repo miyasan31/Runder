@@ -1,9 +1,8 @@
-import { proxy } from 'valtio';
+import { atom } from 'recoil';
 
-export const customTheme = proxy<{ theme: 'light' | 'dark' }>({
-  theme: 'dark',
+type Theme = null | 'light' | 'dark';
+
+export const theme = atom<Theme>({
+  key: 'theme',
+  default: 'dark',
 });
-
-export const updateTheme = (color: 'light' | 'dark') => {
-  customTheme.theme = color;
-};
