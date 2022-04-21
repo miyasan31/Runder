@@ -22,9 +22,9 @@ export const News: FC<RelationshipScreenProps> = (props) => {
     filter,
   });
 
-  if (loading) return <ActivityIndicator message="大会一覧を取得中..." />;
+  if (loading) return <ActivityIndicator message="お知らせ情報を取得中..." />;
   if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;
-  if (!data) return <ExceptionText label="開催中の大会が見つかりませんでした。" />;
+  if (!data) return <ExceptionText label="お知らせはありません。" />;
 
   return (
     <FlatList

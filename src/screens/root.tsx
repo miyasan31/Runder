@@ -21,7 +21,8 @@ export const RootNavigator: FC = () => {
   const session = useListenSession();
   const backgroundColor = useTheme({}, 'bg1');
 
-  if (!session) return <ActivityIndicator />;
+  if (!session) return <ActivityIndicator message="サインイン処理中..." />;
+
   return (
     <RootStack.Navigator
       initialRouteName={session.route}
