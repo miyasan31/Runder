@@ -3,25 +3,35 @@ import React from 'react';
 import { FlatList } from 'react-native';
 
 import { NewsList } from '~/components/model/news/NewsList';
+import { ActivityIndicator } from '~/components/ui/Progress';
+import { ExceptionText } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import { flatListStyle } from '~/styles';
+import type { Info } from '~/types/model';
 
 import type { RelationshipScreenProps } from '.';
 
-const data = [
-  { id: 1, title: 'お知らせ1 お知らせ1 お知らせ1', created_at: new Date(2020, 0, 1) },
-  { id: 2, title: 'お知らせ2 お知らせ2 お知らせ2', created_at: new Date(2020, 0, 1) },
-  { id: 3, title: 'お知らせ3 お知らせ3 お知らせ3', created_at: new Date(2020, 0, 1) },
-  { id: 4, title: 'お知らせ4 お知らせ4 お知らせ4', created_at: new Date(2020, 0, 1) },
-];
+const FROM = 'info';
+const COLUMN = 'id, title, created_at';
+const ORDER = 'created_at';
 
-export const News: FC<RelationshipScreenProps> = () => {
+export const News: FC<RelationshipScreenProps> = (props) => {
+  const filter = useSupabaseFilter((query) => query.select(COLUMN).order(ORDER), []);
+  const { loading, error, data } = useSupabaseSelect<Info>(FROM, {
+    filter,
+  });
+
+  if (loading) return <ActivityIndicator message="大会一覧を取得中..." />;
+  if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;
+  if (!data) return <ExceptionText label="開催中の大会が見つかりませんでした。" />;
+
   return (
     <FlatList
       data={data}
       style={flatListStyle.list}
       ItemSeparatorComponent={() => <View style={flatListStyle.separator} />}
-      renderItem={({ item }) => <NewsList {...item} />}
+      renderItem={({ item }) => <NewsList {...props} {...item} />}
       keyExtractor={(item) => item.id.toString()}
     />
   );

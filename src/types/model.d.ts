@@ -208,7 +208,7 @@ export type Info = {
   id: number;
   title: string;
   contents: string;
-  image: string | null;
+  image: string;
   created_at: Date;
 };
 

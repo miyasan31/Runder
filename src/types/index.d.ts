@@ -42,6 +42,9 @@ export type MainBottomTabScreenProps<T extends keyof MainBottomTabParamList> = C
 /* Relationship */
 export type RelationshipStackParamList = {
   RelationshipScreen: undefined;
+  NewsDetailScreen: {
+    news_id: number;
+  };
 };
 export type RelationshipScreenProps<T extends keyof RelationshipStackParamList> =
   CompositeScreenProps<
