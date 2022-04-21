@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 
 import { List } from '~/components/ui/List';
 import { Text } from '~/components/ui/Text';
-import { View } from '~/components/ui/View';
+import { TouchableOpacity, View } from '~/components/ui/View';
 import type { CommonTheme } from '~/styles/theme';
 import type { SettingGroupStackParamList } from '~/types';
 
@@ -18,6 +18,7 @@ export type SettingListProps = {
   onPress: () => void;
   isDivider?: true;
   color?: CommonTheme;
+  type?: 'button' | 'view';
 };
 
 export const SettingList: FC<SettingListProps> = ({
@@ -29,10 +30,11 @@ export const SettingList: FC<SettingListProps> = ({
   onPress,
   isDivider,
   color,
+  type = 'button',
 }) => {
   return (
     <>
-      <List viewStyle={style.list} onPress={onPress}>
+      <SettingListItem type={type} onPress={onPress}>
         <View style={style.list_item}>
           {leftComponent}
           <Text style={[style.list_text, leftComponent ? style.text_left : null]} color={color}>
@@ -46,9 +48,31 @@ export const SettingList: FC<SettingListProps> = ({
           </Text>
           {rightComponent}
         </View>
-      </List>
+      </SettingListItem>
       {isDivider ? <View style={style.divider} /> : null}
     </>
+  );
+};
+
+type Props = {
+  type: 'button' | 'view';
+  children: ReactNode;
+  onPress: () => void;
+};
+
+export const SettingListItem: FC<Props> = ({ type, children, onPress }) => {
+  if (type === 'view') {
+    return (
+      <TouchableOpacity style={style.list} activeOpacity={1}>
+        {children}
+      </TouchableOpacity>
+    );
+  }
+
+  return (
+    <List viewStyle={style.list} onPress={onPress}>
+      {children}
+    </List>
   );
 };
 

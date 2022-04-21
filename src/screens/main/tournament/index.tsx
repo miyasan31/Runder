@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { FC } from 'react';
 import React from 'react';
 
-import { IconButton } from '~/components/ui/Button';
+import { HeaderLeftButton } from '~/components/ui/Button';
 import { useTheme } from '~/hooks/useTheme';
 import type { TournamentStackParamList } from '~/types';
 
@@ -45,7 +45,7 @@ export const TournamentNavigator: FC = () => {
           title: '大会の詳細・スタート',
           headerLeft: () => {
             const onPrevScreen = () => navigation.goBack();
-            return <IconButton onPress={onPrevScreen} />;
+            return <HeaderLeftButton type="left" onPress={onPrevScreen} />;
           },
         })}
       />
@@ -57,7 +57,7 @@ export const TournamentNavigator: FC = () => {
           title: '大会の詳細・スタート',
           headerLeft: () => {
             const onPrevScreen = () => navigation.goBack();
-            return <IconButton onPress={onPrevScreen} />;
+            return <HeaderLeftButton type="left" onPress={onPrevScreen} />;
           },
         })}
       />

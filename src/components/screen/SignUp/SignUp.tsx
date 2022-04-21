@@ -10,10 +10,11 @@ import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { AUTH_PROVIDER_KEY } from '~/constants/ENV';
 import { sleep } from '~/functions/sleep';
+import { useSignInApple, useSignInGoogle } from '~/hooks/supabase';
 import { layoutStyle } from '~/styles';
 import type { StackScreenProps as Props } from '~/types';
 import { saveSecureStore } from '~/utils/secureStore';
-import { onSignInGoogle, supabaseClient } from '~/utils/supabase';
+import { supabaseClient } from '~/utils/supabase';
 import { toastKit } from '~/utils/toastKit';
 
 export type SignUpScreenProps = Props<'SignUpScreen'>;
@@ -21,6 +22,9 @@ export type SignUpScreenProps = Props<'SignUpScreen'>;
 const AlreadyRegisteredMessage = 'User already registered';
 
 export const SignUp: FC<SignUpScreenProps> = ({ navigation }) => {
+  const { onSignInGoogle } = useSignInGoogle();
+  const { onSignInApple } = useSignInApple();
+
   const onSignUpEmail = useCallback(
     async (email, password) => {
       const { errorToast, successToast } = toastKit('サインアップしています...');
@@ -61,6 +65,10 @@ export const SignUp: FC<SignUpScreenProps> = ({ navigation }) => {
         viewStyle={style.button_bg}
         textStyle={style.button_text}
         bg="bg1"
+        lightBg="#FFF"
+        lightColor="#333"
+        darkBg="#FFF"
+        darkColor="#333"
         onPress={onSignInGoogle}
       />
 
@@ -70,8 +78,11 @@ export const SignUp: FC<SignUpScreenProps> = ({ navigation }) => {
         outlineStyle={style.button_outline}
         viewStyle={style.button_bg}
         textStyle={style.button_text}
-        lightBg="#333333"
+        lightBg="#333"
         lightColor="#FFF"
+        darkBg="#333"
+        darkColor="#FFF"
+        onPress={onSignInApple}
       />
     </View>
   );

@@ -6,13 +6,16 @@ import { Button } from '~/components/ui/Button';
 import { Apple, Google, Mail, Runder } from '~/components/ui/Icon';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import { useSignInApple, useSignInGoogle } from '~/hooks/supabase';
 import { layoutStyle } from '~/styles';
 import type { StackScreenProps } from '~/types';
-import { onSignInApple, onSignInGoogle } from '~/utils/supabase';
 
 export type SignInScreenProps = StackScreenProps<'SignInScreen'>;
 
 export const SignIn: FC<SignInScreenProps> = ({ navigation }) => {
+  const { onSignInGoogle } = useSignInGoogle();
+  const { onSignInApple } = useSignInApple();
+
   const onSignInEmailNavigate = useCallback(() => {
     navigation.navigate('SignInEmailScreen');
   }, [navigation]);

@@ -1,6 +1,9 @@
-import { proxy } from 'valtio';
+import { atom } from 'recoil';
 
-export const date = proxy({
-  year: new Date().getFullYear(),
-  month: new Date().getMonth(),
+export const date = atom({
+  key: 'date',
+  default: {
+    year: new Date().getFullYear(),
+    month: new Date().getMonth(),
+  },
 });

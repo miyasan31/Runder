@@ -1,13 +1,14 @@
 import type { FC } from 'react';
 import React, { useCallback } from 'react';
 import { Button as NativeButton, StyleSheet } from 'react-native';
+import { useSetRecoilState } from 'recoil';
 
 import { SignEmailForm } from '~/components/ui/Form';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { AUTH_PROVIDER_KEY } from '~/constants/ENV';
 import { sleep } from '~/functions/sleep';
-import { updateSession } from '~/stores/session';
+import { user } from '~/stores/user';
 import { layoutStyle } from '~/styles';
 import type { StackScreenProps as Props } from '~/types';
 import { saveSecureStore } from '~/utils/secureStore';
@@ -17,6 +18,7 @@ import { toastKit } from '~/utils/toastKit';
 export type SignInEmailScreenProps = Props<'SignInEmailScreen'>;
 
 export const SignInEmail: FC<SignInEmailScreenProps> = ({ navigation }) => {
+  const setUserInfo = useSetRecoilState(user);
   const onSignInEmail = useCallback(async (email, password) => {
     const { errorToast, successToast } = toastKit('サインインしています...');
 
@@ -31,7 +33,7 @@ export const SignInEmail: FC<SignInEmailScreenProps> = ({ navigation }) => {
     }
 
     successToast('サインインに成功しました');
-    updateSession(true);
+    setUserInfo({ isSignIn: false, user: null });
   }, []);
 
   const onSignUpNavigate = useCallback(() => {

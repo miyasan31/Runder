@@ -1,30 +1,26 @@
-import type { VFC } from 'react';
+import type { FC, ReactNode } from 'react';
 import React, { memo } from 'react';
+import type { StyleProp, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native';
 
-import { ChevronLeftIcon, CogIcon, XIcon } from '~/components/ui/Icon';
-import { Bounceable } from '~/components/ui/View';
+import { Bounceable, TouchableOpacity } from '~/components/ui/View';
 
-type PrevProps = {
-  onPress: () => void;
-  type?: 'close' | 'left' | 'setting';
+type Props = {
+  children: ReactNode;
+  style?: StyleProp<ViewStyle>;
+  onPress?: () => void;
 };
 
-export const IconButton: VFC<PrevProps> = memo(({ onPress, type = 'left' }) => {
+export const IconButton: FC<Props> = memo(({ style, children, onPress }) => {
   return (
-    <Bounceable activeScale={0.8} viewStyle={style.bounceable_view} onPress={onPress}>
-      {type === 'left' && <ChevronLeftIcon size={28} />}
-      {type === 'close' && <XIcon size={28} />}
-      {type === 'setting' && <CogIcon size={28} />}
+    <Bounceable viewStyle={[defaultStyle.outline, style]} onPress={onPress}>
+      <TouchableOpacity bg="bg0">{children}</TouchableOpacity>
     </Bounceable>
   );
 });
 
-const style = StyleSheet.create({
-  bounceable_view: {
+const defaultStyle = StyleSheet.create({
+  outline: {
     width: 'auto',
-  },
-  icon: {
-    marginTop: 0,
   },
 });

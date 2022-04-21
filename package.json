@@ -80,8 +80,7 @@
     "react-native-url-polyfill": "^1.3.0",
     "react-native-web": "0.17.1",
     "recoil": "^0.6.1",
-    "rn-bounceable": "^1.1.0",
-    "valtio": "^1.3.0"
+    "rn-bounceable": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

@@ -1,26 +1,21 @@
 import { useEffect } from 'react';
 import type { ColorSchemeName } from 'react-native';
-import { subscribe, useSnapshot } from 'valtio';
+import { useRecoilState } from 'recoil';
 
-import { customTheme, updateTheme } from '~/stores/theme';
+import { theme } from '~/stores/theme';
 import { getSecureStore } from '~/utils/secureStore';
 
-const theme_key = 'runder_theme_vfauih87o3hrilbafla';
-
-const unsubscribe = subscribe(customTheme, () => customTheme.theme);
+const theme_key = 'qin_todo_theme_vfauih87oa';
 
 export const useColorScheme = (): NonNullable<ColorSchemeName> => {
-  const themeSnapshot = useSnapshot(customTheme);
+  const [themeInfo, setThemeInfo] = useRecoilState(theme);
 
   useEffect(() => {
     (async () => {
       const appTheme = (await getSecureStore(theme_key)) as ColorSchemeName;
-      if (appTheme) updateTheme(appTheme);
+      if (appTheme) setThemeInfo(appTheme);
     })();
+  }, []);
 
-    return () => unsubscribe();
-  }, [themeSnapshot.theme]);
-
-  // App theme
-  return themeSnapshot.theme;
+  return themeInfo as NonNullable<ColorSchemeName>;
 };
