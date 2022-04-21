@@ -12,4 +12,4 @@ npm-debug.*
 tsconfig.tsbuildinfo
 
 # Supabase
-supabase/
+initdb
