@@ -38,8 +38,6 @@ export const ProfileEdit: FC<ProfileEditScreenProps> = ({ navigation }) => {
   } = useForm<FormDataType>();
 
   const onUserInfoUpdate = useCallback(async (data: FormDataType) => {
-    if (!userInfo?.user || !shoesInfo) return;
-
     const { errorToast, successToast } = toastKit('送信しています');
 
     const userUpdatePromise = supabaseClient
@@ -48,7 +46,7 @@ export const ProfileEdit: FC<ProfileEditScreenProps> = ({ navigation }) => {
         name: data.name,
         profile: data.profile,
       })
-      .eq('id', userInfo.user.id);
+      .eq('id', userInfo.id);
     const shoesUpdatePromise = supabaseClient
       .from('shoes')
       .update({
@@ -71,24 +69,17 @@ export const ProfileEdit: FC<ProfileEditScreenProps> = ({ navigation }) => {
       return { ...prevState, brand: data.brand, shoes: data.shoesName };
     });
     setUserInfo((prevState) => {
-      return prevState
-        ? {
-            ...prevState,
-            user: prevState.user
-              ? { ...prevState.user, name: data.name, profile: data.profile }
-              : null,
-          }
-        : null;
+      return { ...prevState, name: data.name, profile: data.profile };
     });
     navigation.navigate('ProfileScreen');
   }, []);
 
   useEffect(() => {
     reset({
-      name: userInfo?.user?.name,
-      brand: shoesInfo?.brand,
-      shoesName: shoesInfo?.shoes,
-      profile: userInfo?.user?.profile,
+      name: userInfo.name,
+      brand: shoesInfo.brand,
+      shoesName: shoesInfo.shoes,
+      profile: userInfo.profile,
     });
   }, [userInfo, shoesInfo]);
 

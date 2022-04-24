@@ -65,7 +65,7 @@ export const useChallengeList = () => {
             .from<Record>(RECORD_FROM)
             .select(RECORD_COLUMN, { count: 'exact' })
             .match({
-              [RECORD_EQUAL_1]: userInfo?.user?.id,
+              [RECORD_EQUAL_1]: userInfo.id,
               [RECORD_EQUAL_2]: _tournament_data.id,
             })
             .limit(RECORD_LIMIT)
@@ -110,7 +110,7 @@ export const useChallengeList = () => {
         data: recordFilterResult,
       });
     }
-  }, [userInfo?.user?.id]);
+  }, [userInfo.id]);
 
   useEffect(() => {
     fetchChallengeList();

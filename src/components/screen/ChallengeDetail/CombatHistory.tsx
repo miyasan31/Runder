@@ -19,6 +19,8 @@ import type { ChallengeDetailScreenProps } from '.';
 
 const FROM = 'record';
 const SELECT = 'id, user_id, record, created_at, location(id, location)';
+const EQUAL_1 = 'tournament_id';
+const EQUAL_2 = 'user_id';
 const ORDER = 'record';
 
 export const CombatHistory: FC<ChallengeDetailScreenProps> = memo((props) => {
@@ -32,11 +34,7 @@ export const CombatHistory: FC<ChallengeDetailScreenProps> = memo((props) => {
   const { tournament_id } = props.route.params;
   const filter = useSupabaseFilter(
     (query) =>
-      query
-        .select(SELECT)
-        .eq('tournament_id', tournament_id)
-        .eq('user_id', userInfo?.user?.id)
-        .order(ORDER),
+      query.select(SELECT).eq(EQUAL_1, tournament_id).eq(EQUAL_2, userInfo.id).order(ORDER),
     [],
   );
   const { loading, error, data } = useSupabaseSelect<Record>(FROM, { filter });

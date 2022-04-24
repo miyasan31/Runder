@@ -28,7 +28,7 @@ export const DevOps: FC<RelationshipScreenProps> = () => {
 
     const { errorToast, successToast } = toastKit('送信しています');
     const insertSuggestionPromise = supabaseClient.from('suggestion').insert({
-      user_id: userInfo?.user?.id,
+      user_id: userInfo.id,
       contents: text,
     });
     const sleepPromise = sleep(400);

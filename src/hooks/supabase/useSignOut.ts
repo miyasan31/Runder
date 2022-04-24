@@ -21,7 +21,9 @@ export const useSignOut = () => {
     }
 
     successToast('サインアウトに成功しました');
-    setUserInfo({ isSignIn: false, user: null });
+    setUserInfo((prevState) => {
+      return { ...prevState, isSignIn: false };
+    });
   };
 
   return { onSignOut };

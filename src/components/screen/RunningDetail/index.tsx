@@ -9,7 +9,7 @@ import { BottomTabLayout } from '~/components/ui/Layout';
 import { Text } from '~/components/ui/Text';
 import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import type { DevListScreenProps } from '~/types';
-import type { Location } from '~/types/fetcher';
+import type { Location } from '~/types/model';
 
 const SELECT_COLUMN = 'location';
 type LocationDetail = Pick<Location, 'location'>;

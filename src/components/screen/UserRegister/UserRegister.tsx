@@ -80,7 +80,9 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
     }
 
     successToast('プロフィール登録に成功しました');
-    setUserInfo({ isSignIn: true, user: null });
+    setUserInfo((prevState) => {
+      return { ...prevState, isSignIn: true };
+    });
   }, [sessionUser, name, sex, birthday]);
 
   useEffect(() => {

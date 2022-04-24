@@ -37,7 +37,9 @@ export const useSignInApple = () => {
         const secureStorePromise = saveSecureStore(AUTH_PROVIDER_KEY, 'google');
         const sleepPromise = sleep(600);
         await Promise.all([secureStorePromise, sleepPromise]);
-        setUserInfo({ isSignIn: true, user: null });
+        setUserInfo((prevState) => {
+          return { ...prevState, isSignIn: true };
+        });
       })
       .catch((error: any) => {
         deleteSecureStore(AUTH_PROVIDER_KEY);

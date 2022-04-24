@@ -16,12 +16,10 @@ export const useGetProfile = () => {
   const [shoesInfo, setShoesInfo] = useRecoilState(shoes);
 
   const fetchShoes = useCallback(async () => {
-    if (!userInfo?.user) return;
-
     const { data } = await supabaseClient
       .from<Shoes>(FROM)
       .select(COLUMN)
-      .eq(EQUAL, userInfo?.user?.id)
+      .eq(EQUAL, userInfo.id)
       .order(ORDER, {
         ascending: false,
       })
@@ -32,7 +30,7 @@ export const useGetProfile = () => {
 
   useEffect(() => {
     fetchShoes();
-  }, [userInfo?.user]);
+  }, []);
 
   return { userInfo, shoesInfo };
 };

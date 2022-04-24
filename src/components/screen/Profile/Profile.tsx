@@ -51,11 +51,7 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
           <>
             <View style={style.user_info_box} bg="bg1">
               <View style={style.align_horizontal}>
-                <Image
-                  source={{ uri: userInfo?.user?.avatar }}
-                  border="border1"
-                  style={style.user_icon}
-                />
+                <Image source={{ uri: userInfo.avatar }} border="border1" style={style.user_icon} />
 
                 <TouchableOpacity
                   activeOpacity={0.9}
@@ -86,13 +82,13 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
               </View>
 
               <View style={[style.align_horizontal, style.user_name_box]}>
-                <Text style={style.user_name}>{userInfo?.user?.name}</Text>
+                <Text style={style.user_name}>{userInfo.name}</Text>
                 <Text style={style.edit_button} onPress={onProfileEditNavigate} color="accent">
                   編集する
                 </Text>
               </View>
 
-              <Text style={style.user_profile}>{userInfo?.user?.profile}</Text>
+              <Text style={style.user_profile}>{userInfo.profile}</Text>
 
               {shoesInfo ? (
                 <Text style={style.user_shoes} color="color2">

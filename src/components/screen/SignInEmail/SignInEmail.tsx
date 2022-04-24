@@ -33,7 +33,9 @@ export const SignInEmail: FC<SignInEmailScreenProps> = ({ navigation }) => {
     }
 
     successToast('サインインに成功しました');
-    setUserInfo({ isSignIn: false, user: null });
+    setUserInfo((prevState) => {
+      return { ...prevState, isSignIn: false };
+    });
   }, []);
 
   const onSignUpNavigate = useCallback(() => {

@@ -46,10 +46,9 @@ export const useListenSession = () => {
     }
 
     // is Not User -> UserRegisterScreen Navigation
-    if (data.length === 0) {
-      setAuthUser({
-        isSignIn: false,
-        user: null,
+    if (!data.length) {
+      setAuthUser((prev) => {
+        return { ...prev, isSignIn: false };
       });
       return { isSignIn: false, route: 'UserRegisterScreen' };
     }
@@ -57,13 +56,18 @@ export const useListenSession = () => {
     // is Success
     setAuthUser({
       isSignIn: true,
-      user: data[0],
+      id: data[0].id,
+      name: data[0].name,
+      avatar: data[0].avatar,
+      profile: data[0].profile,
+      sex: data[0].sex,
     });
+
     return { isSignIn: true, route: 'Main' };
   }, []);
 
   useEffect(() => {
-    if (!authUser?.user) {
+    if (!authUser?.id) {
       (async () => {
         const result = await listenSession();
         await sleep(1000);
