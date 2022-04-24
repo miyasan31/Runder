@@ -3,28 +3,20 @@ import React, { useCallback, useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 import { SceneMap } from 'react-native-tab-view';
 import { CollapsibleHeaderTabView } from 'react-native-tab-view-collapsible-header';
-import { useRecoilValue } from 'recoil';
 
+import { useGetProfile } from '~/components/screen/Profile/useGetProfile';
 import { AntDesignIcon } from '~/components/ui/Icon';
 import { Image } from '~/components/ui/Image';
 import { TabBar } from '~/components/ui/TabBar';
 import { Text } from '~/components/ui/Text';
 import { TouchableOpacity, View } from '~/components/ui/View';
-import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import { useTabView } from '~/hooks/useTabView';
-import { user } from '~/stores/user';
 import type { ProfileScreenProps as Props } from '~/types';
-import type { Shoes } from '~/types/model';
 
 import { CombatHistory } from './CombatHistory';
 import { PodiumHistory } from './PodiumHistory';
 
 export type ProfileScreenProps = Props<'ProfileScreen'>;
-
-const FROM = 'shoes';
-const COLUMN = 'brand, shoes';
-const EQUAL = 'user_id';
-const ORDER = 'created_at';
 
 const routes = [
   { key: 'podium', title: '入賞回数' },
@@ -32,22 +24,8 @@ const routes = [
 ];
 
 export const Profile: FC<ProfileScreenProps> = (props) => {
+  const { userInfo, shoesInfo } = useGetProfile();
   const { layout, index, onIndexChange } = useTabView();
-  const userInfo = useRecoilValue(user);
-  const filter = useSupabaseFilter(
-    (query) =>
-      query
-        .select(COLUMN)
-        .eq(EQUAL, userInfo?.user?.id)
-        .order(ORDER, {
-          ascending: false,
-        })
-        .limit(1),
-    [],
-  );
-  const { data } = useSupabaseSelect<Pick<Shoes, 'brand' | 'shoes'>>(FROM, {
-    filter,
-  });
 
   const renderScene = useMemo(() => {
     return SceneMap({
@@ -116,9 +94,9 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
 
               <Text style={style.user_profile}>{userInfo?.user?.profile}</Text>
 
-              {data ? (
+              {shoesInfo ? (
                 <Text style={style.user_shoes} color="color2">
-                  {`👟 ${data[0].brand} ${data[0].shoes}`}
+                  {`👟 ${shoesInfo.brand} ${shoesInfo.shoes}`}
                 </Text>
               ) : null}
             </View>
