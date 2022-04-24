@@ -3,19 +3,28 @@ import React, { useCallback, useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 import { SceneMap } from 'react-native-tab-view';
 import { CollapsibleHeaderTabView } from 'react-native-tab-view-collapsible-header';
+import { useRecoilValue } from 'recoil';
 
 import { AntDesignIcon } from '~/components/ui/Icon';
 import { Image } from '~/components/ui/Image';
 import { TabBar } from '~/components/ui/TabBar';
 import { Text } from '~/components/ui/Text';
 import { TouchableOpacity, View } from '~/components/ui/View';
+import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import { useTabView } from '~/hooks/useTabView';
+import { user } from '~/stores/user';
 import type { ProfileScreenProps as Props } from '~/types';
+import type { Shoes } from '~/types/model';
 
 import { CombatHistory } from './CombatHistory';
 import { PodiumHistory } from './PodiumHistory';
 
 export type ProfileScreenProps = Props<'ProfileScreen'>;
+
+const FROM = 'shoes';
+const COLUMN = 'brand, shoes';
+const EQUAL = 'user_id';
+const ORDER = 'created_at';
 
 const routes = [
   { key: 'podium', title: '入賞回数' },
@@ -24,6 +33,21 @@ const routes = [
 
 export const Profile: FC<ProfileScreenProps> = (props) => {
   const { layout, index, onIndexChange } = useTabView();
+  const userInfo = useRecoilValue(user);
+  const filter = useSupabaseFilter(
+    (query) =>
+      query
+        .select(COLUMN)
+        .eq(EQUAL, userInfo?.user?.id)
+        .order(ORDER, {
+          ascending: false,
+        })
+        .limit(1),
+    [],
+  );
+  const { data } = useSupabaseSelect<Pick<Shoes, 'brand' | 'shoes'>>(FROM, {
+    filter,
+  });
 
   const renderScene = useMemo(() => {
     return SceneMap({
@@ -50,7 +74,7 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
             <View style={style.user_info_box} bg="bg1">
               <View style={style.align_horizontal}>
                 <Image
-                  source={require('assets/develop/lilnasx.png')}
+                  source={{ uri: userInfo?.user?.avatar }}
                   border="border1"
                   style={style.user_icon}
                 />
@@ -84,22 +108,19 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
               </View>
 
               <View style={[style.align_horizontal, style.user_name_box]}>
-                <Text style={style.user_name}>川村諒</Text>
+                <Text style={style.user_name}>{userInfo?.user?.name}</Text>
                 <Text style={style.edit_button} onPress={onProfileEditNavigate} color="accent">
                   編集する
                 </Text>
               </View>
 
-              <Text style={style.user_profile}>
-                {`高校まで陸上部  
-中距離ランナー
-得意な種目は800mと1500m
-2000m以上は苦手です......`}
-              </Text>
+              <Text style={style.user_profile}>{userInfo?.user?.profile}</Text>
 
-              <Text style={style.user_shoes} color="color2">
-                {'👟'} ナイキ ズームライバル フライ
-              </Text>
+              {data ? (
+                <Text style={style.user_shoes} color="color2">
+                  {`👟 ${data[0].brand} ${data[0].shoes}`}
+                </Text>
+              ) : null}
             </View>
           </>
         );
@@ -189,42 +210,3 @@ const style = StyleSheet.create({
     marginTop: '2%',
   },
 });
-
-// const onPress = async () => {
-//   const { errorToast, successToast } = toastKit();
-//   // delay 1s
-//   await new Promise((resolve) => setTimeout(resolve, 2000));
-//   errorToast();
-
-//   await new Promise((resolve) => setTimeout(resolve, 2000));
-//   successToast('成功しました');
-// };
-
-// const onPressPromise = async () => {
-//   const myPromise = new Promise((resolve) => setTimeout(resolve, 2000));
-//   toast.promise(
-//     myPromise,
-//     {
-//       loading: 'Loading',
-//       error: 'Error when fetching',
-//       success: 'Got the data',
-//     },
-//     {
-//       style: {
-//         minWidth: '250px',
-//       },
-//       loading: {
-//         duration: 3000,
-//         icon: '🔥',
-//       },
-//       error: {
-//         duration: 3000,
-//         icon: '🔥',
-//       },
-//       success: {
-//         duration: 3000,
-//         icon: '🔥',
-//       },
-//     },
-//   );
-// };
