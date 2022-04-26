@@ -3,7 +3,6 @@ import React, { memo } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { RecoilRoot } from 'recoil';
 
-import { Toaster } from '~/components/ui/Toaster';
 import { View } from '~/components/ui/View';
 import { useCachedResources } from '~/hooks/useCachedResources';
 import { Navigation } from '~/screens';
@@ -20,7 +19,6 @@ const App = () => {
           <StatusBar />
         </View>
       </SafeAreaProvider>
-      <Toaster position="bottom-center" />
     </RecoilRoot>
   );
 };
