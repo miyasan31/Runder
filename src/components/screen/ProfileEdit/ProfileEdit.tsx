@@ -8,6 +8,7 @@ import { Button } from '~/components/ui/Button';
 import { Text } from '~/components/ui/Text';
 import { TextInput } from '~/components/ui/TextInput';
 import { View } from '~/components/ui/View';
+import { sleep } from '~/functions/sleep';
 import { useSignOut } from '~/hooks/supabase';
 import { shoes } from '~/stores/shoes';
 import { user } from '~/stores/user';
@@ -71,6 +72,8 @@ export const ProfileEdit: FC<ProfileEditScreenProps> = ({ navigation }) => {
     setUserInfo((prevState) => {
       return { ...prevState, name: data.name, profile: data.profile };
     });
+
+    await sleep(600);
     navigation.navigate('ProfileScreen');
   }, []);
 
