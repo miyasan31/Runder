@@ -121,23 +121,25 @@ export const ProfileNavigator: FC = () => {
         <Profile.Screen
           name="ProfileEditScreen"
           component={ProfileEditScreen}
-          options={({ navigation }) => ({
-            title: 'プロフィール編集',
-            headerLeft: () => {
-              const onPrevScreen = () => navigation.goBack();
-              return <HeaderLeftButton type="close" onPress={onPrevScreen} />;
-            },
+          options={() => ({
+            headerShown: false,
+            // title: 'プロフィール編集',
+            // headerLeft: () => {
+            //   const onPrevScreen = () => navigation.goBack();
+            //   return <HeaderLeftButton type="close" onPress={onPrevScreen} />;
+            // },
           })}
         />
         <Profile.Screen
           name="AvatarEditScreen"
           component={AvatarEditScreen}
-          options={({ navigation }) => ({
-            title: 'アバター編集',
-            headerLeft: () => {
-              const onPrevScreen = () => navigation.goBack();
-              return <HeaderLeftButton type="close" onPress={onPrevScreen} />;
-            },
+          options={() => ({
+            headerShown: false,
+            // title: 'アバター編集',
+            // headerLeft: () => {
+            //   const onPrevScreen = () => navigation.goBack();
+            //   return <HeaderLeftButton type="close" onPress={onPrevScreen} />;
+            // },
           })}
         />
       </Profile.Group>
