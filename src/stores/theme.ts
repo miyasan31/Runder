@@ -4,5 +4,5 @@ type Theme = null | 'light' | 'dark';
 
 export const theme = atom<Theme>({
   key: 'theme',
-  default: 'dark',
+  default: null,
 });

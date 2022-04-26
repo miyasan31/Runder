@@ -6,11 +6,10 @@ import { useRecoilState } from 'recoil';
 import { SettingList } from '~/components/screen/Setting/SettingList';
 import { Radio } from '~/components/ui/Radio';
 import { View } from '~/components/ui/View';
+import { THEME_KEY } from '~/constants/ENV';
 import { theme } from '~/stores/theme';
 import type { ProfileScreenProps } from '~/types';
 import { deleteSecureStore, saveSecureStore } from '~/utils/secureStore';
-
-const theme_key = 'runder_theme_vfauih87o3hrilbafla';
 
 export type SettingScreenProps = ProfileScreenProps<'SettingScreen'>;
 
@@ -23,7 +22,7 @@ export const Theme: FC<SettingScreenProps> = () => {
       leftText: '端末の設定に合わせる',
       rightComponent: <Radio activeValue={themeInfo} value={null} />,
       onPress: async () => {
-        await deleteSecureStore(theme_key);
+        await deleteSecureStore(THEME_KEY);
         setThemeInfo(null);
       },
     },
@@ -32,7 +31,7 @@ export const Theme: FC<SettingScreenProps> = () => {
       leftText: 'ライトモード',
       rightComponent: <Radio activeValue={themeInfo} value="light" />,
       onPress: async () => {
-        await saveSecureStore(theme_key, 'light');
+        await saveSecureStore(THEME_KEY, 'light');
         setThemeInfo('light');
       },
     },
@@ -41,7 +40,7 @@ export const Theme: FC<SettingScreenProps> = () => {
       leftText: 'ダークモード',
       rightComponent: <Radio activeValue={themeInfo} value="dark" />,
       onPress: async () => {
-        await saveSecureStore(theme_key, 'dark');
+        await saveSecureStore(THEME_KEY, 'dark');
         setThemeInfo('dark');
       },
     },
