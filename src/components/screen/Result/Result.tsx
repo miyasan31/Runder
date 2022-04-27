@@ -3,70 +3,42 @@ import 'react-native-url-polyfill/auto';
 import type { FC } from 'react';
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
+import { useRecoilValue } from 'recoil';
 
 import { ResultTableBody } from '~/components/model/tournament/ResultTableBody';
 import { MonthPagination } from '~/components/ui/MonthPagination';
+import { ActivityIndicator } from '~/components/ui/Progress';
 import { TableHead } from '~/components/ui/Table';
+import { ExceptionText } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
+import { user } from '~/stores/user';
 import { flatListStyle } from '~/styles';
 import type { ResultScreenProps as Props } from '~/types';
+import type { Record } from '~/types/model';
 
 export type ResultScreenProps = Props<'ResultScreen'>;
 
-const data = [
-  {
-    id: '1',
-    name: 'Winter Distance Challenge',
-    distance: 3000,
-    start: '12/1',
-    end: '12/31',
-    created_at: '2020-01-01',
-    image: './assets/develop/tournament.jpeg',
-    rank: 1,
-    record: '00:00.00',
-    point: 10,
-  },
-  {
-    id: '2',
-    name: 'Winter Distance Challenge',
-    distance: 1000,
-    start: '12/1',
-    end: '12/31',
-    created_at: '2020-01-01',
-    image: './assets/develop/tournament.jpeg',
-    rank: 2,
-    record: '00:00.00',
-    point: 100,
-  },
-  {
-    id: '3',
-    name: 'Winter Distance Challenge',
-    distance: 1000,
-    start: '12/1',
-    end: '12/31',
-    created_at: '2020-01-01',
-    image: './assets/develop/tournament.jpeg',
-    rank: 100,
-    record: '00:00.00',
-    point: 10000,
-  },
-  {
-    id: '4',
-    name: 'Winter Distance Challenge',
-    distance: 1000,
-    start: '12/1',
-    end: '12/31',
-    created_at: '2020-01-01',
-    image: './assets/develop/tournament.jpeg',
-    rank: 167,
-    record: '00:00.00',
-    point: 100,
-  },
-];
-
-type Tournament = typeof data[0];
+const FROM = 'record';
+const COLUMN =
+  'id, record, tournament(id, name, distance, start, end, tournament_design(image_semi))';
+const EQUAL_1 = 'user_id';
+const EQUAL_2 = 'isBest';
+const ORDER = 'created_at';
 
 export const Result: FC<ResultScreenProps> = (props) => {
+  const userInfo = useRecoilValue(user);
+
+  const filter = useSupabaseFilter(
+    (query) => query.select(COLUMN).eq(EQUAL_1, userInfo.id).eq(EQUAL_2, true).order(ORDER),
+    [],
+  );
+  const { loading, error, data } = useSupabaseSelect<Record>(FROM, { filter });
+
+  if (loading) return <ActivityIndicator message="ポイント情報を取得中..." />;
+  if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;
+  if (!data) return <ExceptionText label="記録がまだありません。" />;
+
   return (
     <>
       <View style={style.box}>
@@ -78,7 +50,7 @@ export const Result: FC<ResultScreenProps> = (props) => {
         data={data}
         style={flatListStyle.list}
         keyExtractor={(item, _) => String(item.id)}
-        renderItem={({ item }: { item: Tournament }) => {
+        renderItem={({ item }) => {
           return <ResultTableBody {...item} {...props} />;
         }}
         ListFooterComponent={() => <View style={flatListStyle.bottom_space_large} />}
