@@ -171,7 +171,7 @@ export type Point = {
 
   user: User;
   tournament: Tournament;
-  point: Point;
+  point_table: PointTable;
 };
 
 /**
