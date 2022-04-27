@@ -4,20 +4,15 @@ import React, { useCallback } from 'react';
 import { Image, StyleSheet } from 'react-native';
 
 import type { TournamentScreenProps } from '~/components/screen/Tournament';
+import type { ChallengeTournament } from '~/components/screen/Tournament/useChallengeList';
 import { Card } from '~/components/ui/Card';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { formatRecord } from '~/functions/formatRecord';
 import { termCheck } from '~/functions/termCheck';
-import type { Record, Tournament } from '~/types/model';
 
-type ChallengeTournamentList = {
-  tournament: Tournament;
-  count: number;
-  record: Record;
-};
-
-export const ChallengeCard: FC<ChallengeTournamentList & TournamentScreenProps> = ({
+export const ChallengeCard: FC<ChallengeTournament & TournamentScreenProps> = ({
+  record,
   tournament: {
     id: tournament_id,
     name,
@@ -28,7 +23,6 @@ export const ChallengeCard: FC<ChallengeTournamentList & TournamentScreenProps> 
     term,
     count: tournament_count,
   },
-  record: { record },
   count,
   navigation,
 }) => {
@@ -36,14 +30,11 @@ export const ChallengeCard: FC<ChallengeTournamentList & TournamentScreenProps> 
   const startDate = format(new Date(start), 'M/d');
   const endDate = format(new Date(end), 'M/d');
   const recordResult = formatRecord(record);
+  const remainingCount = (count && tournament_count - count < 0) || 0;
 
   const onNavigation = useCallback(() => {
     navigation.navigate('ChallengeDetailScreen', { tournament_id });
   }, [navigation, tournament_id]);
-
-  if (tournament_count - count < 0) {
-    return null;
-  }
 
   return (
     <Card onPress={onNavigation}>
@@ -84,7 +75,7 @@ export const ChallengeCard: FC<ChallengeTournamentList & TournamentScreenProps> 
 
           <View style={style.align_horizontal}>
             <Text style={style.info_result_left}>{recordResult}</Text>
-            <Text style={style.info_result_right}>{tournament_count - count}</Text>
+            <Text style={style.info_result_right}>{remainingCount}</Text>
           </View>
         </View>
       </View>
