@@ -4,14 +4,16 @@ import { StyleSheet } from 'react-native';
 import { SceneMap } from 'react-native-tab-view';
 import { CollapsibleHeaderTabView } from 'react-native-tab-view-collapsible-header';
 
+import { ActivityIndicator } from '~/components/ui/Progress';
 import { TabBar } from '~/components/ui/TabBar';
-import { Text } from '~/components/ui/Text';
+import { ExceptionText, Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { useTabView } from '~/hooks/useTabView';
 import type { RankingScreenProps as Props } from '~/types';
 
 import { MonthlyRanking } from './MonthlyRanking';
 import { TotalRanking } from './TotalRanking';
+import { useRanking } from './useRanking';
 
 export type RankingScreenProps = Props<'RankingScreen'>;
 
@@ -21,6 +23,7 @@ const routes = [
 ];
 
 export const Ranking: FC<RankingScreenProps> = (props) => {
+  const { loading, error, data } = useRanking();
   const { layout, index, onIndexChange } = useTabView();
 
   const renderScene = useMemo(() => {
@@ -29,6 +32,12 @@ export const Ranking: FC<RankingScreenProps> = (props) => {
       monthly: () => <MonthlyRanking {...props} />,
     });
   }, [props]);
+
+  if (loading) return <ActivityIndicator message="ランキング情報を取得中..." />;
+  if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;
+  if (!data) return <ExceptionText label="ランキング情報が見つかりませんでした。" />;
+
+  const { totalRanking, totalPoint, monthlyRanking, monthlyPoint } = data;
 
   return (
     <CollapsibleHeaderTabView
@@ -47,12 +56,12 @@ export const Ranking: FC<RankingScreenProps> = (props) => {
 
             <View style={style.align_horizontal}>
               <View style={style.info_result_left}>
-                <Text style={style.info_result}>1</Text>
+                <Text style={style.info_result}>{totalRanking}</Text>
                 <Text style={style.info_result_space}>位</Text>
               </View>
 
               <View style={style.info_result_right}>
-                <Text style={style.info_result}>1200</Text>
+                <Text style={style.info_result}>{totalPoint}</Text>
                 <Text style={style.info_result_space}>ポイント</Text>
               </View>
             </View>
@@ -63,12 +72,12 @@ export const Ranking: FC<RankingScreenProps> = (props) => {
 
             <View style={style.align_horizontal}>
               <View style={style.info_result_left}>
-                <Text style={style.info_result}>10</Text>
+                <Text style={style.info_result}>{monthlyRanking}</Text>
                 <Text style={style.info_result_space}>位</Text>
               </View>
 
               <View style={style.info_result_right}>
-                <Text style={style.info_result}>300</Text>
+                <Text style={style.info_result}>{monthlyPoint}</Text>
                 <Text style={style.info_result_space}>ポイント</Text>
               </View>
             </View>
