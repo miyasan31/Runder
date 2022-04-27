@@ -150,6 +150,7 @@ export type Record = {
   tournament_id: number;
   location_id: number;
   record: number;
+  isBest: boolean;
   created_at: Date;
 
   user: User;
