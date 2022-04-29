@@ -4,8 +4,8 @@ import React, { memo } from 'react';
 import { Image, StyleSheet } from 'react-native';
 
 import { DetailViewButtonGroup } from '~/components/screen/TournamentDetail/DetailViewButtonGroup';
-import { Button } from '~/components/ui/Button';
 import { ActivityIndicator } from '~/components/ui/Progress';
+import { SwipeStartButton } from '~/components/ui/SwipeStartButton';
 import { ExceptionText, Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { termCheck } from '~/functions/termCheck';
@@ -64,13 +64,7 @@ export const TournamentDetail: FC<ChallengeDetailScreenProps> = memo((props) => 
       </View>
 
       <View style={style.float_button_box}>
-        <Button
-          label="START"
-          bg="bg2"
-          isBorder
-          outlineStyle={style.button_outline}
-          textStyle={style.button_text}
-        />
+        <SwipeStartButton />
         <DetailViewButtonGroup id={id} />
       </View>
     </>
@@ -126,17 +120,6 @@ const style = StyleSheet.create({
   float_button_box: {
     position: 'absolute',
     bottom: 30,
-    left: 0,
-    width: '100%',
-  },
-  button_outline: {
-    width: '100%',
     paddingHorizontal: '6%',
-    marginBottom: '8%',
-  },
-  button_text: {
-    fontSize: 20,
-    fontWeight: '600',
-    fontStyle: 'italic',
   },
 });

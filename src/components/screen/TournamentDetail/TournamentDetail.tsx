@@ -4,6 +4,7 @@ import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 
 import { ActivityIndicator } from '~/components/ui/Progress';
+import { SwipeStartButton } from '~/components/ui/SwipeStartButton';
 import { ExceptionText, Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { termCheck } from '~/functions/termCheck';
@@ -12,7 +13,6 @@ import type { TournamentScreenProps as Props } from '~/types';
 import type { Tournament } from '~/types/model';
 
 import { DetailViewButtonGroup } from './DetailViewButtonGroup';
-import { SwipeStartButton } from './SwipeStartButton';
 
 export type TournamentDetailScreenProps = Props<'TournamentDetailScreen'>;
 

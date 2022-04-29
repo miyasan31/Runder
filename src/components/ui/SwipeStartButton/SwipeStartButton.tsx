@@ -12,16 +12,16 @@ import { useTheme } from '~/hooks/useTheme';
 
 const Icon = (<Start />) as string;
 
+const RunderLogo = () => (
+  <View style={style.button} bg="primary" border="white">
+    <RunderMonochrome />
+  </View>
+);
+
 export const SwipeStartButton: FC = () => {
   const bg1 = useTheme({}, 'bg1');
   const color2 = useTheme({}, 'color2');
   const primary = useTheme({}, 'primary');
-
-  const RunderLogo = () => (
-    <View style={style.button} bg="primary" border="white">
-      <RunderMonochrome />
-    </View>
-  );
 
   return (
     <SwipeButton
