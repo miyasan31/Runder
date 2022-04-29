@@ -10,17 +10,16 @@ import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import { flatListStyle } from '~/styles';
 import type { PointTable } from '~/types/model';
 
-const FROM = 'point_table';
-const COLUMN = 'id, rank, later_point';
-const EQUAL = 'tournament_id';
-
 type Props = {
   id: number;
 };
 
 export const Point: FC<Props> = memo(({ id }) => {
-  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq(EQUAL, id).order('rank'), []);
-  const { loading, error, data } = useSupabaseSelect<PointTable>(FROM, { filter });
+  const filter = useSupabaseFilter(
+    (query) => query.select('id, rank, later_point').eq('tournament_id', id).order('rank'),
+    [],
+  );
+  const { loading, error, data } = useSupabaseSelect<PointTable>('point_table', { filter });
 
   if (loading) return <ActivityIndicator message="ポイント情報を取得中..." />;
   if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;

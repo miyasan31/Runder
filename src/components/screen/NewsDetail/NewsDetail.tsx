@@ -13,14 +13,10 @@ import type { Info } from '~/types/model';
 
 export type NewsDetailScreenProps = RelationshipScreenProps<'NewsDetailScreen'>;
 
-const FROM = 'info';
-const COLUMN = '*';
-const EQUAL = 'id';
-
 export const NewsDetail: FC<NewsDetailScreenProps> = (props) => {
   const { news_id } = props.route.params;
-  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq(EQUAL, news_id), []);
-  const { loading, error, data } = useSupabaseSelect<Info>(FROM, { filter });
+  const filter = useSupabaseFilter((query) => query.eq('id', news_id), []);
+  const { loading, error, data } = useSupabaseSelect<Info>('info', { filter });
 
   if (loading) return <ActivityIndicator message="大会情報を取得中..." />;
   if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;

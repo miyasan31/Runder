@@ -12,13 +12,12 @@ import type { Info } from '~/types/model';
 
 import type { RelationshipScreenProps } from '.';
 
-const FROM = 'info';
-const COLUMN = 'id, title, created_at';
-const ORDER = 'created_at';
-
 export const News: FC<RelationshipScreenProps> = (props) => {
-  const filter = useSupabaseFilter((query) => query.select(COLUMN).order(ORDER), []);
-  const { loading, error, data } = useSupabaseSelect<Info>(FROM, {
+  const filter = useSupabaseFilter(
+    (query) => query.select('id, title, created_at').order('created_at'),
+    [],
+  );
+  const { loading, error, data } = useSupabaseSelect<Info>('info', {
     filter,
   });
 

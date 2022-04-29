@@ -11,10 +11,6 @@ type SessionState = {
   route: 'Main' | 'SignInScreen' | 'UserRegisterScreen';
 };
 
-const FROM = 'user';
-const SELECT = 'id, name, avatar, profile, sex';
-const EQUAL = 'id';
-
 export const useListenSession = () => {
   const [authUser, setAuthUser] = useRecoilState(user);
   const [sessionState, setSessionState] = useState<SessionState | null>(null);
@@ -29,9 +25,9 @@ export const useListenSession = () => {
       return { isSignIn: false, route: 'SignInScreen' };
     }
 
-    const { data, error } = await supabaseSelect<AuthUserState>(FROM, {
-      columns: SELECT,
-      filter: (query) => query.eq(EQUAL, sessionUser.id),
+    const { data, error } = await supabaseSelect<AuthUserState>('user', {
+      columns: 'id, name, avatar, profile, sex',
+      filter: (query) => query.eq('id', sessionUser.id),
     });
 
     // --- or ---

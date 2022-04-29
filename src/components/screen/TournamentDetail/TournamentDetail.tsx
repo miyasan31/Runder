@@ -16,14 +16,16 @@ import { DetailViewButtonGroup } from './DetailViewButtonGroup';
 
 export type TournamentDetailScreenProps = Props<'TournamentDetailScreen'>;
 
-const FROM = 'tournament';
-const COLUMN = 'id, name, distance, start, end, term, tournament_design(image_full)';
-const EQUAL = 'id';
-
 export const TournamentDetail: FC<TournamentDetailScreenProps> = (props) => {
   const { tournament_id } = props.route.params;
-  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq(EQUAL, tournament_id), []);
-  const { loading, error, data } = useSupabaseSelect<Tournament>(FROM, { filter });
+  const filter = useSupabaseFilter(
+    (query) =>
+      query
+        .select('id, name, distance, start, end, term, tournament_design(image_full)')
+        .eq('id', tournament_id),
+    [],
+  );
+  const { loading, error, data } = useSupabaseSelect<Tournament>('tournament', { filter });
 
   if (loading) return <ActivityIndicator message="大会情報を取得中..." />;
   if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;

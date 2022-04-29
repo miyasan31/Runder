@@ -11,14 +11,13 @@ import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import type { DevListScreenProps } from '~/types';
 import type { Location } from '~/types/model';
 
-const SELECT_COLUMN = 'location';
 type LocationDetail = Pick<Location, 'location'>;
 
 export type Props = DevListScreenProps<'RunningDetailScreen'>;
 
 export const RunningDetail: FC<Props> = (props) => {
   const { id } = props.route.params;
-  const filter = useSupabaseFilter((query) => query.select(SELECT_COLUMN).eq('id', id), []);
+  const filter = useSupabaseFilter((query) => query.select('location').eq('id', id), []);
   const { loading, error, data } = useSupabaseSelect<LocationDetail>('location', { filter });
 
   if (loading) return <Text>読み込み中...</Text>;

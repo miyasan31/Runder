@@ -19,21 +19,21 @@ import type { Record } from '~/types/model';
 
 export type ResultScreenProps = Props<'ResultScreen'>;
 
-const FROM = 'record';
-const COLUMN =
-  'id, record, tournament(id, name, distance, start, end, term,  tournament_design(image_semi))';
-const EQUAL_1 = 'user_id';
-const EQUAL_2 = 'isBest';
-const ORDER = 'created_at';
-
 export const Result: FC<ResultScreenProps> = (props) => {
   const userInfo = useRecoilValue(user);
 
   const filter = useSupabaseFilter(
-    (query) => query.select(COLUMN).eq(EQUAL_1, userInfo.id).eq(EQUAL_2, true).order(ORDER),
+    (query) =>
+      query
+        .select(
+          'id, record, tournament(id, name, distance, start, end, term,  tournament_design(image_semi))',
+        )
+        .eq('user_id', userInfo.id)
+        .eq('isBest', true)
+        .order('created_at'),
     [],
   );
-  const { loading, error, data } = useSupabaseSelect<Record>(FROM, { filter });
+  const { loading, error, data } = useSupabaseSelect<Record>('record', { filter });
 
   if (loading) return <ActivityIndicator message="ポイント情報を取得中..." />;
   if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;

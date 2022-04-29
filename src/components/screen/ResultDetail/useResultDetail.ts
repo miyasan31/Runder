@@ -6,12 +6,6 @@ import { useCallback, useEffect, useState } from 'react';
 import type { PointTable, Record } from '~/types/model';
 import { supabaseSelect } from '~/utils/supabase';
 
-const FROM = 'record';
-const COLUMN = 'id, record, user(id, name, avatar)';
-const EQUAL_1 = 'tournament_id';
-const EQUAL_2 = 'isBest';
-const ORDER = 'record';
-
 export type ResultDetail =
   | {
       best_record: Record[];
@@ -33,9 +27,13 @@ export const useResultDetail = (tournament_id: number) => {
   });
 
   const fetchResultDetail = useCallback(async () => {
-    const { data: best_record, error: best_record_error } = await supabaseSelect<Record>(FROM, {
+    const { data: best_record, error: best_record_error } = await supabaseSelect<Record>('record', {
       filter: (query) =>
-        query.select(COLUMN).eq(EQUAL_1, tournament_id).eq(EQUAL_2, true).order(ORDER),
+        query
+          .select('id, record, user(id, name, avatar)')
+          .eq('tournament_id', tournament_id)
+          .eq('isBest', true)
+          .order('record'),
     });
 
     if (best_record_error || !best_record) {

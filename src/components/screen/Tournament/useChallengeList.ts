@@ -8,12 +8,6 @@ import { user } from '~/stores/user';
 import type { Record } from '~/types/model';
 import { supabaseSelect } from '~/utils/supabase';
 
-const RECORD_FROM = 'record';
-const RECORD_COLUMN =
-  'id, record, created_at, tournament(id, name, distance, start, end, term,  count, tournament_design(image_semi))';
-const RECORD_ORDER = 'created_at';
-const RECORD_EQUAL = 'isBest';
-
 export type ChallengeTournament = Record & { count: number | null };
 
 export type ChallengeTournamentResult = {
@@ -32,10 +26,10 @@ export const useChallengeList = () => {
   });
 
   const fetchChallengeList = useCallback(async () => {
-    const { data: best_record, error } = await supabaseSelect<Record>(RECORD_FROM, {
-      columns: RECORD_COLUMN,
-      filter: (query) =>
-        query.eq('user_id', userInfo.id).eq(RECORD_EQUAL, true).order(RECORD_ORDER),
+    const { data: best_record, error } = await supabaseSelect<Record>('record', {
+      columns:
+        'id, record, created_at, tournament(id, name, distance, start, end, term,  count, tournament_design(image_semi))',
+      filter: (query) => query.eq('user_id', userInfo.id).eq('isBest', true).order('created_at'),
     });
 
     if (error || !best_record) {
