@@ -4,7 +4,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { shoes } from '~/stores/shoes';
 import { user } from '~/stores/user';
 import type { Shoes } from '~/types/model';
-import { supabaseClient } from '~/utils/supabase';
+import { supabaseSelect } from '~/utils/supabase';
 
 const FROM = 'shoes';
 const COLUMN = 'id, brand, shoes';
@@ -16,14 +16,16 @@ export const useGetProfile = () => {
   const [shoesInfo, setShoesInfo] = useRecoilState(shoes);
 
   const fetchShoes = useCallback(async () => {
-    const { data } = await supabaseClient
-      .from<Shoes>(FROM)
-      .select(COLUMN)
-      .eq(EQUAL, userInfo.id)
-      .order(ORDER, {
-        ascending: false,
-      })
-      .limit(1);
+    const { data } = await supabaseSelect<Shoes>(FROM, {
+      filter: (query) =>
+        query
+          .select(COLUMN)
+          .eq(EQUAL, userInfo.id)
+          .order(ORDER, {
+            ascending: false,
+          })
+          .limit(1),
+    });
 
     if (data) setShoesInfo(data[0]);
   }, []);
