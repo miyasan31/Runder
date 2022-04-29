@@ -45,7 +45,7 @@ export const Ranking: FC<Props> = ({ id }) => {
         </>
       )}
       renderItem={({ item, index }) => {
-        return <RecordTableBody {...item} index={index + 1} outlineStyle={style.list} />;
+        return <RecordTableBody {...item} ranking={index + 1} outlineStyle={style.list} />;
       }}
     />
   );
