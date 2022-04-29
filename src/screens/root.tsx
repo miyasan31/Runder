@@ -5,6 +5,7 @@ import React from 'react';
 import { ActivityIndicator } from '~/components/ui/Progress';
 import { useListenSession } from '~/hooks/useListenSession';
 import { useTheme } from '~/hooks/useTheme';
+import { RunningScreen } from '~/screens/run/running.screen';
 import type { RootStackParamList } from '~/types';
 
 import { NotFoundScreen } from './404.screen';
@@ -12,7 +13,6 @@ import { SignInScreen } from './auth/signin.screen';
 import { SignInEmailScreen } from './auth/signin_email.screen';
 import { SignUpScreen } from './auth/signup.screen';
 import { UserRegisterScreen } from './auth/user_register.screen';
-import { DevelopmentTabNavigator } from './development';
 import { BottomTabNavigator } from './main';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -40,7 +40,7 @@ export const RootNavigator: FC = () => {
 
       <RootStack.Screen name="Main" component={BottomTabNavigator} />
 
-      <RootStack.Screen name="Development" component={DevelopmentTabNavigator} />
+      <RootStack.Screen name="RunningScreen" component={RunningScreen} />
 
       <RootStack.Screen
         name="NotFoundScreen"

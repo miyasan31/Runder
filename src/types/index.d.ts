@@ -8,15 +8,20 @@ declare global {
   }
 }
 
-export type RootStackParamList = AuthGroupStackParamList & {
-  Main: NavigatorScreenParams<MainBottomTabParamList> | undefined;
-  Development: NavigatorScreenParams<DevelopmentTabParamList> | undefined;
-  NotFoundScreen: undefined;
-};
+export type RootStackParamList = AuthGroupStackParamList &
+  RunningStackParamList & {
+    Main: NavigatorScreenParams<MainBottomTabParamList> | undefined;
+    NotFoundScreen: undefined;
+  };
 export type StackScreenProps<T extends keyof RootStackParamList> = NativeStackScreenProps<
   RootStackParamList,
   T
 >;
+
+/* running  */
+export type RunningStackParamList = {
+  RunningScreen: undefined;
+};
 
 /* auth */
 export type AuthGroupStackParamList = {
@@ -115,34 +120,3 @@ export type SettingGroupStackParamList = {
   ContactScreen: undefined;
   AccountDeletionScreen: undefined;
 };
-
-/* development tabs */
-export type DevelopmentTabParamList = {
-  DevList: NavigatorScreenParams<DevListStackParamList> | undefined;
-  DevRunning: NavigatorScreenParams<DevRunningStackParamList> | undefined;
-};
-export type DevelopmentScreenProps<T extends keyof DevelopmentTabParamList> = CompositeScreenProps<
-  BottomTabScreenProps<DevelopmentTabParamList, T>,
-  NativeStackScreenProps<RootStackParamList>
->;
-
-/* dev running list */
-export type DevListStackParamList = {
-  RunningHistoryScreen: undefined;
-  RunningDetailScreen: {
-    id: number;
-  };
-};
-export type DevListScreenProps<T extends keyof DevListStackParamList> = CompositeScreenProps<
-  BottomTabScreenProps<DevListStackParamList, T>,
-  NativeStackScreenProps<RootStackParamList>
->;
-
-/* dev running  */
-export type DevRunningStackParamList = {
-  RunningScreen: undefined;
-};
-export type DevRunningScreenProps<T extends keyof DevRunningStackParamList> = CompositeScreenProps<
-  BottomTabScreenProps<DevRunningStackParamList, T>,
-  NativeStackScreenProps<RootStackParamList>
->;
