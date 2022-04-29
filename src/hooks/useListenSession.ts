@@ -4,11 +4,12 @@ import { useRecoilState } from 'recoil';
 import { sleep } from '~/functions/sleep';
 import type { AuthUserState } from '~/stores/user';
 import { user } from '~/stores/user';
+import { getSecureStore } from '~/utils/secureStore';
 import { supabaseClient, supabaseSelect } from '~/utils/supabase';
 
 type SessionState = {
   isSignIn: boolean;
-  route: 'Main' | 'SignInScreen' | 'UserRegisterScreen';
+  route: 'Main' | 'RunningScreen' | 'SignInScreen' | 'UserRegisterScreen';
 };
 
 export const useListenSession = () => {
@@ -58,6 +59,9 @@ export const useListenSession = () => {
       profile: data[0].profile,
       sex: data[0].sex,
     });
+
+    const challenged_tournament_id = await getSecureStore('challenged_tournament_id');
+    if (challenged_tournament_id) return { isSignIn: true, route: 'RunningScreen' };
 
     return { isSignIn: true, route: 'Main' };
   }, []);

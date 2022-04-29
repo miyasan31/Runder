@@ -7,17 +7,18 @@ import MapView, { Polyline } from 'react-native-maps';
 
 import { Button } from '~/components/ui/Button';
 import { View } from '~/components/ui/View';
-import type { DevRunningScreenProps as Props } from '~/types';
+import type { StackScreenProps as Props } from '~/types';
 
 import { useRunning } from './useRunning';
 
-export type DevRunningScreenProps = Props<'RunningScreen'>;
+export type RunningScreenProps = Props<'RunningScreen'>;
 
-export const Running: FC<DevRunningScreenProps> = () => {
+export const Running: FC<RunningScreenProps> = ({ navigation }) => {
   const { isRunning, coordinates, onToggleRunningStatus, coordinateResult, strokeResult, onSave } =
-    useRunning();
+    useRunning(navigation);
 
   if (coordinates.length === 0) return null;
+
   return (
     <View style={styles.root}>
       <MapView
@@ -30,14 +31,15 @@ export const Running: FC<DevRunningScreenProps> = () => {
         }}
       >
         <Polyline coordinates={coordinateResult} strokeColors={strokeResult} strokeWidth={6} />
-        <Button
-          label={isRunning ? 'STOP' : 'START'}
-          bg="primary"
-          outlineStyle={styles.button}
-          onPress={onToggleRunningStatus}
-        />
-        <Button label="SAVE" bg="accent" outlineStyle={styles.button_1} onPress={onSave} />
       </MapView>
+
+      <Button
+        label={isRunning ? 'STOP' : 'START'}
+        bg="primary"
+        outlineStyle={styles.button}
+        onPress={onToggleRunningStatus}
+      />
+      <Button label="SAVE" bg="accent" outlineStyle={styles.button_1} onPress={onSave} />
     </View>
   );
 };

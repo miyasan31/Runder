@@ -64,7 +64,7 @@ export const TournamentDetail: FC<ChallengeDetailScreenProps> = memo((props) => 
       </View>
 
       <View style={style.float_button_box}>
-        <SwipeStartButton />
+        <SwipeStartButton tournamentId={id} />
         <DetailViewButtonGroup id={id} />
       </View>
     </>

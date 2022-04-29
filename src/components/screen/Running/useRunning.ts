@@ -3,8 +3,10 @@ import 'react-native-url-polyfill/auto';
 import * as Location from 'expo-location';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import type { LocationResult } from '~/types/fetcher';
-import { supabaseClient } from '~/utils/supabase';
+import { deleteSecureStore } from '~/utils/secureStore';
+
+// import { supabaseClient } from '~/utils/supabase';
+import type { RunningScreenProps } from './Running';
 
 // 位置情報取得許可を要求
 const requestForegroundPermission = async () => {
@@ -12,9 +14,10 @@ const requestForegroundPermission = async () => {
   console.info(status);
 };
 
-export const useRunning = () => {
+export const useRunning = (navigation: RunningScreenProps['navigation']) => {
   const [isRunning, setIsRunning] = useState(false);
-  const [coordinates, setCoordinates] = useState<LocationResult[]>([]);
+  const [coordinates, setCoordinates] = useState<any[]>([]);
+  console.info(coordinates);
 
   const onSetInitialPosition = async () => {
     const _location = await Location.getCurrentPositionAsync({});
@@ -58,8 +61,11 @@ export const useRunning = () => {
   };
 
   const onSave = useCallback(async () => {
-    await supabaseClient.from('location').insert([{ location: coordinates }]);
-  }, [coordinates]);
+    // const result = await supabaseClient.from('location').insert({ location: coordinates });
+    // console.info(result);
+    await deleteSecureStore('challenged_tournament_id');
+    navigation.replace('Main');
+  }, [coordinates, navigation]);
 
   useEffect(() => {
     // 位置情報取得許可を要求

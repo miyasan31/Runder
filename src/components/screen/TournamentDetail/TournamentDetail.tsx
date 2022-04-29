@@ -66,7 +66,7 @@ export const TournamentDetail: FC<TournamentDetailScreenProps> = (props) => {
       </View>
 
       <View style={style.float_button_box}>
-        <SwipeStartButton />
+        <SwipeStartButton tournamentId={id} />
         <DetailViewButtonGroup id={id} />
       </View>
     </>
