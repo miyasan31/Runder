@@ -31,7 +31,7 @@ export const Button: FC<ButtonProps> = memo(
     isBorder,
     outlineStyle,
     // TouchableOpacityProps
-    activeOpacity = 0.9,
+    activeOpacity = 1,
     viewStyle,
     // TextProps
     label,

@@ -10,7 +10,7 @@ import { formatRecord } from '~/functions/formatRecord';
 import type { OutlineStyle } from '~/types/style';
 
 type RecordData = {
-  index: number;
+  ranking: number;
   record?: number;
   point?: number;
   user: {
@@ -23,10 +23,10 @@ type RecordData = {
 };
 
 export const RecordTableBody: FC<RecordData> = ({
-  index,
+  ranking,
   record,
   point,
-  user: { id: _id, name, avatar },
+  user: { name, avatar },
   outlineStyle,
 }) => {
   const recordResult = formatRecord(record);
@@ -34,12 +34,14 @@ export const RecordTableBody: FC<RecordData> = ({
   return (
     <List outlineStyle={outlineStyle} viewStyle={[defaultStyle.root]}>
       <View style={defaultStyle.td_left}>
-        <Text style={defaultStyle.td_rank}>{index}位</Text>
+        <Text style={defaultStyle.td_rank}>{ranking}位</Text>
         <Image
           source={avatar ? { uri: avatar } : require('assets/develop/lilnasx.png')}
           style={defaultStyle.td_user_icon}
         />
-        <Text style={defaultStyle.td_user_name}>{name}</Text>
+        <Text style={defaultStyle.td_user_name} numberOfLines={1} ellipsizeMode="tail">
+          {name}
+        </Text>
       </View>
 
       {point ? (
@@ -75,7 +77,10 @@ const defaultStyle = StyleSheet.create({
     marginRight: '4%',
     borderRadius: 999,
   },
-  td_user_name: {},
+  td_user_name: {
+    flex: 1,
+    marginRight: 20,
+  },
   td_center: {
     flex: 1.5,
 

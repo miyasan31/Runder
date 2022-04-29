@@ -1,3 +1,4 @@
 export { Button } from './Button';
 export { GoBackButton } from './GoBackButton';
-export { PrevButton } from './PrevButton';
+export { HeaderLeftButton } from './HeaderLeftButton';
+export { IconButton } from './IconButton';

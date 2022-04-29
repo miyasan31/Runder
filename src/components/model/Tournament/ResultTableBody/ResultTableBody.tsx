@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import type { FC } from 'react';
 import { useCallback } from 'react';
 import { StyleSheet } from 'react-native';
@@ -6,43 +7,36 @@ import type { ResultScreenProps } from '~/components/screen/Result';
 import { List } from '~/components/ui/List';
 import { Text } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
+import { formatRecord } from '~/functions/formatRecord';
+import type { Record } from '~/types/model';
 
-const data = [
-  {
-    id: '1',
-    name: 'Winter Distance Challenge',
-    distance: 3000,
-    start: '12/1',
-    end: '12/31',
-    created_at: '2020-01-01',
-    image: './assets/develop/tournament.jpeg',
-    rank: 1,
-    record: '00:00:00',
-    point: 0,
-  },
-];
-
-type Tournament = typeof data[0];
-
-export const ResultTableBody: FC<Tournament & ResultScreenProps> = ({
-  name,
-  distance,
-  start,
-  end,
-  rank,
+export const ResultTableBody: FC<Record & ResultScreenProps> = ({
   record,
-  point,
+  tournament: { id, name, distance, start, end, term, tournament_design },
   navigation,
 }) => {
+  const startDate = format(new Date(start), 'M/d');
+  const endDate = format(new Date(end), 'M/d');
+  const recordResult = formatRecord(record);
+
   const onNavigation = useCallback(() => {
-    navigation.navigate('ResultDetailScreen');
-  }, [navigation]);
+    navigation.navigate('ResultDetailScreen', {
+      tournament_id: id,
+      tournament_name: name,
+      tournament_image_semi: tournament_design[0].image_semi,
+      tournament_start: startDate,
+      tournament_end: endDate,
+      tournament_term: term,
+      tournament_distance: distance,
+      best_record: recordResult,
+    });
+  }, []);
 
   return (
     <List viewStyle={style.root} onPress={onNavigation}>
       <View style={style.td_left}>
         <Text style={style.tournament_info} color="color2">
-          {start} ~ {end}
+          {startDate} ~ {endDate}
         </Text>
         <Text style={style.tournament_info} color="color2">
           {name}
@@ -53,9 +47,9 @@ export const ResultTableBody: FC<Tournament & ResultScreenProps> = ({
       </View>
 
       <View style={style.td_right}>
-        <Text style={style.tournament_result}>{rank}位</Text>
-        <Text style={style.tournament_result}>{record}</Text>
-        <Text style={style.tournament_result}>{point}ポイント</Text>
+        <Text style={style.tournament_result}>0位</Text>
+        <Text style={style.tournament_result}>{recordResult}</Text>
+        <Text style={style.tournament_result}>0ポイント</Text>
       </View>
     </List>
   );
@@ -74,6 +68,7 @@ const style = StyleSheet.create({
   },
   tournament_info: {
     padding: '1%',
+    fontStyle: 'italic',
   },
   td_right: {
     flex: 1,
@@ -84,5 +79,6 @@ const style = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     textAlign: 'right',
+    fontStyle: 'italic',
   },
 });

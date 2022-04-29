@@ -1,7 +1,7 @@
 import type { PostgrestError } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react';
 
-import type { User } from '~/types/fetcher';
+import type { User } from '~/types/model';
 import { supabaseClient } from '~/utils/supabase';
 
 type Status<T> = {

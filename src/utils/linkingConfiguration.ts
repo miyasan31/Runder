@@ -22,14 +22,11 @@ export const linkingConfiguration: LinkingOptions<RootStackParamList> = {
       Main: {
         path: 'main',
         screens: {
-          Contact: {
-            path: 'contact',
+          Relationship: {
+            path: 'relationship',
             screens: {
-              ContactScreen: {
-                path: 'contact',
-              },
-              Modal: {
-                path: 'modal',
+              RelationshipScreen: {
+                path: 'relationship',
               },
             },
           },
@@ -39,9 +36,6 @@ export const linkingConfiguration: LinkingOptions<RootStackParamList> = {
               RankingScreen: {
                 path: 'ranking',
               },
-              Modal: {
-                path: 'modal',
-              },
             },
           },
           Tournament: {
@@ -49,9 +43,6 @@ export const linkingConfiguration: LinkingOptions<RootStackParamList> = {
             screens: {
               TournamentScreen: {
                 path: 'tournament',
-              },
-              Modal: {
-                path: 'modal',
               },
             },
           },
@@ -61,9 +52,6 @@ export const linkingConfiguration: LinkingOptions<RootStackParamList> = {
               ResultScreen: {
                 path: 'result',
               },
-              Modal: {
-                path: 'modal',
-              },
             },
           },
           Profile: {
@@ -71,9 +59,6 @@ export const linkingConfiguration: LinkingOptions<RootStackParamList> = {
             screens: {
               ProfileScreen: {
                 path: 'profile',
-              },
-              Modal: {
-                path: 'modal',
               },
             },
           },
@@ -102,9 +87,6 @@ export const linkingConfiguration: LinkingOptions<RootStackParamList> = {
             },
           },
         },
-      },
-      Modal: {
-        path: 'modal',
       },
       NotFoundScreen: '*',
     },

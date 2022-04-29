@@ -33,6 +33,7 @@ export const TextInput: FC<TextInputProps> = memo(
   }) => {
     const primary = useTheme({}, 'primary');
     const color = useTheme({ light: lightColor, dark: darkColor }, fontColor);
+    const placeholder = useTheme({}, 'color3');
 
     const inputRef = useRef<NativeTextInput>(null);
 
@@ -76,6 +77,7 @@ export const TextInput: FC<TextInputProps> = memo(
           style={[defaultStyle.text_input, textStyle, { color }]}
           onPressOut={onFocus}
           onBlur={onBlur}
+          placeholderTextColor={placeholder}
         />
       </TouchableOpacity>
     );

@@ -9,16 +9,9 @@ import { ActivityIndicator } from '~/components/ui/Progress';
 import { ExceptionText } from '~/components/ui/Text';
 import { View } from '~/components/ui/View';
 import { flatListStyle } from '~/styles';
-import type { Record, Tournament } from '~/types/model';
 
 import type { TournamentScreenProps } from '.';
 import { useChallengeList } from './useChallengeList';
-
-type ChallengeTournamentList = {
-  tournament: Tournament;
-  count: number;
-  record: Record;
-};
 
 export const ChallengeTournament: FC<TournamentScreenProps> = (props) => {
   const { loading, error, data } = useChallengeList();
@@ -32,7 +25,7 @@ export const ChallengeTournament: FC<TournamentScreenProps> = (props) => {
       data={data}
       // style={flatListStyle.card}
       keyExtractor={(item, _) => String(item.tournament.id)}
-      renderItem={({ item }: { item: ChallengeTournamentList }) => {
+      renderItem={({ item }) => {
         return <ChallengeCard {...item} {...props} />;
       }}
       ListFooterComponent={() => <View style={flatListStyle.bottom_space_large} />}

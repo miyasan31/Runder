@@ -16,27 +16,29 @@ import { SwipeStartButton } from './SwipeStartButton';
 
 export type TournamentDetailScreenProps = Props<'TournamentDetailScreen'>;
 
-const FROM = 'tournament';
-const COLUMN = 'id, name, distance, start, end, image, term';
-const EQUAL = 'id';
-
 export const TournamentDetail: FC<TournamentDetailScreenProps> = (props) => {
   const { tournament_id } = props.route.params;
-  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq(EQUAL, tournament_id), []);
-  const { loading, error, data } = useSupabaseSelect<Tournament>(FROM, { filter });
+  const filter = useSupabaseFilter(
+    (query) =>
+      query
+        .select('id, name, distance, start, end, term, tournament_design(image_full)')
+        .eq('id', tournament_id),
+    [],
+  );
+  const { loading, error, data } = useSupabaseSelect<Tournament>('tournament', { filter });
 
   if (loading) return <ActivityIndicator message="大会情報を取得中..." />;
   if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;
   if (!data) return <ExceptionText label="大会情報が見つかりませんでした。" />;
 
-  const { id, name, distance, start, end, image, term } = data[0];
+  const { id, name, distance, start, end, tournament_design, term } = data[0];
   const termResult = termCheck(term);
   const startDate = format(new Date(start), 'M/d');
   const endDate = format(new Date(end), 'M/d');
 
   return (
     <>
-      <Image source={{ uri: image }} style={style.image} />
+      <Image source={{ uri: tournament_design[0].image_full }} style={style.image} />
 
       <View style={style.float_text_box}>
         <Text style={style.season} color="white">

@@ -14,13 +14,15 @@ import type { Tournament } from '~/types/model';
 
 import type { TournamentScreenProps } from '.';
 
-const FROM = 'tournament';
-const COLUMN = 'id, name, distance, start, end, image, term';
-const ORDER = 'start';
-
 export const VirtualTournament: FC<TournamentScreenProps> = (props) => {
-  const filter = useSupabaseFilter((query) => query.select(COLUMN).order(ORDER), []);
-  const { loading, error, data } = useSupabaseSelect<Tournament>(FROM, {
+  const filter = useSupabaseFilter(
+    (query) =>
+      query
+        .select('id, name, distance, start, end, term, tournament_design(image_semi)')
+        .order('start'),
+    [],
+  );
+  const { loading, error, data } = useSupabaseSelect<Tournament>('tournament', {
     filter,
   });
 

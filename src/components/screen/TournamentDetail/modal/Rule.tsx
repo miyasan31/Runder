@@ -8,17 +8,13 @@ import { View } from '~/components/ui/View';
 import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import type { Tournament } from '~/types/model';
 
-const FROM = 'tournament';
-const COLUMN = 'rule';
-const EQUAL = 'id';
-
 type Props = {
   id: number;
 };
 
 export const Rule: FC<Props> = memo(({ id }) => {
-  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq(EQUAL, id), []);
-  const { loading, error, data } = useSupabaseSelect<Tournament>(FROM, { filter });
+  const filter = useSupabaseFilter((query) => query.select('rule').eq('id', id), []);
+  const { loading, error, data } = useSupabaseSelect<Tournament>('tournament', { filter });
 
   if (loading) return <ActivityIndicator message="大会ルールを取得中..." />;
   if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;

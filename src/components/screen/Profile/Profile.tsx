@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 import { SceneMap } from 'react-native-tab-view';
 import { CollapsibleHeaderTabView } from 'react-native-tab-view-collapsible-header';
 
+import { useGetProfile } from '~/components/screen/Profile/useGetProfile';
 import { AntDesignIcon } from '~/components/ui/Icon';
 import { Image } from '~/components/ui/Image';
 import { TabBar } from '~/components/ui/TabBar';
@@ -23,6 +24,7 @@ const routes = [
 ];
 
 export const Profile: FC<ProfileScreenProps> = (props) => {
+  const { userInfo, shoesInfo } = useGetProfile();
   const { layout, index, onIndexChange } = useTabView();
 
   const renderScene = useMemo(() => {
@@ -49,14 +51,10 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
           <>
             <View style={style.user_info_box} bg="bg1">
               <View style={style.align_horizontal}>
-                <Image
-                  source={require('assets/develop/lilnasx.png')}
-                  border="border1"
-                  style={style.user_icon}
-                />
+                <Image source={{ uri: userInfo.avatar }} border="border1" style={style.user_icon} />
 
                 <TouchableOpacity
-                  activeOpacity={0.9}
+                  activeOpacity={1}
                   style={style.icon_edit_button}
                   border="border0"
                   onPress={onAvatarEditNavigate}
@@ -84,22 +82,19 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
               </View>
 
               <View style={[style.align_horizontal, style.user_name_box]}>
-                <Text style={style.user_name}>川村諒</Text>
+                <Text style={style.user_name}>{userInfo.name}</Text>
                 <Text style={style.edit_button} onPress={onProfileEditNavigate} color="accent">
                   編集する
                 </Text>
               </View>
 
-              <Text style={style.user_profile}>
-                {`高校まで陸上部  
-中距離ランナー
-得意な種目は800mと1500m
-2000m以上は苦手です......`}
-              </Text>
+              <Text style={style.user_profile}>{userInfo.profile}</Text>
 
-              <Text style={style.user_shoes} color="color2">
-                {'👟'} ナイキ ズームライバル フライ
-              </Text>
+              {shoesInfo ? (
+                <Text style={style.user_shoes} color="color2">
+                  {`👟 ${shoesInfo.brand} ${shoesInfo.shoes}`}
+                </Text>
+              ) : null}
             </View>
           </>
         );
@@ -115,7 +110,6 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
 
 const style = StyleSheet.create({
   user_info_box: {
-    marginTop: 40,
     paddingHorizontal: '6%',
   },
   user_icon: {
@@ -190,42 +184,3 @@ const style = StyleSheet.create({
     marginTop: '2%',
   },
 });
-
-// const onPress = async () => {
-//   const { errorToast, successToast } = toastKit();
-//   // delay 1s
-//   await new Promise((resolve) => setTimeout(resolve, 2000));
-//   errorToast();
-
-//   await new Promise((resolve) => setTimeout(resolve, 2000));
-//   successToast('成功しました');
-// };
-
-// const onPressPromise = async () => {
-//   const myPromise = new Promise((resolve) => setTimeout(resolve, 2000));
-//   toast.promise(
-//     myPromise,
-//     {
-//       loading: 'Loading',
-//       error: 'Error when fetching',
-//       success: 'Got the data',
-//     },
-//     {
-//       style: {
-//         minWidth: '250px',
-//       },
-//       loading: {
-//         duration: 3000,
-//         icon: '🔥',
-//       },
-//       error: {
-//         duration: 3000,
-//         icon: '🔥',
-//       },
-//       success: {
-//         duration: 3000,
-//         icon: '🔥',
-//       },
-//     },
-//   );
-// };

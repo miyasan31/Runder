@@ -11,7 +11,6 @@ declare global {
 export type RootStackParamList = AuthGroupStackParamList & {
   Main: NavigatorScreenParams<MainBottomTabParamList> | undefined;
   Development: NavigatorScreenParams<DevelopmentTabParamList> | undefined;
-  Modal: undefined;
   NotFoundScreen: undefined;
 };
 export type StackScreenProps<T extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -19,59 +18,17 @@ export type StackScreenProps<T extends keyof RootStackParamList> = NativeStackSc
   T
 >;
 
-// =====================================================================
-/* development tabs */
-export type DevelopmentTabParamList = {
-  DevList: NavigatorScreenParams<DevListStackParamList> | undefined;
-  DevRunning: NavigatorScreenParams<DevRunningStackParamList> | undefined;
-  Modal: undefined;
-};
-export type DevelopmentScreenProps<T extends keyof DevelopmentTabParamList> = CompositeScreenProps<
-  BottomTabScreenProps<DevelopmentTabParamList, T>,
-  NativeStackScreenProps<RootStackParamList>
->;
-
-/* dev running list */
-export type DevListStackParamList = {
-  RunningHistoryScreen: undefined;
-  RunningDetailScreen: {
-    id: number;
-  };
-  Modal: undefined;
-};
-export type DevListScreenProps<T extends keyof DevListStackParamList> = CompositeScreenProps<
-  BottomTabScreenProps<DevListStackParamList, T>,
-  NativeStackScreenProps<RootStackParamList>
->;
-
-/* dev running  */
-export type DevRunningStackParamList = {
-  RunningScreen: undefined;
-  Modal: undefined;
-};
-export type DevRunningScreenProps<T extends keyof DevRunningStackParamList> = CompositeScreenProps<
-  BottomTabScreenProps<DevRunningStackParamList, T>,
-  NativeStackScreenProps<RootStackParamList>
->;
-
-// =====================================================================
 /* auth */
 export type AuthGroupStackParamList = {
   SignInScreen: undefined;
   SignInEmailScreen: undefined;
   SignUpScreen: undefined;
   UserRegisterScreen: undefined;
-  Modal: undefined;
 };
-export type AuthGroupScreenProps<T extends keyof AuthGroupStackParamList> = CompositeScreenProps<
-  NativeStackScreenProps<AuthGroupStackParamList, T>,
-  NativeStackScreenProps<RootStackParamList>
->;
 
-// =====================================================================
-/* five tabs */
+/* tabs */
 export type MainBottomTabParamList = {
-  Contact: NavigatorScreenParams<ContactStackParamList> | undefined;
+  Relationship: NavigatorScreenParams<RelationshipStackParamList> | undefined;
   Ranking: NavigatorScreenParams<RankingStackParamList> | undefined;
   Tournament: NavigatorScreenParams<TournamentStackParamList> | undefined;
   Result: NavigatorScreenParams<ResultStackParamList> | undefined;
@@ -82,20 +39,22 @@ export type MainBottomTabScreenProps<T extends keyof MainBottomTabParamList> = C
   NativeStackScreenProps<RootStackParamList>
 >;
 
-/* contact */
-export type ContactStackParamList = {
-  ContactScreen: undefined;
-  Modal: undefined;
+/* Relationship */
+export type RelationshipStackParamList = {
+  RelationshipScreen: undefined;
+  NewsDetailScreen: {
+    news_id: number;
+  };
 };
-export type ContactScreenProps<T extends keyof ContactStackParamList> = CompositeScreenProps<
-  BottomTabScreenProps<ContactStackParamList, T>,
-  NativeStackScreenProps<RootStackParamList>
->;
+export type RelationshipScreenProps<T extends keyof RelationshipStackParamList> =
+  CompositeScreenProps<
+    BottomTabScreenProps<RelationshipStackParamList, T>,
+    NativeStackScreenProps<RootStackParamList>
+  >;
 
 /* ranking */
 export type RankingStackParamList = {
   RankingScreen: undefined;
-  Modal: undefined;
 };
 export type RankingScreenProps<T extends keyof RankingStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<RankingStackParamList, T>,
@@ -111,7 +70,6 @@ export type TournamentStackParamList = {
   ChallengeDetailScreen: {
     tournament_id: number;
   };
-  Modal: undefined;
 };
 export type TournamentScreenProps<T extends keyof TournamentStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<TournamentStackParamList, T>,
@@ -121,8 +79,16 @@ export type TournamentScreenProps<T extends keyof TournamentStackParamList> = Co
 /* result */
 export type ResultStackParamList = {
   ResultScreen: undefined;
-  ResultDetailScreen: undefined;
-  Modal: undefined;
+  ResultDetailScreen: {
+    tournament_id: number;
+    tournament_name: string;
+    tournament_image_semi: string;
+    tournament_start: string;
+    tournament_end: string;
+    tournament_term: number;
+    tournament_distance: number;
+    best_record: string;
+  };
 };
 export type ResultScreenProps<T extends keyof ResultStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<ResultStackParamList, T>,
@@ -130,13 +96,53 @@ export type ResultScreenProps<T extends keyof ResultStackParamList> = CompositeS
 >;
 
 /* profile */
-export type ProfileStackParamList = {
+export type ProfileStackParamList = SettingGroupStackParamList & {
   ProfileScreen: undefined;
   ProfileEditScreen: undefined;
   AvatarEditScreen: undefined;
-  Modal: undefined;
 };
 export type ProfileScreenProps<T extends keyof ProfileStackParamList> = CompositeScreenProps<
   BottomTabScreenProps<ProfileStackParamList, T>,
+  NativeStackScreenProps<RootStackParamList>
+>;
+
+/* setting group */
+export type SettingGroupStackParamList = {
+  SettingScreen: undefined;
+  ThemeScreen: undefined;
+  PrivacyScreen: undefined;
+  TermsScreen: undefined;
+  ContactScreen: undefined;
+  AccountDeletionScreen: undefined;
+};
+
+/* development tabs */
+export type DevelopmentTabParamList = {
+  DevList: NavigatorScreenParams<DevListStackParamList> | undefined;
+  DevRunning: NavigatorScreenParams<DevRunningStackParamList> | undefined;
+};
+export type DevelopmentScreenProps<T extends keyof DevelopmentTabParamList> = CompositeScreenProps<
+  BottomTabScreenProps<DevelopmentTabParamList, T>,
+  NativeStackScreenProps<RootStackParamList>
+>;
+
+/* dev running list */
+export type DevListStackParamList = {
+  RunningHistoryScreen: undefined;
+  RunningDetailScreen: {
+    id: number;
+  };
+};
+export type DevListScreenProps<T extends keyof DevListStackParamList> = CompositeScreenProps<
+  BottomTabScreenProps<DevListStackParamList, T>,
+  NativeStackScreenProps<RootStackParamList>
+>;
+
+/* dev running  */
+export type DevRunningStackParamList = {
+  RunningScreen: undefined;
+};
+export type DevRunningScreenProps<T extends keyof DevRunningStackParamList> = CompositeScreenProps<
+  BottomTabScreenProps<DevRunningStackParamList, T>,
   NativeStackScreenProps<RootStackParamList>
 >;

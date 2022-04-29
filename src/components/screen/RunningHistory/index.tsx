@@ -13,7 +13,7 @@ import { View } from '~/components/ui/View';
 import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import { useTheme } from '~/hooks/useTheme';
 import type { DevListScreenProps } from '~/types';
-import type { Location } from '~/types/fetcher';
+import type { Location } from '~/types/model';
 
 const SELECT_COLUMN = 'id, created_at';
 type LocationList = Pick<Location, 'id' | 'created_at'>;

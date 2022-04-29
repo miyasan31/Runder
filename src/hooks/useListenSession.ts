@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
-import { subscribe, useSnapshot } from 'valtio';
+import { useRecoilState } from 'recoil';
 
 import { sleep } from '~/functions/sleep';
-import { session, updateSession } from '~/stores/session';
-import { getUser } from '~/stores/user';
-import type { User } from '~/types/fetcher';
+import type { AuthUserState } from '~/stores/user';
+import { user } from '~/stores/user';
 import { supabaseClient, supabaseSelect } from '~/utils/supabase';
 
 type SessionState = {
@@ -12,10 +11,8 @@ type SessionState = {
   route: 'Main' | 'SignInScreen' | 'UserRegisterScreen';
 };
 
-const unsubscribe = subscribe(session, () => session.isSignIn);
-
 export const useListenSession = () => {
-  const sessionSnapshot = useSnapshot(session);
+  const [authUser, setAuthUser] = useRecoilState(user);
   const [sessionState, setSessionState] = useState<SessionState | null>(null);
 
   const listenSession = useCallback(async (): Promise<SessionState> => {
@@ -28,9 +25,9 @@ export const useListenSession = () => {
       return { isSignIn: false, route: 'SignInScreen' };
     }
 
-    const { data, error } = await supabaseSelect<User>('user', {
+    const { data, error } = await supabaseSelect<AuthUserState>('user', {
       columns: 'id, name, avatar, profile, sex',
-      filter: (query) => query.eq('id', sessionUser && sessionUser.id),
+      filter: (query) => query.eq('id', sessionUser.id),
     });
 
     // --- or ---
@@ -45,26 +42,35 @@ export const useListenSession = () => {
     }
 
     // is Not User -> UserRegisterScreen Navigation
-    if (data.length === 0) {
-      updateSession(false);
+    if (!data.length) {
+      setAuthUser((prev) => {
+        return { ...prev, isSignIn: false };
+      });
       return { isSignIn: false, route: 'UserRegisterScreen' };
     }
 
     // is Success
-    getUser(data[0]);
-    updateSession(true);
+    setAuthUser({
+      isSignIn: true,
+      id: data[0].id,
+      name: data[0].name,
+      avatar: data[0].avatar,
+      profile: data[0].profile,
+      sex: data[0].sex,
+    });
+
     return { isSignIn: true, route: 'Main' };
   }, []);
 
   useEffect(() => {
-    (async () => {
-      const result = await listenSession();
-      await sleep();
-      setSessionState(result);
-    })();
-
-    return () => unsubscribe();
-  }, [sessionSnapshot.isSignIn]);
+    if (!authUser?.id) {
+      (async () => {
+        const result = await listenSession();
+        await sleep(1000);
+        setSessionState(result);
+      })();
+    }
+  }, [authUser?.isSignIn]);
 
   return sessionState;
 };

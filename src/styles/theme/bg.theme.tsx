@@ -8,9 +8,9 @@ export const bgTheme = {
   },
   dark: {
     bg0: '#00000000',
-    bg1: '#373c3f',
-    bg2: '#2c3132',
+    bg1: '#373C3F',
+    bg2: '#2C3132',
     bg3: '#697379',
-    bg4: '#373c3f',
+    bg4: '#373C3F',
   },
 } as const;

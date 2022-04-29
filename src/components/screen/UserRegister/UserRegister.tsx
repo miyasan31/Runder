@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast/src/core/toast';
 import { StyleSheet } from 'react-native';
+import { useSetRecoilState } from 'recoil';
 
 import { Button } from '~/components/ui/Button';
 import { DatePicker } from '~/components/ui/DatePicker';
@@ -11,9 +12,9 @@ import { Text } from '~/components/ui/Text';
 import { TextInput } from '~/components/ui/TextInput';
 import { Bounceable, View } from '~/components/ui/View';
 import { sleep } from '~/functions/sleep';
-import { updateSession } from '~/stores/session';
+import { user } from '~/stores/user';
 import { layoutStyle } from '~/styles';
-import type { AuthGroupScreenProps as Props } from '~/types';
+import type { StackScreenProps as Props } from '~/types';
 import { supabaseClient } from '~/utils/supabase';
 import { toastKit } from '~/utils/toastKit';
 
@@ -25,6 +26,7 @@ const radio_group = [
 ];
 
 export const UserRegister: FC<UserRegisterScreenProps> = () => {
+  const setUserInfo = useSetRecoilState(user);
   const [name, setName] = useState('');
   const [birthday, onSetBirthday] = useState<Date | null>(null);
   const [sex, onSelectSex] = useState<number | null>(null);
@@ -78,7 +80,9 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
     }
 
     successToast('プロフィール登録に成功しました');
-    updateSession(true);
+    setUserInfo((prevState) => {
+      return { ...prevState, isSignIn: true };
+    });
   }, [sessionUser, name, sex, birthday]);
 
   useEffect(() => {
@@ -92,6 +96,7 @@ export const UserRegister: FC<UserRegisterScreenProps> = () => {
       if (session?.app_metadata.provider === 'google') {
         setName(session.user_metadata.name);
       }
+      // TODO:Apple認証の場合もユーザーアイコンを取得する
     })();
   }, []);
 

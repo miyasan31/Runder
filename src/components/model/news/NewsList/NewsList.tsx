@@ -1,22 +1,20 @@
 import { format } from 'date-fns';
 import type { FC } from 'react';
+import { useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 
+import type { RelationshipScreenProps } from '~/components/screen/Relationship';
 import { List } from '~/components/ui/List';
 import { Text } from '~/components/ui/Text';
+import type { Info } from '~/types/model';
 
-const data = [
-  { id: 1, title: 'お知らせ1 お知らせ1 お知らせ1', created_at: new Date(2020, 0, 1) },
-  { id: 2, title: 'お知らせ2 お知らせ2 お知らせ2', created_at: new Date(2020, 0, 1) },
-  { id: 3, title: 'お知らせ3 お知らせ3 お知らせ3', created_at: new Date(2020, 0, 1) },
-  { id: 4, title: 'お知らせ4 お知らせ4 お知らせ4', created_at: new Date(2020, 0, 1) },
-];
+type Props = RelationshipScreenProps & Pick<Info, 'id' | 'title' | 'created_at'>;
 
-type NewsListProps = typeof data[number];
-
-export const NewsList: FC<NewsListProps> = ({ id, title, created_at }) => {
+export const NewsList: FC<Props> = ({ navigation, id, title, created_at }) => {
   const date = format(new Date(created_at || ''), 'yyyy年M月d日');
-  const onNavigation = () => console.info('id', id);
+  const onNavigation = useCallback(() => {
+    navigation.navigate('NewsDetailScreen', { news_id: id });
+  }, []);
 
   return (
     <List viewStyle={style.root} onPress={onNavigation}>

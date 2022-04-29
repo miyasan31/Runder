@@ -11,19 +11,22 @@ import { useSupabaseFilter, useSupabaseSelect } from '~/hooks/supabase';
 import { flatListStyle } from '~/styles';
 import type { Record } from '~/types/model';
 
-const FROM = 'record';
-const COLUMN = 'id, user(id, name, avatar), record';
-const ORDER = 'record';
-const EQUAL = 'tournament_id';
-
 type Props = {
   id: number;
 };
 
 export const Ranking: FC<Props> = ({ id }) => {
   // TODO:男女年齢フィルターを実装する
-  const filter = useSupabaseFilter((query) => query.select(COLUMN).eq(EQUAL, id).order(ORDER), []);
-  const { loading, error, data } = useSupabaseSelect<Record>(FROM, { filter });
+  const filter = useSupabaseFilter(
+    (query) =>
+      query
+        .select('id, record, user(name, avatar)')
+        .eq('tournament_id', id)
+        .eq('isBest', true)
+        .order('record'),
+    [],
+  );
+  const { loading, error, data } = useSupabaseSelect<Record>('record', { filter });
 
   if (loading) return <ActivityIndicator message="ポイント情報を取得中..." />;
   if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;
@@ -41,7 +44,7 @@ export const Ranking: FC<Props> = ({ id }) => {
         </>
       )}
       renderItem={({ item, index }) => {
-        return <RecordTableBody {...item} index={index + 1} outlineStyle={style.list} />;
+        return <RecordTableBody {...item} ranking={index + 1} outlineStyle={style.list} />;
       }}
     />
   );

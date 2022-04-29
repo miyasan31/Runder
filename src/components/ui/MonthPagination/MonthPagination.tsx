@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { AntDesignIcon } from '~/components/ui/Icon';
+import { ChevronLeftIcon, ChevronRightIcon } from '~/components/ui/Icon';
 import { Text } from '~/components/ui/Text';
 import { Bounceable, View } from '~/components/ui/View';
 
@@ -22,11 +22,11 @@ export const MonthPagination: FC = () => {
 
       <View style={style.pagination_box}>
         <Bounceable viewStyle={style.icon_button} onPress={onPrevMonth}>
-          <AntDesignIcon name="caretleft" />
+          <ChevronLeftIcon icon="icon2" />
         </Bounceable>
 
         <Bounceable viewStyle={style.icon_button} onPress={onNextMonth}>
-          <AntDesignIcon name="caretright" />
+          <ChevronRightIcon icon="icon2" />
         </Bounceable>
       </View>
     </View>

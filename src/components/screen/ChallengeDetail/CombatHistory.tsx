@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React, { memo, useCallback, useState } from 'react';
 import { Dimensions, FlatList, StyleSheet } from 'react-native';
 import MapView, { Polyline } from 'react-native-maps';
-import { useSnapshot } from 'valtio';
+import { useRecoilValue } from 'recoil';
 
 import { MyRecordTableBody } from '~/components/model/record/MyRecordTableBody';
 import { ActivityIndicator } from '~/components/ui/Progress';
@@ -17,12 +17,8 @@ import type { Record } from '~/types/model';
 
 import type { ChallengeDetailScreenProps } from '.';
 
-const FROM = 'record';
-const SELECT = 'id, user_id, record, created_at, location(id, location)';
-const ORDER = 'record';
-
 export const CombatHistory: FC<ChallengeDetailScreenProps> = memo((props) => {
-  const userSnapshot = useSnapshot(user);
+  const userInfo = useRecoilValue(user);
 
   const [selectRecord, setSelectRecord] = useState(0);
   const onSelectRecord = useCallback((id: number) => {
@@ -33,13 +29,13 @@ export const CombatHistory: FC<ChallengeDetailScreenProps> = memo((props) => {
   const filter = useSupabaseFilter(
     (query) =>
       query
-        .select(SELECT)
+        .select('id, user_id, record, created_at, location(id, location)')
         .eq('tournament_id', tournament_id)
-        .eq('user_id', userSnapshot.id)
-        .order(ORDER),
+        .eq('user_id', userInfo.id)
+        .order('record'),
     [],
   );
-  const { loading, error, data } = useSupabaseSelect<Record>(FROM, { filter });
+  const { loading, error, data } = useSupabaseSelect<Record>('record', { filter });
 
   if (loading) return <ActivityIndicator message="大会情報を取得中..." />;
   if (error) return <ExceptionText label="エラーが発生しました。" error={error.message} />;

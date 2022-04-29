@@ -11,7 +11,7 @@ type Props = IconStyleProps & {
 };
 
 export const MaterialIcon: FC<Props> = memo(
-  ({ icon = 'icon', lightIcon, darkIcon, size = 22, ...otherProps }) => {
+  ({ icon = 'icon1', lightIcon, darkIcon, size = 22, ...otherProps }) => {
     const iconColor = useTheme({ light: lightIcon, dark: darkIcon }, icon);
     return <MaterialIcons {...otherProps} size={size} color={iconColor} />;
   },

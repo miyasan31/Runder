@@ -4,7 +4,7 @@ const formatDecimalCalculation = (s: number, n: number) => {
 };
 
 export const formatRecord = (record?: number) => {
-  if (!record) return null;
+  if (!record) return '';
   const t = Math.abs(record);
   const ms = t % 1000;
   const sec = Math.floor(t / 1000) % 60;

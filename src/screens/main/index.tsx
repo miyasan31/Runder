@@ -4,23 +4,28 @@ import type { FC } from 'react';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { FeatherIcon, RunderLogo } from '~/components/ui/Icon';
+import {
+  BellIcon,
+  IdentificationIcon,
+  LightningBoltIcon,
+  UserGroupIcon,
+} from '~/components/ui/Icon';
+import { LightningBoltIconSolid } from '~/components/ui/Icon/LightningBoltIconSolid';
+import { SearchIcon } from '~/components/ui/Icon/SearchIcon';
 import { Text } from '~/components/ui/Text';
 import { Bounceable } from '~/components/ui/View';
 import { useTheme } from '~/hooks/useTheme';
 import type { MainBottomTabParamList } from '~/types';
 
-import { ContactNavigator } from './contact';
 import { ProfileNavigator } from './profile';
 import { RankingNavigator } from './ranking';
+import { RelationshipNavigator } from './relationship';
 import { ResultNavigator } from './result';
 import { TournamentNavigator } from './tournament';
 
 const BottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 
 export const BottomTabNavigator: FC = () => {
-  const icon = useTheme({}, 'color2');
-  const primary = useTheme({}, 'primary');
   const backgroundColor = useTheme({}, 'bg4');
 
   return (
@@ -28,23 +33,19 @@ export const BottomTabNavigator: FC = () => {
       initialRouteName="Tournament"
       screenOptions={{
         headerShown: false,
-        tabBarInactiveTintColor: icon,
-        tabBarActiveTintColor: primary,
-        tabBarLabelStyle: {
-          fontSize: 12,
-          marginTop: 4,
-        },
         tabBarStyle: { position: 'absolute', backgroundColor },
         // tabBarBackground: () => <BlurView intensity={10} style={StyleSheet.absoluteFill} />,
       }}
     >
       <BottomTab.Screen
-        name="Contact"
-        component={ContactNavigator}
+        name="Relationship"
+        component={RelationshipNavigator}
         options={{
           tabBarLabel: 'お知らせ',
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <BottomTabIcon label="お知らせ" name="mail" color={color} />,
+          tabBarIcon: ({ focused }) => (
+            <BottomTabIcon label="お知らせ" type="mail" focused={focused} />
+          ),
         }}
       />
       <BottomTab.Screen
@@ -53,8 +54,8 @@ export const BottomTabNavigator: FC = () => {
         options={() => ({
           title: 'ランキング',
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => (
-            <BottomTabIcon label="ランキング" name="award" color={color} />
+          tabBarIcon: ({ focused }) => (
+            <BottomTabIcon label="ランキング" type="ranking" focused={focused} />
           ),
         })}
       />
@@ -64,7 +65,7 @@ export const BottomTabNavigator: FC = () => {
         options={() => ({
           title: '',
           tabBarShowLabel: false,
-          tabBarIcon: () => <BottomTabRunderLogo />,
+          tabBarIcon: ({ focused }) => <BottomTabThunderLogo focused={focused} />,
         })}
       />
       <BottomTab.Screen
@@ -73,7 +74,9 @@ export const BottomTabNavigator: FC = () => {
         options={() => ({
           title: '履歴',
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <BottomTabIcon label="履歴" name="search" color={color} />,
+          tabBarIcon: ({ focused }) => (
+            <BottomTabIcon label="履歴" type="result" focused={focused} />
+          ),
         })}
       />
       <BottomTab.Screen
@@ -82,8 +85,8 @@ export const BottomTabNavigator: FC = () => {
         options={() => ({
           title: 'プロフィール',
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => (
-            <BottomTabIcon label="プロフィール" name="user" color={color} />
+          tabBarIcon: ({ focused }) => (
+            <BottomTabIcon label="プロフィール" type="profile" focused={focused} />
           ),
         })}
       />
@@ -91,23 +94,32 @@ export const BottomTabNavigator: FC = () => {
   );
 };
 
-const BottomTabRunderLogo = () => {
+const BottomTabThunderLogo: FC<{ focused: boolean }> = ({ focused }) => {
+  const iconColor = focused ? 'primary' : 'icon2';
   return (
-    <Bounceable viewStyle={style.root} activeScale={0.95} bg="bg4">
-      <RunderLogo />
+    <Bounceable viewStyle={style.tournament_icon} activeScale={0.95} bg="bg4">
+      {focused ? (
+        <LightningBoltIconSolid size={36} icon={iconColor} />
+      ) : (
+        <LightningBoltIcon size={36} icon={iconColor} />
+      )}
     </Bounceable>
   );
 };
 
 const BottomTabIcon: FC<{
   label: string;
-  name: 'mail' | 'award' | 'user' | 'search';
-  color: string;
-}> = ({ label, name, color }) => {
+  type: 'mail' | 'ranking' | 'result' | 'profile';
+  focused: boolean;
+}> = ({ label, type, focused }) => {
+  const iconColor = focused ? 'primary' : 'icon2';
   return (
     <Bounceable viewStyle={style.icon} activeScale={0.9} bg="bg4">
-      <FeatherIcon name={name} color={color} />
-      <Text style={style.tab_label} lightColor={color} darkColor={color}>
+      {type === 'mail' && <BellIcon size={28} icon={iconColor} />}
+      {type === 'ranking' && <UserGroupIcon size={28} icon={iconColor} />}
+      {type === 'result' && <SearchIcon size={28} icon={iconColor} />}
+      {type === 'profile' && <IdentificationIcon size={28} icon={iconColor} />}
+      <Text style={style.tab_label} color={focused ? 'primary' : 'color3'}>
         {label}
       </Text>
     </Bounceable>
@@ -115,13 +127,13 @@ const BottomTabIcon: FC<{
 };
 
 const style = StyleSheet.create({
-  root: {
+  tournament_icon: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 40,
-    height: 40,
+    width: 35,
+    height: 35,
     borderRadius: 999,
-    padding: 34,
+    padding: 32,
     marginTop: -10,
 
     shadowOffset: {
@@ -135,11 +147,13 @@ const style = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 4,
   },
   tab_label: {
     flex: 1,
+    marginTop: 2,
     textAlign: 'center',
-    marginTop: 5,
     fontSize: 10,
+    fontWeight: '500',
   },
 });

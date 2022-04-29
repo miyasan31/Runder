@@ -1,41 +1,23 @@
 import 'react-native-url-polyfill/auto';
 
-import type { PostgrestError, PostgrestResponse } from '@supabase/supabase-js';
+import type { PostgrestError } from '@supabase/supabase-js';
 import { useCallback, useEffect, useState } from 'react';
-import { useSnapshot } from 'valtio';
+import { useRecoilValue } from 'recoil';
 
 import { user } from '~/stores/user';
-import type { Record, Tournament } from '~/types/model';
-import { supabaseClient } from '~/utils/supabase';
+import type { Record } from '~/types/model';
+import { supabaseSelect } from '~/utils/supabase';
 
-const TOURNAMENT_FROM = 'tournament';
-const TOURNAMENT_COLUMN = 'id, name, distance, start, end, image, term, count';
-const TOURNAMENT_ORDER = 'created_at';
+export type ChallengeTournament = Record & { count: number | null };
 
-const RECORD_FROM = 'record';
-const RECORD_COLUMN = 'id, record';
-const RECORD_ORDER = 'record';
-const RECORD_LIMIT = 1;
-const RECORD_EQUAL_1 = 'user_id';
-const RECORD_EQUAL_2 = 'tournament_id';
-
-type BestRecordResult = {
-  tournament: Tournament;
-  record: PostgrestResponse<Record>;
-};
-
-type ChallengeTournamentResult = {
+export type ChallengeTournamentResult = {
   loading: boolean;
-  error?: PostgrestError | null;
-  data?: {
-    tournament: Tournament;
-    record: Record;
-    count: number;
-  }[];
+  error?: PostgrestError;
+  data?: ChallengeTournament[];
 };
 
 export const useChallengeList = () => {
-  const userSnapshot = useSnapshot(user);
+  const userInfo = useRecoilValue(user);
 
   const [challenges, setChallenges] = useState<ChallengeTournamentResult>({
     loading: true,
@@ -44,72 +26,33 @@ export const useChallengeList = () => {
   });
 
   const fetchChallengeList = useCallback(async () => {
-    const { data: tournament_data, error } = await supabaseClient
-      .from<Tournament>(TOURNAMENT_FROM)
-      .select(TOURNAMENT_COLUMN)
-      .order(TOURNAMENT_ORDER);
+    const { data: best_record, error } = await supabaseSelect<Record>('record', {
+      columns:
+        'id, record, created_at, tournament(id, name, distance, start, end, term,  count, tournament_design(image_semi))',
+      filter: (query) => query.eq('user_id', userInfo.id).eq('isBest', true).order('created_at'),
+    });
 
-    if (error) {
-      setChallenges((prev) => {
-        return { ...prev, loading: false, error: error };
-      });
+    if (error || !best_record) {
+      setChallenges({ loading: false, error: error, data: undefined });
       return;
     }
 
-    if (tournament_data) {
-      const promiseRecord = tournament_data.map(async (_tournament_data) => {
-        return {
-          tournament: _tournament_data,
-          record: await supabaseClient
-            .from<Record>(RECORD_FROM)
-            .select(RECORD_COLUMN, { count: 'exact' })
-            .match({
-              [RECORD_EQUAL_1]: userSnapshot.id,
-              [RECORD_EQUAL_2]: _tournament_data.id,
-            })
-            .limit(RECORD_LIMIT)
-            .order(RECORD_ORDER),
-        };
+    const countPromise = best_record.map(async (record) => {
+      const { count } = await supabaseSelect<Record>('record', {
+        options: { count: 'exact' },
+        filter: (query) =>
+          query.eq('tournament_id', record.tournament.id).eq('user_id', userInfo.id),
       });
+      return { ...record, count };
+    });
+    const result = await Promise.all(countPromise);
 
-      const recordResult = await Promise.all([...promiseRecord]);
-
-      const errorResult = recordResult.find((_recordResult) => {
-        return _recordResult.record.error;
-      });
-
-      if (errorResult) {
-        setChallenges((prev) => {
-          return { ...prev, loading: false, error: errorResult.record.error };
-        });
-        return;
-      }
-
-      const recordFilterResult = recordResult
-        .filter((response: BestRecordResult) => response.record.count !== 0)
-        .map((response: BestRecordResult) => {
-          return {
-            tournament: response.tournament,
-            // TODO:ここの型解決一生わからん
-            count: response.record.count as number,
-            record: (response.record.data ? response.record.data[0] : null) as Record,
-          };
-        });
-
-      if (recordFilterResult.length === 0) {
-        setChallenges((prev) => {
-          return { ...prev, loading: false, data: undefined };
-        });
-        return;
-      }
-
-      setChallenges({
-        loading: false,
-        error: undefined,
-        data: recordFilterResult,
-      });
-    }
-  }, [userSnapshot.id]);
+    setChallenges({
+      loading: false,
+      error: undefined,
+      data: result,
+    });
+  }, [userInfo.id]);
 
   useEffect(() => {
     fetchChallengeList();
