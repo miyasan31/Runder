@@ -21,7 +21,7 @@ export type ResultScreenProps = Props<'ResultScreen'>;
 
 const FROM = 'record';
 const COLUMN =
-  'id, record, tournament(id, name, distance, start, end, tournament_design(image_semi))';
+  'id, record, tournament(id, name, distance, start, end, term,  tournament_design(image_semi))';
 const EQUAL_1 = 'user_id';
 const EQUAL_2 = 'isBest';
 const ORDER = 'created_at';
