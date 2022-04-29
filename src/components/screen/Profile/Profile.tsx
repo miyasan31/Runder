@@ -54,7 +54,7 @@ export const Profile: FC<ProfileScreenProps> = (props) => {
                 <Image source={{ uri: userInfo.avatar }} border="border1" style={style.user_icon} />
 
                 <TouchableOpacity
-                  activeOpacity={0.9}
+                  activeOpacity={1}
                   style={style.icon_edit_button}
                   border="border0"
                   onPress={onAvatarEditNavigate}
