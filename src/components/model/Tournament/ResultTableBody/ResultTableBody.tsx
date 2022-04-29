@@ -12,7 +12,7 @@ import type { Record } from '~/types/model';
 
 export const ResultTableBody: FC<Record & ResultScreenProps> = ({
   record,
-  tournament: { id, name, distance, start, end, tournament_design },
+  tournament: { id, name, distance, start, end, term, tournament_design },
   navigation,
 }) => {
   const startDate = format(new Date(start), 'M/d');
@@ -20,10 +20,17 @@ export const ResultTableBody: FC<Record & ResultScreenProps> = ({
   const recordResult = formatRecord(record);
 
   const onNavigation = useCallback(() => {
-    navigation.navigate('ResultDetailScreen', { tournament_id: id });
-  }, [id, navigation]);
-
-  console.info(tournament_design[0].image_semi);
+    navigation.navigate('ResultDetailScreen', {
+      tournament_id: id,
+      tournament_name: name,
+      tournament_image_semi: tournament_design[0].image_semi,
+      tournament_start: startDate,
+      tournament_end: endDate,
+      tournament_term: term,
+      tournament_distance: distance,
+      best_record: recordResult,
+    });
+  }, []);
 
   return (
     <List viewStyle={style.root} onPress={onNavigation}>
